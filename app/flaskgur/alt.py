@@ -36,7 +36,7 @@ def detect_face(image):
 
 #detect_face('matt3.jpg')
 
-import subprocess
+
 import numpy as np
 import os, inspect
 import math

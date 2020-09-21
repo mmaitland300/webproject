@@ -12,7 +12,7 @@ from app.models import User, Post, Message, Notification
 
 from flask import request, g, redirect, url_for, abort, render_template, send_from_directory, current_app
 from werkzeug.utils import secure_filename
-from app.flaskgur.alt import detect_face, Nashville, Gotham, Lomo, Toaster, Kelvin, mainquad, edge, vintage, sepia, gaussianBlur, emboss, sharpen
+from app.flaskgur.alt import detect_face, mainquad, edge, vintage, sepia, gaussianBlur, emboss, sharpen
 from app.flaskgur import bp
 
 def check_extension(extension):
