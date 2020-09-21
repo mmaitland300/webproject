@@ -12,7 +12,7 @@ from app.models import User, Post, Message, Notification
 
 from flask import request, g, redirect, url_for, abort, render_template, send_from_directory, current_app
 from werkzeug.utils import secure_filename
-from app.flaskgur.alt import detect_face, Nashville, Gotham, Lomo, Toaster, Kelvin, mainquad
+from app.flaskgur.alt import detect_face, Nashville, Gotham, Lomo, Toaster, Kelvin, mainquad, edge, vintage, sepia, gaussianBlur, emboss, sharpen
 from app.flaskgur import bp
 
 def check_extension(extension):
@@ -143,60 +143,7 @@ def face(filename):
     
     return redirect(url_for('flaskgur.show_pic', filename=filename))
 
-@bp.route('/goth/<filename>')
-def goth(filename):
-    
-    
-    beaut = Gotham(os.path.join(current_app.config['UPLOAD_DIR'], secure_filename(filename)))
-    beaut.apply()
-    
-    gen_thumbnail(filename)
-
-    return redirect(url_for('flaskgur.show_pic', filename=filename))
-
-@bp.route('/nash/<filename>')
-def nash(filename):
-
-
-    beaut = Nashville(os.path.join(current_app.config['UPLOAD_DIR'], secure_filename(filename)))
-    beaut.apply()
-
-    gen_thumbnail(filename)
-
-    return redirect(url_for('flaskgur.show_pic', filename=filename))
-
-@bp.route('/toast/<filename>')
-def toast(filename):
-
-
-    beaut = Toaster(os.path.join(current_app.config['UPLOAD_DIR'], secure_filename(filename)))
-    beaut.apply()
-
-    gen_thumbnail(filename)
-
-    return redirect(url_for('flaskgur.show_pic', filename=filename))
-
-@bp.route('/lomo/<filename>')
-def lomo(filename):
-
-
-    beaut = Lomo(os.path.join(current_app.config['UPLOAD_DIR'], secure_filename(filename)))
-    beaut.apply()
-
-    gen_thumbnail(filename)
-
-    return redirect(url_for('flaskgur.show_pic', filename=filename))
-
-@bp.route('/kelvin/<filename>')
-def kelvin(filename):
-
-
-    beaut = Kelvin(os.path.join(current_app.config['UPLOAD_DIR'], secure_filename(filename)))
-    beaut.apply()
-
-    gen_thumbnail(filename)
-
-    return redirect(url_for('flaskgur.show_pic', filename=filename))
+# 
 
 @bp.route('/quad/<filename>')
 def quadart(filename):
@@ -207,6 +154,66 @@ def quadart(filename):
     
     return redirect(url_for('flaskgur.show_pic', filename=filename))
 
+@bp.route('/edge/<filename>')
+def lined(filename):
+    
+    edge(os.path.join(current_app.config['UPLOAD_DIR'], secure_filename(filename)))
+    
+    gen_thumbnail(filename)
+
+    return redirect(url_for('flaskgur.show_pic', filename=filename))
+
+
+@bp.route('/vint/<filename>')
+def vint(filename):
+    
+    vintage(os.path.join(current_app.config['UPLOAD_DIR'], secure_filename(filename)))
+    
+    gen_thumbnail(filename)
+
+    return redirect(url_for('flaskgur.show_pic', filename=filename))
+
+
+@bp.route('/sep/<filename>')
+def sep(filename):
+    
+    sepia(os.path.join(current_app.config['UPLOAD_DIR'], secure_filename(filename)))
+    
+    gen_thumbnail(filename)
+
+    return redirect(url_for('flaskgur.show_pic', filename=filename))
+
+@bp.route('/embo/<filename>')
+def embo(filename):
+    
+    emboss(os.path.join(current_app.config['UPLOAD_DIR'], secure_filename(filename)))
+    
+    gen_thumbnail(filename)
+
+    return redirect(url_for('flaskgur.show_pic', filename=filename))
+
+@bp.route('/blur/<filename>')
+def blur(filename):
+    
+    gaussianBlur(os.path.join(current_app.config['UPLOAD_DIR'], secure_filename(filename)))
+    
+    gen_thumbnail(filename)
+
+    return redirect(url_for('flaskgur.show_pic', filename=filename))
+
+@bp.route('/sharp/<filename>')
+def sharp(filename):
+    
+    sharpen(os.path.join(current_app.config['UPLOAD_DIR'], secure_filename(filename)))
+    
+    gen_thumbnail(filename)
+
+    return redirect(url_for('flaskgur.show_pic', filename=filename))
+
+
+
+
+
 @bp.route('/del/<filename>')
 def remove(filename):
     os.remove(os.path.join(current_app.config['UPLOAD_DIR'], filename))
@@ -214,3 +221,62 @@ def remove(filename):
     g.db.execute(f'DELETE FROM pics WHERE filename = "{filename}"')
     g.db.commit()
     return redirect(url_for('flaskgur.upload_pic'))
+
+
+
+
+
+# @bp.route('/goth/<filename>')
+# def goth(filename):
+    
+    
+#     beaut = Gotham(os.path.join(current_app.config['UPLOAD_DIR'], secure_filename(filename)))
+#     beaut.apply()
+    
+#     gen_thumbnail(filename)
+
+#     return redirect(url_for('flaskgur.show_pic', filename=filename))
+
+# @bp.route('/nash/<filename>')
+# def nash(filename):
+
+
+#     beaut = Nashville(os.path.join(current_app.config['UPLOAD_DIR'], secure_filename(filename)))
+#     beaut.apply()
+
+#     gen_thumbnail(filename)
+
+#     return redirect(url_for('flaskgur.show_pic', filename=filename))
+
+# @bp.route('/toast/<filename>')
+# def toast(filename):
+
+
+#     beaut = Toaster(os.path.join(current_app.config['UPLOAD_DIR'], secure_filename(filename)))
+#     beaut.apply()
+
+#     gen_thumbnail(filename)
+
+#     return redirect(url_for('flaskgur.show_pic', filename=filename))
+
+# @bp.route('/lomo/<filename>')
+# def lomo(filename):
+
+
+#     beaut = Lomo(os.path.join(current_app.config['UPLOAD_DIR'], secure_filename(filename)))
+#     beaut.apply()
+
+#     gen_thumbnail(filename)
+
+#     return redirect(url_for('flaskgur.show_pic', filename=filename))
+
+# @bp.route('/kelvin/<filename>')
+# def kelvin(filename):
+
+
+#     beaut = Kelvin(os.path.join(current_app.config['UPLOAD_DIR'], secure_filename(filename)))
+#     beaut.apply()
+
+#     gen_thumbnail(filename)
+
+#     return redirect(url_for('flaskgur.show_pic', filename=filename))
