@@ -37,47 +37,50 @@ def detect_face(image):
 #detect_face('matt3.jpg')
 
 import subprocess
-from PIL import Image
+import numpy as np
 import os, inspect
 import math
+import matplotlib.pyplot as plt
+import scipy
+import copy
 
-class PyGram():
-    def __init__(self, filename):
-        self.filename = filename
-        self.im = False
+class PyGram:
+	
+	def __init__(self, filename):
+		self.filename = filename
+		self.im = False
+		
+	def image(self):
+		if not self.im:
+			self.im = PIL.Image.open(self.filename)
+		return self.im
+	
+	def execute(self, command, **kwargs):
+		default = dict(
+			filename=self.filename,
+			width = self.image().size[0],
+			height = self.image().size[1]
+		)
+		format = dict(default.items() | kwargs.items())
+		command = command.format(**format)
+		error = subprocess.check_output(command, shell=True, stderr=subprocess.STDOUT)
+		return error
+		
+	def colortone(self, color, level, type = 0):
+		
+		arg0 = level
+		arg1 = 100 - level
+		if type == 0:
+			negate = '-negate'
+		else:
+			negate = ''
 
-    def image(self):
-        if not self.im:
-            self.im = Image.open(self.filename)
-        return self.im
-
-    def execute(self, command, **kwargs):
-        default = dict(
-            filename=self.filename,
-            width=self.image().size[0],
-            height=self.image().size[1]
-        )
-        format = dict(default.items() | kwargs.items())
-        command = command.format(**format)
-        error = subprocess.check_output(command, shell=True, stderr=subprocess.STDOUT)
-        return error
-
-    def colortone(self, color, level, type=0):
-
-        arg0 = level
-        arg1 = 100 - level
-        if type == 0:
-            negate = '-negate'
-        else:
-            negate = ''
-
-        self.execute(
-            "convert {filename} \( -clone 0 -fill '{color}' -colorize 100% \) \( -clone 0 -colorspace gray {negate} \) -compose blend -define compose:args={arg0},{arg1} -composite {filename}",
-            color=color,
-            negate=negate,
-            arg0=arg0,
-            arg1=arg1
-        )
+		self.execute("convert {filename} \( -clone 0 -fill '{color}' -colorize 100% \) \( -clone 0 -colorspace gray {negate} \) -compose blend -define compose:args={arg0},{arg1} -composite {filename}",
+			color = color,
+			negate = negate,
+			arg0 = arg0,
+			arg1 = arg1
+		)
 
 # Decorations
 
@@ -86,13 +89,13 @@ class Vignette(PyGram):
         crop_x = math.floor(self.image().size[0] * crop_factor)
         crop_y = math.floor(self.image().size[1] * crop_factor)
 
-        self.execute(
-            "convert \( {filename} \) \( -size {crop_x}x{crop_y} radial-gradient:{color_1}-{color_2} -gravity center -crop {width}x{height}+0+0 +repage \) -compose multiply -flatten {filename}",
-            crop_x=crop_x,
-            crop_y=crop_y,
-            color_1=color_1,
-            color_2=color_2,
-        )
+        self.execute("convert \( {filename} \) \( -size {crop_x}x{crop_y} radial-gradient:{color_1}-{color_2} -gravity center -crop {width}x{height}+0+0 +repage \) -compose multiply -flatten {filename}",
+			crop_x = crop_x,
+			crop_y = crop_y,
+			color_1 = color_1,
+			color_2 = color_2,
+		)
+
 
 
 class Frame(PyGram):
@@ -147,9 +150,71 @@ class Nashville(Border):
 		self.colortone('#f7daae', 120, 1)
 		self.execute("convert {filename} -contrast -modulate 100,150,100 -auto-gamma {filename}")
 		self.border()
+# x = Lomo("sharp.jpg")
+# x.apply()
 
-#s = Toaster("matt3.jpg")
-#s.apply()
+def edge(image):
+    im = cv2.imread(image)
+    gray = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
+    edged = cv2.Canny(gray, 50, 100)
+    edged = PIL.Image.fromarray(edged)
+    edged.save(image)
+
+def vintage(image):
+    im = cv2.imread(image)
+    rows, cols = im.shape[:2]
+    # Create a Gaussian filter
+    kernel_x = cv2.getGaussianKernel(cols,200)
+    kernel_y = cv2.getGaussianKernel(rows,200)
+    kernel = kernel_y * kernel_x.T
+    filter = 250 * kernel / np.linalg.norm(kernel)
+    vintage_im = np.copy(im)
+    # for each channel in the input image, we will apply the above filter
+    for i in range(3):
+        vintage_im[:,:,i] = vintage_im[:,:,i] * filter
+    plt.imsave(image, vintage_im)
+
+
+
+
+def gaussianBlur(image):
+    initimg = cv2.imread(image)
+    x = cv2.GaussianBlur(initimg, (35, 35), 0)
+    cv2.imwrite(image, x)
+
+def sepia(image):
+    initimg = cv2.imread(image)
+    kernel = np.array([[0.272, 0.534, 0.131],
+                       [0.349, 0.686, 0.168],
+                       [0.393, 0.769, 0.189]])
+    x = cv2.filter2D(initimg, -1, kernel)
+    cv2.imwrite(image, x)
+
+def emboss(image):
+    initimg = cv2.imread(image)
+    kernel = np.array([[0,-1,-1],
+                        [1,0,-1],
+                        [1,1,0]])
+    x = cv2.filter2D(initimg, -1, kernel)
+    cv2.imwrite(image, x)
+
+
+
+    
+
+
+def brightnessControl(image, level):
+    initimg = cv2.imread(image)
+    x = cv2.convertScaleAbs(initimg, beta=level)
+    cv2.imwrite(image, x)
+
+def sharpen(image):
+    initimg = cv2.imread(image)
+    kernel = np.array([[-1, -1, -1], [-1, 9, -1], [-1, -1, -1]])
+    x = cv2.filter2D(initimg, -1, kernel)
+    cv2.imwrite(image, x)
+    
+    
 
 from wand.image import Image
 from wand.display import display
