@@ -291,7 +291,7 @@ def send_contact():
         subject= request.form["email"],
         html_content= request.form["message"])
     try:
-        sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
+        sg = SendGridAPIClient('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')
         response = sg.send(message)
         print(response.status_code)
         print(response.body)
