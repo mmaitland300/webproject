@@ -1,4 +1,8 @@
-from datetime import datetime
+from datetime import datetime, date
+import os
+import sendgrid
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
 from flask import render_template, flash, redirect, url_for, request, g, \
     jsonify, current_app
 from flask_login import current_user, login_required
@@ -242,7 +246,7 @@ def notifications():
         'data': n.get_data(),
         'timestamp': n.timestamp
     } for n in notifications])
-
+ 
 
 @bp.route('/pgame', methods=['GET', 'POST'])
 @login_required
@@ -269,5 +273,39 @@ def rpg():
 def code():
     return render_template('/code.html')
 
+@bp.route("/contact")
+@login_required
+def contact():
+    """Function for contact page"""
+    context = {"page_title": "Stuff & Things", "current_year": date.today().year}
+    return render_template("contact.html", **context)
 
+@bp.route("/send_contact", methods=['GET', 'POST'])
+@login_required
+def send_contact():
+    
+    
+    message = Mail(
+        from_email= 'mmaitland300@gmail.com',
+        to_emails= 'mmaitland300@gmail.com',
+        subject= request.form["email"],
+        html_content= request.form["message"])
+    try:
+        sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
+        response = sg.send(message)
+        print(response.status_code)
+        print(response.body)
+        print(response.headers)
+    except Exception:
+        print(message)
+
+    flash("Email sent.")
+    return redirect(url_for("main.index"))
+
+
+@bp.route("/pay")
+@login_required
+def pay():
+
+    return render_template("pay.html")
 

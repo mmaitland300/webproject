@@ -1,5 +1,5 @@
 import PIL.Image
-from PIL import ImageDraw
+from PIL import ImageDraw, ImageEnhance
 import face_recognition
 import cv2
 import subprocess
@@ -90,20 +90,24 @@ def emboss(image):
     cv2.imwrite(image, x)
 
 
-
-    
-
-
 def brightnessControl(image, level):
     initimg = cv2.imread(image)
     x = cv2.convertScaleAbs(initimg, beta=level)
     cv2.imwrite(image, x)
+
 
 def sharpen(image):
     initimg = cv2.imread(image)
     kernel = np.array([[-1, -1, -1], [-1, 9, -1], [-1, -1, -1]])
     x = cv2.filter2D(initimg, -1, kernel)
     cv2.imwrite(image, x)
+
+
+def enhance(image):
+    img = PIL.Image.open(image)
+    enh = ImageEnhance.Contrast(img)
+    enh.enhance(1.8).save(image)
+
     
     
 

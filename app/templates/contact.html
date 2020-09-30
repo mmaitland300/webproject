@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+        <div class="section page">
+
+        <div class="wrapper">
+
+            <h1 align="center">Contact Me</h1>
+
+
+            <p align="center">I&rsquo;d love to hear from you every once in a while! (ahem jessi)</p>
+
+            <form  method="post" action="{{ url_for("main.send_contact") }}">
+
+                <table align="center">
+                    <tr>
+                        <th>
+                            <label for="name">Name</label></br></br>
+                        </th>
+                        <td>
+                            <input type="text" name="name" id="name">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="email">Email</label></br></br>
+                        </th>
+                        <td>
+                            <input type="text" name="email" id="email">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="message">Message</label></br></br>
+                        </th>
+                        <td>
+                            <textarea name="message" id="message"></textarea>
+                        </td>
+                    </tr>
+                </table>
+                <input style="display: block; margin: 0 auto;" type="submit" value="Send">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+            </form>
+
+        </div>
+
+    </div>
+{% endblock %}
