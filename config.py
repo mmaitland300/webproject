@@ -23,7 +23,10 @@ class Config(object):
     REDIS_URL = os.environ.get('REDIS_URL') or 'redis://'
     POSTS_PER_PAGE = 25
     SEND_FILE_MAX_AGE_DEFAULT = 1
-
+    AGE_MODEL = basedir + "/age_net.caffemodel"
+    AGE_PROTO = basedir + "/age_deploy.prototxt"
+    FACE_MODEL = basedir + "/res10_300x300_ssd_iter_140000.caffemodel"
+    FACE_PROTO = basedir +  "/deploy.prototxt"
     UPLOAD_DIR = os.path.join(basedir, 'app/pics')
     DATABASE = os.path.join(BASE_DIR, 'flaskgur.db')
     SCHEMA = os.path.join(BASE_DIR, 'schema.sql')

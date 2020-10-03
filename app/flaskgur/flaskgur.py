@@ -12,7 +12,7 @@ from app.models import User, Post, Message, Notification
 
 from flask import request, g, redirect, url_for, abort, render_template, send_from_directory, current_app
 from werkzeug.utils import secure_filename
-from app.flaskgur.alt import detect_face, mainquad, edge, vintage, sepia, gaussianBlur, emboss, sharpen, enhance
+from app.flaskgur.alt import detect_face, detect_age, mainquad, edge, vintage, sepia, gaussianBlur, emboss, sharpen, enhance
 from app.flaskgur import bp
 
 def check_extension(extension):
@@ -143,7 +143,16 @@ def face(filename):
     
     return redirect(url_for('flaskgur.show_pic', filename=filename))
 
-# 
+
+@bp.route('/age/<filename>')
+def age(filename):
+
+    detect_age(os.path.join(current_app.config['UPLOAD_DIR'], secure_filename(filename)))
+    
+    gen_thumbnail(filename)
+    
+    return redirect(url_for('flaskgur.show_pic', filename=filename))
+
 
 @bp.route('/quad/<filename>')
 def quadart(filename):

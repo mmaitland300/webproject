@@ -1,65 +1,3 @@
-2020-09-20 16:21:05,178 INFO: Matts brain startup [in /home/mmaitland300/flask_app/webproject/app/__init__.py:95]
-2020-09-20 16:21:05,187 INFO: Matts brain startup [in /home/mmaitland300/flask_app/webproject/app/__init__.py:95]
-2020-09-20 16:21:05,187 INFO: Matts brain startup [in /home/mmaitland300/flask_app/webproject/app/__init__.py:95]
-2020-09-20 17:54:17,071 INFO: Matts brain startup [in /home/mmaitland300/flask_app/webproject/app/__init__.py:95]
-2020-09-20 17:54:17,081 INFO: Matts brain startup [in /home/mmaitland300/flask_app/webproject/app/__init__.py:95]
-2020-09-20 17:54:17,081 INFO: Matts brain startup [in /home/mmaitland300/flask_app/webproject/app/__init__.py:95]
-2020-09-20 18:39:31,830 INFO: Matts brain startup [in /home/mmaitland300/flask_app/webproject/app/__init__.py:95]
-2020-09-20 18:39:31,839 INFO: Matts brain startup [in /home/mmaitland300/flask_app/webproject/app/__init__.py:95]
-2020-09-20 18:39:31,839 INFO: Matts brain startup [in /home/mmaitland300/flask_app/webproject/app/__init__.py:95]
-2020-09-20 18:40:10,761 ERROR: Exception on /edge/matt3.jpg [GET] [in /home/mmaitland300/.virtualenvs/flask/lib/python3.7/site-packages/flask/app.py:1761]
-Traceback (most recent call last):
-  File "/home/mmaitland300/.virtualenvs/flask/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/mmaitland300/.virtualenvs/flask/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/mmaitland300/.virtualenvs/flask/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/mmaitland300/.virtualenvs/flask/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/home/mmaitland300/.virtualenvs/flask/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/mmaitland300/.virtualenvs/flask/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/mmaitland300/flask_app/webproject/app/flaskgur/flaskgur.py", line 213, in lined
-    edge(os.path.join(current_app.config['UPLOAD_DIR'], secure_filename(filename)))
-  File "/home/mmaitland300/flask_app/webproject/app/flaskgur/alt.py", line 157, in edge
-    edged = Image.fromarray(edged)
-AttributeError: type object 'Image' has no attribute 'fromarray'
-2020-09-20 18:40:10,761 ERROR: Exception on /edge/matt3.jpg [GET] [in /home/mmaitland300/.virtualenvs/flask/lib/python3.7/site-packages/flask/app.py:1761]
-Traceback (most recent call last):
-  File "/home/mmaitland300/.virtualenvs/flask/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/mmaitland300/.virtualenvs/flask/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/mmaitland300/.virtualenvs/flask/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/mmaitland300/.virtualenvs/flask/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/home/mmaitland300/.virtualenvs/flask/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/mmaitland300/.virtualenvs/flask/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/mmaitland300/flask_app/webproject/app/flaskgur/flaskgur.py", line 213, in lined
-    edge(os.path.join(current_app.config['UPLOAD_DIR'], secure_filename(filename)))
-  File "/home/mmaitland300/flask_app/webproject/app/flaskgur/alt.py", line 157, in edge
-    edged = Image.fromarray(edged)
-AttributeError: type object 'Image' has no attribute 'fromarray'
-2020-09-20 18:42:14,546 INFO: Matts brain startup [in /home/mmaitland300/flask_app/webproject/app/__init__.py:95]
-2020-09-20 18:42:14,559 INFO: Matts brain startup [in /home/mmaitland300/flask_app/webproject/app/__init__.py:95]
-2020-09-20 18:42:14,559 INFO: Matts brain startup [in /home/mmaitland300/flask_app/webproject/app/__init__.py:95]
-2020-09-20 18:46:41,216 INFO: Matts brain startup [in /home/mmaitland300/flask_app/webproject/app/__init__.py:95]
-2020-09-20 18:46:41,224 INFO: Matts brain startup [in /home/mmaitland300/flask_app/webproject/app/__init__.py:95]
-2020-09-20 18:46:41,224 INFO: Matts brain startup [in /home/mmaitland300/flask_app/webproject/app/__init__.py:95]
-2020-09-20 18:47:45,490 INFO: Matts brain startup [in /home/mmaitland300/flask_app/webproject/app/__init__.py:95]
-2020-09-20 18:47:45,499 INFO: Matts brain startup [in /home/mmaitland300/flask_app/webproject/app/__init__.py:95]
-2020-09-20 18:47:45,499 INFO: Matts brain startup [in /home/mmaitland300/flask_app/webproject/app/__init__.py:95]
-2020-09-20 19:00:43,832 INFO: Matts brain startup [in /home/mmaitland300/flask_app/webproject/app/__init__.py:95]
-2020-09-20 19:00:43,843 INFO: Matts brain startup [in /home/mmaitland300/flask_app/webproject/app/__init__.py:95]
-2020-09-20 19:00:43,843 INFO: Matts brain startup [in /home/mmaitland300/flask_app/webproject/app/__init__.py:95]
-2020-09-20 23:23:41,385 INFO: Matts brain startup [in /home/mmaitland300/flask_app/webproject/app/__init__.py:95]
-2020-09-20 23:23:41,423 INFO: Matts brain startup [in /home/mmaitland300/flask_app/webproject/app/__init__.py:95]
-2020-09-20 23:23:41,423 INFO: Matts brain startup [in /home/mmaitland300/flask_app/webproject/app/__init__.py:95]
 2020-09-20 23:23:47,606 ERROR: Exception on /matgur [GET] [in /home/mmaitland300/.virtualenvs/flask/lib/python3.7/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/home/mmaitland300/.virtualenvs/flask/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
@@ -105,3 +43,60 @@ Traceback (most recent call last):
   File "/home/mmaitland300/.virtualenvs/flask/lib/python3.7/site-packages/werkzeug/routing.py", line 1776, in build
     raise BuildError(endpoint, values, method, self)
 werkzeug.routing.BuildError: Could not build url for endpoint 'flaskgur.goth' with values ['filename']. Did you mean 'flaskgur.vint' instead?
+2020-09-20 23:25:30,641 INFO: Matts brain startup [in /home/mmaitland300/flask_app/webproject/app/__init__.py:95]
+2020-09-20 23:25:30,652 INFO: Matts brain startup [in /home/mmaitland300/flask_app/webproject/app/__init__.py:95]
+2020-09-20 23:25:30,652 INFO: Matts brain startup [in /home/mmaitland300/flask_app/webproject/app/__init__.py:95]
+2020-09-21 00:23:56,563 INFO: Matts brain startup [in /home/mmaitland300/flask_app/webproject/app/__init__.py:95]
+2020-09-21 00:23:56,601 INFO: Matts brain startup [in /home/mmaitland300/flask_app/webproject/app/__init__.py:95]
+2020-09-21 00:23:56,601 INFO: Matts brain startup [in /home/mmaitland300/flask_app/webproject/app/__init__.py:95]
+2020-09-21 01:18:10,372 INFO: Matts brain startup [in /home/mmaitland300/flask_app/webproject/app/__init__.py:95]
+2020-09-21 01:18:10,384 INFO: Matts brain startup [in /home/mmaitland300/flask_app/webproject/app/__init__.py:95]
+2020-09-21 01:18:10,384 INFO: Matts brain startup [in /home/mmaitland300/flask_app/webproject/app/__init__.py:95]
+2020-09-21 01:20:21,967 INFO: Matts brain startup [in /home/mmaitland300/flask_app/webproject/app/__init__.py:95]
+2020-09-21 01:20:21,977 INFO: Matts brain startup [in /home/mmaitland300/flask_app/webproject/app/__init__.py:95]
+2020-09-21 01:20:21,977 INFO: Matts brain startup [in /home/mmaitland300/flask_app/webproject/app/__init__.py:95]
+2020-09-21 01:20:27,775 ERROR: Exception on /matgur [GET] [in /home/mmaitland300/.virtualenvs/flask/lib/python3.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/mmaitland300/.virtualenvs/flask/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/mmaitland300/.virtualenvs/flask/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/mmaitland300/.virtualenvs/flask/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/mmaitland300/.virtualenvs/flask/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/mmaitland300/.virtualenvs/flask/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/mmaitland300/.virtualenvs/flask/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/mmaitland300/flask_app/webproject/app/flaskgur/flaskgur.py", line 117, in upload_pic
+    return render_template('flaskgur/upload.html', pics=get_last_pics())
+  File "/home/mmaitland300/.virtualenvs/flask/lib/python3.7/site-packages/flask/templating.py", line 135, in render_template
+    context, ctx.app)
+  File "/home/mmaitland300/.virtualenvs/flask/lib/python3.7/site-packages/flask/templating.py", line 117, in _render
+    rv = template.render(context)
+  File "/home/mmaitland300/.virtualenvs/flask/lib/python3.7/site-packages/jinja2/asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "/home/mmaitland300/.virtualenvs/flask/lib/python3.7/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/mmaitland300/.virtualenvs/flask/lib/python3.7/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/mmaitland300/.virtualenvs/flask/lib/python3.7/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/mmaitland300/flask_app/webproject/app/templates/flaskgur/upload.html", line 5, in top-level template code
+    {% extends "flaskgur/base.html" %}
+  File "/home/mmaitland300/flask_app/webproject/app/templates/flaskgur/base.html", line 35, in top-level template code
+    {% block content %}
+  File "/home/mmaitland300/flask_app/webproject/app/templates/flaskgur/upload.html", line 31, in block "content"
+    <a class="dropdown-item" href= "{{ url_for('flaskgur.enhance', filename=pic) }}">Enhance</a>
+  File "/home/mmaitland300/.virtualenvs/flask/lib/python3.7/site-packages/flask/helpers.py", line 356, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/home/mmaitland300/.virtualenvs/flask/lib/python3.7/site-packages/flask/app.py", line 2061, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "/home/mmaitland300/.virtualenvs/flask/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/mmaitland300/.virtualenvs/flask/lib/python3.7/site-packages/flask/helpers.py", line 345, in url_for
+    force_external=external)
+  File "/home/mmaitland300/.virtualenvs/flask/lib/python3.7/site-packages/werkzeug/routing.py", line 1776, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'flaskgur.enhance' with values ['filename']. Did you mean 'flaskgur.enhan' instead?
