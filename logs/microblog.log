@@ -36,3 +36,6 @@ AttributeError: 'UnauthorizedError' object has no attribute 'message'
 2020-10-06 15:29:42,852 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
 2020-10-06 15:29:42,873 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
 2020-10-06 15:29:42,873 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
+2020-10-06 15:44:32,838 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
+2020-10-06 15:44:32,856 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
+2020-10-06 15:44:32,856 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
