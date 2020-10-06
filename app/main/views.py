@@ -286,12 +286,12 @@ def send_contact():
     
     
     message = Mail(
-        from_email= 'mmaitland300@gmail.com',
-        to_emails= 'mmaitland300@gmail.com',
+        from_email= 'mmaitland3030@gmail.com',
+        to_emails= 'mmaitland3030@gmail.com',
         subject= request.form["email"],
         html_content= request.form["message"])
     try:
-        sg = SendGridAPIClient('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')
+        sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
         response = sg.send(message)
         print(response.status_code)
         print(response.body)
