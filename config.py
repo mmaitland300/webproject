@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 basedir = os.path.abspath(os.path.dirname(__file__))
 load_dotenv(os.path.join(basedir, '.env'))
 BASE_DIR = "app/flaskgur/"
+BASE_DIR2 = "app/faceswap/"
 
 class Config(object):
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'you-will-never-guess'
@@ -27,7 +28,10 @@ class Config(object):
     AGE_PROTO = basedir + "/age_deploy.prototxt"
     FACE_MODEL = basedir + "/res10_300x300_ssd_iter_140000.caffemodel"
     FACE_PROTO = basedir +  "/deploy.prototxt"
+    SHAPE = basedir + "/shape_predictor_68_face_landmarks.dat"
     UPLOAD_DIR = os.path.join(basedir, 'app/pics')
     DATABASE = os.path.join(BASE_DIR, 'flaskgur.db')
     SCHEMA = os.path.join(BASE_DIR, 'schema.sql')
-    ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])        
+    ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
+    THUMBDIR = os.path.join(basedir, 'thumbnails')
+    IMGDIR = os.path.join(basedir, 'images')       

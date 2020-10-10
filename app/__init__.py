@@ -56,8 +56,12 @@ def create_app(config_class=Config):
     from app.api import bp as api_bp
     app.register_blueprint(api_bp, url_prefix='/api')
 
+    from app.faceswap import bp as faceswap_bp
+    app.register_blueprint(faceswap_bp)
+
     from app.flaskgur import bp as flaskgur_bp
     app.register_blueprint(flaskgur_bp)
+
 
     if not app.debug and not app.testing:
         if app.config['MAIL_SERVER']:

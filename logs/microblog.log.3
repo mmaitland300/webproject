@@ -1,4 +1,4 @@
-2020-09-28 21:02:57,703 ERROR: Exception on /contact [GET] [in /home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py:1761]
+2020-10-08 20:44:42,408 ERROR: Exception on /fswap [GET] [in /home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -12,96 +12,114 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask_login/utils.py", line 228, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/mmaitland300/flask/webproject/app/main/views.py", line 281, in contact
-    return render_template("contect.html", **context)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/templating.py", line 135, in render_template
-    context, ctx.app)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/templating.py", line 117, in _render
-    rv = template.render(context)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/jinja2/asyncsupport.py", line 76, in render
-    return original_render(self, *args, **kwargs)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/jinja2/environment.py", line 1008, in render
-    return self.environment.handle_exception(exc_info, True)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/jinja2/environment.py", line 780, in handle_exception
+  File "/home/mmaitland300/flask/webproject/app/faceswap/faceswap.py", line 86, in swapface
+    swap(filename1, filename2)
+  File "/home/mmaitland300/flask/webproject/app/faceswap/swap.py", line 318, in swap
+    src_points, src_shape, src_face = select_face(src_img)
+  File "/home/mmaitland300/flask/webproject/app/faceswap/swap.py", line 37, in select_face
+    faces = face_detection(im)
+  File "/home/mmaitland300/flask/webproject/app/faceswap/swap.py", line 18, in face_detection
+    faces = detector(img, upsample_times)
+TypeError: __call__(): incompatible function arguments. The following argument types are supported:
+    1. (self: _dlib_pybind11.fhog_object_detector, image: array, upsample_num_times: int=0) -> _dlib_pybind11.rectangles
+
+Invoked with: <_dlib_pybind11.fhog_object_detector object at 0x7c86834fddc0>, None, 1
+2020-10-08 20:48:25,759 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
+2020-10-08 20:48:25,770 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
+2020-10-08 20:48:25,770 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
+2020-10-08 20:48:45,081 ERROR: Exception on /fswap [GET] [in /home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
     reraise(exc_type, exc_value, tb)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/jinja2/_compat.py", line 37, in reraise
-    raise value.with_traceback(tb)
-  File "/home/mmaitland300/flask/webproject/app/templates/contect.html", line 2, in top-level template code
-    {% import 'bootstrap/wtf.html' as wtf %}
-  File "/home/mmaitland300/flask/webproject/app/templates/base.html", line 1, in top-level template code
-    {% extends 'bootstrap/base.html' %}
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
-    {% block doc -%}
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
-    {%- block html %}
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
-    {% block body -%}
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block "body"
-    {% block content -%}
-  File "/home/mmaitland300/flask/webproject/app/templates/base.html", line 80, in block "content"
-    {% block app_content %}{% endblock %}
-  File "/home/mmaitland300/flask/webproject/app/templates/contect.html", line 8, in block "app_content"
-    {{ wtf.quick_form(form) }}
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/jinja2/runtime.py", line 579, in _invoke
-    rv = self._func(*arguments)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/wtf.html", line 200, in template
-    {{ form.hidden_tag() }}
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/jinja2/environment.py", line 430, in getattr
-    return getattr(obj, attribute)
-jinja2.exceptions.UndefinedError: 'form' is undefined
-2020-09-28 21:10:35,201 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-28 21:10:35,216 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-28 21:10:35,216 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-29 18:02:14,139 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-29 18:02:14,150 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-29 18:02:14,150 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-29 18:03:47,626 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-29 18:03:47,638 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-29 18:03:47,638 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-29 18:05:51,789 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-29 18:05:51,801 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-29 18:05:51,801 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-29 18:08:14,933 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-29 18:08:14,944 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-29 18:08:14,944 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-29 18:13:34,207 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-29 18:13:34,219 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-29 18:13:34,219 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-29 18:18:11,253 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-29 18:18:11,281 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-29 18:18:11,281 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-29 18:21:10,556 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-29 18:21:10,569 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-29 18:21:10,569 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-29 18:27:06,018 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-29 18:27:06,037 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-29 18:27:06,037 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-29 18:29:45,348 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-29 18:29:45,360 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-29 18:29:45,360 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-29 18:30:49,308 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-29 18:30:49,323 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-29 18:30:49,323 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-29 18:36:33,432 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-29 18:36:33,443 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-29 18:36:33,443 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-29 18:38:07,132 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-29 18:38:07,143 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-29 18:38:07,143 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-29 18:42:53,521 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-29 18:42:53,532 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-29 18:42:53,532 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-29 18:44:07,956 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-29 18:44:07,966 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-29 18:44:07,966 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-29 18:56:56,249 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-29 18:56:56,265 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-29 18:56:56,265 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-29 18:58:58,337 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-29 18:58:58,351 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-29 18:58:58,351 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-29 19:02:42,532 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-29 19:02:42,552 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-29 19:02:42,552 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/mmaitland300/flask/webproject/app/faceswap/faceswap.py", line 88, in swapface
+    swap(filename1, filename2)
+  File "/home/mmaitland300/flask/webproject/app/faceswap/swap.py", line 318, in swap
+    src_points, src_shape, src_face = select_face(src_img)
+  File "/home/mmaitland300/flask/webproject/app/faceswap/swap.py", line 37, in select_face
+    faces = face_detection(im)
+  File "/home/mmaitland300/flask/webproject/app/faceswap/swap.py", line 18, in face_detection
+    faces = detector(img, upsample_times)
+TypeError: __call__(): incompatible function arguments. The following argument types are supported:
+    1. (self: _dlib_pybind11.fhog_object_detector, image: array, upsample_num_times: int=0) -> _dlib_pybind11.rectangles
+
+Invoked with: <_dlib_pybind11.fhog_object_detector object at 0x7ad32f426e30>, None, 1
+2020-10-08 20:48:45,081 ERROR: Exception on /fswap [GET] [in /home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/mmaitland300/flask/webproject/app/faceswap/faceswap.py", line 88, in swapface
+    swap(filename1, filename2)
+  File "/home/mmaitland300/flask/webproject/app/faceswap/swap.py", line 318, in swap
+    src_points, src_shape, src_face = select_face(src_img)
+  File "/home/mmaitland300/flask/webproject/app/faceswap/swap.py", line 37, in select_face
+    faces = face_detection(im)
+  File "/home/mmaitland300/flask/webproject/app/faceswap/swap.py", line 18, in face_detection
+    faces = detector(img, upsample_times)
+TypeError: __call__(): incompatible function arguments. The following argument types are supported:
+    1. (self: _dlib_pybind11.fhog_object_detector, image: array, upsample_num_times: int=0) -> _dlib_pybind11.rectangles
+
+Invoked with: <_dlib_pybind11.fhog_object_detector object at 0x7ad32f426e30>, None, 1
+2020-10-08 20:50:45,349 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
+2020-10-08 20:50:45,376 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
+2020-10-08 20:50:45,376 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
+2020-10-08 20:51:00,637 ERROR: Exception on /fswap [GET] [in /home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/mmaitland300/flask/webproject/app/faceswap/faceswap.py", line 89, in swapface
+    image = Image.open(current_app.config['IMGDIR'] + 'result.jpg')
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/PIL/Image.py", line 2878, in open
+    fp = builtins.open(filename, "rb")
+FileNotFoundError: [Errno 2] No such file or directory: 'app/faceswap/imagesresult.jpg'
+2020-10-08 20:51:00,637 ERROR: Exception on /fswap [GET] [in /home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/mmaitland300/flask/webproject/app/faceswap/faceswap.py", line 89, in swapface
+    image = Image.open(current_app.config['IMGDIR'] + 'result.jpg')
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/PIL/Image.py", line 2878, in open
+    fp = builtins.open(filename, "rb")
+FileNotFoundError: [Errno 2] No such file or directory: 'app/faceswap/imagesresult.jpg'
+2020-10-08 20:51:54,519 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
+2020-10-08 20:51:54,530 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
+2020-10-08 20:51:54,530 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]

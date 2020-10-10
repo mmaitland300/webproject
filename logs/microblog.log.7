@@ -1,4 +1,4 @@
-2020-09-28 20:30:37,282 ERROR: Exception on /contact [GET] [in /home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py:1761]
+2020-10-08 19:31:58,746 ERROR: Exception on /fimages/20201005_181126.jpg [GET] [in /home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -12,56 +12,10 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask_login/utils.py", line 228, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/mmaitland300/flask/webproject/app/main/views.py", line 281, in contact
-    return render_template("contact.html", **context)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/templating.py", line 135, in render_template
-    context, ctx.app)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/templating.py", line 117, in _render
-    rv = template.render(context)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/jinja2/asyncsupport.py", line 76, in render
-    return original_render(self, *args, **kwargs)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/jinja2/environment.py", line 1008, in render
-    return self.environment.handle_exception(exc_info, True)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/jinja2/environment.py", line 780, in handle_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/jinja2/_compat.py", line 37, in reraise
-    raise value.with_traceback(tb)
-  File "/home/mmaitland300/flask/webproject/app/templates/contact.html", line 2, in top-level template code
-    {% import 'bootstrap/wtf.html' as wtf %}
-  File "/home/mmaitland300/flask/webproject/app/templates/base.html", line 1, in top-level template code
-    {% extends 'bootstrap/base.html' %}
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
-    {% block doc -%}
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
-    {%- block html %}
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
-    {% block body -%}
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block "body"
-    {% block content -%}
-  File "/home/mmaitland300/flask/webproject/app/templates/base.html", line 80, in block "content"
-    {% block app_content %}{% endblock %}
-  File "/home/mmaitland300/flask/webproject/app/templates/contact.html", line 14, in block "app_content"
-    <form method="post" action="{{ url_for("send_contact") }}">
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/helpers.py", line 356, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 2061, in handle_url_build_error
-    reraise(exc_type, exc_value, tb)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/helpers.py", line 345, in url_for
-    force_external=external)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/werkzeug/routing.py", line 1776, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'send_contact'. Did you mean 'main.send_contact' instead?
-2020-09-28 20:31:08,329 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-28 20:31:08,340 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-28 20:31:08,340 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-28 20:36:48,115 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-28 20:36:48,129 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-28 20:36:48,129 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-09-28 20:37:11,008 ERROR: Exception on /send_contact [POST] [in /home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py:1761]
+  File "/home/mmaitland300/flask/webproject/app/faceswap/faceswap.py", line 65, in images
+    return send_from_directory(current_app.config('IMGDIR'), filename)
+TypeError: 'Config' object is not callable
+2020-10-08 19:32:00,867 ERROR: Exception on /fimages/20201005_170733.jpg [GET] [in /home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -75,47 +29,6 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask_login/utils.py", line 228, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/mmaitland300/flask/webproject/app/main/views.py", line 303, in send_contact
-    return redirect(url_for("contact"))
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/helpers.py", line 356, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 2061, in handle_url_build_error
-    reraise(exc_type, exc_value, tb)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/helpers.py", line 345, in url_for
-    force_external=external)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/werkzeug/routing.py", line 1776, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'contact'. Did you mean 'main.contact' instead?
-2020-09-28 20:37:11,008 ERROR: Exception on /send_contact [POST] [in /home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py:1761]
-Traceback (most recent call last):
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask_login/utils.py", line 228, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/mmaitland300/flask/webproject/app/main/views.py", line 303, in send_contact
-    return redirect(url_for("contact"))
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/helpers.py", line 356, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 2061, in handle_url_build_error
-    reraise(exc_type, exc_value, tb)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/helpers.py", line 345, in url_for
-    force_external=external)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/werkzeug/routing.py", line 1776, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'contact'. Did you mean 'main.contact' instead?
+  File "/home/mmaitland300/flask/webproject/app/faceswap/faceswap.py", line 65, in images
+    return send_from_directory(current_app.config('IMGDIR'), filename)
+TypeError: 'Config' object is not callable

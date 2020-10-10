@@ -1,4 +1,4 @@
-2020-09-28 20:57:58,360 ERROR: Exception on /contact [GET] [in /home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py:1761]
+2020-10-08 20:03:36,498 ERROR: Exception on /fgallery [GET] [in /home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -12,10 +12,8 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask_login/utils.py", line 228, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/mmaitland300/flask/webproject/app/main/views.py", line 281, in contact
-    return render_template("contact.html", **context)
+  File "/home/mmaitland300/flask/webproject/app/faceswap/faceswap.py", line 57, in gallery
+    return render_template('faceswap/gallery.html', thumbnail_names=thumbnail_names)
   File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/templating.py", line 135, in render_template
     context, ctx.app)
   File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/templating.py", line 117, in _render
@@ -28,8 +26,8 @@ Traceback (most recent call last):
     reraise(exc_type, exc_value, tb)
   File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/jinja2/_compat.py", line 37, in reraise
     raise value.with_traceback(tb)
-  File "/home/mmaitland300/flask/webproject/app/templates/contact.html", line 2, in top-level template code
-    {% import 'bootstrap/wtf.html' as wtf %}
+  File "/home/mmaitland300/flask/webproject/app/templates/faceswap/gallery.html", line 1, in top-level template code
+    {% extends "base.html" %}
   File "/home/mmaitland300/flask/webproject/app/templates/base.html", line 1, in top-level template code
     {% extends 'bootstrap/base.html' %}
   File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
@@ -40,14 +38,68 @@ Traceback (most recent call last):
     {% block body -%}
   File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block "body"
     {% block content -%}
-  File "/home/mmaitland300/flask/webproject/app/templates/base.html", line 80, in block "content"
-    {% block app_content %}{% endblock %}
-  File "/home/mmaitland300/flask/webproject/app/templates/contact.html", line 14, in block "app_content"
-    {{ wtf.quick_form(form) }}
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/jinja2/runtime.py", line 579, in _invoke
-    rv = self._func(*arguments)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/wtf.html", line 200, in template
-    {{ form.hidden_tag() }}
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/jinja2/environment.py", line 430, in getattr
-    return getattr(obj, attribute)
-jinja2.exceptions.UndefinedError: 'form' is undefined
+  File "/home/mmaitland300/flask/webproject/app/templates/faceswap/gallery.html", line 19, in block "content"
+    <a href="{{url_for('swapface')}}">
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/helpers.py", line 356, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 2061, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/helpers.py", line 345, in url_for
+    force_external=external)
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/werkzeug/routing.py", line 1776, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'swapface'. Did you mean 'faceswap.swapface' instead?
+2020-10-08 20:04:12,373 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
+2020-10-08 20:04:12,385 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
+2020-10-08 20:04:12,385 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
+2020-10-08 20:11:19,954 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
+2020-10-08 20:11:19,967 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
+2020-10-08 20:11:19,967 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
+2020-10-08 20:16:10,370 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
+2020-10-08 20:16:10,382 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
+2020-10-08 20:16:10,382 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
+2020-10-08 20:18:26,503 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
+2020-10-08 20:18:26,530 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
+2020-10-08 20:18:26,530 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
+2020-10-08 20:19:22,047 ERROR: Exception on /fswap [GET] [in /home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/mmaitland300/flask/webproject/app/faceswap/faceswap.py", line 83, in swapface
+    filename = os.listdir('./images')
+FileNotFoundError: [Errno 2] No such file or directory: './images'
+2020-10-08 20:19:22,047 ERROR: Exception on /fswap [GET] [in /home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/mmaitland300/flask/webproject/app/faceswap/faceswap.py", line 83, in swapface
+    filename = os.listdir('./images')
+FileNotFoundError: [Errno 2] No such file or directory: './images'
+2020-10-08 20:21:24,373 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
+2020-10-08 20:21:24,406 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
+2020-10-08 20:21:24,406 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
+2020-10-08 20:44:27,834 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
+2020-10-08 20:44:27,848 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
+2020-10-08 20:44:27,848 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
