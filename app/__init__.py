@@ -62,6 +62,9 @@ def create_app(config_class=Config):
     from app.flaskgur import bp as flaskgur_bp
     app.register_blueprint(flaskgur_bp)
 
+    from app.cartoonize.app import app as cartoonize_bp
+    app.register_blueprint(cartoonize_bp)
+
 
     if not app.debug and not app.testing:
         if app.config['MAIL_SERVER']:

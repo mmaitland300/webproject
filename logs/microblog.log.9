@@ -1,4 +1,4 @@
-2020-10-02 20:32:05,999 ERROR: Exception on /age/target.png [GET] [in /home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py:1761]
+2020-10-08 20:03:36,498 ERROR: Exception on /fgallery [GET] [in /home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -12,28 +12,58 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/mmaitland300/flask/webproject/app/flaskgur/flaskgur.py", line 150, in age
-    detect_age(os.path.join(current_app.config['UPLOAD_DIR'], secure_filename(filename)))
-  File "/home/mmaitland300/flask/webproject/app/flaskgur/alt.py", line 51, in detect_age
-    faceNet = cv2.dnn.readNet(prototxtPath, weightsPath)
-cv2.error: OpenCV(4.4.0) /tmp/pip-req-build-yln3mf6z/opencv/modules/dnn/src/caffe/caffe_io.cpp:1121: error: (-2:Unspecified error) FAILED: fs.is_open(). Can't open "/home/mmaitland300/flask/webproject/deploy.prototxt" in function 'ReadProtoFromTextFile'
-
-2020-10-02 20:55:39,979 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-10-02 20:55:40,009 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-10-02 20:55:40,009 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-10-02 21:04:53,886 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-10-02 21:04:53,898 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-10-02 21:04:53,898 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-10-02 21:11:04,743 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-10-02 21:11:04,767 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-10-02 21:11:04,767 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-10-02 21:12:16,996 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-10-02 21:12:17,008 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-10-02 21:12:17,008 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-10-02 21:13:19,329 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-10-02 21:13:19,348 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-10-02 21:13:19,348 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-10-02 21:17:08,670 ERROR: Exception on /age/face.png [GET] [in /home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py:1761]
+  File "/home/mmaitland300/flask/webproject/app/faceswap/faceswap.py", line 57, in gallery
+    return render_template('faceswap/gallery.html', thumbnail_names=thumbnail_names)
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/templating.py", line 135, in render_template
+    context, ctx.app)
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/templating.py", line 117, in _render
+    rv = template.render(context)
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/jinja2/asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/mmaitland300/flask/webproject/app/templates/faceswap/gallery.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/home/mmaitland300/flask/webproject/app/templates/base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
+    {%- block html %}
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
+    {% block body -%}
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block "body"
+    {% block content -%}
+  File "/home/mmaitland300/flask/webproject/app/templates/faceswap/gallery.html", line 19, in block "content"
+    <a href="{{url_for('swapface')}}">
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/helpers.py", line 356, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 2061, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/helpers.py", line 345, in url_for
+    force_external=external)
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/werkzeug/routing.py", line 1776, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'swapface'. Did you mean 'faceswap.swapface' instead?
+2020-10-08 20:04:12,373 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
+2020-10-08 20:04:12,385 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
+2020-10-08 20:04:12,385 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
+2020-10-08 20:11:19,954 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
+2020-10-08 20:11:19,967 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
+2020-10-08 20:11:19,967 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
+2020-10-08 20:16:10,370 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
+2020-10-08 20:16:10,382 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
+2020-10-08 20:16:10,382 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
+2020-10-08 20:18:26,503 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
+2020-10-08 20:18:26,530 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
+2020-10-08 20:18:26,530 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
+2020-10-08 20:19:22,047 ERROR: Exception on /fswap [GET] [in /home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -47,13 +77,10 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/mmaitland300/flask/webproject/app/flaskgur/flaskgur.py", line 150, in age
-    detect_age(os.path.join(current_app.config['UPLOAD_DIR'], secure_filename(filename)))
-  File "/home/mmaitland300/flask/webproject/app/flaskgur/alt.py", line 90, in detect_age
-    swapRB=False)
-cv2.error: OpenCV(4.4.0) /tmp/pip-req-build-yln3mf6z/opencv/modules/imgproc/src/resize.cpp:3929: error: (-215:Assertion failed) !ssize.empty() in function 'resize'
-
-2020-10-02 21:17:08,670 ERROR: Exception on /age/face.png [GET] [in /home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py:1761]
+  File "/home/mmaitland300/flask/webproject/app/faceswap/faceswap.py", line 83, in swapface
+    filename = os.listdir('./images')
+FileNotFoundError: [Errno 2] No such file or directory: './images'
+2020-10-08 20:19:22,047 ERROR: Exception on /fswap [GET] [in /home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -67,50 +94,12 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/mmaitland300/flask/webproject/app/flaskgur/flaskgur.py", line 150, in age
-    detect_age(os.path.join(current_app.config['UPLOAD_DIR'], secure_filename(filename)))
-  File "/home/mmaitland300/flask/webproject/app/flaskgur/alt.py", line 90, in detect_age
-    swapRB=False)
-cv2.error: OpenCV(4.4.0) /tmp/pip-req-build-yln3mf6z/opencv/modules/imgproc/src/resize.cpp:3929: error: (-215:Assertion failed) !ssize.empty() in function 'resize'
-
-2020-10-03 17:32:49,628 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-10-03 17:32:49,642 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-10-03 17:32:49,642 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-10-06 14:31:02,717 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-10-06 14:31:02,742 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-10-06 14:31:02,742 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-10-06 15:23:14,118 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-10-06 15:23:14,138 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-10-06 15:23:14,138 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-10-06 15:24:05,733 ERROR: Exception on /send_contact [POST] [in /home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py:1761]
-Traceback (most recent call last):
-  File "/home/mmaitland300/flask/webproject/app/main/views.py", line 295, in send_contact
-    response = sg.send(message)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/sendgrid/base_interface.py", line 62, in send
-    return self.client.mail.send.post(request_body=message)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/python_http_client/client.py", line 277, in http_request
-    self._make_request(opener, request, timeout=timeout)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/python_http_client/client.py", line 184, in _make_request
-    raise exc
-python_http_client.exceptions.UnauthorizedError: HTTP Error 401: Unauthorized
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask_login/utils.py", line 228, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/mmaitland300/flask/webproject/app/main/views.py", line 300, in send_contact
-    print(e.message)
-AttributeError: 'UnauthorizedError' object has no attribute 'message'
+  File "/home/mmaitland300/flask/webproject/app/faceswap/faceswap.py", line 83, in swapface
+    filename = os.listdir('./images')
+FileNotFoundError: [Errno 2] No such file or directory: './images'
+2020-10-08 20:21:24,373 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
+2020-10-08 20:21:24,406 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
+2020-10-08 20:21:24,406 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
+2020-10-08 20:44:27,834 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
+2020-10-08 20:44:27,848 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
+2020-10-08 20:44:27,848 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]

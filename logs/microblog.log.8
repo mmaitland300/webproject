@@ -1,110 +1,26 @@
-2020-10-06 15:24:05,733 ERROR: Exception on /send_contact [POST] [in /home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py:1761]
+2020-10-08 20:44:42,408 ERROR: Exception on /fswap [GET] [in /home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
-  File "/home/mmaitland300/flask/webproject/app/main/views.py", line 295, in send_contact
-    response = sg.send(message)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/sendgrid/base_interface.py", line 62, in send
-    return self.client.mail.send.post(request_body=message)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/python_http_client/client.py", line 277, in http_request
-    self._make_request(opener, request, timeout=timeout)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/python_http_client/client.py", line 184, in _make_request
-    raise exc
-python_http_client.exceptions.UnauthorizedError: HTTP Error 401: Unauthorized
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/mmaitland300/flask/webproject/app/faceswap/faceswap.py", line 86, in swapface
+    swap(filename1, filename2)
+  File "/home/mmaitland300/flask/webproject/app/faceswap/swap.py", line 318, in swap
+    src_points, src_shape, src_face = select_face(src_img)
+  File "/home/mmaitland300/flask/webproject/app/faceswap/swap.py", line 37, in select_face
+    faces = face_detection(im)
+  File "/home/mmaitland300/flask/webproject/app/faceswap/swap.py", line 18, in face_detection
+    faces = detector(img, upsample_times)
+TypeError: __call__(): incompatible function arguments. The following argument types are supported:
+    1. (self: _dlib_pybind11.fhog_object_detector, image: array, upsample_num_times: int=0) -> _dlib_pybind11.rectangles
 
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask_login/utils.py", line 228, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/mmaitland300/flask/webproject/app/main/views.py", line 300, in send_contact
-    print(e.message)
-AttributeError: 'UnauthorizedError' object has no attribute 'message'
-2020-10-06 15:24:32,562 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-10-06 15:24:32,574 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-10-06 15:24:32,574 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-10-06 15:29:42,852 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-10-06 15:29:42,873 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-10-06 15:29:42,873 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-10-06 15:44:32,838 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-10-06 15:44:32,856 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-10-06 15:44:32,856 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:95]
-2020-10-08 19:20:04,725 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:96]
-2020-10-08 19:20:04,756 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:96]
-2020-10-08 19:20:04,756 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:96]
-2020-10-08 19:22:04,792 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:96]
-2020-10-08 19:22:04,809 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:96]
-2020-10-08 19:22:04,809 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:96]
-2020-10-08 19:24:12,780 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
-2020-10-08 19:24:12,795 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
-2020-10-08 19:24:12,795 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
-2020-10-08 19:26:35,285 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
-2020-10-08 19:26:35,297 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
-2020-10-08 19:26:35,297 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
-2020-10-08 19:29:39,484 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
-2020-10-08 19:29:39,499 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
-2020-10-08 19:29:39,499 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
-2020-10-08 19:31:48,417 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
-2020-10-08 19:31:48,430 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
-2020-10-08 19:31:48,430 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
-2020-10-08 19:31:58,717 ERROR: Exception on /fimages/20201005_170733.jpg [GET] [in /home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py:1761]
-Traceback (most recent call last):
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/mmaitland300/flask/webproject/app/faceswap/faceswap.py", line 65, in images
-    return send_from_directory(current_app.config('IMGDIR'), filename)
-TypeError: 'Config' object is not callable
-2020-10-08 19:31:58,746 ERROR: Exception on /fimages/20201005_181126.jpg [GET] [in /home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py:1761]
-Traceback (most recent call last):
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/mmaitland300/flask/webproject/app/faceswap/faceswap.py", line 65, in images
-    return send_from_directory(current_app.config('IMGDIR'), filename)
-TypeError: 'Config' object is not callable
-2020-10-08 19:31:58,717 ERROR: Exception on /fimages/20201005_170733.jpg [GET] [in /home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py:1761]
-Traceback (most recent call last):
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/mmaitland300/flask/webproject/app/faceswap/faceswap.py", line 65, in images
-    return send_from_directory(current_app.config('IMGDIR'), filename)
-TypeError: 'Config' object is not callable
+Invoked with: <_dlib_pybind11.fhog_object_detector object at 0x7c86834fddc0>, None, 1

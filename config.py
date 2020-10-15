@@ -35,3 +35,5 @@ class Config(object):
     ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
     THUMBDIR = os.path.join(basedir, 'thumbnails')
     IMGDIR = os.path.join(basedir, 'images')       
+    UPLOAD_FOLDER_VIDEOS = os.path.join(basedir, 'uploaded_videos')
+    CARTOONIZED_FOLDER = os.path.join(basedir, 'cartoons')
