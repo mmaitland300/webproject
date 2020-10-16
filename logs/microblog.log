@@ -1,19 +1,58 @@
-2020-10-14 18:06:10,767 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:102]
-2020-10-14 18:19:59,683 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:102]
-2020-10-14 18:19:59,698 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:102]
-2020-10-14 18:19:59,698 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:102]
-2020-10-14 18:25:57,907 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:102]
-2020-10-14 18:25:57,926 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:102]
-2020-10-14 18:25:57,926 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:102]
-2020-10-14 18:43:53,265 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:102]
-2020-10-14 18:43:53,311 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:102]
-2020-10-14 18:43:53,311 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:102]
-2020-10-14 18:45:12,622 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:102]
-2020-10-14 18:45:12,656 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:102]
-2020-10-14 18:45:12,656 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:102]
-2020-10-14 18:50:35,235 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:102]
-2020-10-14 18:50:35,282 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:102]
-2020-10-14 18:50:35,282 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:102]
-2020-10-14 18:52:25,787 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:102]
-2020-10-14 18:52:25,805 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:102]
-2020-10-14 18:52:25,805 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:102]
+2020-10-15 20:48:42,122 ERROR: Exception on / [GET] [in /opt/miniconda3/lib/python3.8/site-packages/flask/app.py:1758]
+Traceback (most recent call last):
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask_login/utils.py", line 228, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/mmaitland300/flask/webproject/app/main/views.py", line 47, in index
+    return render_template('index.html', title=_('Home'), form=form,
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/templating.py", line 134, in render_template
+    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/templating.py", line 117, in _render
+    rv = template.render(context)
+  File "/opt/miniconda3/lib/python3.8/site-packages/jinja2/asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "/opt/miniconda3/lib/python3.8/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/opt/miniconda3/lib/python3.8/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/opt/miniconda3/lib/python3.8/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/mmaitland300/flask/webproject/app/templates/index.html", line 2, in <module>
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "/home/mmaitland300/flask/webproject/app/templates/base.html", line 1, in <module>
+    {% extends 'bootstrap/base.html' %}
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in <module>
+    {% block doc -%}
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in <module>
+    {%- block html %}
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in <module>
+    {% block body -%}
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 21, in <module>
+    {% block navbar %}
+  File "/home/mmaitland300/flask/webproject/app/templates/base.html", line 49, in <module>
+    <li><a href="{{ url_for('cartoonize.cartoonize') }}">{{ _('Cartoon App') }}</a></li>
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/helpers.py", line 356, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 2061, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/helpers.py", line 344, in url_for
+    rv = url_adapter.build(endpoint, values, method=method,
+  File "/opt/miniconda3/lib/python3.8/site-packages/werkzeug/routing.py", line 1776, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'cartoonize.cartoonize'. Did you mean 'main.code' instead?
+2020-10-15 20:50:33,115 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:100]
+2020-10-15 20:50:33,128 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:100]
+2020-10-15 20:50:33,128 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:100]

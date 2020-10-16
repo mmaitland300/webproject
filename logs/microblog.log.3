@@ -15,3 +15,117 @@ Traceback (most recent call last):
   File "/home/mmaitland300/flask/webproject/app/cartoonize/app.py", line 66, in cartoonize
     opts = opts
 UnboundLocalError: local variable 'opts' referenced before assignment
+2020-10-13 19:53:58,157 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:102]
+2020-10-13 19:53:58,190 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:102]
+2020-10-13 19:53:58,190 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:102]
+2020-10-13 19:54:09,087 ERROR: Exception on /cartoonize [GET] [in /opt/miniconda3/lib/python3.8/site-packages/flask/app.py:1758]
+Traceback (most recent call last):
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/mmaitland300/flask/webproject/app/cartoonize/app.py", line 62, in cartoonize
+    opts = opts
+UnboundLocalError: local variable 'opts' referenced before assignment
+2020-10-13 19:54:09,087 ERROR: Exception on /cartoonize [GET] [in /opt/miniconda3/lib/python3.8/site-packages/flask/app.py:1758]
+Traceback (most recent call last):
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/mmaitland300/flask/webproject/app/cartoonize/app.py", line 62, in cartoonize
+    opts = opts
+UnboundLocalError: local variable 'opts' referenced before assignment
+2020-10-13 19:55:33,668 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:102]
+2020-10-13 19:55:33,709 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:102]
+2020-10-13 19:55:33,709 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:102]
+2020-10-13 19:55:46,940 ERROR: Exception on /cartoonize [GET] [in /opt/miniconda3/lib/python3.8/site-packages/flask/app.py:1758]
+Traceback (most recent call last):
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/mmaitland300/flask/webproject/app/cartoonize/app.py", line 142, in cartoonize
+    return render_template("index_cartoonized.html")
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/templating.py", line 134, in render_template
+    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/opt/miniconda3/lib/python3.8/site-packages/jinja2/environment.py", line 869, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/opt/miniconda3/lib/python3.8/site-packages/jinja2/environment.py", line 830, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/opt/miniconda3/lib/python3.8/site-packages/jinja2/environment.py", line 804, in _load_template
+    template = self.loader.load(self, name, globals)
+  File "/opt/miniconda3/lib/python3.8/site-packages/jinja2/loaders.py", line 113, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/templating.py", line 58, in get_source
+    return self._get_source_fast(environment, template)
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/templating.py", line 86, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: index_cartoonized.html
+2020-10-13 19:55:46,940 ERROR: Exception on /cartoonize [GET] [in /opt/miniconda3/lib/python3.8/site-packages/flask/app.py:1758]
+Traceback (most recent call last):
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/mmaitland300/flask/webproject/app/cartoonize/app.py", line 142, in cartoonize
+    return render_template("index_cartoonized.html")
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/templating.py", line 134, in render_template
+    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/opt/miniconda3/lib/python3.8/site-packages/jinja2/environment.py", line 869, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/opt/miniconda3/lib/python3.8/site-packages/jinja2/environment.py", line 830, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/opt/miniconda3/lib/python3.8/site-packages/jinja2/environment.py", line 804, in _load_template
+    template = self.loader.load(self, name, globals)
+  File "/opt/miniconda3/lib/python3.8/site-packages/jinja2/loaders.py", line 113, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/templating.py", line 58, in get_source
+    return self._get_source_fast(environment, template)
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/templating.py", line 86, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: index_cartoonized.html
+2020-10-13 19:59:45,264 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:102]
+2020-10-13 19:59:45,280 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:102]
+2020-10-13 19:59:45,280 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:102]
+2020-10-13 20:03:04,584 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:102]
+2020-10-13 20:03:04,607 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:102]
+2020-10-13 20:03:04,607 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:102]
+2020-10-13 20:14:08,667 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:102]
+2020-10-13 20:14:08,694 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:102]
+2020-10-13 20:14:08,694 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:102]
+2020-10-13 20:24:23,534 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:102]
+2020-10-13 20:24:23,564 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:102]
+2020-10-13 20:24:23,564 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:102]
