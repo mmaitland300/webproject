@@ -96,3 +96,15 @@ Traceback (most recent call last):
   File "/home/mmaitland300/flask/webproject/app/flaskgur/flaskgur.py", line 237, in remove
     os.remove(os.path.join(current_app.config['UPLOAD_DIR'], filename))
 FileNotFoundError: [Errno 2] No such file or directory: '/home/mmaitland300/flask/webproject/app/pics/sn1.jpeg'
+2020-10-17 17:11:42,139 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:102]
+2020-10-17 17:11:42,170 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:102]
+2020-10-17 17:11:42,170 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:102]
+2020-10-17 17:12:54,651 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:102]
+2020-10-17 17:12:54,670 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:102]
+2020-10-17 17:12:54,670 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:102]
+2020-10-17 17:14:14,280 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:102]
+2020-10-17 17:14:14,294 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:102]
+2020-10-17 17:14:14,294 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:102]
+2020-10-17 17:21:47,380 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:102]
+2020-10-17 17:21:47,398 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:102]
+2020-10-17 17:21:47,398 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:102]

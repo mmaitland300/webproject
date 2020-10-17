@@ -373,6 +373,7 @@ class QuadArt:
 
 
 def mainquad(filename, left=None, right=None, up=None, down=None, size=512, draw_type='circle', thresh=10, max_recurse=0):
+    
     quadart = QuadArt(std_thresh=thresh, draw_type=draw_type, max_recurse=max_recurse)
     quadart.generate(filename, left=left, right=right,
                                up=up, down=down,

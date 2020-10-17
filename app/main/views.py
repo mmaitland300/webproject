@@ -96,7 +96,7 @@ def edit_profile():
         current_user.username = form.username.data
         current_user.about_me = form.about_me.data
         db.session.commit()
-        flash(_('Your profile page has been updated and I hope you didnt make any typos.'))
+        flash(_('Your profile page has been updated and changes have been saved.'))
         return redirect(url_for('main.edit_profile'))
     elif request.method == 'GET':
         form.username.data = current_user.username
