@@ -56,3 +56,43 @@ werkzeug.routing.BuildError: Could not build url for endpoint 'cartoonize.cartoo
 2020-10-15 20:50:33,115 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:100]
 2020-10-15 20:50:33,128 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:100]
 2020-10-15 20:50:33,128 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:100]
+2020-10-16 00:03:49,068 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:100]
+2020-10-16 00:03:49,099 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:100]
+2020-10-16 00:03:49,099 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:100]
+2020-10-17 14:26:07,209 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:100]
+2020-10-17 14:26:07,240 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:100]
+2020-10-17 14:26:07,240 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:100]
+2020-10-17 14:27:24,505 ERROR: Exception on /del/sn1.jpeg [GET] [in /opt/miniconda3/lib/python3.8/site-packages/flask/app.py:1758]
+Traceback (most recent call last):
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/mmaitland300/flask/webproject/app/flaskgur/flaskgur.py", line 237, in remove
+    os.remove(os.path.join(current_app.config['UPLOAD_DIR'], filename))
+FileNotFoundError: [Errno 2] No such file or directory: '/home/mmaitland300/flask/webproject/app/pics/sn1.jpeg'
+2020-10-17 14:27:24,505 ERROR: Exception on /del/sn1.jpeg [GET] [in /opt/miniconda3/lib/python3.8/site-packages/flask/app.py:1758]
+Traceback (most recent call last):
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/mmaitland300/flask/webproject/app/flaskgur/flaskgur.py", line 237, in remove
+    os.remove(os.path.join(current_app.config['UPLOAD_DIR'], filename))
+FileNotFoundError: [Errno 2] No such file or directory: '/home/mmaitland300/flask/webproject/app/pics/sn1.jpeg'
