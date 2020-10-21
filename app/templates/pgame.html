@@ -2,28 +2,39 @@
 {% import 'bootstrap/wtf.html' as wtf %}
 
 {% block app_content %}
+</br>
 
-<h2>Graphical Designs/Animations</h2>
+<div class="row justify-content-center">
+<h2>Graphical Designs</h2>
+</div>
 
+<div class="row justify-content-center">
 <ul>
 <li> <a href="{{ url_for('main.circle') }}">Concentric circles design</a></li>
-    
 <li> <a href="{{ url_for('main.atoms') }}">Atom looking thing</a></li>
 </ul>
-
+</div>
+</br></br></br></br>
+<div class="row justify-content-center">
 <h2>Gaming Projects</h2>
-
+</div>
+<div class="row justify-content-center">
 <ul>
 <!-- <li> <a href="{{ url_for('main.rpg') }}"></a></l>
 <li><a href="#"></a></l> -->
 <li> <a href="https://quiet-tor-15249.herokuapp.com/">Learning how to incorporate multiplayer functionality</a></li>
 </ul>
-
+</div>
+</br></br></br></br>
+<div class="row justify-content-center">
 <h2>Code</h2>
+</div>
+<div class="row justify-content-center">
 <ul>
     <li> <a href="https://github.com/mmaitland300">link to my github</a></li>
 
 </ul>
+</div>
 
 
 {% endblock %}

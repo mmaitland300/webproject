@@ -1,19 +1,31 @@
 {% extends "faceswap/base.html" %}
 
 {% block content %}
+<h2 style="text-align: center;">FaceSwap</h2>
+</br></br>
+<h2 style="text-align: center;">{{ warning }}</h2>
+<h6 style="text-align: center;">{{ direct }}</h6>
+
+</br>
+
 <div class="container">
     <div class="row">
-      <h2>FaceSwap</h2>
-      <h3>{{ warning }}</h3>
-      <form action="{{ url_for('faceswap.upload') }}" method="POST" enctype="multipart/form-data">
-        <div class="form-group">
-          <label for="images">File input</label>
+      <form class="col-lg-6 offset-lg-3 " action="{{ url_for('faceswap.upload') }}" method="POST" enctype="multipart/form-data">
+        <div class="row justify-content-center">
           <input type="file" id="images" name="images" accept="image/*" multiple>
+          <div class="row justify-content-center">
           <p class="help-block">Select two images to swap.</p>
+        </div>
+        </div>
+        <div class="row justify-content-center">
+        <span class="input-group-btn">
           <input type="submit" value="Upload" class="btn btn-success">
           <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
-        </div>
+        </span>
+      </div>
       </form>
     </div>
+  </div>
+
 </div>
 {% endblock %}

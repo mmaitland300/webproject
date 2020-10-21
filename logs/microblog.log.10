@@ -1,105 +1,91 @@
-2020-10-08 20:03:36,498 ERROR: Exception on /fgallery [GET] [in /home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py:1761]
-Traceback (most recent call last):
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/mmaitland300/flask/webproject/app/faceswap/faceswap.py", line 57, in gallery
-    return render_template('faceswap/gallery.html', thumbnail_names=thumbnail_names)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/templating.py", line 135, in render_template
-    context, ctx.app)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/templating.py", line 117, in _render
-    rv = template.render(context)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/jinja2/asyncsupport.py", line 76, in render
-    return original_render(self, *args, **kwargs)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/jinja2/environment.py", line 1008, in render
-    return self.environment.handle_exception(exc_info, True)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/jinja2/environment.py", line 780, in handle_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/jinja2/_compat.py", line 37, in reraise
-    raise value.with_traceback(tb)
-  File "/home/mmaitland300/flask/webproject/app/templates/faceswap/gallery.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/home/mmaitland300/flask/webproject/app/templates/base.html", line 1, in top-level template code
-    {% extends 'bootstrap/base.html' %}
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
-    {% block doc -%}
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
-    {%- block html %}
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
-    {% block body -%}
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block "body"
-    {% block content -%}
-  File "/home/mmaitland300/flask/webproject/app/templates/faceswap/gallery.html", line 19, in block "content"
-    <a href="{{url_for('swapface')}}">
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/helpers.py", line 356, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 2061, in handle_url_build_error
-    reraise(exc_type, exc_value, tb)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/helpers.py", line 345, in url_for
-    force_external=external)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/werkzeug/routing.py", line 1776, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'swapface'. Did you mean 'faceswap.swapface' instead?
-2020-10-08 20:04:12,373 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
-2020-10-08 20:04:12,385 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
-2020-10-08 20:04:12,385 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
-2020-10-08 20:11:19,954 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
-2020-10-08 20:11:19,967 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
-2020-10-08 20:11:19,967 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
-2020-10-08 20:16:10,370 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
-2020-10-08 20:16:10,382 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
-2020-10-08 20:16:10,382 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
-2020-10-08 20:18:26,503 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
-2020-10-08 20:18:26,530 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
-2020-10-08 20:18:26,530 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
-2020-10-08 20:19:22,047 ERROR: Exception on /fswap [GET] [in /home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py:1761]
-Traceback (most recent call last):
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/mmaitland300/flask/webproject/app/faceswap/faceswap.py", line 83, in swapface
-    filename = os.listdir('./images')
-FileNotFoundError: [Errno 2] No such file or directory: './images'
-2020-10-08 20:19:22,047 ERROR: Exception on /fswap [GET] [in /home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py:1761]
-Traceback (most recent call last):
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/mmaitland300/.virtualenvs/webproject/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/mmaitland300/flask/webproject/app/faceswap/faceswap.py", line 83, in swapface
-    filename = os.listdir('./images')
-FileNotFoundError: [Errno 2] No such file or directory: './images'
-2020-10-08 20:21:24,373 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
-2020-10-08 20:21:24,406 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
-2020-10-08 20:21:24,406 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
-2020-10-08 20:44:27,834 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
-2020-10-08 20:44:27,848 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
-2020-10-08 20:44:27,848 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
+2020-10-20 00:19:37,531 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 00:23:56,134 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 00:23:56,151 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 00:23:56,151 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 00:24:49,995 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 00:24:50,051 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 00:24:50,051 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 00:32:53,113 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 00:32:53,189 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 00:32:53,189 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 00:36:13,323 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 00:36:13,341 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 00:36:13,341 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 00:37:49,160 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 00:37:49,173 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 00:37:49,173 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 00:45:28,436 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 00:45:28,454 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 00:45:28,454 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 00:47:17,679 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 00:47:17,702 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 00:47:17,702 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 00:48:21,335 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 00:48:21,408 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 00:48:21,408 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 00:52:03,719 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 00:52:03,733 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 00:52:03,733 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 00:53:27,828 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 00:53:27,843 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 00:53:27,843 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 15:51:18,812 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 15:51:18,845 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 15:51:18,845 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 16:00:08,829 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 16:00:08,855 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 16:00:08,855 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 16:03:58,611 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 16:03:58,628 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 16:03:58,628 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 16:05:14,194 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 16:05:14,208 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 16:05:14,208 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 16:06:16,438 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 16:06:16,459 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 16:06:16,459 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 16:07:24,226 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 16:07:24,254 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 16:07:24,254 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 16:08:05,109 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 16:08:05,123 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 16:08:05,123 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 16:08:56,428 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 16:08:56,439 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 16:08:56,439 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 16:10:20,654 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 16:10:20,668 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 16:10:20,668 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 16:17:09,284 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 16:17:09,297 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 16:17:09,297 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 16:19:23,133 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 16:19:23,146 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 16:19:23,146 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 16:30:08,612 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 16:30:08,623 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 16:30:08,623 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 16:32:56,878 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 16:32:56,891 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 16:32:56,891 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 16:34:30,990 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 16:34:31,008 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 16:34:31,008 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 16:35:29,582 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 16:35:29,608 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 16:35:29,608 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 16:40:05,119 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 16:40:05,132 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 16:40:05,132 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 16:43:18,053 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 16:43:18,064 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 16:43:18,064 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 16:48:53,515 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 16:48:53,541 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 16:48:53,541 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 16:49:55,233 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 16:49:55,246 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 16:49:55,246 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 17:00:27,874 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 17:00:27,887 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 17:00:27,887 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]

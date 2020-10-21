@@ -1,31 +1,38 @@
 {% extends "faceswap/base.html" %}
 
+<h1>FaceSwap</h1>
+<h4>{{ warning }}</h4>
+</br></br></br></br>
+<p>(works for people faces only at the moment)</p>
+
 {% block content %}
+<div class="row justify-content-center">
+<div class="btn-group">
+  <a href="{{url_for('faceswap.newswap')}}">
+    <button class="button button2">New Swap</button>
+  </a>
+  <a href="{{url_for('faceswap.swapface')}}">
+    <button class="button button1">Swap Faces</button>
+  </a>
+</div>
+</div>
+
 <div class="container">
-  <div class="row">
-      <h1>FaceSwap</h1>
-      <h4>{{ warning }}</h4>
-      <p>(works for people faces only at the moment)</p>
-  </div>
+
+
   {% if thumbnail_names %}
     <div class="row">
       {% for thumbnail_name in thumbnail_names %}
-              <div class="column">
+              <div class="card col-md-6">
                 <a href="{{url_for('faceswap.display_image', filename=thumbnail_name)}}">
-                <img src="{{url_for('faceswap.thumbnails', filename=thumbnail_name)}}" class="img-responsive" style="width:100%">
+                <img src="{{url_for('faceswap.thumbnails', filename=thumbnail_name)}}" class="card-img-top" alt="Responisve image">
                 </a>
               </div>
-
-
       {% endfor %}
-      <a href="{{url_for('faceswap.swapface')}}">
-      <button class="button button1">Swap Faces</button>
-      </a>
-      <a href="{{url_for('faceswap.newswap')}}">
-        <button class="button button2">New Swap</button>
-        </a>
     </div>
   {% endif %}
+
+
 </div>
 
 <div id="disqus_thread"></div>

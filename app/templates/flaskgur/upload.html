@@ -7,19 +7,19 @@
 Image Play
 {% endblock %}
 {% block content %}
+
 	{% if filename is defined %}
 		
 		<div id="image"><a href="{{ pic_path(filename) }}" target="_blank"><img class="new" src="{{ pic_path(filename) }}"></a></div>
 	{% else %}
-		<ul>
+		
 		{% for pic in pics %}
-			<li class="thumb"><a href="{{ url_for('flaskgur.show_pic', filename=pic) }}"><img class="thumb" src="{{ pic_path('thumb_'+pic) }}"></a></li>
+			<a href="{{ url_for('flaskgur.show_pic', filename=pic) }}"><img class="thumb" src="{{ pic_path('thumb_'+pic) }}"></a>
 			
 			<div class="dropdown show">
 			<a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				Dropdown
 			</a>
-
 			<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 				<a class="dropdown-item" href= "{{ url_for('flaskgur.face', filename=pic) }}">Face Detector</a>
 				<a class="dropdown-item" href= "{{ url_for('flaskgur.age', filename=pic) }}">Age Detector</a>
@@ -38,6 +38,6 @@ Image Play
 
 		{% endfor %}
 
-		</ul>
+		
 	{% endif %}		    
 {% endblock %}

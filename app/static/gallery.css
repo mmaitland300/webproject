@@ -13,6 +13,13 @@
     width: 100%;
   }
 }
+.child {
+  margin: 0 auto;
+}
+.container {
+  display: flex;
+  justify-content: center;
+}
 
 .column {
   float: left;

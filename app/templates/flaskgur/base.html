@@ -5,35 +5,49 @@
   <title>{% block title %} {% endblock %} - Mattgram</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='bootstrap.css') }}">
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='gun.css') }}">
   
 	</head>
-	
-    
-    
-	<div class="header" id="header">
-  <a href="/matgur" class="logo">Mattgram</a>
-  </br></br>
-  <a href="/">Home</a>
-</div>
-		</br></br>
 
+	  <nav aria-label="breadcrumb">
+		<ol class="breadcrumb">
+		  <li class="breadcrumb-item"><a href="/">Home</a></li>
+		  <li class="breadcrumb-item"><a href="/matgur">Images</a></li>
+
+		</ol>
+	  </nav>
 		
-		<div class="form-group" id="upload">
-			<form action="/matgur" method=post enctype=multipart/form-data>
+
+		<div class="container">
+			<div class="row">
+			  <div class="col">
+				<hr>
+		  
+				<form action="/matgur" method="POST" enctype="multipart/form-data">
+		  
+				  <div class="form-group">
+					<label>Select image</label>
+					<div class="custom-file">
+					  <input type="file" class="custom-file-input" name="file" id="file">
+					  <label class="custom-file-label" for="image">Select image...</label>
+					</div>
+				  </div>
+		  
+				  <button type="submit" class="btn btn-primary">Upload</button>
+				  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+		  
+				</form>
+		  
+			  </div>
+			</div>
+		  </div>
+		</br></br></br>
 		
-			<p>
-				<input type="file" class="form-control-file" name="file"><br />
-				<input type=submit value=Upload>
-				<input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
-			</p>
-		</div>
-		<!-- <p style="color:white;"> Checkout the dropdown menu and alter the images with some programs I wrote!</p>
-		<p style="color:white;"> The face detector and quad art both take some time to process the image so be patient</p>
-		<p style="color:white;">And to any intrested I will post the contents of the programs <a href="/code">here</a></p> -->
-		<div id="content">
+		<div class="container">
+			<div class="child">
 			{% block content %}
 			{% endblock %}
+			</div>
 		</div>
 		<div id="disqus_thread"></div>
 		<script>

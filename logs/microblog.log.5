@@ -1,11 +1,4 @@
-2020-10-09 19:55:26,919 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
-2020-10-09 20:26:15,779 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
-2020-10-09 20:26:15,816 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
-2020-10-09 20:26:15,816 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:99]
-2020-10-13 19:44:52,440 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:102]
-2020-10-13 19:44:52,463 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:102]
-2020-10-13 19:44:52,463 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:102]
-2020-10-13 19:45:17,197 ERROR: Exception on / [GET] [in /opt/miniconda3/lib/python3.8/site-packages/flask/app.py:1758]
+2020-10-20 18:55:00,398 ERROR: Exception on /faceupload [POST] [in /opt/miniconda3/lib/python3.8/site-packages/flask/app.py:1758]
 Traceback (most recent call last):
   File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -19,48 +12,15 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 1799, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/opt/miniconda3/lib/python3.8/site-packages/flask_login/utils.py", line 228, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/mmaitland300/flask/webproject/app/main/views.py", line 47, in index
-    return render_template('index.html', title=_('Home'), form=form,
-  File "/opt/miniconda3/lib/python3.8/site-packages/flask/templating.py", line 134, in render_template
-    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
-  File "/opt/miniconda3/lib/python3.8/site-packages/flask/templating.py", line 117, in _render
-    rv = template.render(context)
-  File "/opt/miniconda3/lib/python3.8/site-packages/jinja2/asyncsupport.py", line 76, in render
-    return original_render(self, *args, **kwargs)
-  File "/opt/miniconda3/lib/python3.8/site-packages/jinja2/environment.py", line 1008, in render
-    return self.environment.handle_exception(exc_info, True)
-  File "/opt/miniconda3/lib/python3.8/site-packages/jinja2/environment.py", line 780, in handle_exception
-    reraise(exc_type, exc_value, tb)
-  File "/opt/miniconda3/lib/python3.8/site-packages/jinja2/_compat.py", line 37, in reraise
-    raise value.with_traceback(tb)
-  File "/home/mmaitland300/flask/webproject/app/templates/index.html", line 2, in <module>
-    {% import 'bootstrap/wtf.html' as wtf %}
-  File "/home/mmaitland300/flask/webproject/app/templates/base.html", line 1, in <module>
-    {% extends 'bootstrap/base.html' %}
-  File "/opt/miniconda3/lib/python3.8/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in <module>
-    {% block doc -%}
-  File "/opt/miniconda3/lib/python3.8/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in <module>
-    {%- block html %}
-  File "/opt/miniconda3/lib/python3.8/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in <module>
-    {% block body -%}
-  File "/opt/miniconda3/lib/python3.8/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 21, in <module>
-    {% block navbar %}
-  File "/home/mmaitland300/flask/webproject/app/templates/base.html", line 49, in <module>
-    <li><a href="{{ url_for('cartoonize.cartoonize') }}">{{ _('Cartoon App') }}</a></li>
-  File "/opt/miniconda3/lib/python3.8/site-packages/flask/helpers.py", line 356, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 2061, in handle_url_build_error
-    reraise(exc_type, exc_value, tb)
-  File "/opt/miniconda3/lib/python3.8/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/opt/miniconda3/lib/python3.8/site-packages/flask/helpers.py", line 344, in url_for
-    rv = url_adapter.build(endpoint, values, method=method,
-  File "/opt/miniconda3/lib/python3.8/site-packages/werkzeug/routing.py", line 1776, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'cartoonize.cartoonize'. Did you mean 'cartoon.cartoonize' instead?
-2020-10-13 19:45:17,197 ERROR: Exception on / [GET] [in /opt/miniconda3/lib/python3.8/site-packages/flask/app.py:1758]
+  File "/home/mmaitland300/flask/projectmatt/app/faceswap/faceswap.py", line 48, in upload
+    upload.save(destination)
+  File "/opt/miniconda3/lib/python3.8/site-packages/werkzeug/datastructures.py", line 2725, in save
+    dst = open(dst, 'wb')
+IsADirectoryError: [Errno 21] Is a directory: '/home/mmaitland300/flask/projectmatt/images'
+2020-10-20 18:56:07,019 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 18:56:07,032 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 18:56:07,032 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 18:56:23,782 ERROR: Exception on /faceupload [POST] [in /opt/miniconda3/lib/python3.8/site-packages/flask/app.py:1758]
 Traceback (most recent call last):
   File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -74,47 +34,76 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 1799, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/opt/miniconda3/lib/python3.8/site-packages/flask_login/utils.py", line 228, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/mmaitland300/flask/webproject/app/main/views.py", line 47, in index
-    return render_template('index.html', title=_('Home'), form=form,
-  File "/opt/miniconda3/lib/python3.8/site-packages/flask/templating.py", line 134, in render_template
-    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
-  File "/opt/miniconda3/lib/python3.8/site-packages/flask/templating.py", line 117, in _render
-    rv = template.render(context)
-  File "/opt/miniconda3/lib/python3.8/site-packages/jinja2/asyncsupport.py", line 76, in render
-    return original_render(self, *args, **kwargs)
-  File "/opt/miniconda3/lib/python3.8/site-packages/jinja2/environment.py", line 1008, in render
-    return self.environment.handle_exception(exc_info, True)
-  File "/opt/miniconda3/lib/python3.8/site-packages/jinja2/environment.py", line 780, in handle_exception
-    reraise(exc_type, exc_value, tb)
-  File "/opt/miniconda3/lib/python3.8/site-packages/jinja2/_compat.py", line 37, in reraise
-    raise value.with_traceback(tb)
-  File "/home/mmaitland300/flask/webproject/app/templates/index.html", line 2, in <module>
-    {% import 'bootstrap/wtf.html' as wtf %}
-  File "/home/mmaitland300/flask/webproject/app/templates/base.html", line 1, in <module>
-    {% extends 'bootstrap/base.html' %}
-  File "/opt/miniconda3/lib/python3.8/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in <module>
-    {% block doc -%}
-  File "/opt/miniconda3/lib/python3.8/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in <module>
-    {%- block html %}
-  File "/opt/miniconda3/lib/python3.8/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in <module>
-    {% block body -%}
-  File "/opt/miniconda3/lib/python3.8/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 21, in <module>
-    {% block navbar %}
-  File "/home/mmaitland300/flask/webproject/app/templates/base.html", line 49, in <module>
-    <li><a href="{{ url_for('cartoonize.cartoonize') }}">{{ _('Cartoon App') }}</a></li>
-  File "/opt/miniconda3/lib/python3.8/site-packages/flask/helpers.py", line 356, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 2061, in handle_url_build_error
+  File "/home/mmaitland300/flask/projectmatt/app/faceswap/faceswap.py", line 48, in upload
+    upload.save(destination)
+  File "/opt/miniconda3/lib/python3.8/site-packages/werkzeug/datastructures.py", line 2725, in save
+    dst = open(dst, 'wb')
+IsADirectoryError: [Errno 21] Is a directory: '/home/mmaitland300/flask/projectmatt/images'
+2020-10-20 18:56:23,782 ERROR: Exception on /faceupload [POST] [in /opt/miniconda3/lib/python3.8/site-packages/flask/app.py:1758]
+Traceback (most recent call last):
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 1718, in handle_user_exception
     reraise(exc_type, exc_value, tb)
   File "/opt/miniconda3/lib/python3.8/site-packages/flask/_compat.py", line 35, in reraise
     raise value
-  File "/opt/miniconda3/lib/python3.8/site-packages/flask/helpers.py", line 344, in url_for
-    rv = url_adapter.build(endpoint, values, method=method,
-  File "/opt/miniconda3/lib/python3.8/site-packages/werkzeug/routing.py", line 1776, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'cartoonize.cartoonize'. Did you mean 'cartoon.cartoonize' instead?
-2020-10-13 19:51:25,452 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:102]
-2020-10-13 19:51:25,491 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:102]
-2020-10-13 19:51:25,491 INFO: Matts brain startup [in /home/mmaitland300/flask/webproject/app/__init__.py:102]
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/mmaitland300/flask/projectmatt/app/faceswap/faceswap.py", line 48, in upload
+    upload.save(destination)
+  File "/opt/miniconda3/lib/python3.8/site-packages/werkzeug/datastructures.py", line 2725, in save
+    dst = open(dst, 'wb')
+IsADirectoryError: [Errno 21] Is a directory: '/home/mmaitland300/flask/projectmatt/images'
+2020-10-20 18:57:43,216 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 18:57:43,233 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 18:57:43,233 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 19:00:29,275 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 19:00:29,288 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 19:00:29,288 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 19:06:09,064 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 19:06:09,075 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 19:06:09,075 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 19:08:36,968 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 19:08:36,979 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 19:08:36,979 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 19:12:18,049 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 19:12:18,063 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 19:12:18,063 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 19:16:06,720 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 19:16:06,733 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 19:16:06,733 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 19:16:26,211 ERROR: Exception on /faceupload [POST] [in /opt/miniconda3/lib/python3.8/site-packages/flask/app.py:1758]
+Traceback (most recent call last):
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/mmaitland300/flask/projectmatt/app/faceswap/faceswap.py", line 74, in upload
+    return render_template("faceswap/fgallery.html", warning="Only upload two images!")
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/templating.py", line 134, in render_template
+    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/opt/miniconda3/lib/python3.8/site-packages/jinja2/environment.py", line 869, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/opt/miniconda3/lib/python3.8/site-packages/jinja2/environment.py", line 830, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/opt/miniconda3/lib/python3.8/site-packages/jinja2/environment.py", line 804, in _load_template
+    template = self.loader.load(self, name, globals)
+  File "/opt/miniconda3/lib/python3.8/site-packages/jinja2/loaders.py", line 113, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/templating.py", line 58, in get_source
+    return self._get_source_fast(environment, template)
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/templating.py", line 86, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: faceswap/fgallery.html

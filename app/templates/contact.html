@@ -1,49 +1,48 @@
 {% extends "base.html" %}
-{% import 'bootstrap/wtf.html' as wtf %}
 
 {% block app_content %}
-        <div class="section page">
+</br></br></br>
 
-        <div class="wrapper">
-
-            <h1 align="center">Contact Me</h1>
-
-
-            <p align="center">I&rsquo;d love to hear from you every once in a while! (ahem jessi)</p>
-
-            <form  method="post" action="{{ url_for("main.send_contact") }}">
-
-                <table align="center">
-                    <tr>
-                        <th>
-                            <label for="name">Name</label></br></br>
-                        </th>
-                        <td>
-                            <input type="text" name="name" id="name">
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            <label for="email">Email</label></br></br>
-                        </th>
-                        <td>
-                            <input type="text" name="email" id="email">
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            <label for="message">Message</label></br></br>
-                        </th>
-                        <td>
-                            <textarea name="message" id="message"></textarea>
-                        </td>
-                    </tr>
-                </table>
-                <input style="display: block; margin: 0 auto;" type="submit" value="Send">
-                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
-            </form>
-
+    <div class="container contact">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="contact-info">
+                    <img src="https://image.ibb.co/kUASdV/contact-image.png" alt="image"/>
+                    <h2>Contact Me</h2>
+        
+                </div>
+            </div>
+            
+            <div class="col-md-9">
+                <div class="contact-form">
+                  <form  method="post" action="{{ url_for("main.send_contact") }}">
+                    <div class="form-group">
+                      <label class="control-label col-sm-2" for="name">Name:</label>
+                      <div class="col-sm-10">          
+                        <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-sm-2" for="email">Email:</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="email" placeholder="Enter email" name="email">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-sm-2" for="message">Comment:</label>
+                      <div class="col-sm-10">
+                        <textarea class="form-control" name="message" id="message"></textarea>
+                      </div>
+                    </div>
+                    <div class="form-group">        
+                      <div class="col-sm-offset-2 col-sm-10">
+                        <input style="display: block; margin: 0 auto;" type="submit" value="Send">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+            </div>
         </div>
-
     </div>
 {% endblock %}

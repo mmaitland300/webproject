@@ -2,10 +2,10 @@
 {% import 'bootstrap/wtf.html' as wtf %}
 
 {% block app_content %}
-<center><img class="img-responsive"src="{{ url_for('static', filename='banner.png') }}"></center>
+<!-- <center><img class="img-responsive"src="{{ url_for('static', filename='banner.png') }}"></center> -->
 
 <!--============================================================-->
-    <h1>{{ _('Greetings, %(username)s!', username=current_user.username) }}</h1>
+    <h1>{{ _("Hi, %(username)s!", username=current_user.username) }}</h1>
     {% if form %}
     {{ wtf.quick_form(form) }}
     <br>
@@ -13,21 +13,25 @@
     {% for post in posts %}
         {% include '_post.html' %}
     {% endfor %}
+</br></br></br>
     <nav aria-label="...">
-        <ul class="pager">
+        <ul class="pagination justify-content-center">
             <li class="previous{% if not prev_url %} disabled{% endif %}">
                 <a href="{{ prev_url or '#' }}">
-                    <span aria-hidden="true">&larr;</span> {{ _('Most recent') }}
+                    <span aria-hidden="true">&larr;</span> {{ _('Most recent-------') }}
                 </a>
+            </br></br>
             </li>
+        
             <li class="next{% if not next_url %} disabled{% endif %}">
                 <a href="{{ next_url or '#' }}">
-                    {{ _('Older posts') }} <span aria-hidden="true">&rarr;</span>
+                    {{ _('-------Older posts') }} <span aria-hidden="true">&rarr;</span>
                 </a>
+            
             </li>
         </ul>
     </nav>
-
+</br></br>
     <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
         <input type="hidden" name="cmd" value="_s-xclick" />
         <input type="hidden" name="hosted_button_id" value="LHTJCYSP24EJY" />

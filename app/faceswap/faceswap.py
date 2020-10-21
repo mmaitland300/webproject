@@ -32,7 +32,7 @@ def upload_form():
 @bp.route('/faceupload', methods=['GET', 'POST'])
 def upload():
     if request.method == 'POST':
-        if len(os.listdir(current_app.config['IMGDIR'])) < 2:
+        if len(os.listdir(current_app.config['IMGDIR'])) < 1:
             for upload in request.files.getlist('images'):
                 filename = upload.filename
                 # Always a good idea to secure a filename before storing it
@@ -43,17 +43,36 @@ def upload():
                     print('File supported moving on...')
                 else:
                     return render_template('error.html', message='Uploaded files are not supported...')
-                destination = '/'.join([current_app.config['IMGDIR'], filename])
+                destination = '/'.join([current_app.config['IMGDIR'], "1" + filename])
                 # Save original image
                 upload.save(destination)
                 # Save a copy of the thumbnail image
                 image = Image.open(destination)
                 image.thumbnail((300, 170))
                 image.save('/'.join([current_app.config['THUMBDIR'], filename]))
-            return redirect(url_for('faceswap.upload'))
+            return render_template('faceswap/upload.html')
+        elif len(os.listdir(current_app.config['IMGDIR'])) == 1:
+            for upload in request.files.getlist('images'):
+                filename = upload.filename
+                # Always a good idea to secure a filename before storing it
+                filename = secure_filename(filename)
+                # This is to verify files are supported
+                ext = os.path.splitext(filename)[1][1:].strip().lower()
+                if ext in set(['jpg', 'jpeg', 'png']):
+                    print('File supported moving on...')
+                else:
+                    return render_template('error.html', message='Uploaded files are not supported...')
+                destination = '/'.join([current_app.config['IMGDIR'], "2" + filename])
+                # Save original image
+                upload.save(destination)
+                # Save a copy of the thumbnail image
+                image = Image.open(destination)
+                image.thumbnail((300, 170))
+                image.save('/'.join([current_app.config['THUMBDIR'], filename]))
+            return redirect(url_for('faceswap.gallery'))
         else:
             return render_template("faceswap/upload.html", warning="Only upload two images!")
-    return render_template('faceswap/upload.html')
+    return render_template('faceswap/upload.html', direct="Please upload the target for the face first.")
 
 @bp.route('/fgallery')
 def gallery():
@@ -79,9 +98,11 @@ def display_image(filename):
 def swapface():
     filename = os.listdir(current_app.config['IMGDIR'])
     filename1 = current_app.config['IMGDIR'] + '/' + filename[0]
+
     filename2 = current_app.config['IMGDIR'] + '/' + filename[1]
+    
     try:
-        swap(filename1, filename2)
+        swap(filename2, filename1)
         image = Image.open(current_app.config['IMGDIR'] + '/result.jpg')
         image.thumbnail((300, 170))
         image.save('/'.join([current_app.config['THUMBDIR'], '/result.jpg']))
