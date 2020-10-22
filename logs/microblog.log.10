@@ -1,91 +1,128 @@
-2020-10-20 00:19:37,531 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 00:23:56,134 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 00:23:56,151 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 00:23:56,151 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 00:24:49,995 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 00:24:50,051 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 00:24:50,051 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 00:32:53,113 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 00:32:53,189 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 00:32:53,189 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 00:36:13,323 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 00:36:13,341 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 00:36:13,341 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 00:37:49,160 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 00:37:49,173 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 00:37:49,173 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 00:45:28,436 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 00:45:28,454 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 00:45:28,454 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 00:47:17,679 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 00:47:17,702 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 00:47:17,702 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 00:48:21,335 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 00:48:21,408 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 00:48:21,408 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 00:52:03,719 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 00:52:03,733 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 00:52:03,733 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 00:53:27,828 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 00:53:27,843 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 00:53:27,843 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 15:51:18,812 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 15:51:18,845 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 15:51:18,845 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 16:00:08,829 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 16:00:08,855 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 16:00:08,855 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 16:03:58,611 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 16:03:58,628 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 16:03:58,628 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 16:05:14,194 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 16:05:14,208 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 16:05:14,208 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 16:06:16,438 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 16:06:16,459 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 16:06:16,459 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 16:07:24,226 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 16:07:24,254 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 16:07:24,254 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 16:08:05,109 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 16:08:05,123 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 16:08:05,123 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 16:08:56,428 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 16:08:56,439 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 16:08:56,439 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 16:10:20,654 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 16:10:20,668 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 16:10:20,668 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 16:17:09,284 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 16:17:09,297 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 16:17:09,297 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 16:19:23,133 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 16:19:23,146 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 16:19:23,146 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 16:30:08,612 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 16:30:08,623 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 16:30:08,623 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 16:32:56,878 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 16:32:56,891 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 16:32:56,891 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 16:34:30,990 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 16:34:31,008 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 16:34:31,008 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 16:35:29,582 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 16:35:29,608 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 16:35:29,608 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 16:40:05,119 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 16:40:05,132 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 16:40:05,132 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 16:43:18,053 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 16:43:18,064 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 16:43:18,064 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 16:48:53,515 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 16:48:53,541 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 16:48:53,541 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 16:49:55,233 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 16:49:55,246 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 16:49:55,246 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 17:00:27,874 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 17:00:27,887 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 17:00:27,887 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 17:04:30,461 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 17:04:30,480 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 17:04:30,480 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 17:05:57,933 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 17:05:57,947 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 17:05:57,947 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 17:11:39,352 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 17:11:39,370 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 17:11:39,370 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 17:19:53,811 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 17:19:53,823 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 17:19:53,823 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 17:23:51,349 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 17:23:51,362 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 17:23:51,362 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 17:25:21,959 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 17:25:21,973 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 17:25:21,973 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 17:26:24,018 ERROR: Exception on /export_posts [GET] [in /opt/miniconda3/lib/python3.8/site-packages/flask/app.py:1758]
+Traceback (most recent call last):
+  File "/opt/miniconda3/lib/python3.8/site-packages/redis/connection.py", line 492, in connect
+    sock = self._connect()
+  File "/opt/miniconda3/lib/python3.8/site-packages/redis/connection.py", line 550, in _connect
+    raise err
+  File "/opt/miniconda3/lib/python3.8/site-packages/redis/connection.py", line 538, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask_login/utils.py", line 228, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/mmaitland300/flask/projectmatt/app/main/views.py", line 233, in export_posts
+    current_user.launch_task('export_posts', _('Exporting posts...'))
+  File "/home/mmaitland300/flask/projectmatt/app/models.py", line 178, in launch_task
+    rq_job = current_app.task_queue.enqueue('app.tasks.' + name, self.id,
+  File "/opt/miniconda3/lib/python3.8/site-packages/rq/queue.py", line 323, in enqueue
+    return self.enqueue_call(
+  File "/opt/miniconda3/lib/python3.8/site-packages/rq/queue.py", line 277, in enqueue_call
+    job = self.enqueue_job(job, at_front=at_front)
+  File "/opt/miniconda3/lib/python3.8/site-packages/rq/queue.py", line 353, in enqueue_job
+    pipe.execute()
+  File "/opt/miniconda3/lib/python3.8/site-packages/redis/client.py", line 3513, in execute
+    conn = self.connection_pool.get_connection('MULTI',
+  File "/opt/miniconda3/lib/python3.8/site-packages/redis/connection.py", line 994, in get_connection
+    connection.connect()
+  File "/opt/miniconda3/lib/python3.8/site-packages/redis/connection.py", line 497, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 111 connecting to None:6379. Connection refused.
+2020-10-20 17:26:24,018 ERROR: Exception on /export_posts [GET] [in /opt/miniconda3/lib/python3.8/site-packages/flask/app.py:1758]
+Traceback (most recent call last):
+  File "/opt/miniconda3/lib/python3.8/site-packages/redis/connection.py", line 492, in connect
+    sock = self._connect()
+  File "/opt/miniconda3/lib/python3.8/site-packages/redis/connection.py", line 550, in _connect
+    raise err
+  File "/opt/miniconda3/lib/python3.8/site-packages/redis/connection.py", line 538, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask_login/utils.py", line 228, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/mmaitland300/flask/projectmatt/app/main/views.py", line 233, in export_posts
+    current_user.launch_task('export_posts', _('Exporting posts...'))
+  File "/home/mmaitland300/flask/projectmatt/app/models.py", line 178, in launch_task
+    rq_job = current_app.task_queue.enqueue('app.tasks.' + name, self.id,
+  File "/opt/miniconda3/lib/python3.8/site-packages/rq/queue.py", line 323, in enqueue
+    return self.enqueue_call(
+  File "/opt/miniconda3/lib/python3.8/site-packages/rq/queue.py", line 277, in enqueue_call
+    job = self.enqueue_job(job, at_front=at_front)
+  File "/opt/miniconda3/lib/python3.8/site-packages/rq/queue.py", line 353, in enqueue_job
+    pipe.execute()
+  File "/opt/miniconda3/lib/python3.8/site-packages/redis/client.py", line 3513, in execute
+    conn = self.connection_pool.get_connection('MULTI',
+  File "/opt/miniconda3/lib/python3.8/site-packages/redis/connection.py", line 994, in get_connection
+    connection.connect()
+  File "/opt/miniconda3/lib/python3.8/site-packages/redis/connection.py", line 497, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 111 connecting to None:6379. Connection refused.
+2020-10-20 17:43:38,624 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 17:43:38,636 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 17:43:38,636 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 17:53:07,299 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 17:53:07,313 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 17:53:07,313 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 17:54:05,288 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 17:54:05,308 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 17:54:05,308 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 17:56:31,557 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 17:56:31,572 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 17:56:31,572 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 18:00:32,035 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 18:00:32,050 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 18:00:32,050 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 18:02:26,703 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 18:02:26,715 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 18:02:26,715 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 18:04:03,792 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 18:04:03,805 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 18:04:03,805 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-20 18:04:56,297 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]

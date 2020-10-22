@@ -84,6 +84,10 @@ def teardown_request(err):
     if database is not None:
         database.close()
 
+@bp.errorhandler(400)
+def handle_bad_request(e):
+    return render_template('flaskgur/upload.html', pics=get_last_pics(), error="Plese select an image before clicking upload, dumbass!"), 400
+
 @bp.errorhandler(404)
 def page_not_found(err):
     """ Redirect to 404 on error.

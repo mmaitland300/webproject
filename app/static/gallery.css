@@ -13,13 +13,6 @@
     width: 100%;
   }
 }
-.child {
-  margin: 0 auto;
-}
-.container {
-  display: flex;
-  justify-content: center;
-}
 
 .column {
   float: left;
@@ -50,11 +43,11 @@
 .button1 {
   background-color: white; 
   color: black; 
-  border: 2px solid #008805;
+  border: 2px solid #000000;
 }
 
 .button1:hover {
-  background-color: #108814;
+  background-color: #7c7c7c;
   color: white;
 }
 
@@ -65,7 +58,7 @@
 }
 
 .button2:hover {
-  background-color: #a82200;
+  background-color: #7c7c7c;
   color: white;
 }
 

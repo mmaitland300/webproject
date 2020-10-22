@@ -72,6 +72,8 @@ def upload():
             return redirect(url_for('faceswap.gallery'))
         else:
             return render_template("faceswap/upload.html", warning="Only upload two images!")
+    
+    newswap()
     return render_template('faceswap/upload.html', direct="Please upload the target for the face first.")
 
 @bp.route('/fgallery')

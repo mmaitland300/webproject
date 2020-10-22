@@ -69,7 +69,7 @@ body {
   line-height: 1.5;
   color: #55595c;
   text-align: left;
-  background-color: rgb(240, 240, 240);
+  background-color: rgba(247, 247, 247, 0.829);
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -2200,7 +2200,7 @@ pre code {
   font-weight: 400;
   line-height: 1.5;
   color: #55595c;
-  background-color: #f7f7f9;
+  background-color: #ffffff;
   background-clip: padding-box;
   border: 0px solid #ced4da;
   border-radius: 0;
