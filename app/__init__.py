@@ -40,7 +40,7 @@ def create_app(config_class=Config):
     bootstrap.init_app(app)
     moment.init_app(app)
     babel.init_app(app)
-    #Talisman(app, content_security_policy=None)
+    Talisman(app, content_security_policy=None)
     app.elasticsearch = Elasticsearch([app.config['ELASTICSEARCH_URL']]) \
         if app.config['ELASTICSEARCH_URL'] else None
     app.redis = Redis.from_url(app.config['REDIS_URL'])
