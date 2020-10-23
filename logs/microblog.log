@@ -81,3 +81,6 @@ TypeError: catching classes that do not inherit from BaseException is not allowe
 2020-10-21 20:22:53,844 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
 2020-10-21 20:22:53,857 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
 2020-10-21 20:22:53,857 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-22 19:19:28,698 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-22 19:19:28,815 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+2020-10-22 19:19:28,815 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
