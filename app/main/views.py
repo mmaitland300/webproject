@@ -4,7 +4,7 @@ import sendgrid
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 from flask import render_template, flash, redirect, url_for, request, g, \
-    jsonify, current_app
+    jsonify, current_app, send_from_directory
 from flask_login import current_user, login_required
 from flask_babel import _, get_locale
 from app import db
@@ -13,7 +13,7 @@ from app.main.forms import EditProfileForm, EmptyForm, PostForm, SearchForm, \
 from app.models import User, Post, Message, Notification
 from app.main import bp
 from app.tasks import write_level
-
+from functools import wraps
 
 @bp.before_app_request
 def before_request():
@@ -301,6 +301,25 @@ def send_contact():
 
     flash("Email sent.")
     return redirect(url_for("main.index"))
+
+
+
+@bp.route("/lehigh", methods=['POST', 'GET'])
+@login_required
+def spread():
+
+    return render_template("mcshea/protect.html")
+
+@bp.route("/protected", methods=['GET', 'POST'])
+@login_required
+def lehigh():
+    if request.method == 'POST':
+        if request.form['password'] == 'mc':
+            return render_template('mcshea/mc.html')
+
+    return render_template('mcshea/welcome.html')
+
+
 
 
 @bp.route("/pay")

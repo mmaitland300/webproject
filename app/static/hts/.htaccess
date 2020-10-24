@@ -1,0 +1,4 @@
+AuthName "mcshea"
+AuthUserFile /home/mmaitland300/flask/projectmatt/app/static/hts/.htpasswd
+AuthType Basic
+require valid-user

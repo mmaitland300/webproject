@@ -1,4 +1,26 @@
-2020-10-20 19:16:26,211 ERROR: Exception on /faceupload [POST] [in /opt/miniconda3/lib/python3.8/site-packages/flask/app.py:1758]
+2020-10-23 01:55:40,967 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:104]
+2020-10-23 01:58:37,036 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:104]
+2020-10-23 01:58:37,058 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:104]
+2020-10-23 01:58:37,058 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:104]
+2020-10-23 02:00:04,552 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:104]
+2020-10-23 02:00:04,569 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:104]
+2020-10-23 02:00:04,569 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:104]
+2020-10-23 02:19:04,976 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:104]
+2020-10-23 02:19:05,061 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:104]
+2020-10-23 02:19:05,061 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:104]
+2020-10-23 02:20:50,990 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:104]
+2020-10-23 02:20:51,038 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:104]
+2020-10-23 02:20:51,038 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:104]
+2020-10-23 02:23:41,065 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:104]
+2020-10-23 02:23:41,098 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:104]
+2020-10-23 02:23:41,098 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:104]
+2020-10-23 02:25:10,902 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:104]
+2020-10-23 02:25:10,942 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:104]
+2020-10-23 02:25:10,942 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:104]
+2020-10-23 02:28:14,302 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:104]
+2020-10-23 02:28:14,438 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:104]
+2020-10-23 02:28:14,438 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:104]
+2020-10-23 02:28:26,633 ERROR: Exception on /protected [GET] [in /opt/miniconda3/lib/python3.8/site-packages/flask/app.py:1758]
 Traceback (most recent call last):
   File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -12,8 +34,10 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/opt/miniconda3/lib/python3.8/site-packages/flask/app.py", line 1799, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/mmaitland300/flask/projectmatt/app/faceswap/faceswap.py", line 74, in upload
-    return render_template("faceswap/fgallery.html", warning="Only upload two images!")
+  File "/opt/miniconda3/lib/python3.8/site-packages/flask_login/utils.py", line 228, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/mmaitland300/flask/projectmatt/app/main/views.py", line 341, in lehigh
+    return render_template('mcshea/welcome.html')
   File "/opt/miniconda3/lib/python3.8/site-packages/flask/templating.py", line 134, in render_template
     return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
   File "/opt/miniconda3/lib/python3.8/site-packages/jinja2/environment.py", line 869, in get_or_select_template
@@ -22,80 +46,32 @@ Traceback (most recent call last):
     return self._load_template(name, self.make_globals(globals))
   File "/opt/miniconda3/lib/python3.8/site-packages/jinja2/environment.py", line 804, in _load_template
     template = self.loader.load(self, name, globals)
-  File "/opt/miniconda3/lib/python3.8/site-packages/jinja2/loaders.py", line 113, in load
-    source, filename, uptodate = self.get_source(environment, name)
-  File "/opt/miniconda3/lib/python3.8/site-packages/flask/templating.py", line 58, in get_source
-    return self._get_source_fast(environment, template)
-  File "/opt/miniconda3/lib/python3.8/site-packages/flask/templating.py", line 86, in _get_source_fast
-    raise TemplateNotFound(template)
-jinja2.exceptions.TemplateNotFound: faceswap/fgallery.html
-2020-10-20 19:18:51,344 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:18:51,374 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:18:51,374 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:21:51,784 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:21:51,801 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:21:51,801 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:29:39,843 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:29:39,861 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:29:39,861 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:31:04,939 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:31:04,950 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:31:04,950 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:33:49,582 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:33:49,600 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:33:49,600 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:37:42,533 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:37:42,548 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:37:42,548 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:38:42,783 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:38:42,798 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:38:42,798 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:40:52,740 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:40:52,758 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:40:52,758 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:41:29,442 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:41:29,455 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:41:29,455 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:43:43,478 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:43:43,490 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:43:43,490 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:45:01,102 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:45:01,116 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:45:01,116 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:45:56,385 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:45:56,400 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:45:56,400 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:46:38,177 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:46:38,205 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:46:38,205 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:47:41,175 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:47:41,187 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:47:41,187 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:51:49,218 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:51:49,232 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:51:49,232 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:53:08,043 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:53:08,059 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:53:08,059 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:53:53,095 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:53:53,111 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:53:53,111 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:54:35,494 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:54:35,507 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:54:35,507 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:55:15,143 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:55:15,156 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:55:15,156 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:59:47,380 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:59:47,393 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 19:59:47,393 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 20:00:41,436 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 20:00:41,458 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 20:00:41,458 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 20:01:51,130 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 20:01:51,152 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 20:01:51,152 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 20:03:00,820 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 20:03:00,838 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 20:03:00,838 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
-2020-10-20 20:05:24,351 INFO: Matts brain startup [in /home/mmaitland300/flask/projectmatt/app/__init__.py:102]
+  File "/opt/miniconda3/lib/python3.8/site-packages/jinja2/loaders.py", line 125, in load
+    code = environment.compile(source, name, filename)
+  File "/opt/miniconda3/lib/python3.8/site-packages/jinja2/environment.py", line 591, in compile
+    self.handle_exception(exc_info, source_hint=source_hint)
+  File "/opt/miniconda3/lib/python3.8/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/opt/miniconda3/lib/python3.8/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/mmaitland300/flask/projectmatt/app/templates/mcshea/welcome.html", line 30, in <module>
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+  File "/opt/miniconda3/lib/python3.8/site-packages/jinja2/environment.py", line 497, in _parse
+    return Parser(self, source, name, encode_filename(filename)).parse()
+  File "/opt/miniconda3/lib/python3.8/site-packages/jinja2/parser.py", line 901, in parse
+    result = nodes.Template(self.subparse(), lineno=1)
+  File "/opt/miniconda3/lib/python3.8/site-packages/jinja2/parser.py", line 883, in subparse
+    rv = self.parse_statement()
+  File "/opt/miniconda3/lib/python3.8/site-packages/jinja2/parser.py", line 130, in parse_statement
+    return getattr(self, 'parse_' + self.stream.current.value)()
+  File "/opt/miniconda3/lib/python3.8/site-packages/jinja2/parser.py", line 268, in parse_block
+    node.body = self.parse_statements(('name:endblock',), drop_needle=True)
+  File "/opt/miniconda3/lib/python3.8/site-packages/jinja2/parser.py", line 170, in parse_statements
+    self.fail_eof(end_tokens)
+  File "/opt/miniconda3/lib/python3.8/site-packages/jinja2/parser.py", line 104, in fail_eof
+    return self._fail_ut_eof(None, stack, lineno)
+  File "/opt/miniconda3/lib/python3.8/site-packages/jinja2/parser.py", line 90, in _fail_ut_eof
+    self.fail(' '.join(message), lineno)
+  File "/opt/miniconda3/lib/python3.8/site-packages/jinja2/parser.py", line 59, in fail
+    raise exc(msg, lineno, self.name, self.filename)
+jinja2.exceptions.TemplateSyntaxError: Unexpected end of template. Jinja was looking for the following tags: 'endblock'. The innermost block that needs to be closed is 'block'.

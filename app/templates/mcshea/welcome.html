@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+
+    <br><br><br><br><br><br>
+    <form method='post' action="" style="text-align: center;">
+          <label for="password">Password:</label>
+          <input type="text" id="password" name="password">
+          <input type="submit" value="Enter Protected Area">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+    </form>
+    
+{% endblock %}
