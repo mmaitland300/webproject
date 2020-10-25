@@ -69,7 +69,7 @@ body {
   line-height: 1.5;
   color: #55595c;
   text-align: left;
-  background-color: rgba(243, 243, 243, 0.829);
+  background-color: rgba(235, 235, 235, 0.829);
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -279,6 +279,9 @@ button,
 [type="button"],
 [type="reset"],
 [type="submit"] {
+  background-color: #555;
+  color: #fff;
+  border-radius: 10px;
   -webkit-appearance: button;
 }
 
