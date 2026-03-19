@@ -14,7 +14,7 @@ export default function AboutPage() {
       <div className="mx-auto max-w-4xl px-6">
         <SectionHeader
           eyebrow="About"
-          title="Developer, Builder, Problem Solver"
+          title="Developer, Builder, Technical Support"
           description="A focused look at my technical background, hands-on support experience, and the tools I use to ship practical work."
           className="mb-16"
         />

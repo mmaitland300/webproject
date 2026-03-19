@@ -21,13 +21,20 @@ export const projects: Project[] = [
     slug: "stringflux",
     title: "StringFlux",
     description:
-      "Most recent active project focused on practical string-processing workflows and cleaner transformation pipelines for day-to-day development tasks.",
+      "A transient-aware, multiband granular delay and freeze plugin for guitar and other stringed instruments.",
     problem:
-      "Needed a flexible way to test, refine, and reuse string transformation logic without rewriting one-off scripts each time.",
-    role: "Solo developer, concept, architecture, implementation, and iteration.",
+      "Generic granular processors often miss instrument-specific transient behavior, which limits expressive control for stringed-instrument performance.",
+    role:
+      "Solo developer responsible for product direction, DSP architecture, and implementation.",
     outcome:
-      "Current in-progress build used as a proving ground for cleaner utility design, repeatable workflows, and stronger developer ergonomics.",
-    tags: ["TypeScript", "Utilities", "Developer Tooling"],
+      "In progress. Current implementation includes 3-band crossover routing, transient and density-driven grain scheduling, history/freeze capture, feedback-bus processing, and safe 1x/2x/4x oversampling transitions.",
+    tags: [
+      "Audio Plugin",
+      "DSP",
+      "Granular Synthesis",
+      "Transient Detection",
+      "Oversampling",
+    ],
     github: "https://github.com/mmaitland300/StringFlux.git",
     category: "featured",
   },

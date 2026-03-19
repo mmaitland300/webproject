@@ -4,16 +4,28 @@ import { SectionHeader } from "@/components/ui/section-header";
 
 export const dynamic = "force-dynamic";
 
-export default async function AdminInboxPage() {
-  const active = await prisma.contactSubmission.findMany({
-    where: { archivedAt: null },
-    orderBy: { createdAt: "desc" },
-  });
+const PAGE_SIZE = 50;
 
-  const archived = await prisma.contactSubmission.findMany({
-    where: { archivedAt: { not: null } },
-    orderBy: { createdAt: "desc" },
-  });
+interface Props {
+  searchParams: Promise<{ tab?: string }>;
+}
+
+export default async function AdminInboxPage({ searchParams }: Props) {
+  const { tab } = await searchParams;
+  const currentTab = tab === "archived" ? "archived" : "active";
+
+  const [submissions, activeCount, archivedCount] = await Promise.all([
+    prisma.contactSubmission.findMany({
+      where:
+        currentTab === "archived"
+          ? { archivedAt: { not: null } }
+          : { archivedAt: null },
+      orderBy: { createdAt: "desc" },
+      take: PAGE_SIZE,
+    }),
+    prisma.contactSubmission.count({ where: { archivedAt: null } }),
+    prisma.contactSubmission.count({ where: { archivedAt: { not: null } } }),
+  ]);
 
   return (
     <div className="py-32">
@@ -28,7 +40,7 @@ export default async function AdminInboxPage() {
               titleClassName="text-3xl"
             />
             <p className="text-sm text-muted-foreground mt-1">
-              {active.length} active &middot; {archived.length} archived
+              {activeCount} active &middot; {archivedCount} archived
             </p>
           </div>
           <form
@@ -47,7 +59,12 @@ export default async function AdminInboxPage() {
           </form>
         </div>
 
-        <InboxTabs active={active} archived={archived} />
+        <InboxTabs
+          submissions={submissions}
+          currentTab={currentTab}
+          activeCount={activeCount}
+          archivedCount={archivedCount}
+        />
       </div>
     </div>
   );
