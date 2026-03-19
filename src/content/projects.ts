@@ -132,15 +132,6 @@ export const projects: Project[] = [
     iframe: "/games/atoms/index.html",
     category: "experiment",
   },
-  {
-    slug: "circles-design",
-    title: "Concentric Circles",
-    description:
-      "A generative art piece using Phaser.js to create concentric circle patterns.",
-    tags: ["JavaScript", "Phaser.js", "Generative Art"],
-    iframe: "/games/circles/index.html",
-    category: "experiment",
-  },
 ];
 
 export function getFeaturedProjects() {
