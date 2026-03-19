@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Vendored / static game assets copied into public are not app source.
+    "public/games/**",
   ]),
 ]);
 

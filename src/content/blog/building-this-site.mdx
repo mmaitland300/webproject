@@ -1,0 +1,73 @@
+---
+title: "Building This Site with Next.js"
+description: "A look at the tech stack, design decisions, and architecture behind this portfolio site."
+date: "2026-03-18"
+tags: ["Next.js", "TypeScript", "Tailwind CSS"]
+published: true
+---
+
+## Why Next.js?
+
+When I decided to rebuild my portfolio from the ground up, Next.js was the clear choice. The App Router gives you server components by default, Server Actions for mutations, and a great developer experience with TypeScript.
+
+The previous version was a Flask app — functional but dated. I wanted something that would showcase modern web development practices while being genuinely useful as a portfolio.
+
+## The Tech Stack
+
+Here's what powers this site:
+
+- **Next.js** with the App Router and TypeScript
+- **Tailwind CSS v4** for styling (no preprocessors needed)
+- **shadcn/ui** for accessible, composable UI components
+- **Framer Motion** for smooth scroll animations and hover effects
+- **MDX** for blog posts (you're reading one now!)
+- **Resend** for contact form email delivery
+
+### Why Tailwind v4?
+
+Tailwind v4 is a significant evolution. It ships as a single package, requires no separate config file for most setups, and targets modern browsers. The new `@theme` directive and CSS-first configuration approach means less JavaScript config and more native CSS.
+
+```css
+@theme inline {
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-jetbrains-mono);
+}
+```
+
+## Design Philosophy
+
+I wanted something between minimal-flat and neon-overload. The dark theme with purple-to-cyan gradients gives the site personality without being distracting. Every animation serves a purpose — guiding attention, not stealing it.
+
+### Key Design Decisions
+
+1. **Dark by default** — matches the developer aesthetic without feeling generic
+2. **Gradient accents** — purple-to-cyan creates visual hierarchy
+3. **Framer Motion** — scroll reveals feel polished, not heavy
+4. **Clean typography** — Inter for body, JetBrains Mono for code
+
+## Server Actions Over API Routes
+
+For the contact form, I used a Server Action instead of a traditional API route. Server Actions are the recommended way to handle mutations in Next.js — they run on the server, work with progressive enhancement, and integrate naturally with React's form handling.
+
+```typescript
+"use server";
+
+export async function submitContact(
+  _prevState: ContactState,
+  formData: FormData
+): Promise<ContactState> {
+  // Validate with zod, rate limit, send via Resend
+}
+```
+
+## What's Next
+
+Phase 2 added the blog you're reading. Phases 3 and 4 will bring:
+
+- A database-backed admin inbox for contact submissions
+- OAuth authentication with Auth.js
+- Command palette navigation
+- Dark/light mode toggle
+- Lighthouse optimization pass
+
+Stay tuned for more posts as I build out each phase.

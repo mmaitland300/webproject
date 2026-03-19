@@ -1,0 +1,126 @@
+---
+title: "TypeScript Patterns I Use Every Day"
+description: "Practical TypeScript patterns that make code safer and more expressive — discriminated unions, exhaustive checks, and more."
+date: "2026-03-15"
+tags: ["TypeScript", "Patterns", "Web Dev"]
+published: true
+---
+
+## Why Patterns Matter
+
+TypeScript is more than just "JavaScript with types." The real power comes from patterns that leverage the type system to catch bugs at compile time rather than runtime. Here are the ones I reach for most often.
+
+## Discriminated Unions
+
+This is the pattern I use most. Instead of a loose object with optional fields, create a union where each variant has a literal discriminant:
+
+```typescript
+type Result<T> =
+  | { success: true; data: T }
+  | { success: false; error: string };
+
+function handleResult(result: Result<User>) {
+  if (result.success) {
+    // TypeScript knows result.data exists here
+    console.log(result.data.name);
+  } else {
+    // TypeScript knows result.error exists here
+    console.error(result.error);
+  }
+}
+```
+
+This is far better than `{ data?: T; error?: string }` because the type system enforces that you handle both cases.
+
+## Exhaustive Switch Checks
+
+When you have a union type, you want the compiler to tell you if you forget a case:
+
+```typescript
+type Status = "idle" | "loading" | "success" | "error";
+
+function getStatusMessage(status: Status): string {
+  switch (status) {
+    case "idle":
+      return "Ready";
+    case "loading":
+      return "Loading...";
+    case "success":
+      return "Done!";
+    case "error":
+      return "Something went wrong";
+    default: {
+      const _exhaustive: never = status;
+      return _exhaustive;
+    }
+  }
+}
+```
+
+If you add a new status like `"retrying"`, TypeScript will flag the `default` branch because `never` can't be assigned from `"retrying"`.
+
+## Branded Types
+
+Sometimes you have two values with the same shape but different meanings. Branded types prevent mixing them up:
+
+```typescript
+type UserId = string & { readonly __brand: "UserId" };
+type PostId = string & { readonly __brand: "PostId" };
+
+function createUserId(id: string): UserId {
+  return id as UserId;
+}
+
+function getUser(id: UserId) { /* ... */ }
+function getPost(id: PostId) { /* ... */ }
+
+const userId = createUserId("abc123");
+// getPost(userId); // Type error! Can't use UserId where PostId is expected
+```
+
+## Type-Safe Event Emitters
+
+Using a mapped type to ensure event handlers match their payload:
+
+```typescript
+type Events = {
+  userCreated: { id: string; name: string };
+  postPublished: { id: string; title: string };
+};
+
+class TypedEmitter<T extends Record<string, unknown>> {
+  private handlers = new Map<keyof T, Set<(data: never) => void>>();
+
+  on<K extends keyof T>(event: K, handler: (data: T[K]) => void) {
+    if (!this.handlers.has(event)) {
+      this.handlers.set(event, new Set());
+    }
+    this.handlers.get(event)!.add(handler as (data: never) => void);
+  }
+
+  emit<K extends keyof T>(event: K, data: T[K]) {
+    this.handlers.get(event)?.forEach((handler) => handler(data as never));
+  }
+}
+```
+
+## The `satisfies` Operator
+
+One of my favorite recent additions. It validates a value against a type without widening it:
+
+```typescript
+const config = {
+  api: "https://api.example.com",
+  timeout: 5000,
+  retries: 3,
+} satisfies Record<string, string | number>;
+
+// config.api is still typed as string (not string | number)
+// config.timeout is still typed as number
+```
+
+## Closing Thoughts
+
+These patterns aren't about cleverness — they're about making invalid states unrepresentable. The more your type system catches at compile time, the fewer bugs reach production.
+
+The key insight is that TypeScript's type system is a tool for communication. Good types tell the next developer (including future you) what's possible and what isn't.
