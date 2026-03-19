@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useState } from "react";
 import { motion } from "framer-motion";
 import { Send, CheckCircle2, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -19,6 +19,15 @@ export function ContactForm() {
     submitContact,
     initialState
   );
+  const [dismissed, setDismissed] = useState(false);
+  const [formInstanceKey, setFormInstanceKey] = useState(0);
+
+  const showSuccess = state.success && !dismissed;
+  const handleSendAnother = () => {
+    setDismissed(true);
+    // Force a fresh form node so uncontrolled inputs start empty.
+    setFormInstanceKey((key) => key + 1);
+  };
 
   return (
     <motion.div
@@ -27,16 +36,27 @@ export function ContactForm() {
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
     >
-      {state.success ? (
+      {showSuccess ? (
         <div className="flex flex-col items-center justify-center py-12 text-center">
           <div className="p-3 rounded-full bg-green-500/10 mb-4">
             <CheckCircle2 className="h-8 w-8 text-green-500" />
           </div>
           <h3 className="text-xl font-semibold mb-2">Message Sent!</h3>
-          <p className="text-muted-foreground">{state.message}</p>
+          <p className="text-muted-foreground mb-6">{state.message}</p>
+          <Button
+            variant="outline"
+            onClick={handleSendAnother}
+          >
+            Send Another Message
+          </Button>
         </div>
       ) : (
-        <form action={formAction} className="space-y-6">
+        <form
+          key={formInstanceKey}
+          action={formAction}
+          onSubmit={() => setDismissed(false)}
+          className="space-y-6"
+        >
           {state.message && !state.success && (
             <div className="flex items-center gap-2 p-3 rounded-lg bg-destructive/10 text-destructive text-sm">
               <AlertCircle className="h-4 w-4 shrink-0" />

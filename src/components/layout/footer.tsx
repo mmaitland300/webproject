@@ -1,11 +1,16 @@
 import Link from "next/link";
-import { Github, Mail } from "lucide-react";
+import { Github, Mail, Music2 } from "lucide-react";
 
 const socialLinks = [
   {
     href: "https://github.com/mmaitland300",
     label: "GitHub",
     icon: Github,
+  },
+  {
+    href: "https://soundcloud.com/matthew_maitland",
+    label: "SoundCloud",
+    icon: Music2,
   },
   {
     href: "mailto:mmaitland300@gmail.com",
@@ -19,6 +24,7 @@ const navLinks = [
   { href: "/projects", label: "Projects" },
   { href: "/about", label: "About" },
   { href: "/blog", label: "Blog" },
+  { href: "/music", label: "Music" },
   { href: "/contact", label: "Contact" },
 ];
 

@@ -35,8 +35,8 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
           className="mt-6 mx-auto max-w-2xl text-lg sm:text-xl text-muted-foreground leading-relaxed"
         >
-          I build modern web applications with clean code and thoughtful design.
-          Focused on TypeScript, React, and the tools that make the web better.
+          I build web applications, solve technical problems, and make music.
+          From full-stack development to machine learning to creative side projects.
         </motion.p>
 
         <motion.div

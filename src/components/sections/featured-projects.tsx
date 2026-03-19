@@ -5,10 +5,10 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { ProjectCard } from "@/components/sections/project-card";
-import { projects } from "@/content/projects";
+import { getFeaturedProjects } from "@/content/projects";
 
 export function FeaturedProjects() {
-  const featured = projects.filter((p) => p.featured).slice(0, 4);
+  const featured = getFeaturedProjects().slice(0, 3);
 
   return (
     <section className="py-24 relative z-10">
@@ -25,12 +25,12 @@ export function FeaturedProjects() {
             <span className="gradient-text">Projects</span>
           </h2>
           <p className="mt-3 text-muted-foreground max-w-lg mx-auto">
-            A selection of things I&apos;ve built &mdash; from interactive
-            simulations to full-stack applications.
+            Professional work and selected side projects &mdash; from
+            client applications to interactive experiments.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {featured.map((project, i) => (
             <ProjectCard key={project.slug} project={project} index={i} />
           ))}

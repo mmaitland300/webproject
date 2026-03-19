@@ -1,16 +1,20 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { ExternalLink, Github, Gamepad2 } from "lucide-react";
+import { ExternalLink, Github, Gamepad2, Play, X } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import type { Project } from "@/content/projects";
 
 interface ProjectCardProps {
   project: Project;
   index: number;
+  compact?: boolean;
 }
 
-export function ProjectCard({ project, index }: ProjectCardProps) {
+export function ProjectCard({ project, index, compact }: ProjectCardProps) {
+  const [iframeActive, setIframeActive] = useState(false);
+
   return (
     <motion.article
       initial={{ opacity: 0, y: 30 }}
@@ -21,18 +25,36 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
     >
       {/* Preview area */}
       {project.iframe ? (
-        <div className="relative h-48 bg-black/50 flex items-center justify-center overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-card/80 z-10 pointer-events-none group-hover:opacity-0 transition-opacity duration-300" />
-          <Gamepad2 className="h-10 w-10 text-muted-foreground/30 group-hover:opacity-0 transition-opacity" />
-          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-            <iframe
-              src={project.iframe}
-              className="w-full h-full border-0"
-              title={project.title}
-              loading="lazy"
-              sandbox="allow-scripts allow-same-origin"
-            />
-          </div>
+        <div className="relative h-48 bg-black/50 overflow-hidden">
+          {iframeActive ? (
+            <>
+              <iframe
+                src={project.iframe}
+                className="w-full h-full border-0"
+                title={project.title}
+                sandbox="allow-scripts allow-same-origin"
+              />
+              <button
+                onClick={() => setIframeActive(false)}
+                className="absolute top-2 right-2 z-20 p-1 rounded-md bg-black/60 text-white/70 hover:text-white transition-colors"
+                aria-label="Close interactive preview"
+              >
+                <X size={14} />
+              </button>
+            </>
+          ) : (
+            <button
+              onClick={() => setIframeActive(true)}
+              className="w-full h-full flex flex-col items-center justify-center gap-2 cursor-pointer"
+            >
+              <div className="p-3 rounded-full bg-purple-500/20 text-purple-400 transition-transform group-hover:scale-110">
+                <Play size={24} className="ml-0.5" />
+              </div>
+              <span className="text-xs text-muted-foreground">
+                Click to play
+              </span>
+            </button>
+          )}
         </div>
       ) : (
         <div className="h-48 bg-gradient-to-br from-purple-500/10 to-cyan-500/10 flex items-center justify-center">
@@ -50,6 +72,27 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         <p className="text-sm text-muted-foreground leading-relaxed mb-4">
           {project.description}
         </p>
+
+        {!compact && project.problem && (
+          <div className="space-y-2 mb-4 text-sm">
+            <div>
+              <span className="font-medium text-foreground/80">Problem: </span>
+              <span className="text-muted-foreground">{project.problem}</span>
+            </div>
+            {project.role && (
+              <div>
+                <span className="font-medium text-foreground/80">Role: </span>
+                <span className="text-muted-foreground">{project.role}</span>
+              </div>
+            )}
+            {project.outcome && (
+              <div>
+                <span className="font-medium text-foreground/80">Outcome: </span>
+                <span className="text-muted-foreground">{project.outcome}</span>
+              </div>
+            )}
+          </div>
+        )}
 
         {/* Tags */}
         <div className="flex flex-wrap gap-1.5 mb-4">
@@ -87,9 +130,12 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             </a>
           )}
           {project.iframe && (
-            <span className="flex items-center gap-1.5 text-xs text-purple-400">
-              <Gamepad2 size={14} /> Hover to play
-            </span>
+            <button
+              onClick={() => setIframeActive(!iframeActive)}
+              className="flex items-center gap-1.5 text-xs text-purple-400 hover:text-purple-300 transition-colors"
+            >
+              <Gamepad2 size={14} /> {iframeActive ? "Stop" : "Play"}
+            </button>
           )}
         </div>
       </div>

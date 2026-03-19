@@ -4,7 +4,7 @@ import { ProjectGrid } from "@/components/sections/project-grid";
 export const metadata: Metadata = {
   title: "Projects",
   description:
-    "Browse my projects — interactive simulations, games, and web applications.",
+    "Professional work, side projects, and interactive experiments by Matt Maitland.",
 };
 
 export default function ProjectsPage() {
@@ -16,8 +16,8 @@ export default function ProjectsPage() {
             My <span className="gradient-text">Projects</span>
           </h1>
           <p className="mt-4 text-muted-foreground max-w-lg mx-auto">
-            Things I&apos;ve built, from quick experiments to full applications.
-            Hover over game cards to play them right in the browser.
+            Professional work, side projects, and interactive experiments.
+            Hover over game cards to play them in the browser.
           </p>
         </div>
         <ProjectGrid />

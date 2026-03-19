@@ -13,86 +13,12 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
-
-const skills = [
-  "Python",
-  "JavaScript",
-  "React",
-  "Next.js",
-  "Node.js",
-  "Django",
-  "Flask",
-  "PostgreSQL",
-  "MySQL",
-  "MongoDB",
-  "REST APIs",
-  "Apache",
-  "Machine Learning",
-  "Technical Support",
-  "TCP/IP",
-  "Git",
-  "GitHub",
-  "HTML5",
-  "CSS",
-  "SQL",
-];
-
-const experience = [
-  {
-    role: "Freelance Web and Software Developer",
-    company: "Maitland Web Design",
-    period: "January 2018 to Present",
-    description:
-      "Build custom web and software solutions using Django, Flask, React, and Next.js. Design databases, integrate third-party APIs, train machine learning models for image-based object detection, deploy applications, and support clients from delivery through maintenance.",
-  },
-  {
-    role: "Warehouse Associate",
-    company: "Giant Food",
-    period: "March 2017 to January 2020",
-    description:
-      "Handled pallet movement, inventory flow, and shipping deadlines in a large-scale warehouse environment while helping improve team efficiency, stock accuracy, and day-to-day operations.",
-  },
-  {
-    role: "Maintenance",
-    company: "Carroll Property Management",
-    period: "February 2010 to August 2014",
-    description:
-      "Maintained hotel, RV park, and marina properties, operated heavy equipment, built utility lines for new RV lots, and handled electrical troubleshooting, demolition, and construction-related repairs.",
-  },
-  {
-    role: "Detailer",
-    company: "Fridays Auto Sales",
-    period: "April 2006 to September 2009",
-    description:
-      "Prepared vehicles for customers while supporting mechanics with maintenance and repair work, including brakes, starters, oil changes, inspections, and shop organization.",
-  },
-];
-
-const education = [
-  {
-    degree: "Bachelor's in Biochemistry",
-    school: "University of South Florida",
-    period: "January 2014 to December 2016",
-    description:
-      "Completed upper-division science coursework while building strong analytical and research habits that continue to inform technical problem solving.",
-  },
-  {
-    degree: "Associate in General Studies",
-    school: "Florida Southwestern State College",
-    period: "January 2008 to December 2011",
-    description:
-      "Built a broad academic foundation before continuing into more specialized study.",
-  },
-];
-
-const certifications = [
-  {
-    name: "CompTIA A+",
-    period: "July 2023 to July 2026",
-    description:
-      "Validated hands-on skills across hardware, software, networking, troubleshooting, security, mobile devices, and customer support.",
-  },
-];
+import {
+  resumeSkills as skills,
+  resumeExperience as experience,
+  resumeEducation as education,
+  resumeCertifications as certifications,
+} from "@/content/resume";
 
 const fadeUp = {
   initial: { opacity: 0, y: 20 },
@@ -235,11 +161,10 @@ export function AboutContent() {
           <Mail className="mr-2 h-4 w-4" /> Email
         </a>
         <a
-          href="/resume.pdf"
-          download
+          href="/resume"
           className={buttonVariants({ variant: "outline" })}
         >
-          <FileDown className="mr-2 h-4 w-4" /> Download Resume
+          <FileDown className="mr-2 h-4 w-4" /> View Resume
         </a>
       </motion.section>
     </div>
