@@ -17,7 +17,6 @@ export interface Project {
 }
 
 export const projects: Project[] = [
-  // ── Featured / Professional ──────────────────────────────
   {
     slug: "portfolio-site",
     title: "Portfolio Website",
@@ -25,7 +24,7 @@ export const projects: Project[] = [
       "Production Next.js portfolio with MDX blogging, a protected admin inbox, and an abuse-resistant contact flow. Built with typed content/data structures and deployment-ready environment management.",
     problem:
       "Needed a credible public portfolio that could showcase work, accept contact reliably, and support iterative updates without breaking production.",
-    role: "Solo developer — system design, UI implementation, data modeling, auth, deployment, and documentation.",
+    role: "Solo developer, system design, UI implementation, data modeling, auth, deployment, and documentation.",
     outcome:
       "Shipped a live site with server-side validation, honeypot plus Redis rate limiting, GitHub OAuth admin gating, and draft-post protection.",
     tags: [
@@ -47,7 +46,7 @@ export const projects: Project[] = [
       "Image-classification pipeline for snake species using a custom CNN workflow: dataset preparation, preprocessing, training/evaluation loops, and inference scripts.",
     problem:
       "Needed a repeatable way to classify snake photos under real-world data constraints like inconsistent image quality, class imbalance, and noisy samples.",
-    role: "ML engineer — data curation, preprocessing strategy, model and training setup, and error analysis.",
+    role: "ML engineer, data curation, preprocessing strategy, model and training setup, and error analysis.",
     outcome:
       "Delivered an end-to-end computer vision prototype with reproducible training/evaluation flow and a clear path for future model tuning.",
     tags: ["Python", "Machine Learning", "CNN", "Computer Vision"],
@@ -61,7 +60,7 @@ export const projects: Project[] = [
       "Full-stack Django auction platform with account auth, listing lifecycle management, bid validation rules, watchlists, and category browsing.",
     problem:
       "Needed to implement transactional auction behavior with reliable server-side rules for bidding and ownership in a multi-user workflow.",
-    role: "Full-stack developer — data modeling, auth/session flows, bid logic, template UI implementation, and route-level behavior.",
+    role: "Full-stack developer, data modeling, auth/session flows, bid logic, template UI implementation, and route-level behavior.",
     outcome:
       "Built a complete web app covering core auction flows (create, list, bid, watch, manage) with server-enforced business rules and persistent relational data.",
     tags: ["Django", "Python", "PostgreSQL", "HTML/CSS"],
@@ -75,7 +74,7 @@ export const projects: Project[] = [
       "Systems-focused support work across simulator hardware/software stacks, including diagnostics for calibration drift, networking/configuration failures, licensing issues, and Windows/peripheral conflicts.",
     problem:
       "Customers needed fast, accurate triage and resolution for multi-layer issues where hardware, software, and environment variables intersected.",
-    role: "Technical support specialist — incident triage, remote diagnostics, root-cause isolation, and customer-facing resolution guidance.",
+    role: "Technical support specialist, incident triage, remote diagnostics, root-cause isolation, and customer-facing resolution guidance.",
     outcome:
       "Improved issue resolution quality by applying structured troubleshooting playbooks and reproducible diagnostic paths across recurring failure modes.",
     tags: [
@@ -93,16 +92,14 @@ export const projects: Project[] = [
     description:
       "A file organizer built for musicians and producers to sort and manage large sample libraries. Scans directories, categorizes files, and keeps collections clean.",
     problem:
-      "Large sample libraries get messy fast — thousands of files with inconsistent naming across dozens of folders.",
-    role: "Solo developer — file system logic, categorization rules, and CLI interface.",
+      "Large sample libraries get messy fast, with thousands of files and inconsistent naming across dozens of folders.",
+    role: "Solo developer, file system logic, categorization rules, and CLI interface.",
     outcome:
       "Practical tool that saves hours of manual sorting for music producers.",
     tags: ["Python", "CLI", "File Systems"],
     github: "https://github.com/mmaitland300/organizer_project",
     category: "featured",
   },
-
-  // ── Experiments ──────────────────────────────────────────
   {
     slug: "turn-based-rpg",
     title: "Turn-Based RPG",
