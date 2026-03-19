@@ -1,0 +1,35 @@
+---
+title: "StringFlux: Turning a Plugin Into an Instrument"
+description: "A quick development update on building StringFlux into a string-focused, transient-aware texture instrument."
+date: "2026-03-19"
+tags: ["Audio Plugin Development", "DSP"]
+published: true
+---
+
+A short look at how StringFlux is evolving from a granular delay idea into a more focused texture instrument.
+
+## The Original Idea
+
+StringFlux started as a granular delay concept, but the project has gradually become more specific than that. The real direction is a string-focused, transient-aware effect that can take a single performance and expand it into something that feels bigger, layered, and more alive.
+
+## What Changed in Development
+
+A lot of the recent progress has been less about adding flashy features and more about making the foundation solid. That has meant tightening DSP behavior, improving timing and feedback flow, building better test coverage, and making sure state and preset behavior are predictable.
+
+One of the more difficult stretches was ripping apart `PluginProcessor.cpp` to add oversampling without breaking the rest of the signal path. For a while, it felt like I might have to scrap the whole structure and rebuild it from scratch. Instead, that refactor ended up forcing better separation in the processing flow and made the plugin feel less fragile afterward.
+
+That work is not very visible from the outside, but it matters if the goal is to build something that feels reliable instead of experimental.
+
+## The Current Focus
+
+One of the bigger additions has been a grain-bus shaper for the wet texture. The point is not to turn StringFlux into a generic distortion plugin, but to give the generated cloud more harmonic life and character while keeping the core identity intact.
+
+The broader goal is still the same: make the result feel like an orchestra growing out of a single performance rather than just a chain of effects.
+
+## Current Direction
+
+The long-term direction is what makes the project interesting to me. I want StringFlux to feel more like an instrument than a plugin that just decorates a signal. That means focusing on responsiveness, controlled layering, and musical texture capture instead of feature sprawl.
+
+## Summary
+
+It is still a work in progress, but it is starting to feel like it has a real identity. That has been the biggest shift so far: moving from "interesting idea" to "coherent product."
