@@ -18,6 +18,20 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    slug: "stringflux",
+    title: "StringFlux",
+    description:
+      "Most recent active project focused on practical string-processing workflows and cleaner transformation pipelines for day-to-day development tasks.",
+    problem:
+      "Needed a flexible way to test, refine, and reuse string transformation logic without rewriting one-off scripts each time.",
+    role: "Solo developer, concept, architecture, implementation, and iteration.",
+    outcome:
+      "Current in-progress build used as a proving ground for cleaner utility design, repeatable workflows, and stronger developer ergonomics.",
+    tags: ["TypeScript", "Utilities", "Developer Tooling"],
+    github: "https://github.com/mmaitland300/StringFlux.git",
+    category: "featured",
+  },
+  {
     slug: "portfolio-site",
     title: "Portfolio Website",
     description:

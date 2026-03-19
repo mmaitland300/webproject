@@ -1,6 +1,6 @@
 ---
-title: "TypeScript Patterns I Use Every Day"
-description: "Practical TypeScript patterns that make code safer and more expressive — discriminated unions, exhaustive checks, and more."
+title: "TypeScript Patterns I'm Learning and Reusing"
+description: "Practical TypeScript patterns I keep coming back to as I level up — discriminated unions, exhaustive checks, and more."
 date: "2026-03-15"
 tags: ["TypeScript", "Patterns", "Web Dev"]
 published: true
@@ -8,11 +8,11 @@ published: true
 
 ## Why Patterns Matter
 
-TypeScript is more than just "JavaScript with types." The real power comes from patterns that leverage the type system to catch bugs at compile time rather than runtime. Here are the ones I reach for most often.
+As I learn TypeScript more deeply, I keep finding patterns that make code safer and easier to reason about. These are the ones I currently reach for most often.
 
 ## Discriminated Unions
 
-This is the pattern I use most. Instead of a loose object with optional fields, create a union where each variant has a literal discriminant:
+This is one I use a lot right now. Instead of a loose object with optional fields, create a union where each variant has a literal discriminant:
 
 ```typescript
 type Result<T> =
@@ -121,6 +121,6 @@ const config = {
 
 ## Closing Thoughts
 
-These patterns aren't about cleverness — they're about making invalid states unrepresentable. The more your type system catches at compile time, the fewer bugs reach production.
+These patterns are less about cleverness and more about reducing avoidable mistakes. The more issues the type system catches at compile time, the fewer bugs slip into runtime.
 
-The key insight is that TypeScript's type system is a tool for communication. Good types tell the next developer (including future you) what's possible and what isn't.
+The biggest takeaway for me so far: TypeScript's type system is a communication tool. Good types tell the next developer (including future me) what's possible and what isn't.
