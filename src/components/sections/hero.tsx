@@ -14,7 +14,7 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <div className="mb-6 inline-flex items-center gap-3 rounded-full border border-[rgba(136,212,255,0.14)] bg-[linear-gradient(90deg,rgba(255,255,255,0.04),rgba(136,212,255,0.04))] px-4 py-2 text-xs font-medium uppercase tracking-[0.22em] text-[rgba(196,206,223,0.78)] backdrop-blur-sm">
+          <div className="cyber-pill mb-6 inline-flex items-center gap-3 rounded-full px-4 py-2 text-xs font-medium uppercase tracking-[0.24em] text-[rgba(196,206,223,0.82)] backdrop-blur-sm">
             <span className="h-1.5 w-1.5 rounded-full bg-[rgba(136,212,255,0.95)] shadow-[0_0_12px_rgba(67,188,255,0.45)]" />
             Full-Stack Developer
           </div>
@@ -24,12 +24,10 @@ export function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-          className="hero-title text-4xl font-semibold leading-[1.04] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl"
+          className="text-5xl font-semibold leading-[1.02] tracking-tight sm:text-6xl md:text-7xl lg:text-8xl"
         >
-          Hi, I&apos;m{" "}
-          <span className="cyber-title">
-            Matt <span className="brand-accent">Maitland</span>
-          </span>
+          <span className="hero-lead">Hi, I&apos;m</span>{" "}
+          <span className="cyber-title hero-name">Matt Maitland</span>
         </motion.h1>
 
         <motion.p

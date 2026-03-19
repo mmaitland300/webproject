@@ -40,7 +40,7 @@ export function SectionHeader({
       )}
       <h1
         className={cn(
-          "page-title cyber-title text-balance text-3xl font-semibold tracking-tight sm:text-4xl",
+          "page-title cyber-title text-balance text-4xl font-semibold tracking-tight sm:text-5xl",
           titleClassName
         )}
       >
