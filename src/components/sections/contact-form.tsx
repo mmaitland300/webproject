@@ -15,19 +15,25 @@ const initialState: ContactState = {
 };
 
 export function ContactForm() {
+  const [instanceKey, setInstanceKey] = useState(0);
+
+  return (
+    <ContactFormInstance
+      key={instanceKey}
+      onReset={() => setInstanceKey((key) => key + 1)}
+    />
+  );
+}
+
+interface ContactFormInstanceProps {
+  onReset: () => void;
+}
+
+function ContactFormInstance({ onReset }: ContactFormInstanceProps) {
   const [state, formAction, pending] = useActionState(
     submitContact,
     initialState
   );
-  const [dismissed, setDismissed] = useState(false);
-  const [formInstanceKey, setFormInstanceKey] = useState(0);
-
-  const showSuccess = state.success && !dismissed;
-  const handleSendAnother = () => {
-    setDismissed(true);
-    // Force a fresh form node so uncontrolled inputs start empty.
-    setFormInstanceKey((key) => key + 1);
-  };
 
   return (
     <motion.div
@@ -36,7 +42,7 @@ export function ContactForm() {
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
     >
-      {showSuccess ? (
+      {state.success ? (
         <div className="flex flex-col items-center justify-center py-12 text-center">
           <div className="p-3 rounded-full bg-green-500/10 mb-4">
             <CheckCircle2 className="h-8 w-8 text-green-500" />
@@ -45,16 +51,14 @@ export function ContactForm() {
           <p className="text-muted-foreground mb-6">{state.message}</p>
           <Button
             variant="outline"
-            onClick={handleSendAnother}
+            onClick={onReset}
           >
             Send Another Message
           </Button>
         </div>
       ) : (
         <form
-          key={formInstanceKey}
           action={formAction}
-          onSubmit={() => setDismissed(false)}
           className="space-y-6"
         >
           {state.message && !state.success && (
