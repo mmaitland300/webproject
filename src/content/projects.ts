@@ -22,13 +22,21 @@ export const projects: Project[] = [
     slug: "portfolio-site",
     title: "Portfolio Website",
     description:
-      "This site — a modern portfolio built from scratch with Next.js, TypeScript, Tailwind CSS, and MDX blogging. Includes an admin inbox, contact form with rate limiting, and GitHub OAuth.",
+      "Production Next.js portfolio with MDX blogging, a protected admin inbox, and an abuse-resistant contact flow. Built with typed content/data structures and deployment-ready environment management.",
     problem:
-      "Needed a professional web presence that reflects current skills and is easy to maintain and extend.",
-    role: "Solo developer — design, implementation, and deployment.",
+      "Needed a credible public portfolio that could showcase work, accept contact reliably, and support iterative updates without breaking production.",
+    role: "Solo developer — system design, UI implementation, data modeling, auth, deployment, and documentation.",
     outcome:
-      "Deployed portfolio with blog, contact inbox, and admin dashboard.",
-    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Prisma", "Auth.js", "MDX"],
+      "Shipped a live site with server-side validation, honeypot plus Redis rate limiting, GitHub OAuth admin gating, and draft-post protection.",
+    tags: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Prisma",
+      "Auth.js",
+      "Upstash",
+      "MDX",
+    ],
     github: "https://github.com/mmaitland300/webproject",
     category: "featured",
   },
@@ -36,12 +44,12 @@ export const projects: Project[] = [
     slug: "snake-detector",
     title: "Snake Detector (CNN)",
     description:
-      "Built, trained, and tested a Convolutional Neural Network for detecting and classifying snakes in images. Handles data collection, preprocessing, model training, and inference.",
+      "Image-classification pipeline for snake species using a custom CNN workflow: dataset preparation, preprocessing, training/evaluation loops, and inference scripts.",
     problem:
-      "Needed a reliable way to identify snake species from photos using computer vision.",
-    role: "ML engineer — dataset curation, model architecture, training pipeline, and evaluation.",
+      "Needed a repeatable way to classify snake photos under real-world data constraints like inconsistent image quality, class imbalance, and noisy samples.",
+    role: "ML engineer — data curation, preprocessing strategy, model and training setup, and error analysis.",
     outcome:
-      "CNN model that classifies snake images across multiple species.",
+      "Delivered an end-to-end computer vision prototype with reproducible training/evaluation flow and a clear path for future model tuning.",
     tags: ["Python", "Machine Learning", "CNN", "Computer Vision"],
     github: "https://github.com/mmaitland300/Snake-detector",
     category: "featured",
@@ -50,14 +58,33 @@ export const projects: Project[] = [
     slug: "auction-house",
     title: "Auction House",
     description:
-      "A full-stack online auction platform built with Django. Users can list items, place bids, manage watchlists, and browse categories.",
+      "Full-stack Django auction platform with account auth, listing lifecycle management, bid validation rules, watchlists, and category browsing.",
     problem:
-      "Wanted to build a functional e-commerce-style application with real-time bidding and user accounts.",
-    role: "Full-stack developer — database models, authentication, bid logic, and Django templates.",
+      "Needed to implement transactional auction behavior with reliable server-side rules for bidding and ownership in a multi-user workflow.",
+    role: "Full-stack developer — data modeling, auth/session flows, bid logic, template UI implementation, and route-level behavior.",
     outcome:
-      "Complete auction platform with user registration, listing management, bidding, and category browsing.",
+      "Built a complete web app covering core auction flows (create, list, bid, watch, manage) with server-enforced business rules and persistent relational data.",
     tags: ["Django", "Python", "PostgreSQL", "HTML/CSS"],
     github: "https://github.com/mmaitland300/AuctionHouse",
+    category: "featured",
+  },
+  {
+    slug: "full-swing-tech-support",
+    title: "Full Swing Technical Support Case Study",
+    description:
+      "Systems-focused support work across simulator hardware/software stacks, including diagnostics for calibration drift, networking/configuration failures, licensing issues, and Windows/peripheral conflicts.",
+    problem:
+      "Customers needed fast, accurate triage and resolution for multi-layer issues where hardware, software, and environment variables intersected.",
+    role: "Technical support specialist — incident triage, remote diagnostics, root-cause isolation, and customer-facing resolution guidance.",
+    outcome:
+      "Improved issue resolution quality by applying structured troubleshooting playbooks and reproducible diagnostic paths across recurring failure modes.",
+    tags: [
+      "Technical Support",
+      "Troubleshooting",
+      "Windows",
+      "Networking",
+      "Hardware/Software Integration",
+    ],
     category: "featured",
   },
   {

@@ -52,6 +52,11 @@ export function ProjectGrid() {
         ))}
       </div>
 
+      <p className="mb-8 text-center text-xs text-muted-foreground">
+        Some project repositories are currently private while case studies are
+        being finalized. Source access is available on request.
+      </p>
+
       {/* Featured grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {filtered.map((project, i) => (

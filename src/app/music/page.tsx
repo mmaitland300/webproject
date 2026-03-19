@@ -14,22 +14,22 @@ const EMBED_PARAMS =
 
 const tracks = [
   {
-    title: "West-20d.mp3",
+    title: "West",
     artist: "NEUROCHEMICAL ENTROPY",
     trackUrl: "https://soundcloud.com/matthew_maitland/west-20d-mp3",
   },
   {
-    title: "Gyroscopic Intuition - 7b",
+    title: "Gyroscopic Intuition",
     artist: "NEUROCHEMICAL ENTROPY",
     trackUrl: "https://soundcloud.com/matthew_maitland/gyroscopic-intuition-7b",
   },
   {
-    title: "Stormy Saturday-2a (Renaissance)",
+    title: "Stormy Saturday",
     artist: "NEUROCHEMICAL ENTROPY",
     trackUrl: "https://soundcloud.com/matthew_maitland/renaissance",
   },
   {
-    title: "(ex)Inhibitor - 4a",
+    title: "Exinhibitor",
     artist: "NEUROCHEMICAL ENTROPY",
     trackUrl: "https://soundcloud.com/matthew_maitland/exinhibitor-4a",
   },

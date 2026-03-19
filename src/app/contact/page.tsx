@@ -14,7 +14,7 @@ export default function ContactPage() {
       <div className="mx-auto max-w-4xl px-6">
         <SectionHeader
           eyebrow="Contact"
-          title="Let’s Build Something Useful"
+          title="Let’s Build Something"
           description="Have a question or want to work together? Send me a message and I’ll get back to you as soon as I can."
           className="mb-16"
         />
