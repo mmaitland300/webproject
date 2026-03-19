@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ProjectGrid } from "@/components/sections/project-grid";
+import { SectionHeader } from "@/components/ui/section-header";
 
 export const metadata: Metadata = {
   title: "Projects",
@@ -11,15 +12,12 @@ export default function ProjectsPage() {
   return (
     <div className="py-32">
       <div className="mx-auto max-w-6xl px-6">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">
-            My <span className="gradient-text">Projects</span>
-          </h1>
-          <p className="mt-4 text-muted-foreground max-w-lg mx-auto">
-            Professional work, side projects, and interactive experiments.
-            Hover over game cards to play them in the browser.
-          </p>
-        </div>
+        <SectionHeader
+          eyebrow="Projects"
+          title="Work Worth Showing"
+          description="Professional work, side projects, and interactive experiments that reflect how I build, troubleshoot, and iterate."
+          className="mb-12"
+        />
         <ProjectGrid />
       </div>
     </div>

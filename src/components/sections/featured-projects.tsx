@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { ProjectCard } from "@/components/sections/project-card";
+import { SectionHeader } from "@/components/ui/section-header";
 import { getFeaturedProjects } from "@/content/projects";
 
 export function FeaturedProjects() {
@@ -18,16 +19,13 @@ export function FeaturedProjects() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-12"
+          className="mb-12"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">
-            Featured{" "}
-            <span className="gradient-text">Projects</span>
-          </h2>
-          <p className="mt-3 text-muted-foreground max-w-lg mx-auto">
-            Professional work and selected side projects &mdash; from
-            client applications to interactive experiments.
-          </p>
+          <SectionHeader
+            eyebrow="Selected Work"
+            title="Featured Projects"
+            description="Professional work and selected side projects, from client applications to interactive experiments."
+          />
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

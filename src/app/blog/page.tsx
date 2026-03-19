@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getAllPosts, getAllTags } from "@/lib/mdx";
 import { BlogList } from "@/components/sections/blog-list";
+import { SectionHeader } from "@/components/ui/section-header";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -14,15 +15,12 @@ export default function BlogPage() {
   return (
     <div className="py-32">
       <div className="mx-auto max-w-4xl px-6">
-        <div className="text-center mb-16">
-          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">
-            <span className="gradient-text">Blog</span>
-          </h1>
-          <p className="mt-4 text-muted-foreground max-w-lg mx-auto">
-            Thoughts on web development, TypeScript, and building things for the
-            web.
-          </p>
-        </div>
+        <SectionHeader
+          eyebrow="Writing"
+          title="Notes From the Build"
+          description="Thoughts on web development, TypeScript, problem solving, and the process of building things that hold up."
+          className="mb-16"
+        />
 
         {posts.length === 0 ? (
           <div className="text-center py-16">

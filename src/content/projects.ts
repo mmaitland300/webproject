@@ -27,7 +27,7 @@ export const projects: Project[] = [
       "Needed a professional web presence that reflects current skills and is easy to maintain and extend.",
     role: "Solo developer — design, implementation, and deployment.",
     outcome:
-      "Fully functional portfolio with blog, admin dashboard, and CI-ready codebase.",
+      "Deployed portfolio with blog, contact inbox, and admin dashboard.",
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "Prisma", "Auth.js", "MDX"],
     github: "https://github.com/mmaitland300/webproject",
     category: "featured",
@@ -41,7 +41,7 @@ export const projects: Project[] = [
       "Needed a reliable way to identify snake species from photos using computer vision.",
     role: "ML engineer — dataset curation, model architecture, training pipeline, and evaluation.",
     outcome:
-      "Working CNN model that classifies snake images with practical accuracy.",
+      "CNN model that classifies snake images across multiple species.",
     tags: ["Python", "Machine Learning", "CNN", "Computer Vision"],
     github: "https://github.com/mmaitland300/Snake-detector",
     category: "featured",

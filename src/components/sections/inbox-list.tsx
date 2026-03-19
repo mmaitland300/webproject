@@ -7,6 +7,7 @@ import {
   markAsRead,
   markAsUnread,
   archiveSubmission,
+  unarchiveSubmission,
 } from "@/actions/inbox";
 import { cn } from "@/lib/utils";
 
@@ -22,9 +23,10 @@ interface Submission {
 
 interface InboxListProps {
   submissions: Submission[];
+  mode?: "active" | "archived";
 }
 
-export function InboxList({ submissions }: InboxListProps) {
+export function InboxList({ submissions, mode = "active" }: InboxListProps) {
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
   return (
@@ -97,13 +99,23 @@ export function InboxList({ submissions }: InboxListProps) {
                     <MailOpen size={14} className="mr-1.5" /> Mark read
                   </Button>
                 )}
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => archiveSubmission(sub.id)}
-                >
-                  <Archive size={14} className="mr-1.5" /> Archive
-                </Button>
+                {mode === "archived" ? (
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => unarchiveSubmission(sub.id)}
+                  >
+                    <ArchiveRestore size={14} className="mr-1.5" /> Restore
+                  </Button>
+                ) : (
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => archiveSubmission(sub.id)}
+                  >
+                    <Archive size={14} className="mr-1.5" /> Archive
+                  </Button>
+                )}
                 <a
                   href={`mailto:${sub.email}`}
                   className="text-xs text-purple-400 hover:text-purple-300 ml-auto"

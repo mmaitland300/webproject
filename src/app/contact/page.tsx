@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/sections/contact-form";
 import { Mail, MapPin } from "lucide-react";
+import { SectionHeader } from "@/components/ui/section-header";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -11,15 +12,12 @@ export default function ContactPage() {
   return (
     <div className="py-32">
       <div className="mx-auto max-w-4xl px-6">
-        <div className="text-center mb-16">
-          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">
-            Get in <span className="gradient-text">Touch</span>
-          </h1>
-          <p className="mt-4 text-muted-foreground max-w-lg mx-auto">
-            Have a question or want to work together? Send me a message and
-            I&apos;ll get back to you as soon as I can.
-          </p>
-        </div>
+        <SectionHeader
+          eyebrow="Contact"
+          title="Let’s Build Something Useful"
+          description="Have a question or want to work together? Send me a message and I’ll get back to you as soon as I can."
+          className="mb-16"
+        />
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           {/* Info */}

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ExternalLink, Music2 } from "lucide-react";
+import { SectionHeader } from "@/components/ui/section-header";
 
 export const metadata: Metadata = {
   title: "Music",
@@ -38,17 +39,15 @@ export default function MusicPage() {
   return (
     <div className="py-32">
       <div className="mx-auto max-w-4xl px-6">
-        <div className="mb-12 text-center">
-          <div className="mb-4 flex items-center justify-center gap-2">
-            <Music2 className="h-6 w-6 text-purple-400" />
+        <div className="mb-12">
+          <SectionHeader
+            eyebrow="Music"
+            title="Audio Work and Experiments"
+            description="I make music in my spare time. Here are a few tracks to start with, and you can head over to SoundCloud for the full catalog."
+          />
+          <div className="mt-5 flex justify-center">
+            <Music2 className="h-6 w-6 text-[rgba(122,162,247,0.95)]" />
           </div>
-          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-            My <span className="gradient-text">Music</span>
-          </h1>
-          <p className="mx-auto mt-4 max-w-lg text-muted-foreground">
-            I make music in my spare time. Here are a few tracks to start with,
-            and you can head over to SoundCloud for the full catalog.
-          </p>
         </div>
 
         <div className="space-y-10">

@@ -8,35 +8,39 @@ import { buttonVariants } from "@/components/ui/button";
 export function Hero() {
   return (
     <section className="relative min-h-[calc(100vh-4rem)] flex items-center justify-center overflow-hidden">
-      <div className="mx-auto max-w-6xl px-6 py-32 text-center">
+      <div className="cyber-frame mx-auto max-w-6xl px-6 py-32 text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <p className="text-sm font-medium text-muted-foreground tracking-widest uppercase mb-6">
+          <div className="mb-6 inline-flex items-center gap-3 rounded-full border border-[rgba(136,212,255,0.14)] bg-[linear-gradient(90deg,rgba(255,255,255,0.04),rgba(136,212,255,0.04))] px-4 py-2 text-xs font-medium uppercase tracking-[0.22em] text-[rgba(196,206,223,0.78)] backdrop-blur-sm">
+            <span className="h-1.5 w-1.5 rounded-full bg-[rgba(136,212,255,0.95)] shadow-[0_0_12px_rgba(67,188,255,0.45)]" />
             Full-Stack Developer
-          </p>
+          </div>
         </motion.div>
 
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.1]"
+          className="hero-title text-4xl font-semibold leading-[1.04] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl"
         >
           Hi, I&apos;m{" "}
-          <span className="gradient-text">Matt Maitland</span>
+          <span className="cyber-title">
+            Matt <span className="brand-accent">Maitland</span>
+          </span>
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-          className="mt-6 mx-auto max-w-2xl text-lg sm:text-xl text-muted-foreground leading-relaxed"
+          className="mt-6 mx-auto max-w-2xl text-lg leading-relaxed text-[rgba(194,203,220,0.82)] sm:text-xl"
         >
           I build web applications, solve technical problems, and make music.
-          From full-stack development to machine learning to creative side projects.
+          From full-stack development to machine learning to creative side
+          projects.
         </motion.p>
 
         <motion.div

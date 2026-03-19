@@ -1,16 +1,18 @@
 import { prisma } from "@/lib/prisma";
-import { InboxList } from "@/components/sections/inbox-list";
+import { InboxTabs } from "@/components/sections/inbox-tabs";
+import { SectionHeader } from "@/components/ui/section-header";
 
 export const dynamic = "force-dynamic";
 
 export default async function AdminInboxPage() {
-  const submissions = await prisma.contactSubmission.findMany({
+  const active = await prisma.contactSubmission.findMany({
     where: { archivedAt: null },
     orderBy: { createdAt: "desc" },
   });
 
-  const archivedCount = await prisma.contactSubmission.count({
+  const archived = await prisma.contactSubmission.findMany({
     where: { archivedAt: { not: null } },
+    orderBy: { createdAt: "desc" },
   });
 
   return (
@@ -18,11 +20,15 @@ export default async function AdminInboxPage() {
       <div className="mx-auto max-w-4xl px-6">
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h1 className="text-3xl font-bold">
-              Contact <span className="gradient-text">Inbox</span>
-            </h1>
+            <SectionHeader
+              align="left"
+              eyebrow="Admin"
+              title="Contact Inbox"
+              className="space-y-2"
+              titleClassName="text-3xl"
+            />
             <p className="text-sm text-muted-foreground mt-1">
-              {submissions.length} active &middot; {archivedCount} archived
+              {active.length} active &middot; {archived.length} archived
             </p>
           </div>
           <form
@@ -41,16 +47,7 @@ export default async function AdminInboxPage() {
           </form>
         </div>
 
-        {submissions.length === 0 ? (
-          <div className="text-center py-16 border border-border rounded-xl bg-card/50">
-            <p className="text-muted-foreground">
-              No messages yet. They&apos;ll appear here when someone uses the
-              contact form.
-            </p>
-          </div>
-        ) : (
-          <InboxList submissions={submissions} />
-        )}
+        <InboxTabs active={active} archived={archived} />
       </div>
     </div>
   );

@@ -42,7 +42,9 @@ export function Navbar() {
           className="text-xl font-bold tracking-tight"
           onClick={() => setMobileOpen(false)}
         >
-          <span className="gradient-text">MM</span>
+          <span className="brand-mark">
+            M<span className="brand-accent">M</span>
+          </span>
         </Link>
 
         {/* Desktop */}

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { AboutContent } from "@/components/sections/about-content";
+import { SectionHeader } from "@/components/ui/section-header";
 
 export const metadata: Metadata = {
   title: "About",
@@ -11,14 +12,12 @@ export default function AboutPage() {
   return (
     <div className="py-32">
       <div className="mx-auto max-w-4xl px-6">
-        <div className="text-center mb-16">
-          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">
-            About <span className="gradient-text">Me</span>
-          </h1>
-          <p className="mt-4 text-muted-foreground max-w-lg mx-auto">
-            Developer, builder, and lifelong learner.
-          </p>
-        </div>
+        <SectionHeader
+          eyebrow="About"
+          title="Developer, Builder, Problem Solver"
+          description="A focused look at my technical background, hands-on support experience, and the tools I use to ship practical work."
+          className="mb-16"
+        />
         <AboutContent />
       </div>
     </div>

@@ -129,17 +129,88 @@
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #8b5cf6, #06b6d4);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #88d4ff;
+  text-shadow:
+    0 0 12px rgba(67, 188, 255, 0.18),
+    0 0 28px rgba(122, 92, 255, 0.08);
 }
 
 .gradient-text-pink {
-  background: linear-gradient(135deg, #ec4899, #8b5cf6);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #b39dff;
+}
+
+.section-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(126, 215, 255, 0.74);
+}
+
+.brand-mark {
+  color: rgba(240, 244, 250, 0.92);
+  letter-spacing: 0.08em;
+}
+
+.brand-accent {
+  color: #88d4ff;
+  text-shadow:
+    0 0 12px rgba(67, 188, 255, 0.16),
+    1px 0 0 rgba(188, 119, 255, 0.22);
+}
+
+.page-title {
+  color: rgba(229, 235, 245, 0.94);
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.03),
+    0 0 16px rgba(48, 77, 133, 0.1);
+}
+
+.hero-title {
+  color: rgba(238, 243, 250, 0.96);
+  text-shadow:
+    0 0 24px rgba(35, 53, 92, 0.18),
+    0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.cyber-title {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.2rem;
+}
+
+.cyber-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 72px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(136, 212, 255, 0.95),
+    rgba(179, 157, 255, 0.55),
+    transparent
+  );
+  box-shadow: 0 0 12px rgba(67, 188, 255, 0.18);
+}
+
+.cyber-frame {
+  position: relative;
+}
+
+.cyber-frame::before {
+  content: "";
+  position: absolute;
+  inset: -16px -20px auto;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(136, 212, 255, 0.22),
+    rgba(179, 157, 255, 0.14),
+    transparent
+  );
+  pointer-events: none;
 }
 
 .gradient-border {
@@ -172,7 +243,8 @@
     @apply mb-4 text-muted-foreground;
   }
   a {
-    @apply text-purple-400 underline underline-offset-4 hover:text-purple-300 transition-colors;
+    @apply underline underline-offset-4 transition-colors hover:text-foreground;
+    color: #7aa2f7;
   }
   ul, ol {
     @apply mb-4 pl-6 text-muted-foreground;
@@ -187,7 +259,8 @@
     @apply mb-1;
   }
   blockquote {
-    @apply border-l-2 border-purple-500/50 pl-4 italic text-muted-foreground my-4;
+    @apply pl-4 italic text-muted-foreground my-4;
+    border-left: 2px solid rgba(122, 162, 247, 0.45);
   }
   hr {
     @apply border-border my-8;
@@ -220,17 +293,17 @@
   height: 200%;
   background: radial-gradient(
       ellipse 600px 600px at 20% 50%,
-      rgba(139, 92, 246, 0.08),
+      rgba(75, 37, 130, 0.12),
       transparent
     ),
     radial-gradient(
       ellipse 600px 600px at 80% 20%,
-      rgba(6, 182, 212, 0.06),
+      rgba(67, 188, 255, 0.09),
       transparent
     ),
     radial-gradient(
       ellipse 600px 600px at 60% 80%,
-      rgba(236, 72, 153, 0.05),
+      rgba(179, 157, 255, 0.07),
       transparent
     );
   pointer-events: none;

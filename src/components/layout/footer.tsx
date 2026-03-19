@@ -36,7 +36,9 @@ export function Footer() {
           {/* Brand */}
           <div>
             <Link href="/" className="text-xl font-bold tracking-tight">
-              <span className="gradient-text">Matt Maitland</span>
+              <span className="brand-mark">
+                Matt <span className="brand-accent">Maitland</span>
+              </span>
             </Link>
             <p className="mt-3 text-sm text-muted-foreground max-w-xs">
               Full-stack developer building modern web experiences with
