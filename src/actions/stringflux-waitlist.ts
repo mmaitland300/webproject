@@ -6,7 +6,7 @@ import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from "@upstash/redis";
 import { headers } from "next/headers";
 
-const waitlistSchema = z.object({
+export const waitlistSchema = z.object({
   email: z.string().email("Invalid email address"),
   interest: z.string().max(200).optional(),
   honeypot: z.string().max(0, "Bot detected"),
@@ -17,6 +17,10 @@ export type WaitlistState = {
   message: string;
   errors?: Record<string, string[]>;
 };
+
+export function normalizeWaitlistEmail(email: string): string {
+  return email.toLowerCase().trim();
+}
 
 let ratelimit: Ratelimit | null = null;
 function getRatelimit() {
@@ -56,7 +60,7 @@ export async function joinWaitlist(
     return { success: false, message: "Please fix the errors below.", errors };
   }
 
-  const normalizedEmail = parsed.data.email.toLowerCase().trim();
+  const normalizedEmail = normalizeWaitlistEmail(parsed.data.email);
 
   // Rate limiting
   const rl = getRatelimit();
