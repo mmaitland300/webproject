@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { ExternalLink, Github, Gamepad2, Play, X } from "lucide-react";
@@ -24,6 +25,7 @@ const outcomeLabels: Record<
 
 export function ProjectCard({ project, index, compact }: ProjectCardProps) {
   const [iframeActive, setIframeActive] = useState(false);
+  const internalDemoHref = project.demo?.startsWith("/") ? project.demo : null;
 
   return (
     <motion.article
@@ -151,7 +153,14 @@ export function ProjectCard({ project, index, compact }: ProjectCardProps) {
               <Github size={14} /> Code
             </a>
           )}
-          {project.demo && (
+          {internalDemoHref ? (
+            <Link
+              href={internalDemoHref}
+              className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <ExternalLink size={14} /> Demo
+            </Link>
+          ) : project.demo ? (
             <a
               href={project.demo}
               target="_blank"
@@ -160,7 +169,7 @@ export function ProjectCard({ project, index, compact }: ProjectCardProps) {
             >
               <ExternalLink size={14} /> Demo
             </a>
-          )}
+          ) : null}
           {project.caseStudy && (
             <a
               href={project.caseStudy}

@@ -13,6 +13,11 @@ function parse(data: Record<string, string | undefined>) {
   return waitlistSchema.safeParse(data);
 }
 
+/** Mirrors the normalization applied in the server action before upsert. */
+function normalizeEmail(email: string): string {
+  return email.toLowerCase().trim();
+}
+
 const VALID = {
   email: "guitarist@example.com",
   honeypot: "",
@@ -66,7 +71,7 @@ describe("stringflux waitlist deduplication contract", () => {
     const email = "duplicate@example.com";
     const a = parse({ email, honeypot: "" });
     const b = parse({ email, honeypot: "" });
-    // Both parse successfully — the upsert in the action handles deduplication
+    // Both parse successfully -- the upsert in the action handles deduplication
     // by using email as the unique key. This test documents that contract.
     expect(a.success).toBe(true);
     expect(b.success).toBe(true);
@@ -75,12 +80,16 @@ describe("stringflux waitlist deduplication contract", () => {
     }
   });
 
-  it("normalizes email casing from schema perspective (no transform applied)", () => {
-    // The schema does not normalize case — this is intentional. The DB unique
-    // constraint uses the stored value. Documenting this so future changes are deliberate.
-    const lower = parse({ email: "test@example.com", honeypot: "" });
-    const upper = parse({ email: "TEST@EXAMPLE.COM", honeypot: "" });
-    expect(lower.success).toBe(true);
-    expect(upper.success).toBe(true);
+  it("normalizes email casing so mixed-case duplicates collapse", () => {
+    const a = normalizeEmail("TEST@EXAMPLE.COM");
+    const b = normalizeEmail("test@example.com");
+    const c = normalizeEmail("Test@Example.COM");
+    expect(a).toBe(b);
+    expect(b).toBe(c);
+    expect(a).toBe("test@example.com");
+  });
+
+  it("trims whitespace from email before normalization", () => {
+    expect(normalizeEmail("  user@test.com  ")).toBe("user@test.com");
   });
 });

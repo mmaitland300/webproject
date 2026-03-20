@@ -1,6 +1,6 @@
 /**
  * Stylized render of the StringFlux plugin UI for the product landing page.
- * This is a designed visual representation — not a screenshot — showing the
+ * This is a designed visual representation -- not a screenshot -- showing the
  * intended layout: header, waveform display, band controls, and knob row.
  */
 
@@ -8,7 +8,7 @@ interface KnobProps {
   cx: number;
   cy: number;
   r: number;
-  value: number; // 0–1
+  value: number; // 0-1
   color: string;
   label: string;
 }

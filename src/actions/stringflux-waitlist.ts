@@ -56,6 +56,8 @@ export async function joinWaitlist(
     return { success: false, message: "Please fix the errors below.", errors };
   }
 
+  const normalizedEmail = parsed.data.email.toLowerCase().trim();
+
   // Rate limiting
   const rl = getRatelimit();
   if (rl) {
@@ -76,10 +78,10 @@ export async function joinWaitlist(
     try {
       const { prisma } = await import("@/lib/prisma");
       await prisma.stringFluxWaitlist.upsert({
-        where: { email: parsed.data.email },
+        where: { email: normalizedEmail },
         update: {},
         create: {
-          email: parsed.data.email,
+          email: normalizedEmail,
           source: "stringflux-page",
           interest: parsed.data.interest ?? null,
         },
@@ -93,7 +95,7 @@ export async function joinWaitlist(
     }
   }
 
-  // Confirmation email — best-effort, does not block success response.
+  // Confirmation email -- best-effort, does not block success response.
   const resendKey = process.env.RESEND_API_KEY;
   const fromEmail = process.env.CONTACT_FROM_EMAIL;
   if (resendKey && fromEmail) {
@@ -101,7 +103,7 @@ export async function joinWaitlist(
       const resend = new Resend(resendKey);
       await resend.emails.send({
         from: fromEmail,
-        to: parsed.data.email,
+        to: normalizedEmail,
         subject: "You're on the StringFlux waitlist",
         text: [
           `Hey,`,
@@ -110,7 +112,7 @@ export async function joinWaitlist(
           ``,
           `You can unsubscribe at any time by replying to this email.`,
           ``,
-          `— Matt`,
+          `- Matt`,
         ].join("\n"),
       });
     } catch (err) {

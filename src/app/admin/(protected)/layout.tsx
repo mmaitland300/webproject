@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import { isAdmin } from "@/lib/admin";
 
@@ -11,5 +12,25 @@ export default async function AdminProtectedLayout({
     redirect("/admin/login");
   }
 
-  return <>{children}</>;
+  return (
+    <div>
+      <div className="border-b border-border bg-background/60 backdrop-blur-sm">
+        <div className="mx-auto flex max-w-4xl gap-4 px-6 py-3 text-sm text-muted-foreground">
+          <Link
+            href="/admin/inbox"
+            className="transition-colors hover:text-foreground"
+          >
+            Inbox
+          </Link>
+          <Link
+            href="/admin/waitlist"
+            className="transition-colors hover:text-foreground"
+          >
+            Waitlist
+          </Link>
+        </div>
+      </div>
+      {children}
+    </div>
+  );
 }
