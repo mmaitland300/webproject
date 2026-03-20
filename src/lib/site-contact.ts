@@ -1,8 +1,8 @@
 /**
  * Public-facing contact email shown on the site (footer, about, contact page, resume).
- * Set NEXT_PUBLIC_CONTACT_EMAIL in production when a domain alias is ready (e.g. hello@yourdomain.com).
+ * Override with NEXT_PUBLIC_CONTACT_EMAIL in Vercel env vars if this ever changes.
  */
-const FALLBACK_PUBLIC_EMAIL = "mmaitland300@gmail.com";
+const FALLBACK_PUBLIC_EMAIL = "contact@mmaitland.dev";
 
 export function getPublicContactEmail(): string {
   const v = process.env.NEXT_PUBLIC_CONTACT_EMAIL;
