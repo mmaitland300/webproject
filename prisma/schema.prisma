@@ -66,3 +66,13 @@ model ContactSubmission {
   @@index([archivedAt, createdAt])
   @@index([read, createdAt])
 }
+
+model StringFluxWaitlist {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  source    String   @default("stringflux-page")
+  interest  String?
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+}
