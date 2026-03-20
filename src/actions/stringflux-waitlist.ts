@@ -110,7 +110,6 @@ export async function joinWaitlist(
         await resend.emails.send({
           from: fromEmail,
           to: toEmail,
-          replyTo: normalizedEmail,
           subject: `StringFlux Waitlist Signup: ${normalizedEmail}`,
           text: [
             `A new StringFlux waitlist signup was received.`,
