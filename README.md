@@ -105,6 +105,9 @@ These are intentional tradeoffs built into the app. They are documented here so 
 **Contact pipeline: email is source of truth, inbox is best-effort.**
 The contact form sends email via Resend before attempting database persistence. If Prisma fails after a successful send, the user still gets a success response and the email is delivered. The admin inbox may miss that message. This is an intentional tradeoff: guaranteed delivery over guaranteed persistence.
 
+**StringFlux waitlist sends two emails when Resend is configured.**
+On signup, the app sends an internal notification to `CONTACT_TO_EMAIL` so new entries are visible without checking the admin page. It also sends a confirmation email to the subscriber address. Both emails are best-effort; the durable source of truth is the database row.
+
 **Public contact address is decoupled from delivery address.**
 `contact@mmaitland.dev` (via ImprovMX forwarding) is what visitors see on the site. `CONTACT_TO_EMAIL` controls where form submissions actually go (currently the Gmail address directly). These are separate so the public-facing address can change without touching the app.
 

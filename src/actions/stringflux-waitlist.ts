@@ -98,12 +98,41 @@ export async function joinWaitlist(
     };
   }
 
-  // Confirmation email - best-effort, does not block success response.
+  // Email notifications are best-effort. The durable source of truth is DB persistence above.
   const resendKey = process.env.RESEND_API_KEY;
   const fromEmail = process.env.CONTACT_FROM_EMAIL;
+  const toEmail = process.env.CONTACT_TO_EMAIL;
   if (resendKey && fromEmail) {
+    const resend = new Resend(resendKey);
+
+    if (toEmail) {
+      try {
+        await resend.emails.send({
+          from: fromEmail,
+          to: toEmail,
+          replyTo: normalizedEmail,
+          subject: `StringFlux Waitlist Signup: ${normalizedEmail}`,
+          text: [
+            `A new StringFlux waitlist signup was received.`,
+            ``,
+            `Email: ${normalizedEmail}`,
+            `Interest: ${parsed.data.interest ?? "(not provided)"}`,
+            `Source: stringflux-page`,
+          ].join("\n"),
+        });
+      } catch (err) {
+        console.error(
+          "StringFlux waitlist owner notification failed (best-effort):",
+          err
+        );
+      }
+    } else {
+      console.warn(
+        "CONTACT_TO_EMAIL is not configured; owner notifications for StringFlux waitlist are disabled."
+      );
+    }
+
     try {
-      const resend = new Resend(resendKey);
       await resend.emails.send({
         from: fromEmail,
         to: normalizedEmail,
