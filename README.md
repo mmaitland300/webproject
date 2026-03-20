@@ -1,4 +1,5 @@
 # Matt Maitland - Portfolio
+<!-- deployment no-op: trigger Vercel rebuild -->
 
 Personal portfolio and blog built with Next.js, TypeScript, and Tailwind CSS. Includes MDX blogging, a contact form with rate limiting, and an admin inbox with GitHub OAuth.
 
