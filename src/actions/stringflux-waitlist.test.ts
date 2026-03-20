@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 import {
   normalizeWaitlistEmail,
   waitlistSchema,
-} from "./stringflux-waitlist";
+} from "./stringflux-waitlist.contract";
 
 function parse(data: Record<string, string | undefined>) {
   return waitlistSchema.safeParse(data);

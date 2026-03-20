@@ -1,17 +1,10 @@
 "use server";
 
-import { z } from "zod/v4";
 import { Resend } from "resend";
 import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from "@upstash/redis";
 import { headers } from "next/headers";
-
-export const contactSchema = z.object({
-  name: z.string().min(1, "Name is required").max(100),
-  email: z.string().email("Invalid email address"),
-  message: z.string().min(10, "Message must be at least 10 characters").max(5000),
-  honeypot: z.string().max(0, "Bot detected"),
-});
+import { contactSchema } from "./contact.contract";
 
 export type ContactState = {
   success: boolean;

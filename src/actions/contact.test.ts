@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { contactSchema } from "./contact";
+import { contactSchema } from "./contact.contract";
 
 function parse(data: Record<string, string>) {
   return contactSchema.safeParse(data);

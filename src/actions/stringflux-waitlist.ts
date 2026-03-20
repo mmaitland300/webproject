@@ -1,26 +1,19 @@
 "use server";
 
-import { z } from "zod/v4";
 import { Resend } from "resend";
 import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from "@upstash/redis";
 import { headers } from "next/headers";
-
-export const waitlistSchema = z.object({
-  email: z.string().email("Invalid email address"),
-  interest: z.string().max(200).optional(),
-  honeypot: z.string().max(0, "Bot detected"),
-});
+import {
+  normalizeWaitlistEmail,
+  waitlistSchema,
+} from "./stringflux-waitlist.contract";
 
 export type WaitlistState = {
   success: boolean;
   message: string;
   errors?: Record<string, string[]>;
 };
-
-export function normalizeWaitlistEmail(email: string): string {
-  return email.toLowerCase().trim();
-}
 
 let ratelimit: Ratelimit | null = null;
 function getRatelimit() {
