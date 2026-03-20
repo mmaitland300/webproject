@@ -36,7 +36,7 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
           className="mt-6 mx-auto max-w-2xl text-lg leading-relaxed text-[rgba(194,203,220,0.82)] sm:text-xl"
         >
-          I work full-time in technical support for Full Swing golf simulators.
+          I work full-time at Auxillium doing technical support for Full Swing golf simulators.
           On the side I build web and audio software, and write, record,
           produce, and master original music as NEUROCHEMICAL ENTROPY.
         </motion.p>
