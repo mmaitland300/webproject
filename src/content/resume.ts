@@ -37,8 +37,8 @@ export const resumeSkills = [
 
 export const resumeExperience = [
   {
-    role: "Full-Stack Developer",
-    company: "Maitland Web Design",
+    role: "Freelance Full-Stack Developer",
+    company: "Freelance",
     period: "2018 - Present",
     description:
       "Build custom web applications and software solutions with Django, Flask, React, and Next.js. Handle database design, API integrations, debugging, deployment, and long-term client support from launch through maintenance.",
@@ -58,14 +58,13 @@ export const resumeEducation = [
     school: "University of South Florida",
     period: "January 2014 to December 2016",
     description:
-      "Completed upper-division science coursework while building strong analytical and research habits that continue to inform technical problem solving.",
+      "Completed upper-division science coursework in biochemistry.",
   },
   {
     degree: "Associate in General Studies",
     school: "Florida Southwestern State College",
     period: "January 2008 to December 2011",
-    description:
-      "Built a broad academic foundation before continuing into more specialized study.",
+    description: "Completed general studies coursework.",
   },
 ];
 
