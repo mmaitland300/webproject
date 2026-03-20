@@ -19,46 +19,54 @@ export default async function AdminWaitlistPage() {
             className="space-y-2"
             titleClassName="text-3xl"
           />
-          <p className="text-sm text-muted-foreground mt-1">
+          <p className="mt-1 text-sm text-muted-foreground">
             {entries.length} signup{entries.length !== 1 ? "s" : ""}
           </p>
         </div>
 
         {entries.length === 0 ? (
-          <div className="text-center py-16 border border-border rounded-xl bg-card/50">
+          <div className="rounded-xl border border-border bg-card/50 py-16 text-center">
             <p className="text-muted-foreground">
               No waitlist signups yet. They&apos;ll appear here when someone joins.
             </p>
           </div>
         ) : (
-          <div className="rounded-xl border border-border overflow-hidden">
+          <div className="overflow-hidden rounded-xl border border-border">
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-border bg-card/50">
-                  <th className="text-left px-4 py-3 font-medium text-muted-foreground">Email</th>
-                  <th className="text-left px-4 py-3 font-medium text-muted-foreground">Interest</th>
-                  <th className="text-left px-4 py-3 font-medium text-muted-foreground">Source</th>
-                  <th className="text-left px-4 py-3 font-medium text-muted-foreground">Signed up</th>
+                  <th className="px-4 py-3 text-left font-medium text-muted-foreground">
+                    Email
+                  </th>
+                  <th className="px-4 py-3 text-left font-medium text-muted-foreground">
+                    Interest
+                  </th>
+                  <th className="px-4 py-3 text-left font-medium text-muted-foreground">
+                    Source
+                  </th>
+                  <th className="px-4 py-3 text-left font-medium text-muted-foreground">
+                    Signed up
+                  </th>
                 </tr>
               </thead>
               <tbody>
                 {entries.map((entry, i) => (
                   <tr
                     key={entry.id}
-                    className={
-                      i % 2 === 0 ? "bg-card/20" : "bg-card/40"
-                    }
+                    className={i % 2 === 0 ? "bg-card/20" : "bg-card/40"}
                   >
                     <td className="px-4 py-3 font-mono text-xs text-foreground">
                       {entry.email}
                     </td>
-                    <td className="px-4 py-3 text-muted-foreground max-w-xs truncate">
-                      {entry.interest ?? <span className="text-muted-foreground/40 italic">—</span>}
+                    <td className="max-w-xs truncate px-4 py-3 text-muted-foreground">
+                      {entry.interest ?? (
+                        <span className="italic text-muted-foreground/40">-</span>
+                      )}
                     </td>
                     <td className="px-4 py-3 text-muted-foreground">
                       {entry.source}
                     </td>
-                    <td className="px-4 py-3 text-muted-foreground whitespace-nowrap">
+                    <td className="whitespace-nowrap px-4 py-3 text-muted-foreground">
                       {entry.createdAt.toLocaleDateString("en-US", {
                         year: "numeric",
                         month: "short",

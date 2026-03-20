@@ -95,7 +95,7 @@ export async function joinWaitlist(
     }
   }
 
-  // Confirmation email -- best-effort, does not block success response.
+  // Confirmation email - best-effort, does not block success response.
   const resendKey = process.env.RESEND_API_KEY;
   const fromEmail = process.env.CONTACT_FROM_EMAIL;
   if (resendKey && fromEmail) {
