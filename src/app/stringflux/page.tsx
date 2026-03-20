@@ -79,8 +79,9 @@ export default function StringFluxPage() {
           </h2>
           <StringFluxPluginPreview />
           <p className="mt-3 text-center text-sm text-muted-foreground">
-            Current UI - work in progress. Knobs, band controls, and scheduler
-            mode shown above are implemented and functional in the dev build.
+            Current plugin UI. Core controls, string transient detection,
+            modulation matrix, and waveform display are functional in the dev
+            build. Custom UI design is planned.
           </p>
         </section>
 
