@@ -3,8 +3,26 @@ import { redirect } from "next/navigation";
 import { Github, ShieldAlert } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { isAdmin } from "@/lib/admin";
+import { isAdminAuthConfigured } from "@/lib/feature-config";
 
 export default async function AdminLoginPage() {
+  if (!isAdminAuthConfigured()) {
+    return (
+      <div className="flex min-h-[60vh] items-center justify-center py-32">
+        <div className="max-w-md space-y-6 text-center">
+          <div className="mx-auto w-fit rounded-full bg-destructive/10 p-3">
+            <ShieldAlert className="h-8 w-8 text-destructive" />
+          </div>
+          <h1 className="text-3xl font-bold">Admin Unavailable</h1>
+          <p className="text-muted-foreground">
+            Admin access is disabled until database access, `AUTH_SECRET`, and
+            GitHub OAuth credentials are configured.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
   const session = await auth();
 
   if (session) {

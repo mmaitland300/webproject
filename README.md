@@ -39,11 +39,11 @@ Copy `.env.example` and fill in the values. The site runs without the optional v
 | `CONTACT_TO_EMAIL` | Yes | Recipient address for contact emails |
 | `UPSTASH_REDIS_REST_URL` | Yes | Upstash Redis URL for rate limiting |
 | `UPSTASH_REDIS_REST_TOKEN` | Yes | Upstash Redis token |
-| `DATABASE_URL` | No | Neon PostgreSQL connection string (pooled) |
+| `DATABASE_URL` | No | Neon PostgreSQL connection string (pooled). Required for waitlist persistence and admin auth. |
 | `DIRECT_URL` | No | Neon PostgreSQL direct connection (for Prisma CLI) |
-| `AUTH_SECRET` | No | Auth.js secret (`npx auth secret` to generate) |
-| `AUTH_GITHUB_ID` | No | GitHub OAuth app client ID |
-| `AUTH_GITHUB_SECRET` | No | GitHub OAuth app client secret |
+| `AUTH_SECRET` | No | Auth.js secret (`npx auth secret` to generate). Required for admin auth. |
+| `AUTH_GITHUB_ID` | No | GitHub OAuth app client ID. Required for admin auth. |
+| `AUTH_GITHUB_SECRET` | No | GitHub OAuth app client secret. Required for admin auth. |
 | `ADMIN_GITHUB_IDS` | No | Comma-separated GitHub numeric user IDs for admin access |
 
 ## Database Setup (Optional)
@@ -114,8 +114,8 @@ The contact form sends email via Resend before attempting database persistence. 
 **Rate limiting is durable, not in-memory.**
 The contact form uses Upstash Redis for rate limiting. In-memory state is not reliable across Vercel function instances. Upstash provides durable, globally consistent counters.
 
-**Database and auth are optional.**
-The site runs without `DATABASE_URL` or auth credentials. Without them, the contact form still sends email and the admin inbox is inaccessible. Optional features degrade gracefully rather than crashing.
+**Database and auth are optional, but they gate specific features.**
+The site runs without `DATABASE_URL` or auth credentials. Without a database, the contact form still sends email, but the StringFlux waitlist and admin inbox are disabled. Admin access additionally requires `AUTH_SECRET`, `AUTH_GITHUB_ID`, and `AUTH_GITHUB_SECRET`.
 
 ## Scripts
 

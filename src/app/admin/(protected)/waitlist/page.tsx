@@ -1,9 +1,12 @@
 import { prisma } from "@/lib/prisma";
+import { requireAdminPage } from "@/lib/admin";
 import { SectionHeader } from "@/components/ui/section-header";
 
 export const dynamic = "force-dynamic";
 
 export default async function AdminWaitlistPage() {
+  await requireAdminPage();
+
   const entries = await prisma.stringFluxWaitlist.findMany({
     orderBy: { createdAt: "desc" },
   });

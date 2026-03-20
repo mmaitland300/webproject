@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import readingTime from "reading-time";
+import { parseDateValue } from "@/lib/date";
 
 const CONTENT_DIR = path.join(process.cwd(), "src/content/blog");
 
@@ -48,8 +49,8 @@ export function getAllPosts(): BlogPost[] {
     .filter((post) => post.frontmatter.published)
     .sort(
       (a, b) =>
-        new Date(b.frontmatter.date).getTime() -
-        new Date(a.frontmatter.date).getTime()
+        parseDateValue(b.frontmatter.date).getTime() -
+        parseDateValue(a.frontmatter.date).getTime()
     );
 
   return posts;

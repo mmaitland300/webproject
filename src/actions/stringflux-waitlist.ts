@@ -4,6 +4,7 @@ import { Resend } from "resend";
 import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from "@upstash/redis";
 import { headers } from "next/headers";
+import { isWaitlistConfigured } from "@/lib/feature-config";
 import {
   normalizeWaitlistEmail,
   waitlistSchema,
@@ -55,6 +56,13 @@ export async function joinWaitlist(
 
   const normalizedEmail = normalizeWaitlistEmail(parsed.data.email);
 
+  if (!isWaitlistConfigured()) {
+    return {
+      success: false,
+      message: "Waitlist is not configured yet. Please check back soon.",
+    };
+  }
+
   // Rate limiting
   const rl = getRatelimit();
   if (rl) {
@@ -71,25 +79,23 @@ export async function joinWaitlist(
   }
 
   // Persist signup. upsert is intentional: duplicate email is a no-op, not an error.
-  if (process.env.DATABASE_URL) {
-    try {
-      const { prisma } = await import("@/lib/prisma");
-      await prisma.stringFluxWaitlist.upsert({
-        where: { email: normalizedEmail },
-        update: {},
-        create: {
-          email: normalizedEmail,
-          source: "stringflux-page",
-          interest: parsed.data.interest ?? null,
-        },
-      });
-    } catch (err) {
-      console.error("StringFlux waitlist persistence failed:", err);
-      return {
-        success: false,
-        message: "Failed to join the waitlist. Please try again later.",
-      };
-    }
+  try {
+    const { prisma } = await import("@/lib/prisma");
+    await prisma.stringFluxWaitlist.upsert({
+      where: { email: normalizedEmail },
+      update: {},
+      create: {
+        email: normalizedEmail,
+        source: "stringflux-page",
+        interest: parsed.data.interest ?? null,
+      },
+    });
+  } catch (err) {
+    console.error("StringFlux waitlist persistence failed:", err);
+    return {
+      success: false,
+      message: "Failed to join the waitlist. Please try again later.",
+    };
   }
 
   // Confirmation email - best-effort, does not block success response.

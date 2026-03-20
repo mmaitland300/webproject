@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Calendar, Clock, ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { formatDisplayDate } from "@/lib/date";
 import { cn } from "@/lib/utils";
 import type { BlogPost } from "@/lib/mdx";
 
@@ -70,11 +71,7 @@ export function BlogList({ posts, tags }: BlogListProps) {
               <div className="flex items-center gap-4 text-xs text-muted-foreground mb-3">
                 <span className="flex items-center gap-1">
                   <Calendar size={12} />
-                  {new Date(post.frontmatter.date).toLocaleDateString("en-US", {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
+                  {formatDisplayDate(post.frontmatter.date)}
                 </span>
                 <span className="flex items-center gap-1">
                   <Clock size={12} />

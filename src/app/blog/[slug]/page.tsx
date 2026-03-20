@@ -8,6 +8,7 @@ import remarkGfm from "remark-gfm";
 import { Calendar, Clock, ArrowLeft } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { TableOfContents } from "@/components/sections/table-of-contents";
+import { formatDisplayDate } from "@/lib/date";
 import { getAllPosts, getPostBySlug, extractToc } from "@/lib/mdx";
 import { mdxComponents } from "@/lib/mdx-components";
 
@@ -64,11 +65,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               <div className="flex items-center gap-4 text-xs text-muted-foreground mb-4">
                 <span className="flex items-center gap-1">
                   <Calendar size={12} />
-                  {new Date(post.frontmatter.date).toLocaleDateString("en-US", {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
+                  {formatDisplayDate(post.frontmatter.date)}
                 </span>
                 <span className="flex items-center gap-1">
                   <Clock size={12} />

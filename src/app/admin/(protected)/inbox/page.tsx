@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/prisma";
+import { requireAdminPage } from "@/lib/admin";
 import { InboxTabs } from "@/components/sections/inbox-tabs";
 import { SectionHeader } from "@/components/ui/section-header";
 
@@ -11,6 +12,8 @@ interface Props {
 }
 
 export default async function AdminInboxPage({ searchParams }: Props) {
+  await requireAdminPage();
+
   const { tab, page: pageParam } = await searchParams;
   const currentTab = tab === "archived" ? "archived" : "active";
 
