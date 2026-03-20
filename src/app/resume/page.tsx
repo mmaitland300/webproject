@@ -8,6 +8,7 @@ import {
   resumeSkills,
   resumeSummary,
 } from "@/content/resume";
+import { getPublicContactEmail } from "@/lib/site-contact";
 
 export const metadata: Metadata = {
   title: "Resume",
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
 };
 
 export default function ResumePage() {
+  const publicEmail = getPublicContactEmail();
   return (
     <div className="py-24">
       <div className="mx-auto max-w-4xl px-6">
@@ -31,11 +33,11 @@ export default function ResumePage() {
           </p>
           <div className="mt-6 flex flex-wrap gap-4 text-sm text-muted-foreground">
             <a
-              href={`mailto:${contactInfo.email}`}
+              href={`mailto:${publicEmail}`}
               className="inline-flex items-center gap-2 transition-colors hover:text-foreground"
             >
               <Mail className="h-4 w-4" />
-              {contactInfo.email}
+              {publicEmail}
             </a>
             <span className="inline-flex items-center gap-2">
               <MapPin className="h-4 w-4" />

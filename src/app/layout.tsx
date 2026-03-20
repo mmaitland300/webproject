@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     template: "%s | Matt Maitland",
   },
   description:
-    "Full-stack developer portfolio — projects, blog, and contact. Built with Next.js, TypeScript, and Tailwind CSS.",
+    "Matt Maitland: web systems, audio/DSP, and production troubleshooting. Portfolio, blog, and contact.",
   keywords: [
     "developer",
     "portfolio",

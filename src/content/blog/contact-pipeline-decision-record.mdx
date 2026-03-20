@@ -1,0 +1,69 @@
+---
+title: "Decision Record: Designing a Reliable Contact Pipeline"
+description: "How I designed contact submission handling with abuse controls, predictable failure behavior, and minimal operational overhead."
+date: "2026-03-20"
+tags: ["Next.js", "Reliability", "Architecture"]
+published: true
+---
+
+## Context
+
+The portfolio contact form looked simple at the UI layer, but production behavior had to cover several non-trivial constraints:
+
+- prevent abuse without degrading real submissions
+- avoid silent data loss between transport and persistence
+- keep operational complexity low for a solo-maintained project
+
+I wanted a design that was stable under low-to-moderate traffic and still clear enough to reason about during failures.
+
+## Decision
+
+I used a Server Action-based pipeline with this order:
+
+1. validate inputs with Zod
+2. apply honeypot and server-side rate limiting
+3. send notification email
+4. persist to database when configured
+5. return explicit success/error state to the UI
+
+This keeps mutation logic server-side while avoiding custom API route complexity.
+
+## Tradeoffs Considered
+
+### Option A: API Route + client fetch
+
+Pros:
+- familiar REST shape
+- easy to test independently
+
+Cons:
+- more boilerplate for this scope
+- more client/server wiring for state and error handling
+
+### Option B: Server Actions (chosen)
+
+Pros:
+- less transport boilerplate
+- direct form integration with React state flow
+- cleaner mutation ownership in one place
+
+Cons:
+- fewer teams are deeply familiar with this pattern
+- requires careful handling of returned action state
+
+## Failure Modes Addressed
+
+- **Spam flood:** mitigated with honeypot + Upstash-backed server-side rate limiting
+- **Validation drift:** single server schema controls accepted shape
+- **Partial delivery risk:** success criteria tied to server-side completion path, not optimistic UI
+- **Operational mismatch across environments:** env-driven configuration with explicit fallback behavior
+
+## Outcome Signal (Technical)
+
+The current implementation provides deterministic server-side validation, durable abuse controls, and explicit action-state feedback without introducing additional API infrastructure. It also supports optional persistence while maintaining predictable behavior when DB configuration is absent.
+
+## What I Would Improve Next
+
+- add structured error categories for observability
+- record lightweight submission telemetry for anomaly analysis
+- add queue-backed async delivery path if traffic profile changes

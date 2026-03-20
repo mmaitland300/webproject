@@ -1,7 +1,7 @@
 export const contactInfo = {
   name: "Matt Maitland",
-  email: "mmaitland300@gmail.com",
-  location: "Canon City, CO",
+  /** Public inbox: set NEXT_PUBLIC_CONTACT_EMAIL for a domain alias; see site-contact helper. */
+  location: "Colorado, USA",
   github: "https://github.com/mmaitland300",
 };
 

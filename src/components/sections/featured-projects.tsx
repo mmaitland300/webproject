@@ -6,10 +6,10 @@ import { ArrowRight } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { ProjectCard } from "@/components/sections/project-card";
 import { SectionHeader } from "@/components/ui/section-header";
-import { getFeaturedProjects } from "@/content/projects";
+import { getHomepageFeaturedProjects } from "@/content/projects";
 
 export function FeaturedProjects() {
-  const featured = getFeaturedProjects().slice(0, 3);
+  const featured = getHomepageFeaturedProjects();
 
   return (
     <section className="py-24 relative z-10">
@@ -24,7 +24,7 @@ export function FeaturedProjects() {
           <SectionHeader
             eyebrow="Selected Work"
             title="Featured Projects"
-            description="Professional work and selected side projects, from client applications to interactive experiments."
+            description="A small set of builds where constraints, tradeoffs, and outcomes are explicit: DSP, production web, and multi-layer support."
           />
         </motion.div>
 

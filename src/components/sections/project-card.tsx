@@ -12,6 +12,16 @@ interface ProjectCardProps {
   compact?: boolean;
 }
 
+const outcomeLabels: Record<
+  NonNullable<Project["outcomeType"]>,
+  string
+> = {
+  metric: "Outcome (Metric)",
+  proxy: "Outcome (Operational Proxy)",
+  technical: "Outcome (Technical)",
+  qualitative: "Outcome (Qualitative)",
+};
+
 export function ProjectCard({ project, index, compact }: ProjectCardProps) {
   const [iframeActive, setIframeActive] = useState(false);
 
@@ -79,6 +89,24 @@ export function ProjectCard({ project, index, compact }: ProjectCardProps) {
               <span className="font-medium text-foreground/80">Problem: </span>
               <span className="text-muted-foreground">{project.problem}</span>
             </div>
+            {project.constraints && (
+              <div>
+                <span className="font-medium text-foreground/80">
+                  Constraints:{" "}
+                </span>
+                <span className="text-muted-foreground">
+                  {project.constraints}
+                </span>
+              </div>
+            )}
+            {project.tradeoff && (
+              <div>
+                <span className="font-medium text-foreground/80">
+                  Tradeoff:{" "}
+                </span>
+                <span className="text-muted-foreground">{project.tradeoff}</span>
+              </div>
+            )}
             {project.role && (
               <div>
                 <span className="font-medium text-foreground/80">Role: </span>
@@ -87,7 +115,11 @@ export function ProjectCard({ project, index, compact }: ProjectCardProps) {
             )}
             {project.outcome && (
               <div>
-                <span className="font-medium text-foreground/80">Outcome: </span>
+                <span className="font-medium text-foreground/80">
+                  {project.outcomeType
+                    ? `${outcomeLabels[project.outcomeType]}: `
+                    : "Outcome: "}
+                </span>
                 <span className="text-muted-foreground">{project.outcome}</span>
               </div>
             )}
@@ -127,6 +159,14 @@ export function ProjectCard({ project, index, compact }: ProjectCardProps) {
               className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors"
             >
               <ExternalLink size={14} /> Demo
+            </a>
+          )}
+          {project.caseStudy && (
+            <a
+              href={project.caseStudy}
+              className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <ExternalLink size={14} /> Case Study
             </a>
           )}
           {project.iframe && (

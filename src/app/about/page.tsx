@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { AboutContent } from "@/components/sections/about-content";
 import { SectionHeader } from "@/components/ui/section-header";
+import { getPublicContactEmail } from "@/lib/site-contact";
 
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Learn about my background, skills, and experience as a full-stack developer.",
+    "Background across web applications, audio software, and remote technical support in real customer environments.",
 };
 
 export default function AboutPage() {
@@ -15,10 +16,10 @@ export default function AboutPage() {
         <SectionHeader
           eyebrow="About"
           title="Developer, Builder, Technical Support"
-          description="A focused look at my technical background, hands-on support experience, and the tools I use to ship practical work."
+          description="A closer look at my background across software development, audio tooling, and remote troubleshooting work in production environments."
           className="mb-16"
         />
-        <AboutContent />
+        <AboutContent publicEmail={getPublicContactEmail()} />
       </div>
     </div>
   );

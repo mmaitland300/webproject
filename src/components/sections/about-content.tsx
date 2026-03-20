@@ -20,6 +20,10 @@ import {
   resumeCertifications as certifications,
 } from "@/content/resume";
 
+type AboutContentProps = {
+  publicEmail: string;
+};
+
 const fadeUp = {
   initial: { opacity: 0, y: 20 },
   whileInView: { opacity: 1, y: 0 },
@@ -27,17 +31,21 @@ const fadeUp = {
   transition: { duration: 0.5 },
 };
 
-export function AboutContent() {
+export function AboutContent({ publicEmail }: AboutContentProps) {
   return (
     <div className="space-y-16">
       <motion.section {...fadeUp}>
-        <p className="text-lg text-muted-foreground leading-relaxed">
-          I&apos;m a Colorado-based developer with experience across web
-          development, software support, operations, and hands-on technical
-          problem solving. I enjoy learning quickly, building practical
-          solutions, and doing the work it takes to get a job done correctly,
-          whether that means shipping a client application, troubleshooting a
-          system issue, or improving a process.
+        <p className="text-lg font-medium text-foreground leading-relaxed">
+          Thesis: I optimize for correct decisions under real constraints: limited
+          data, live users, host variance, or hardware/software stacks that do not
+          fail one layer at a time.
+        </p>
+        <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
+          I&apos;m Colorado-based. Day to day that means web applications, audio
+          software and DSP, and remote technical support for Full Swing simulator
+          environments: installation, calibration, licensing, display, networking,
+          and performance across customer setups where incomplete information is
+          normal.
         </p>
       </motion.section>
 
@@ -155,7 +163,7 @@ export function AboutContent() {
           <Github className="mr-2 h-4 w-4" /> GitHub
         </a>
         <a
-          href="mailto:mmaitland300@gmail.com"
+          href={`mailto:${publicEmail}`}
           className={buttonVariants({ variant: "outline" })}
         >
           <Mail className="mr-2 h-4 w-4" /> Email

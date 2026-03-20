@@ -1,23 +1,6 @@
 import Link from "next/link";
 import { Github, Mail, Music2 } from "lucide-react";
-
-const socialLinks = [
-  {
-    href: "https://github.com/mmaitland300",
-    label: "GitHub",
-    icon: Github,
-  },
-  {
-    href: "https://soundcloud.com/matthew_maitland",
-    label: "SoundCloud",
-    icon: Music2,
-  },
-  {
-    href: "mailto:mmaitland300@gmail.com",
-    label: "Email",
-    icon: Mail,
-  },
-];
+import { getPublicMailtoHref } from "@/lib/site-contact";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -29,6 +12,24 @@ const navLinks = [
 ];
 
 export function Footer() {
+  const socialLinks = [
+    {
+      href: "https://github.com/mmaitland300",
+      label: "GitHub",
+      icon: Github,
+    },
+    {
+      href: "https://soundcloud.com/matthew_maitland",
+      label: "SoundCloud",
+      icon: Music2,
+    },
+    {
+      href: getPublicMailtoHref(),
+      label: "Email",
+      icon: Mail,
+    },
+  ];
+
   return (
     <footer className="relative z-10 border-t border-border bg-background/50 backdrop-blur-sm">
       <div className="mx-auto max-w-6xl px-6 py-12">
@@ -41,8 +42,8 @@ export function Footer() {
               </span>
             </Link>
             <p className="mt-3 text-sm text-muted-foreground max-w-xs">
-              Full-stack developer building modern web experiences with
-              TypeScript, React, and Next.js.
+              Engineer focused on reliable web systems, production
+              troubleshooting, and delivery under real constraints.
             </p>
           </div>
 
