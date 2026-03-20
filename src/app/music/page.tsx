@@ -4,7 +4,8 @@ import { SectionHeader } from "@/components/ui/section-header";
 
 export const metadata: Metadata = {
   title: "Music",
-  description: "Original music by Matt Maitland - listen on SoundCloud.",
+  description:
+    "Original music by Matt Maitland — written, recorded, produced, and mastered as NEUROCHEMICAL ENTROPY. Listen on SoundCloud.",
 };
 
 const SOUNDCLOUD_PROFILE = "https://soundcloud.com/matthew_maitland";
@@ -42,8 +43,8 @@ export default function MusicPage() {
         <div className="mb-12">
           <SectionHeader
             eyebrow="Music"
-            title="Audio Work and Experiments"
-            description="I make music in my spare time. Here are a few tracks to start with, and you can head over to SoundCloud for the full catalog."
+            title="Playing, Recording & Production"
+            description="I play, record, produce, and master original music under the name NEUROCHEMICAL ENTROPY. A few tracks are below — head over to SoundCloud for the full catalog."
           />
           <div className="mt-5 flex justify-center">
             <Music2 className="h-6 w-6 text-[rgba(122,162,247,0.95)]" />

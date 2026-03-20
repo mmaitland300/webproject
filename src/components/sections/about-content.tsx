@@ -46,6 +46,12 @@ export function AboutContent({ publicEmail }: AboutContentProps) {
           and I am open to freelance work while I keep building toward a
           full-time software role.
         </p>
+        <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
+          Music runs as a separate ongoing thread. I play, record, produce, and
+          master original material under the name NEUROCHEMICAL ENTROPY. That
+          practice sits alongside the software work and directly informs
+          projects like StringFlux.
+        </p>
       </motion.section>
 
       <motion.section {...fadeUp}>
