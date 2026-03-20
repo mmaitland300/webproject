@@ -17,6 +17,16 @@ interface InboxTabsProps {
   currentTab: "active" | "archived";
   activeCount: number;
   archivedCount: number;
+  currentPage: number;
+  totalPages: number;
+}
+
+function inboxHref(tab: "active" | "archived", page: number) {
+  const params = new URLSearchParams();
+  if (tab === "archived") params.set("tab", "archived");
+  if (page > 1) params.set("page", String(page));
+  const q = params.toString();
+  return `/admin/inbox${q ? `?${q}` : ""}`;
 }
 
 export function InboxTabs({
@@ -24,12 +34,14 @@ export function InboxTabs({
   currentTab,
   activeCount,
   archivedCount,
+  currentPage,
+  totalPages,
 }: InboxTabsProps) {
   return (
     <div>
       <div className="flex gap-1 mb-6 border-b border-border">
         <Link
-          href="/admin/inbox"
+          href={inboxHref("active", 1)}
           className={cn(
             "px-4 py-2 text-sm font-medium transition-colors -mb-px",
             currentTab === "active"
@@ -40,7 +52,7 @@ export function InboxTabs({
           Active ({activeCount})
         </Link>
         <Link
-          href="/admin/inbox?tab=archived"
+          href={inboxHref("archived", 1)}
           className={cn(
             "px-4 py-2 text-sm font-medium transition-colors -mb-px",
             currentTab === "archived"
@@ -61,7 +73,36 @@ export function InboxTabs({
           </p>
         </div>
       ) : (
-        <InboxList submissions={submissions} mode={currentTab} />
+        <>
+          <InboxList submissions={submissions} mode={currentTab} />
+          {totalPages > 1 && (
+            <div className="mt-8 flex flex-col items-center justify-between gap-3 border-t border-border pt-6 text-sm sm:flex-row">
+              {currentPage > 1 ? (
+                <Link
+                  href={inboxHref(currentTab, currentPage - 1)}
+                  className="text-purple-400 hover:text-purple-300"
+                >
+                  Previous
+                </Link>
+              ) : (
+                <span className="text-muted-foreground">Previous</span>
+              )}
+              <span className="text-muted-foreground">
+                Page {currentPage} of {totalPages}
+              </span>
+              {currentPage < totalPages ? (
+                <Link
+                  href={inboxHref(currentTab, currentPage + 1)}
+                  className="text-purple-400 hover:text-purple-300"
+                >
+                  Next
+                </Link>
+              ) : (
+                <span className="text-muted-foreground">Next</span>
+              )}
+            </div>
+          )}
+        </>
       )}
     </div>
   );

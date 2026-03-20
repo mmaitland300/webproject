@@ -1,9 +1,9 @@
 import type { MetadataRoute } from "next";
 import { getAllPosts } from "@/lib/mdx";
+import { getSiteUrl } from "@/lib/site-url";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl =
-    process.env.NEXT_PUBLIC_SITE_URL || "https://localhost:3000";
+  const baseUrl = getSiteUrl();
 
   const posts = getAllPosts();
   const blogEntries = posts.map((post) => ({
@@ -27,6 +27,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.65,
+    },
+    {
+      url: `${baseUrl}/projects/snake-detector`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.55,
     },
     { url: `${baseUrl}/about`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
     { url: `${baseUrl}/blog`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.9 },

@@ -99,6 +99,7 @@ export const projects: Project[] = [
     outcomeType: "technical",
     tags: ["Python", "Machine Learning", "CNN", "Computer Vision"],
     github: "https://github.com/mmaitland300/Snake-detector",
+    caseStudy: "/projects/snake-detector",
     category: "experiment",
   },
   {

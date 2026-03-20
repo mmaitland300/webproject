@@ -77,23 +77,7 @@ export async function submitContact(
     }
   }
 
-  // Persist to database if available
-  if (process.env.DATABASE_URL) {
-    try {
-      const { prisma } = await import("@/lib/prisma");
-      await prisma.contactSubmission.create({
-        data: {
-          name: parsed.data.name,
-          email: parsed.data.email,
-          message: parsed.data.message,
-        },
-      });
-    } catch (err) {
-      console.error("Failed to persist contact submission:", err);
-    }
-  }
-
-  // Send email via Resend
+  // Send email via Resend (must succeed before optional DB persistence)
   const resendKey = process.env.RESEND_API_KEY;
   const fromEmail = process.env.CONTACT_FROM_EMAIL;
   const toEmail = process.env.CONTACT_TO_EMAIL;
@@ -127,6 +111,27 @@ export async function submitContact(
       success: false,
       message: "Failed to send your message. Please try again later.",
     };
+  }
+
+  // Persist only after email delivery succeeds (avoids orphan inbox rows on misconfig or send failure).
+  // Reliability tradeoff: the UI success path is driven by email delivery; admin inbox persistence
+  // is best-effort and may be missed if Prisma/DB persistence fails.
+  if (process.env.DATABASE_URL) {
+    try {
+      const { prisma } = await import("@/lib/prisma");
+      await prisma.contactSubmission.create({
+        data: {
+          name: parsed.data.name,
+          email: parsed.data.email,
+          message: parsed.data.message,
+        },
+      });
+    } catch (err) {
+      console.error(
+        "Admin inbox persistence failed after successful email delivery (best-effort path):",
+        err
+      );
+    }
   }
 
   return {

@@ -7,25 +7,36 @@ export const dynamic = "force-dynamic";
 const PAGE_SIZE = 50;
 
 interface Props {
-  searchParams: Promise<{ tab?: string }>;
+  searchParams: Promise<{ tab?: string; page?: string }>;
 }
 
 export default async function AdminInboxPage({ searchParams }: Props) {
-  const { tab } = await searchParams;
+  const { tab, page: pageParam } = await searchParams;
   const currentTab = tab === "archived" ? "archived" : "active";
 
-  const [submissions, activeCount, archivedCount] = await Promise.all([
-    prisma.contactSubmission.findMany({
-      where:
-        currentTab === "archived"
-          ? { archivedAt: { not: null } }
-          : { archivedAt: null },
-      orderBy: { createdAt: "desc" },
-      take: PAGE_SIZE,
-    }),
+  const [activeCount, archivedCount] = await Promise.all([
     prisma.contactSubmission.count({ where: { archivedAt: null } }),
     prisma.contactSubmission.count({ where: { archivedAt: { not: null } } }),
   ]);
+
+  const totalForTab =
+    currentTab === "archived" ? archivedCount : activeCount;
+  const totalPages = Math.max(1, Math.ceil(totalForTab / PAGE_SIZE));
+  const rawPage = parseInt(pageParam ?? "1", 10);
+  const pageNum =
+    Number.isFinite(rawPage) && rawPage >= 1 ? Math.floor(rawPage) : 1;
+  const currentPage = Math.min(pageNum, totalPages);
+  const skip = (currentPage - 1) * PAGE_SIZE;
+
+  const submissions = await prisma.contactSubmission.findMany({
+    where:
+      currentTab === "archived"
+        ? { archivedAt: { not: null } }
+        : { archivedAt: null },
+    orderBy: { createdAt: "desc" },
+    skip,
+    take: PAGE_SIZE,
+  });
 
   return (
     <div className="py-32">
@@ -64,6 +75,8 @@ export default async function AdminInboxPage({ searchParams }: Props) {
           currentTab={currentTab}
           activeCount={activeCount}
           archivedCount={archivedCount}
+          currentPage={currentPage}
+          totalPages={totalPages}
         />
       </div>
     </div>

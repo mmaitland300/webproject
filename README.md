@@ -1,4 +1,4 @@
-# Matt Maitland — Portfolio
+# Matt Maitland - Portfolio
 
 Personal portfolio and blog built with Next.js, TypeScript, and Tailwind CSS. Includes MDX blogging, a contact form with rate limiting, and an admin inbox with GitHub OAuth.
 
@@ -16,10 +16,10 @@ Personal portfolio and blog built with Next.js, TypeScript, and Tailwind CSS. In
 
 ## Getting Started
 
-```bash
+```powershell
 git clone https://github.com/mmaitland300/webproject.git
 cd webproject
-cp .env.example .env   # then fill in values (see below)
+Copy-Item .env.example .env   # PowerShell; then fill in values (see below)
 npm install            # also runs prisma generate via postinstall
 npm run dev
 ```
@@ -53,6 +53,8 @@ The site works without a database. To enable the admin inbox and contact persist
 2. Set `DATABASE_URL` and `DIRECT_URL` in `.env`.
 3. Push the schema: `npx prisma db push`
 
+Note: the contact flow guarantees email delivery first. Database persistence for the admin inbox runs after a successful email send and is best-effort.
+
 ## Auth Setup (Optional)
 
 To enable the admin dashboard at `/admin`:
@@ -65,14 +67,14 @@ To enable the admin dashboard at `/admin`:
 
 ```
 src/
-├── app/            # Next.js App Router pages and layouts
-├── actions/        # Server Actions (contact form, inbox mutations)
-├── components/     # UI and section components
-├── content/        # Blog posts (MDX) and project/resume data
-├── lib/            # Utilities (MDX, Prisma, auth, admin helpers)
-└── generated/      # Prisma client (auto-generated, gitignored)
-prisma/             # Prisma schema
-public/             # Static assets, game embeds, resume PDF
+  app/            # Next.js App Router pages and layouts
+  actions/        # Server Actions (contact form, inbox mutations)
+  components/     # UI and section components
+  content/        # Blog posts (MDX) and project/resume data
+  lib/            # Utilities (MDX, Prisma, auth, admin helpers)
+  generated/      # Prisma client (auto-generated, gitignored)
+prisma/           # Prisma schema
+public/           # Static assets, game embeds, resume PDF
 ```
 
 ## Content Management

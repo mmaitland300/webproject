@@ -43,8 +43,8 @@ export function AboutContent({ publicEmail }: AboutContentProps) {
           Most of my day is remote troubleshooting: installation, calibration,
           licensing, display, networking, and performance issues across real
           customer setups. Software development is a serious side path for me,
-          and I am open to freelance work while I keep building toward a full-
-          time software role.
+          and I am open to freelance work while I keep building toward a
+          full-time software role.
         </p>
       </motion.section>
 
