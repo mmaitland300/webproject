@@ -11,6 +11,13 @@ jobs:
     name: Install / Lint / Test / Build
     runs-on: ubuntu-latest
 
+    # Stub vars needed at install time (postinstall → prisma generate reads
+    # prisma.config.ts which requires DATABASE_URL and DIRECT_URL).
+    env:
+      DATABASE_URL: postgresql://ci:ci@localhost:5432/ci
+      DIRECT_URL: postgresql://ci:ci@localhost:5432/ci
+      NEXT_PUBLIC_SITE_URL: https://mmaitland.dev
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -32,9 +39,3 @@ jobs:
 
       - name: Build
         run: npm run build
-        env:
-          # Prisma generate runs as part of build. Provide stub URLs so it
-          # does not fail when the real Neon credentials are absent in CI.
-          DATABASE_URL: postgresql://ci:ci@localhost:5432/ci
-          DIRECT_URL: postgresql://ci:ci@localhost:5432/ci
-          NEXT_PUBLIC_SITE_URL: https://mmaitland.dev
