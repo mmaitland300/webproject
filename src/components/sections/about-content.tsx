@@ -36,16 +36,15 @@ export function AboutContent({ publicEmail }: AboutContentProps) {
     <div className="space-y-16">
       <motion.section {...fadeUp}>
         <p className="text-lg font-medium text-foreground leading-relaxed">
-          Thesis: I optimize for correct decisions under real constraints: limited
-          data, live users, host variance, or hardware/software stacks that do not
-          fail one layer at a time.
+          I work full-time in technical support for Full Swing simulator
+          environments.
         </p>
         <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
-          I&apos;m Colorado-based. Day to day that means web applications, audio
-          software and DSP, and remote technical support for Full Swing simulator
-          environments: installation, calibration, licensing, display, networking,
-          and performance across customer setups where incomplete information is
-          normal.
+          Most of my day is remote troubleshooting: installation, calibration,
+          licensing, display, networking, and performance issues across real
+          customer setups. Software development is a serious side path for me,
+          and I am open to freelance work while I keep building toward a full-
+          time software role.
         </p>
       </motion.section>
 

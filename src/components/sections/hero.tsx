@@ -36,10 +36,9 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
           className="mt-6 mx-auto max-w-2xl text-lg leading-relaxed text-[rgba(194,203,220,0.82)] sm:text-xl"
         >
-          I make engineering calls where reliability, usability, and deployability
-          collide: shipping web systems, building audio/DSP tools, and resolving
-          production-style failures remotely when the signal is noisy and the fix
-          has to stick.
+          I work full-time at Auxillium supporting Full Swing golf simulators,
+          helping customers with setup, calibration, licensing, networking, and
+          performance issues. I also take freelance web and audio software work.
         </motion.p>
 
         <motion.div
