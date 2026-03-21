@@ -41,9 +41,10 @@ export function AboutContent({ publicEmail }: AboutContentProps) {
         </p>
         <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
           Most of my day is remote troubleshooting: installation, calibration,
-          licensing, display, networking, and performance issues across real
-          customer setups. That systems-debugging discipline carries into the
-          web and audio software projects I build outside support work.
+          licensing, display, networking, and performance issues across
+          production simulator environments. That systems-debugging discipline
+          carries into the web and audio software projects I build outside
+          support work.
         </p>
         <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
           Music runs as a separate ongoing thread. I play, record, produce, and
@@ -97,6 +98,18 @@ export function AboutContent({ publicEmail }: AboutContentProps) {
               <p className="text-sm text-muted-foreground mt-2">
                 {exp.description}
               </p>
+              {exp.highlights && exp.highlights.length > 0 && (
+                <ul className="mt-2 space-y-1">
+                  {exp.highlights.map((h) => (
+                    <li
+                      key={h}
+                      className="text-sm text-muted-foreground pl-3 relative before:absolute before:left-0 before:top-[0.6em] before:h-1 before:w-1 before:rounded-full before:bg-purple-500/50"
+                    >
+                      {h}
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
           ))}
         </div>

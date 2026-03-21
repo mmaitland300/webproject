@@ -80,9 +80,16 @@ export function ProjectCard({ project, index, compact }: ProjectCardProps) {
           />
         </div>
       ) : (
-        <div className="h-48 bg-gradient-to-br from-purple-500/10 to-cyan-500/10 flex items-center justify-center">
-          <div className="text-4xl font-bold gradient-text opacity-30">
-            {project.title[0]}
+        <div className="h-48 bg-gradient-to-br from-purple-500/5 via-background to-cyan-500/5 flex flex-col items-center justify-center gap-2 border-b border-border/50">
+          <div className="flex gap-1.5">
+            {project.tags.slice(0, 3).map((tag) => (
+              <span
+                key={tag}
+                className="rounded-md bg-muted/60 px-2 py-0.5 text-[10px] font-medium text-muted-foreground/70"
+              >
+                {tag}
+              </span>
+            ))}
           </div>
         </div>
       )}

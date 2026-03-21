@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Play } from "lucide-react";
+import { ExternalLink, Play } from "lucide-react";
 
 interface LazySoundCloudTrackProps {
   title: string;
@@ -15,10 +15,11 @@ export function LazySoundCloudTrack({
   embedParams,
 }: LazySoundCloudTrackProps) {
   const [loaded, setLoaded] = useState(false);
+  const [errored, setErrored] = useState(false);
 
   return (
     <div className="overflow-hidden rounded-xl border border-border bg-card/50 backdrop-blur-sm">
-      {loaded ? (
+      {loaded && !errored ? (
         <iframe
           width="100%"
           height="300"
@@ -28,7 +29,23 @@ export function LazySoundCloudTrack({
           src={`https://w.soundcloud.com/player/?url=${encodeURIComponent(trackUrl)}${embedParams}`}
           title={title}
           className="block"
+          onError={() => setErrored(true)}
         />
+      ) : errored ? (
+        <div className="flex h-[300px] w-full flex-col items-center justify-center gap-3 text-center px-4">
+          <p className="text-sm text-muted-foreground">
+            Embed failed to load.
+          </p>
+          <a
+            href={trackUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-sm text-purple-400 hover:text-purple-300 transition-colors"
+          >
+            <ExternalLink className="h-3.5 w-3.5" />
+            Open {title} on SoundCloud
+          </a>
+        </div>
       ) : (
         <button
           type="button"

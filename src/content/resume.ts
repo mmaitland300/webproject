@@ -42,6 +42,10 @@ export const resumeExperience = [
     period: "2018 - Present",
     description:
       "Build custom web applications and software solutions with Django, Flask, React, and Next.js. Handle database design, API integrations, debugging, deployment, and long-term client support from launch through maintenance.",
+    highlights: [
+      "Built and shipped mmaitland.dev (Next.js, Prisma, Auth.js) with validated contact intake, rate limiting, and admin OAuth - live in production.",
+      "Developed a Django auction platform with server-enforced bid rules, relational data modeling, and multi-user transaction flows.",
+    ],
   },
   {
     role: "Technical Support / Product Support Specialist",
@@ -49,6 +53,10 @@ export const resumeExperience = [
     period: "April 2024 - Present",
     description:
       "Deliver technical support for Full Swing simulator software and hardware, resolving installation, calibration, licensing, display, networking, and performance issues across commercial and residential environments.",
+    highlights: [
+      "Standardized multi-layer triage workflows across calibration, licensing, display, networking, and OS subsystems - documented in a public case study.",
+      "Reduced repeat incidents on recurring failure classes by converting ad-hoc fixes into reproducible diagnostic playbooks.",
+    ],
   },
 ];
 

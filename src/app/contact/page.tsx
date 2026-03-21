@@ -7,7 +7,7 @@ import { getPublicContactEmail } from "@/lib/site-contact";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Get in touch - I would love to hear from you about work, collaboration, or support questions.",
+    "Reach out about a project, technical question, or collaboration.",
 };
 
 export default function ContactPage() {
@@ -17,8 +17,8 @@ export default function ContactPage() {
       <div className="mx-auto max-w-4xl px-6">
         <SectionHeader
           eyebrow="Contact"
-          title="Let's Build Something"
-          description="Have a question or want to work together? Send a message and I will get back to you as soon as I can."
+          title="Get in Touch"
+          description="Have a question, a project to discuss, or something to troubleshoot? Send a message and I will get back to you."
           className="mb-16"
         />
 
