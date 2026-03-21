@@ -20,11 +20,14 @@ export interface Project {
   category: ProjectCategory;
 }
 
-/** Homepage shows three strongest proof rows; full /projects lists all featured. */
+/**
+ * Homepage keeps one card per major signal area:
+ * DSP build, systems troubleshooting, and business-logic-heavy web app.
+ */
 const HOMEPAGE_FEATURED_SLUGS = [
   "stringflux",
   "full-swing-tech-support",
-  "portfolio-site",
+  "auction-house",
 ] as const;
 
 export const projects: Project[] = [
@@ -51,6 +54,7 @@ export const projects: Project[] = [
       "Transient Detection",
       "Oversampling",
     ],
+    image: "/images/stringflux/ui-advanced.png",
     github: "https://github.com/mmaitland300/StringFlux.git",
     demo: "/stringflux",
     caseStudy: "/projects/stringflux",

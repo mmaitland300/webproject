@@ -68,6 +68,23 @@ const tradeoffs = [
   },
 ];
 
+const validationChecks = [
+  {
+    scenario: "Oversampling mode change during active playback",
+    observation:
+      "Mode switches are queued and applied at safe boundaries instead of forcing immediate audio-thread reconfiguration.",
+    whyItMatters:
+      "This keeps behavior deterministic and reduces transition instability risk while tuning the wet-path nonlinear stages.",
+  },
+  {
+    scenario: "Repeated transitions across 1x, 2x, and 4x modes in dev sessions",
+    observation:
+      "Engine state remains recoverable after mode changes and does not require restarting the plugin instance to continue testing.",
+    whyItMatters:
+      "Supports practical iteration speed while validating multiband routing and scheduler behavior.",
+  },
+];
+
 export default function StringFluxCaseStudyPage() {
   return (
     <div className="py-24">
@@ -186,6 +203,40 @@ export default function StringFluxCaseStudyPage() {
               <div key={item.title}>
                 <h3 className="text-sm font-medium text-foreground">{item.title}</h3>
                 <p className="mt-1 text-sm text-muted-foreground">{item.body}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="mb-10 rounded-xl border border-border bg-card/40 p-6">
+          <h2 className="mb-2 text-xl font-semibold">Current Validation Checks</h2>
+          <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
+            These are observed development checks, not formal benchmark claims.
+            Published CPU/latency benchmarking is intentionally deferred until
+            the core behavior is feature-stable.
+          </p>
+          <div className="space-y-3">
+            {validationChecks.map((item) => (
+              <div
+                key={item.scenario}
+                className="rounded-lg border border-border bg-card/30 px-4 py-3 text-sm"
+              >
+                <p>
+                  <span className="font-medium text-foreground">Scenario: </span>
+                  <span className="text-muted-foreground">{item.scenario}</span>
+                </p>
+                <p className="mt-1">
+                  <span className="font-medium text-foreground">
+                    Observed behavior:{" "}
+                  </span>
+                  <span className="text-muted-foreground">{item.observation}</span>
+                </p>
+                <p className="mt-1">
+                  <span className="font-medium text-foreground">
+                    Engineering value:{" "}
+                  </span>
+                  <span className="text-muted-foreground">{item.whyItMatters}</span>
+                </p>
               </div>
             ))}
           </div>

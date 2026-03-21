@@ -46,6 +46,39 @@ const workflow = [
   },
 ];
 
+const representativeIncident = [
+  {
+    label: "Symptom",
+    detail:
+      "Customer reports inconsistent launch and spin reads after a software/OS update window, with occasional sessions that appear normal and then degrade.",
+  },
+  {
+    label: "Candidate causes",
+    detail:
+      "Calibration state drift, graphics/driver mismatch, peripheral input instability, and environment changes introduced during updates.",
+  },
+  {
+    label: "Branch elimination path",
+    detail:
+      "Reproduce in a controlled baseline, then isolate one subsystem at a time (calibration checks, display pipeline checks, peripheral checks) to remove non-causal branches.",
+  },
+  {
+    label: "Root cause pattern",
+    detail:
+      "A mixed-state configuration where calibration assumptions and post-update environment behavior no longer matched clean baseline expectations.",
+  },
+  {
+    label: "Fix pattern",
+    detail:
+      "Apply reversible corrective actions in order (restore known-good settings, recalibrate in sequence, re-verify environment) before deeper changes.",
+  },
+  {
+    label: "What changed after",
+    detail:
+      "Issue handling became faster on similar escalations because the incident was converted into a repeatable checklist rather than a one-off memory.",
+  },
+];
+
 export default function FullSwingCaseStudyPage() {
   return (
     <div className="py-24">
@@ -113,6 +146,28 @@ export default function FullSwingCaseStudyPage() {
               <div key={item.step}>
                 <h3 className="text-sm font-medium text-foreground">{item.step}</h3>
                 <p className="mt-1 text-sm text-muted-foreground">{item.detail}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="mb-10 rounded-xl border border-border bg-card/40 p-6">
+          <h2 className="mb-2 text-xl font-semibold">
+            Representative Incident Pattern
+          </h2>
+          <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
+            This walkthrough reflects a recurring class of escalations, not a
+            single customer transcript. Details are intentionally anonymized and
+            scoped to troubleshooting patterns I can defend publicly.
+          </p>
+          <div className="space-y-3">
+            {representativeIncident.map((item) => (
+              <div
+                key={item.label}
+                className="rounded-lg border border-border bg-card/30 px-4 py-3 text-sm"
+              >
+                <span className="font-medium text-foreground">{item.label}: </span>
+                <span className="text-muted-foreground">{item.detail}</span>
               </div>
             ))}
           </div>

@@ -96,18 +96,9 @@ export default function StringFluxPage() {
             <Music2 className="h-5 w-5 text-purple-400" />
             Audio demo
           </h2>
-          <p className="mb-4 text-sm text-muted-foreground">
-            A short clip showing StringFlux processing a clean guitar signal -
-            dry to fully wet with transient-triggered grain clouds.
-          </p>
-          <audio controls className="w-full" aria-label="StringFlux audio demo">
-            <source src="/audio/stringflux-demo.mp3" type="audio/mpeg" />
-            <source src="/audio/stringflux-demo.ogg" type="audio/ogg" />
-            Your browser does not support the audio element.
-          </audio>
-          <p className="mt-3 text-xs text-muted-foreground">
-            Demo clip coming soon - join the waitlist to be notified when
-            it&apos;s available.
+          <p className="text-sm text-muted-foreground">
+            Audio demo clips are not published yet. Join the waitlist for
+            release updates and future demo availability.
           </p>
         </section>
 

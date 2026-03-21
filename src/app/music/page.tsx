@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ExternalLink, Music2 } from "lucide-react";
+import { LazySoundCloudTrack } from "@/components/sections/lazy-soundcloud-track";
 import { SectionHeader } from "@/components/ui/section-header";
 
 export const metadata: Metadata = {
@@ -61,18 +62,11 @@ export default function MusicPage() {
                 <p className="text-sm text-muted-foreground">{track.artist}</p>
               </div>
 
-              <div className="overflow-hidden rounded-xl border border-border bg-card/50 backdrop-blur-sm">
-                <iframe
-                  width="100%"
-                  height="300"
-                  scrolling="no"
-                  frameBorder="no"
-                  allow="autoplay"
-                  src={`https://w.soundcloud.com/player/?url=${encodeURIComponent(track.trackUrl)}${EMBED_PARAMS}`}
-                  title={track.title}
-                  className="block"
-                />
-              </div>
+              <LazySoundCloudTrack
+                title={track.title}
+                trackUrl={track.trackUrl}
+                embedParams={EMBED_PARAMS}
+              />
 
               <div className="text-sm text-muted-foreground">
                 <a

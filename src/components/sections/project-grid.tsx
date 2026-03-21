@@ -49,12 +49,6 @@ export function ProjectGrid() {
         ))}
       </div>
 
-      <p className="mb-8 text-center text-xs text-muted-foreground">
-        Some GitHub links point to private or temporarily unavailable
-        repositories while screenshots, READMEs, and case studies are being
-        cleaned up. Source access is available on request.
-      </p>
-
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         {filtered.map((project, i) => (
           <ProjectCard key={project.slug} project={project} index={i} />

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { ExternalLink, Github, Gamepad2, Play, X } from "lucide-react";
@@ -67,6 +68,16 @@ export function ProjectCard({ project, index, compact }: ProjectCardProps) {
               </span>
             </button>
           )}
+        </div>
+      ) : project.image ? (
+        <div className="relative h-48 overflow-hidden bg-black/30">
+          <Image
+            src={project.image}
+            alt={`${project.title} preview`}
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
         </div>
       ) : (
         <div className="h-48 bg-gradient-to-br from-purple-500/10 to-cyan-500/10 flex items-center justify-center">

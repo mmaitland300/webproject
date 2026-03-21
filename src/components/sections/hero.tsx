@@ -16,7 +16,7 @@ export function Hero() {
         >
           <div className="cyber-pill mb-6 inline-flex items-center gap-3 rounded-full px-4 py-2 text-xs font-medium uppercase tracking-[0.24em] text-[rgba(196,206,223,0.82)] backdrop-blur-sm">
             <span className="h-1.5 w-1.5 rounded-full bg-[rgba(136,212,255,0.95)] shadow-[0_0_12px_rgba(67,188,255,0.45)]" />
-            Software Developer & Technical Support
+            Web Engineer · DSP Developer · Systems Troubleshooting
           </div>
         </motion.div>
 
@@ -36,9 +36,10 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
           className="mt-6 mx-auto max-w-2xl text-lg leading-relaxed text-[rgba(194,203,220,0.82)] sm:text-xl"
         >
-          I work full-time at Auxillium doing technical support for Full Swing golf simulators.
-          On the side I build web and audio software, and write, record,
-          produce, and master original music as NEUROCHEMICAL ENTROPY.
+          I work full-time at Auxillium doing technical support for Full Swing.
+          On the side when time permits, I attempt to build web and audio
+          software, and write, record, produce, and master original music as
+          NEUROCHEMICAL ENTROPY.
         </motion.p>
 
         <motion.div
