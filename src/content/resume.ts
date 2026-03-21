@@ -5,6 +5,19 @@ export const contactInfo = {
   github: "https://github.com/mmaitland300",
 };
 
+export type ResumeHighlight = {
+  text: string;
+  href?: string;
+};
+
+export type ResumeExperienceItem = {
+  role: string;
+  company: string;
+  period: string;
+  description: string;
+  highlights?: ResumeHighlight[];
+};
+
 export const resumeSummary =
   "Colorado-based developer and technical support professional focused on practical software, reliable systems, and clear problem solving. Experience includes building full-stack web applications, integrating APIs, deploying production systems, and supporting users through hardware, software, and connectivity issues.";
 
@@ -35,7 +48,7 @@ export const resumeSkills = [
   "Machine Learning",
 ];
 
-export const resumeExperience = [
+export const resumeExperience: ResumeExperienceItem[] = [
   {
     role: "Freelance Full-Stack Developer",
     company: "Freelance",
@@ -43,8 +56,14 @@ export const resumeExperience = [
     description:
       "Build custom web applications and software solutions with Django, Flask, React, and Next.js. Handle database design, API integrations, debugging, deployment, and long-term client support from launch through maintenance.",
     highlights: [
-      "Built and shipped mmaitland.dev (Next.js, Prisma, Auth.js) with validated contact intake, rate limiting, and admin OAuth - live in production.",
-      "Developed a Django auction platform with server-enforced bid rules, relational data modeling, and multi-user transaction flows.",
+      {
+        text: "Built and shipped mmaitland.dev (Next.js, Prisma, Auth.js) with validated contact intake, rate limiting, and admin OAuth.",
+        href: "https://www.mmaitland.dev",
+      },
+      {
+        text: "StringFlux product page: transient-aware multiband granular delay/freeze plugin currently in active development.",
+        href: "https://www.mmaitland.dev/stringflux",
+      },
     ],
   },
   {
@@ -54,8 +73,13 @@ export const resumeExperience = [
     description:
       "Deliver technical support for Full Swing simulator software and hardware, resolving installation, calibration, licensing, display, networking, and performance issues across commercial and residential environments.",
     highlights: [
-      "Standardized multi-layer triage workflows across calibration, licensing, display, networking, and OS subsystems - documented in a public case study.",
-      "Reduced repeat incidents on recurring failure classes by converting ad-hoc fixes into reproducible diagnostic playbooks.",
+      {
+        text: "Standardized multi-layer triage workflows across calibration, licensing, display, networking, and OS subsystems (documented publicly).",
+        href: "/projects/full-swing-tech-support",
+      },
+      {
+        text: "Reduced repeat incidents on recurring failure classes by converting ad-hoc fixes into reproducible diagnostic playbooks.",
+      },
     ],
   },
 ];

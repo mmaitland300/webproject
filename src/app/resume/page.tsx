@@ -7,6 +7,7 @@ import {
   resumeExperience,
   resumeSkills,
   resumeSummary,
+  type ResumeHighlight,
 } from "@/content/resume";
 import { getPublicContactEmail } from "@/lib/site-contact";
 
@@ -15,6 +16,25 @@ export const metadata: Metadata = {
   description:
     "Resume for Matt Maitland covering full-stack development and technical support experience.",
 };
+
+function HighlightText({ highlight }: { highlight: ResumeHighlight }) {
+  if (!highlight.href) {
+    return <>{highlight.text}</>;
+  }
+
+  const isExternal = /^https?:\/\//.test(highlight.href);
+
+  return (
+    <a
+      href={highlight.href}
+      target={isExternal ? "_blank" : undefined}
+      rel={isExternal ? "noopener noreferrer" : undefined}
+      className="underline decoration-purple-500/50 underline-offset-4 transition-colors hover:text-foreground"
+    >
+      {highlight.text}
+    </a>
+  );
+}
 
 export default function ResumePage() {
   const publicEmail = getPublicContactEmail();
@@ -75,6 +95,18 @@ export default function ResumePage() {
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                   {item.description}
                 </p>
+                {item.highlights && item.highlights.length > 0 && (
+                  <ul className="mt-3 space-y-1">
+                    {item.highlights.map((highlight, index) => (
+                      <li
+                        key={`${highlight.text}-${index}`}
+                        className="text-sm text-muted-foreground pl-3 relative before:absolute before:left-0 before:top-[0.6em] before:h-1 before:w-1 before:rounded-full before:bg-purple-500/50"
+                      >
+                        <HighlightText highlight={highlight} />
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </article>
             ))}
           </div>

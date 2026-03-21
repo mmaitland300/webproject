@@ -18,6 +18,7 @@ import {
   resumeExperience as experience,
   resumeEducation as education,
   resumeCertifications as certifications,
+  type ResumeHighlight,
 } from "@/content/resume";
 
 type AboutContentProps = {
@@ -30,6 +31,25 @@ const fadeUp = {
   viewport: { once: true as const },
   transition: { duration: 0.5 },
 };
+
+function HighlightText({ highlight }: { highlight: ResumeHighlight }) {
+  if (!highlight.href) {
+    return <>{highlight.text}</>;
+  }
+
+  const isExternal = /^https?:\/\//.test(highlight.href);
+
+  return (
+    <a
+      href={highlight.href}
+      target={isExternal ? "_blank" : undefined}
+      rel={isExternal ? "noopener noreferrer" : undefined}
+      className="underline decoration-purple-500/50 underline-offset-4 transition-colors hover:text-foreground"
+    >
+      {highlight.text}
+    </a>
+  );
+}
 
 export function AboutContent({ publicEmail }: AboutContentProps) {
   return (
@@ -100,12 +120,12 @@ export function AboutContent({ publicEmail }: AboutContentProps) {
               </p>
               {exp.highlights && exp.highlights.length > 0 && (
                 <ul className="mt-2 space-y-1">
-                  {exp.highlights.map((h) => (
+                  {exp.highlights.map((highlight, index) => (
                     <li
-                      key={h}
+                      key={`${highlight.text}-${index}`}
                       className="text-sm text-muted-foreground pl-3 relative before:absolute before:left-0 before:top-[0.6em] before:h-1 before:w-1 before:rounded-full before:bg-purple-500/50"
                     >
-                      {h}
+                      <HighlightText highlight={highlight} />
                     </li>
                   ))}
                 </ul>
