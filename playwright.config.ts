@@ -14,6 +14,9 @@ export default defineConfig({
   webServer: {
     command: "npm start",
     url: "http://localhost:3000",
+    env: {
+      AUTH_TRUST_HOST: "true",
+    },
     reuseExistingServer: !process.env.CI,
     timeout: 30_000,
   },

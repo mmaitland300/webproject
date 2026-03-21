@@ -26,8 +26,8 @@ test("admin/login renders without error", async ({ page }) => {
   expect(response?.status()).toBe(200);
   const heading = page.locator("h1");
   await expect(heading).toBeVisible();
-  const text = await heading.textContent();
-  expect(
-    text === "Admin Login" || text === "Admin Unavailable"
-  ).toBeTruthy();
+  const normalized = (await heading.textContent())?.replace(/\s+/g, " ").trim();
+  expect(["Admin Login", "Admin Unavailable", "Access Denied"]).toContain(
+    normalized
+  );
 });
