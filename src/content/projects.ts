@@ -148,6 +148,7 @@ export const projects: Project[] = [
       "Networking",
       "Hardware/Software Integration",
     ],
+    image: "/images/projects/full-swing-triage-artifact.svg",
     caseStudy: "/projects/full-swing-tech-support",
     category: "featured",
   },
