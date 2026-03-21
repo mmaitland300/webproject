@@ -2,7 +2,7 @@ const proofItems = [
   {
     title: "Technical support in production environments",
     detail:
-      "Full-time support for Full Swing simulator software and hardware stacks (2024-present).",
+      "Full-time support at Auxillium for Full Swing GOLF software and simulator systems (2024-present).",
   },
   {
     title: "Live site with operational safeguards",

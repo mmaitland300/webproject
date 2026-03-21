@@ -25,7 +25,7 @@ export default function BlogPage() {
         {posts.length === 0 ? (
           <div className="text-center py-16">
             <p className="text-muted-foreground">
-              Posts coming soon. Stay tuned!
+              No posts are published yet.
             </p>
           </div>
         ) : (

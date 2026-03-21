@@ -22,6 +22,11 @@ describe("contact form schema", () => {
     expect(r.success).toBe(false);
   });
 
+  it("rejects a whitespace-only name", () => {
+    const r = parse({ ...VALID, name: "   " });
+    expect(r.success).toBe(false);
+  });
+
   it("rejects a name over 100 characters", () => {
     const r = parse({ ...VALID, name: "a".repeat(101) });
     expect(r.success).toBe(false);
@@ -34,6 +39,11 @@ describe("contact form schema", () => {
 
   it("rejects a message under 10 characters", () => {
     const r = parse({ ...VALID, message: "short" });
+    expect(r.success).toBe(false);
+  });
+
+  it("rejects a whitespace-only message", () => {
+    const r = parse({ ...VALID, message: "          " });
     expect(r.success).toBe(false);
   });
 
@@ -57,5 +67,18 @@ describe("contact form schema", () => {
 
   it("accepts a message of exactly 5000 characters", () => {
     expect(parse({ ...VALID, message: "a".repeat(5000) }).success).toBe(true);
+  });
+
+  it("trims surrounding whitespace from valid name and message", () => {
+    const r = parse({
+      ...VALID,
+      name: "  Jane Doe  ",
+      message: "  This is a test message that is long enough.  ",
+    });
+    expect(r.success).toBe(true);
+    if (r.success) {
+      expect(r.data.name).toBe("Jane Doe");
+      expect(r.data.message).toBe("This is a test message that is long enough.");
+    }
   });
 });

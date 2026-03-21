@@ -56,6 +56,28 @@ describe("stringflux waitlist schema", () => {
     const r = parse({ email: VALID.email, honeypot: "", interest: undefined });
     expect(r.success).toBe(true);
   });
+
+  it("trims surrounding whitespace from interest", () => {
+    const r = parse({
+      ...VALID,
+      interest: "  guitar texture layers  ",
+    });
+    expect(r.success).toBe(true);
+    if (r.success) {
+      expect(r.data.interest).toBe("guitar texture layers");
+    }
+  });
+
+  it("accepts whitespace-only interest as an empty string after trim", () => {
+    const r = parse({
+      ...VALID,
+      interest: "   ",
+    });
+    expect(r.success).toBe(true);
+    if (r.success) {
+      expect(r.data.interest).toBe("");
+    }
+  });
 });
 
 describe("stringflux waitlist deduplication contract", () => {

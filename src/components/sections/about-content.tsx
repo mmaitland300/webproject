@@ -36,12 +36,14 @@ export function AboutContent({ publicEmail }: AboutContentProps) {
     <div className="space-y-16">
       <motion.section {...fadeUp}>
         <p className="text-lg font-medium text-foreground leading-relaxed">
-          I work full-time in technical support for Full Swing simulator
-          environments.
+          I work full-time at Auxillium, supporting Full Swing GOLF software
+          and simulator systems.
         </p>
         <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
           Most of my day is remote troubleshooting: installation, calibration,
-          licensing, display, networking, and performance issues. That systems-debugging discipline carries into the web and audio software projects I build outside support work.
+          licensing, display, networking, and performance issues across real
+          customer setups. That systems-debugging discipline carries into the
+          web and audio software projects I build outside support work.
         </p>
         <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
           Music runs as a separate ongoing thread. I play, record, produce, and
@@ -180,4 +182,3 @@ export function AboutContent({ publicEmail }: AboutContentProps) {
     </div>
   );
 }
-
