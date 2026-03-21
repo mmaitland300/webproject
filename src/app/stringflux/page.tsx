@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Layers3, Zap, Music2, ArrowRight, Github } from "lucide-react";
+import { Layers3, Music2, Zap, ArrowRight, Github } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { StringFluxPluginPreview } from "@/components/case-studies/stringflux-plugin-preview";
 import { StringFluxWaitlistForm } from "@/components/sections/stringflux-waitlist-form";
@@ -82,23 +82,6 @@ export default function StringFluxPage() {
             Current plugin UI. Core controls, string transient detection,
             modulation matrix, and waveform display are functional in the dev
             build. Custom UI design is planned.
-          </p>
-        </section>
-
-        <section
-          className="mb-16 rounded-xl border border-border bg-card/40 p-6"
-          aria-labelledby="audio-section"
-        >
-          <h2
-            id="audio-section"
-            className="mb-2 flex items-center gap-2 text-xl font-semibold"
-          >
-            <Music2 className="h-5 w-5 text-purple-400" />
-            Audio demo
-          </h2>
-          <p className="text-sm text-muted-foreground">
-            Audio demo clips are not published yet. Join the waitlist for
-            release updates and future demo availability.
           </p>
         </section>
 

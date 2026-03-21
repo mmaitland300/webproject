@@ -55,7 +55,7 @@ export const projects: Project[] = [
       "Oversampling",
     ],
     image: "/images/stringflux/ui-advanced.png",
-    github: "https://github.com/mmaitland300/StringFlux.git",
+    github: "https://github.com/mmaitland300/StringFlux",
     demo: "/stringflux",
     caseStudy: "/projects/stringflux",
     category: "featured",

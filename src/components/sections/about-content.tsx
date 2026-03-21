@@ -41,10 +41,7 @@ export function AboutContent({ publicEmail }: AboutContentProps) {
         </p>
         <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
           Most of my day is remote troubleshooting: installation, calibration,
-          licensing, display, networking, and performance issues across real
-          customer setups. Software development is a hobby and passion but I would like 
-          to contribute or be apart of a company or group that is passionate about
-          software development and cutting edge technologies.
+          licensing, display, networking, and performance issues. That systems-debugging discipline carries into the web and audio software projects I build outside support work.
         </p>
         <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
           Music runs as a separate ongoing thread. I play, record, produce, and
@@ -183,3 +180,4 @@ export function AboutContent({ publicEmail }: AboutContentProps) {
     </div>
   );
 }
+
