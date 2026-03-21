@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, AlertTriangle, CheckCircle2, Wrench } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { TriageFlowDiagram } from "@/components/case-studies/triage-flow-diagram";
+
+/** Same asset as the Full Swing project card thumbnail — keeps preview and case study aligned. */
+const TRIAGE_ARTIFACT_SRC = "/images/projects/full-swing-triage-artifact.svg";
 
 export const metadata: Metadata = {
   title: "Full Swing Technical Support Case Study",
@@ -140,6 +144,28 @@ export default function FullSwingCaseStudyPage() {
             <Wrench className="h-5 w-5 text-cyan-400" />
             <h2 className="text-xl font-semibold">Diagnostic Workflow</h2>
           </div>
+          <figure className="mb-8 overflow-hidden rounded-lg border border-border bg-muted/20">
+            <div className="relative aspect-[1200/675] w-full">
+              <Image
+                src={TRIAGE_ARTIFACT_SRC}
+                alt="Branch-based triage workflow: classify symptoms, build baseline, branch testing, apply fix, verify, and document"
+                fill
+                unoptimized
+                className="object-contain object-center p-2 sm:p-4"
+                sizes="(max-width: 768px) 100vw, 896px"
+                priority
+              />
+            </div>
+            <figcaption className="border-t border-border bg-card/50 px-4 py-3 text-center text-xs leading-relaxed text-muted-foreground">
+              Same overview as the project card preview: a representative
+              branch-based triage artifact for multi-layer simulator support
+              (not an official Full Swing diagram).
+            </figcaption>
+          </figure>
+          <p className="mb-4 text-sm text-muted-foreground">
+            Below is a simplified linear view of the same idea—useful when you
+            want a quick read of the end-to-end path.
+          </p>
           <TriageFlowDiagram />
           <div className="mt-8 space-y-4">
             {workflow.map((item) => (
