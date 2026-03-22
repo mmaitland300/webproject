@@ -1,7 +1,15 @@
 "use client";
 
-import { useState } from "react";
-import { Mail, MailOpen, Archive, ArchiveRestore } from "lucide-react";
+import { useState, useTransition } from "react";
+import { useRouter } from "next/navigation";
+import {
+  Mail,
+  MailOpen,
+  Archive,
+  ArchiveRestore,
+  AlertCircle,
+  CheckCircle2,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   markAsRead,
@@ -28,9 +36,68 @@ interface InboxListProps {
 
 export function InboxList({ submissions, mode = "active" }: InboxListProps) {
   const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [feedback, setFeedback] = useState<{
+    type: "success" | "error";
+    message: string;
+  } | null>(null);
+  const [pendingId, setPendingId] = useState<string | null>(null);
+  const [isPending, startTransition] = useTransition();
+  const router = useRouter();
+
+  function runInboxAction(
+    id: string,
+    action: (submissionId: string) => Promise<{ success: boolean; message: string }>
+  ) {
+    setPendingId(id);
+    setFeedback(null);
+
+    startTransition(() => {
+      void (async () => {
+        try {
+          const result = await action(id);
+          setFeedback({
+            type: result.success ? "success" : "error",
+            message: result.message,
+          });
+
+          if (result.success) {
+            router.refresh();
+          }
+        } catch {
+          setFeedback({
+            type: "error",
+            message:
+              "Could not update this message right now. Please try again in a moment.",
+          });
+        } finally {
+          setPendingId(null);
+        }
+      })();
+    });
+  }
 
   return (
     <div className="space-y-3">
+      {feedback && (
+        <div
+          className={cn(
+            "flex items-center gap-2 rounded-lg border p-3 text-sm",
+            feedback.type === "error"
+              ? "border-destructive/40 bg-destructive/10 text-destructive"
+              : "border-emerald-500/40 bg-emerald-500/10 text-emerald-300"
+          )}
+          role="status"
+          aria-live="polite"
+        >
+          {feedback.type === "error" ? (
+            <AlertCircle size={16} className="shrink-0" />
+          ) : (
+            <CheckCircle2 size={16} className="shrink-0" />
+          )}
+          <span>{feedback.message}</span>
+        </div>
+      )}
+
       {submissions.map((sub) => (
         <div
           key={sub.id}
@@ -86,7 +153,8 @@ export function InboxList({ submissions, mode = "active" }: InboxListProps) {
                   <Button
                     variant="ghost"
                     size="sm"
-                    onClick={() => markAsUnread(sub.id)}
+                    disabled={isPending && pendingId === sub.id}
+                    onClick={() => runInboxAction(sub.id, markAsUnread)}
                   >
                     <Mail size={14} className="mr-1.5" /> Mark unread
                   </Button>
@@ -94,7 +162,8 @@ export function InboxList({ submissions, mode = "active" }: InboxListProps) {
                   <Button
                     variant="ghost"
                     size="sm"
-                    onClick={() => markAsRead(sub.id)}
+                    disabled={isPending && pendingId === sub.id}
+                    onClick={() => runInboxAction(sub.id, markAsRead)}
                   >
                     <MailOpen size={14} className="mr-1.5" /> Mark read
                   </Button>
@@ -103,7 +172,8 @@ export function InboxList({ submissions, mode = "active" }: InboxListProps) {
                   <Button
                     variant="ghost"
                     size="sm"
-                    onClick={() => unarchiveSubmission(sub.id)}
+                    disabled={isPending && pendingId === sub.id}
+                    onClick={() => runInboxAction(sub.id, unarchiveSubmission)}
                   >
                     <ArchiveRestore size={14} className="mr-1.5" /> Restore
                   </Button>
@@ -111,7 +181,8 @@ export function InboxList({ submissions, mode = "active" }: InboxListProps) {
                   <Button
                     variant="ghost"
                     size="sm"
-                    onClick={() => archiveSubmission(sub.id)}
+                    disabled={isPending && pendingId === sub.id}
+                    onClick={() => runInboxAction(sub.id, archiveSubmission)}
                   >
                     <Archive size={14} className="mr-1.5" /> Archive
                   </Button>
