@@ -54,11 +54,11 @@ describe("projects data integrity", () => {
     expect(() => getHomepageFeaturedProjects()).not.toThrow();
   });
 
-  it("homepage featured projects are all in the featured set", () => {
-    const featured = getFeaturedProjects();
-    const featuredSlugs = new Set(featured.map((p) => p.slug));
+  it("homepage featured projects are all valid project entries", () => {
+    const allSlugs = new Set(projects.map((p) => p.slug));
     for (const p of getHomepageFeaturedProjects()) {
-      expect(featuredSlugs.has(p.slug)).toBe(true);
+      expect(allSlugs.has(p.slug)).toBe(true);
     }
   });
 });
+

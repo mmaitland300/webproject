@@ -22,12 +22,12 @@ export interface Project {
 
 /**
  * Homepage keeps one card per major signal area:
- * DSP build, systems troubleshooting, and business-logic-heavy web app.
+ * DSP build, systems troubleshooting, and workflow-heavy utility tooling.
  */
 const HOMEPAGE_FEATURED_SLUGS = [
   "stringflux",
   "full-swing-tech-support",
-  "auction-house",
+  "sample-organizer",
 ] as const;
 
 export const projects: Project[] = [
@@ -241,9 +241,8 @@ export function getFeaturedProjects() {
 
 /** Curated subset for the homepage hero grid (strongest proof, least noise). */
 export function getHomepageFeaturedProjects(): Project[] {
-  const featured = getFeaturedProjects();
   return HOMEPAGE_FEATURED_SLUGS.map((slug) => {
-    const p = featured.find((x) => x.slug === slug);
+    const p = projects.find((x) => x.slug === slug);
     if (!p) {
       throw new Error(`Homepage featured slug missing from data: ${slug}`);
     }
