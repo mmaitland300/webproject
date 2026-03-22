@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -36,11 +36,9 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
           className="mt-6 mx-auto max-w-3xl text-lg leading-relaxed text-[rgba(194,203,220,0.82)] sm:text-xl"
         >
-          I support Full Swing simulator software in live customer environments
-          at Auxillium, then apply the same failure-mode and tradeoff discipline
-          to building web systems in Next.js and TypeScript. This site documents
-          the work directly: hardened contact/admin flows, reproducible
-          troubleshooting patterns, and ongoing StringFlux DSP development.
+          By day I support Full Swing simulator software at Auxillium. Outside
+          work, I build practical web and audio projects. I share what I&apos;m
+          building here and what I learn along the way.
         </motion.p>
 
         <motion.div
