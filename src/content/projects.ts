@@ -1,4 +1,4 @@
-export type ProjectCategory = "featured" | "experiment";
+﻿export type ProjectCategory = "featured" | "experiment";
 
 export interface Project {
   slug: string;
@@ -85,6 +85,8 @@ export const projects: Project[] = [
       "MDX",
     ],
     github: "https://github.com/mmaitland300/webproject",
+    image: "/images/projects/portfolio-delivery-artifact.svg",
+    caseStudy: "/projects/portfolio-site",
     category: "featured",
   },
   {
@@ -210,3 +212,4 @@ export function getHomepageFeaturedProjects(): Project[] {
 export function getExperiments() {
   return projects.filter((p) => p.category === "experiment");
 }
+
