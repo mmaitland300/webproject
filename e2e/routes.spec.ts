@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+﻿import { test, expect } from "@playwright/test";
 
 const publicRoutes = [
   "/",
@@ -7,6 +7,7 @@ const publicRoutes = [
   "/stringflux",
   "/projects/stringflux",
   "/projects/full-swing-tech-support",
+  "/projects/portfolio-site",
   "/blog",
   "/contact",
   "/music",
@@ -31,3 +32,5 @@ test("admin/login renders without error", async ({ page }) => {
     normalized
   );
 });
+
+
