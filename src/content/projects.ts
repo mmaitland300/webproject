@@ -26,8 +26,8 @@ export interface Project {
  */
 const HOMEPAGE_FEATURED_SLUGS = [
   "stringflux",
-  "full-swing-tech-support",
   "sample-organizer",
+  "full-swing-tech-support",
 ] as const;
 
 export const projects: Project[] = [
@@ -85,7 +85,7 @@ export const projects: Project[] = [
       "MDX",
     ],
     github: "https://github.com/mmaitland300/webproject",
-    image: "/images/projects/portfolio-delivery-artifact.svg",
+    image: "/images/projects/portfolio-site-projects.png",
     caseStudy: "/projects/portfolio-site",
     category: "featured",
   },
@@ -169,6 +169,7 @@ export const projects: Project[] = [
     outcome:
       "Replaced multi-hour manual folder walks with a single deterministic CLI pass (dry-run, explicit rules, reversible moves) for large libraries.",
     outcomeType: "proxy",
+    image: "/images/projects/sample-organizer-loaded.png",
     tags: ["Python", "CLI", "File Systems"],
     github: "https://github.com/mmaitland300/organizer_project",
     category: "experiment",
@@ -253,4 +254,3 @@ export function getHomepageFeaturedProjects(): Project[] {
 export function getExperiments() {
   return projects.filter((p) => p.category === "experiment");
 }
-
