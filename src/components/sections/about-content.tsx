@@ -18,8 +18,8 @@ import {
   resumeExperience as experience,
   resumeEducation as education,
   resumeCertifications as certifications,
-  type ResumeHighlight,
 } from "@/content/resume";
+import { HighlightText } from "@/components/ui/highlight-text";
 
 type AboutContentProps = {
   publicEmail: string;
@@ -31,25 +31,6 @@ const fadeUp = {
   viewport: { once: true as const },
   transition: { duration: 0.5 },
 };
-
-function HighlightText({ highlight }: { highlight: ResumeHighlight }) {
-  if (!highlight.href) {
-    return <>{highlight.text}</>;
-  }
-
-  const isExternal = /^https?:\/\//.test(highlight.href);
-
-  return (
-    <a
-      href={highlight.href}
-      target={isExternal ? "_blank" : undefined}
-      rel={isExternal ? "noopener noreferrer" : undefined}
-      className="underline decoration-purple-500/50 underline-offset-4 transition-colors hover:text-foreground"
-    >
-      {highlight.text}
-    </a>
-  );
-}
 
 export function AboutContent({ publicEmail }: AboutContentProps) {
   return (
