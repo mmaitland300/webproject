@@ -34,11 +34,13 @@ export function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-          className="mt-6 mx-auto max-w-2xl text-lg leading-relaxed text-[rgba(194,203,220,0.82)] sm:text-xl"
+          className="mt-6 mx-auto max-w-3xl text-lg leading-relaxed text-[rgba(194,203,220,0.82)] sm:text-xl"
         >
-          I work full-time at Auxillium, supporting Full Swing GOLF software
-          and simulator systems. Outside of that, I build web and audio
-          software and produce original music as NEUROCHEMICAL ENTROPY.
+          I support Full Swing simulator software in live customer environments
+          at Auxillium, then apply the same failure-mode and tradeoff discipline
+          to building web systems in Next.js and TypeScript. This site documents
+          the work directly: hardened contact/admin flows, reproducible
+          troubleshooting patterns, and ongoing StringFlux DSP development.
         </motion.p>
 
         <motion.div

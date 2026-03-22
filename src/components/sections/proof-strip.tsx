@@ -2,25 +2,25 @@ import Link from "next/link";
 
 const proofItems = [
   {
-    title: "Technical support in production environments",
+    title: "Production simulator support under real constraints",
     detail:
-      "Full-time support at Auxillium for Full Swing GOLF software and simulator systems (2024\u2013present).",
+      "Full-time incident triage at Auxillium for Full Swing GOLF software and simulator systems (2024-present).",
     href: "/projects/full-swing-tech-support",
   },
   {
-    title: "Live site with operational safeguards",
+    title: "Web delivery with auth and abuse controls",
     detail:
-      "Production Next.js site with admin auth, validated contact intake, and abuse controls.",
-    href: "/projects",
+      "Live Next.js stack with admin OAuth, server-side validation, and contact intake protections.",
+    href: "/blog/contact-pipeline-decision-record",
   },
   {
-    title: "Audio software under active development",
+    title: "StringFlux DSP development",
     detail:
-      "StringFlux JUCE/C++ plugin with multiband routing and transient-driven grain scheduling.",
-    href: "/stringflux",
+      "JUCE/C++ plugin work: multiband routing, transient-driven grain scheduling, and safe oversampling transitions.",
+    href: "/projects/stringflux",
   },
   {
-    title: "Core stack",
+    title: "Core stack in active use",
     detail: "Next.js, TypeScript, Python, C++, PostgreSQL.",
   },
 ];
