@@ -5,6 +5,7 @@ import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from "@upstash/redis";
 import { headers } from "next/headers";
 import { isWaitlistConfigured } from "@/lib/feature-config";
+import { getResendSenderEnv, hasUpstashRedisEnv, parseAppEnv } from "@/lib/env";
 import {
   normalizeWaitlistEmail,
   waitlistSchema,
@@ -19,10 +20,7 @@ export type WaitlistState = {
 let ratelimit: Ratelimit | null = null;
 function getRatelimit() {
   if (ratelimit) return ratelimit;
-  if (
-    process.env.UPSTASH_REDIS_REST_URL &&
-    process.env.UPSTASH_REDIS_REST_TOKEN
-  ) {
+  if (hasUpstashRedisEnv()) {
     ratelimit = new Ratelimit({
       redis: Redis.fromEnv(),
       limiter: Ratelimit.slidingWindow(3, "60 s"),
@@ -99,17 +97,16 @@ export async function joinWaitlist(
   }
 
   // Email notifications are best-effort. The durable source of truth is DB persistence above.
-  const resendKey = process.env.RESEND_API_KEY;
-  const fromEmail = process.env.CONTACT_FROM_EMAIL;
-  const toEmail = process.env.CONTACT_TO_EMAIL;
-  if (resendKey && fromEmail) {
-    const resend = new Resend(resendKey);
+  const resendSenderEnv = getResendSenderEnv();
+  const contactToEmail = parseAppEnv().CONTACT_TO_EMAIL;
+  if (resendSenderEnv) {
+    const resend = new Resend(resendSenderEnv.RESEND_API_KEY);
 
-    if (toEmail) {
+    if (contactToEmail) {
       try {
         await resend.emails.send({
-          from: fromEmail,
-          to: toEmail,
+          from: resendSenderEnv.CONTACT_FROM_EMAIL,
+          to: contactToEmail,
           subject: `StringFlux Waitlist Signup: ${normalizedEmail}`,
           text: [
             `A new StringFlux waitlist signup was received.`,
@@ -133,7 +130,7 @@ export async function joinWaitlist(
 
     try {
       await resend.emails.send({
-        from: fromEmail,
+        from: resendSenderEnv.CONTACT_FROM_EMAIL,
         to: normalizedEmail,
         subject: "You're on the StringFlux waitlist",
         text: [

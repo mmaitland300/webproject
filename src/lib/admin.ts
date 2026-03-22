@@ -2,6 +2,7 @@ import { auth } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import { isAdminAuthConfigured } from "@/lib/feature-config";
 import { prisma } from "@/lib/prisma";
+import { getAdminGithubIds } from "@/lib/env";
 
 export async function isAdmin(): Promise<boolean> {
   if (!isAdminAuthConfigured()) return false;
@@ -9,9 +10,7 @@ export async function isAdmin(): Promise<boolean> {
   const session = await auth();
   if (!session?.user?.id) return false;
 
-  const adminIds = process.env.ADMIN_GITHUB_IDS?.split(",").map((s) =>
-    s.trim()
-  );
+  const adminIds = getAdminGithubIds();
   if (!adminIds?.length) return false;
 
   const account = await prisma.account.findFirst({
