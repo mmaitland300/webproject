@@ -1,4 +1,4 @@
-﻿export type ProjectCategory = "featured" | "experiment";
+export type ProjectCategory = "featured" | "experiment";
 
 export interface Project {
   slug: string;
@@ -174,10 +174,41 @@ export const projects: Project[] = [
     category: "experiment",
   },
   {
+    slug: "music-production-neurochemical-entropy",
+    title: "Music Production (NEUROCHEMICAL ENTROPY)",
+    description:
+      "Original music production workflow focused on arrangement, sound design, mixing, and mastering, with repeatable session structure and quality-control checkpoints.",
+    problem:
+      "Creative sessions can become inconsistent and hard to finish without a reliable production workflow and objective review points.",
+    constraints:
+      "Needed to keep creative flexibility while maintaining repeatable technical quality across tracking, mix translation, and final master output.",
+    tradeoff:
+      "Used a structured production pipeline and staged quality checks instead of purely ad-hoc iteration to improve consistency and reduce rework.",
+    role:
+      "Solo artist/producer responsible for writing, recording, editing, mixing, mastering, and release preparation.",
+    outcome:
+      "Built a stable end-to-end production process with track examples published on the music page and SoundCloud profile.",
+    outcomeType: "proxy",
+    tags: ["Music Production", "Audio Engineering", "Mixing", "Mastering"],
+    demo: "/music",
+    category: "experiment",
+  },
+  {
     slug: "turn-based-rpg",
     title: "Turn-Based RPG",
     description:
-      "A browser-based turn-based RPG with world exploration, a battle system, and sprite-based graphics.",
+      "Browser-based turn-based RPG prototype exploring deterministic combat state, scene transitions, and lightweight game-loop architecture.",
+    problem:
+      "Needed a small interactive system to test turn-order logic, state transitions, and combat feedback without backend dependencies.",
+    constraints:
+      "Had to keep runtime simple and portable in-browser while handling scene changes, sprite state, and turn resolution predictably.",
+    tradeoff:
+      "Used straightforward Phaser scene/state patterns over heavier abstractions to prioritize clarity and predictable behavior during iteration.",
+    role:
+      "Solo developer responsible for gameplay loop, combat logic, scene orchestration, and browser delivery.",
+    outcome:
+      "Delivered a playable web prototype with stable turn sequencing and repeatable combat interactions embedded directly in the portfolio.",
+    outcomeType: "technical",
     tags: ["JavaScript", "Phaser.js", "Game Dev", "RPG"],
     iframe: "/games/rpg/index.html",
     category: "experiment",
@@ -186,7 +217,18 @@ export const projects: Project[] = [
     slug: "atoms-simulation",
     title: "Atoms Simulation",
     description:
-      "An interactive particle simulation built with Phaser.js. Watch atoms bounce and interact in real time.",
+      "Interactive particle simulation built to explore browser physics behavior, collision feedback, and animation performance under continuous updates.",
+    problem:
+      "Needed a compact sandbox for testing real-time motion and interaction patterns in a browser-rendered simulation.",
+    constraints:
+      "Simulation needed to remain smooth and understandable without introducing complex physics dependencies or heavy rendering overhead.",
+    tradeoff:
+      "Chose a simplified rule set and visual model to keep update loops fast and behavior readable rather than chasing high-fidelity physics.",
+    role:
+      "Solo developer handling simulation rules, rendering behavior, and interaction tuning.",
+    outcome:
+      "Shipped a lightweight interactive simulation that runs in-browser and demonstrates stable real-time update behavior.",
+    outcomeType: "technical",
     tags: ["JavaScript", "Phaser.js", "Canvas", "Physics"],
     iframe: "/games/atoms/index.html",
     category: "experiment",

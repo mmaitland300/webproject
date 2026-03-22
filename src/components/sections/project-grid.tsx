@@ -77,8 +77,8 @@ export function ProjectGrid() {
               <h2 className="text-2xl font-bold tracking-tight">Experiments</h2>
             </div>
             <p className="mx-auto max-w-md text-sm text-muted-foreground">
-              Side projects and interactive toys, small-scope explorations built
-              for fun and learning.
+              Interactive experiments and small-scope builds used to explore
+              engineering patterns, runtime behavior, and implementation tradeoffs.
             </p>
           </motion.div>
 
@@ -97,3 +97,4 @@ export function ProjectGrid() {
     </div>
   );
 }
+
