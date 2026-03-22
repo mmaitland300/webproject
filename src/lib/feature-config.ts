@@ -1,16 +1,13 @@
+import { isAdminAuthEnvConfigured, isWaitlistEnvConfigured } from "@/lib/env";
+
 export function isWaitlistConfigured(
   env: NodeJS.ProcessEnv = process.env
 ): boolean {
-  return Boolean(env.DATABASE_URL);
+  return isWaitlistEnvConfigured(env);
 }
 
 export function isAdminAuthConfigured(
   env: NodeJS.ProcessEnv = process.env
 ): boolean {
-  return Boolean(
-    env.DATABASE_URL &&
-      env.AUTH_SECRET &&
-      env.AUTH_GITHUB_ID &&
-      env.AUTH_GITHUB_SECRET
-  );
+  return isAdminAuthEnvConfigured(env);
 }

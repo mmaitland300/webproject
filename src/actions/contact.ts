@@ -5,6 +5,7 @@ import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from "@upstash/redis";
 import { headers } from "next/headers";
 import { contactSchema } from "./contact.contract";
+import { getContactDeliveryEnv, hasUpstashRedisEnv, parseAppEnv } from "@/lib/env";
 
 export type ContactState = {
   success: boolean;
@@ -15,10 +16,7 @@ export type ContactState = {
 let ratelimit: Ratelimit | null = null;
 function getRatelimit() {
   if (ratelimit) return ratelimit;
-  if (
-    process.env.UPSTASH_REDIS_REST_URL &&
-    process.env.UPSTASH_REDIS_REST_TOKEN
-  ) {
+  if (hasUpstashRedisEnv()) {
     ratelimit = new Ratelimit({
       redis: Redis.fromEnv(),
       limiter: Ratelimit.slidingWindow(3, "60 s"),
@@ -71,11 +69,8 @@ export async function submitContact(
   }
 
   // Send email via Resend (must succeed before optional DB persistence)
-  const resendKey = process.env.RESEND_API_KEY;
-  const fromEmail = process.env.CONTACT_FROM_EMAIL;
-  const toEmail = process.env.CONTACT_TO_EMAIL;
-
-  if (!resendKey || !fromEmail || !toEmail) {
+  const contactDeliveryEnv = getContactDeliveryEnv();
+  if (!contactDeliveryEnv) {
     console.error("Missing Resend env vars");
     return {
       success: false,
@@ -84,10 +79,10 @@ export async function submitContact(
   }
 
   try {
-    const resend = new Resend(resendKey);
+    const resend = new Resend(contactDeliveryEnv.RESEND_API_KEY);
     await resend.emails.send({
-      from: fromEmail,
-      to: toEmail,
+      from: contactDeliveryEnv.CONTACT_FROM_EMAIL,
+      to: contactDeliveryEnv.CONTACT_TO_EMAIL,
       replyTo: parsed.data.email,
       subject: `Portfolio Contact: ${parsed.data.name}`,
       text: [
@@ -109,7 +104,7 @@ export async function submitContact(
   // Persist only after email delivery succeeds (avoids orphan inbox rows on misconfig or send failure).
   // Reliability tradeoff: the UI success path is driven by email delivery; admin inbox persistence
   // is best-effort and may be missed if Prisma/DB persistence fails.
-  if (process.env.DATABASE_URL) {
+  if (parseAppEnv().DATABASE_URL) {
     try {
       const { prisma } = await import("@/lib/prisma");
       await prisma.contactSubmission.create({
