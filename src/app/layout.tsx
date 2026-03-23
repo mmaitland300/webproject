@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import { MotionProvider } from "@/components/layout/motion-provider";
 import { getSiteUrl } from "@/lib/site-url";
 import "./globals.css";
 
@@ -58,10 +59,12 @@ export default function RootLayout({
       className={`${inter.variable} ${jetbrainsMono.variable} dark h-full antialiased`}
     >
       <body className="min-h-full flex flex-col relative">
-        <div className="animated-bg-glow" aria-hidden="true" />
-        <Navbar />
-        <main className="flex-1 relative z-10">{children}</main>
-        <Footer />
+        <MotionProvider>
+          <div className="animated-bg-glow" aria-hidden="true" />
+          <Navbar />
+          <main className="flex-1 relative z-10">{children}</main>
+          <Footer />
+        </MotionProvider>
       </body>
     </html>
   );
