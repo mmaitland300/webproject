@@ -65,6 +65,7 @@ export function ProjectCard({ project, index, compact }: ProjectCardProps) {
             src={project.image}
             alt={`${project.title} preview`}
             fill
+            unoptimized={project.image.toLowerCase().endsWith(".svg")}
             className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
