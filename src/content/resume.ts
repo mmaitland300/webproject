@@ -19,7 +19,7 @@ export type ResumeExperienceItem = {
 };
 
 export const resumeSummary =
-  "Colorado-based developer and technical support professional focused on practical software, reliable systems, and clear problem solving. Experience includes building full-stack web applications, integrating APIs, deploying production systems, and supporting users through hardware, software, and connectivity issues.";
+  "I'm a developer and technical support specialist based in Colorado. I build full-stack web applications and support Full Swing golf simulator systems. My work ranges from Next.js and Django apps to remote hardware/software troubleshooting across production environments.";
 
 export const resumeSkills = [
   "TypeScript",
@@ -57,11 +57,11 @@ export const resumeExperience: ResumeExperienceItem[] = [
       "Build custom web applications and software solutions with Django, Flask, React, and Next.js. Handle database design, API integrations, debugging, deployment, and long-term client support from launch through maintenance.",
     highlights: [
       {
-        text: "Built and shipped mmaitland.dev (Next.js, Prisma, Auth.js) with validated contact intake, rate limiting, and admin OAuth.",
+        text: "Built and shipped this portfolio site (Next.js, Prisma, Auth.js) with contact form, rate limiting, and admin inbox.",
         href: "https://www.mmaitland.dev",
       },
       {
-        text: "StringFlux product page: transient-aware multiband granular delay/freeze plugin currently in active development.",
+        text: "Building StringFlux, a multiband granular delay/freeze audio plugin for guitar.",
         href: "https://www.mmaitland.dev/stringflux",
       },
     ],
@@ -74,11 +74,11 @@ export const resumeExperience: ResumeExperienceItem[] = [
       "Deliver technical support for Full Swing simulator software and hardware, resolving installation, calibration, licensing, display, networking, and performance issues across commercial and residential environments.",
     highlights: [
       {
-        text: "Standardized multi-layer triage workflows across calibration, licensing, display, networking, and OS subsystems (documented publicly).",
+        text: "Built triage workflows for recurring simulator issues across calibration, licensing, display, networking, and OS layers.",
         href: "/projects/full-swing-tech-support",
       },
       {
-        text: "Reduced repeat incidents on recurring failure classes by converting ad-hoc fixes into reproducible diagnostic playbooks.",
+        text: "Turned common one-off fixes into documented playbooks so the same problems stop coming back.",
       },
     ],
   },
