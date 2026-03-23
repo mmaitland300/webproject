@@ -1,6 +1,6 @@
 ---
 title: "TypeScript Patterns I'm Learning and Reusing"
-description: "Practical TypeScript patterns I keep coming back to as I level up — discriminated unions, exhaustive checks, and more."
+description: "Practical TypeScript patterns I keep coming back to — with examples from this actual codebase."
 date: "2026-03-15"
 tags: ["TypeScript", "Patterns", "Web Dev"]
 published: true
@@ -8,33 +8,71 @@ published: true
 
 ## Why Patterns Matter
 
-As I learn TypeScript more deeply, I keep finding patterns that make code safer and easier to reason about. These are the ones I currently reach for most often.
+As I learn TypeScript more deeply, I keep finding patterns that make code safer and easier to reason about. These are the ones I currently reach for most often — with examples pulled from this site's codebase so I'm showing real usage, not textbook snippets.
 
 ## Discriminated Unions
 
-This is one I use a lot right now. Instead of a loose object with optional fields, create a union where each variant has a literal discriminant:
+The contact form server action returns a `ContactState` that's either a success or an error with optional field-level validation messages:
 
 ```typescript
-type Result<T> =
-  | { success: true; data: T }
-  | { success: false; error: string };
-
-function handleResult(result: Result<User>) {
-  if (result.success) {
-    // TypeScript knows result.data exists here
-    console.log(result.data.name);
-  } else {
-    // TypeScript knows result.error exists here
-    console.error(result.error);
-  }
-}
+export type ContactState = {
+  success: boolean;
+  message: string;
+  errors?: Record<string, string[]>;
+};
 ```
 
-This is far better than `{ data?: T; error?: string }` because the type system enforces that you handle both cases.
+In practice, `success: true` means the message was sent and `errors` won't exist. `success: false` means something went wrong and `errors` might contain per-field messages from Zod validation. The `success` field acts as the discriminant — the form component checks it once and knows exactly what state it's dealing with.
 
-## Exhaustive Switch Checks
+This is far better than having `data?: T` and `error?: string` on the same object, because the type system forces you to handle both outcomes.
 
-When you have a union type, you want the compiler to tell you if you forget a case:
+## Const Assertions for Curated Lists
+
+The homepage only shows a specific subset of projects. Instead of filtering by a boolean flag, I define the exact slugs with `as const`:
+
+```typescript
+const HOMEPAGE_FEATURED_SLUGS = [
+  "stringflux",
+  "sample-organizer",
+  "full-swing-tech-support",
+] as const;
+```
+
+This gives me a readonly tuple of string literals instead of `string[]`. The lookup function can then throw at startup if a slug is missing from the data, rather than silently returning an empty card at runtime. The const assertion turns a potential silent bug into an immediate error.
+
+## Composable Zod Schemas for Environment Config
+
+The env parsing in this site uses a pattern I really like: one base schema that parses all env vars, then smaller schemas layered on top for specific features:
+
+```typescript
+const appEnvSchema = z.object({
+  DATABASE_URL: optionalTrimmedString,
+  AUTH_SECRET: optionalTrimmedString,
+  RESEND_API_KEY: optionalTrimmedString,
+  // ... all vars, all optional at parse time
+});
+
+const adminAuthEnvSchema = z.object({
+  DATABASE_URL: z.string().min(1),
+  AUTH_SECRET: z.string().min(1),
+  AUTH_GITHUB_ID: z.string().min(1),
+  AUTH_GITHUB_SECRET: z.string().min(1),
+});
+
+const contactDeliveryEnvSchema = z.object({
+  RESEND_API_KEY: z.string().min(1),
+  CONTACT_FROM_EMAIL: z.string().email(),
+  CONTACT_TO_EMAIL: z.string().email(),
+});
+```
+
+The base schema always succeeds — every var is optional. Feature-specific schemas are strict and only checked when that feature's code path runs. This means the site boots cleanly without a database, but the admin routes know at call time whether they have what they need.
+
+The composable part: `getContactDeliveryEnv()` parses the base schema first, then runs the strict schema against the result. If it fails, it returns `null` instead of throwing. The calling code checks for `null` and shows a graceful fallback.
+
+## Exhaustive Checks
+
+When I have a string union, I want the compiler to catch it if I add a new case and forget to handle it:
 
 ```typescript
 type Status = "idle" | "loading" | "success" | "error";
@@ -57,70 +95,10 @@ function getStatusMessage(status: Status): string {
 }
 ```
 
-If you add a new status like `"retrying"`, TypeScript will flag the `default` branch because `never` can't be assigned from `"retrying"`.
+If I add `"retrying"` to the union later, TypeScript flags the default branch because `never` can't be assigned from `"retrying"`. I haven't used this pattern heavily in this codebase yet, but it's one I reach for any time a union drives conditional logic.
 
-## Branded Types
+## What I've Learned So Far
 
-Sometimes you have two values with the same shape but different meanings. Branded types prevent mixing them up:
+The biggest shift for me has been thinking of types as guardrails, not annotations. The env parsing pattern is a good example — the types don't just describe the data, they enforce which features are available based on what's configured. When something is missing, the code knows it at the point of use instead of failing later with a runtime error.
 
-```typescript
-type UserId = string & { readonly __brand: "UserId" };
-type PostId = string & { readonly __brand: "PostId" };
-
-function createUserId(id: string): UserId {
-  return id as UserId;
-}
-
-function getUser(id: UserId) { /* ... */ }
-function getPost(id: PostId) { /* ... */ }
-
-const userId = createUserId("abc123");
-// getPost(userId); // Type error! Can't use UserId where PostId is expected
-```
-
-## Type-Safe Event Emitters
-
-Using a mapped type to ensure event handlers match their payload:
-
-```typescript
-type Events = {
-  userCreated: { id: string; name: string };
-  postPublished: { id: string; title: string };
-};
-
-class TypedEmitter<T extends Record<string, unknown>> {
-  private handlers = new Map<keyof T, Set<(data: never) => void>>();
-
-  on<K extends keyof T>(event: K, handler: (data: T[K]) => void) {
-    if (!this.handlers.has(event)) {
-      this.handlers.set(event, new Set());
-    }
-    this.handlers.get(event)!.add(handler as (data: never) => void);
-  }
-
-  emit<K extends keyof T>(event: K, data: T[K]) {
-    this.handlers.get(event)?.forEach((handler) => handler(data as never));
-  }
-}
-```
-
-## The `satisfies` Operator
-
-One of my favorite recent additions. It validates a value against a type without widening it:
-
-```typescript
-const config = {
-  api: "https://api.example.com",
-  timeout: 5000,
-  retries: 3,
-} satisfies Record<string, string | number>;
-
-// config.api is still typed as string (not string | number)
-// config.timeout is still typed as number
-```
-
-## Summary
-
-These patterns are less about cleverness and more about reducing avoidable mistakes. The more issues the type system catches at compile time, the fewer bugs slip into runtime.
-
-The biggest takeaway for me so far: TypeScript's type system is a communication tool. Good types tell the next developer (including future me) what's possible and what isn't.
+I'm still learning. The patterns here are not advanced TypeScript wizardry — they're practical tools that have caught real bugs in this project.
