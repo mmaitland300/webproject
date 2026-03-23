@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect, useRef, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -20,12 +20,50 @@ export function Navbar() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const toggleRef = useRef<HTMLButtonElement>(null);
+
+  const closeMobile = useCallback(() => setMobileOpen(false), []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    closeMobile();
+  }, [pathname, closeMobile]);
+
+  useEffect(() => {
+    if (!mobileOpen) return;
+
+    document.body.style.overflow = "hidden";
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeMobile();
+    };
+
+    const onClickOutside = (e: MouseEvent) => {
+      if (
+        menuRef.current &&
+        !menuRef.current.contains(e.target as Node) &&
+        toggleRef.current &&
+        !toggleRef.current.contains(e.target as Node)
+      ) {
+        closeMobile();
+      }
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+    document.addEventListener("mousedown", onClickOutside);
+
+    return () => {
+      document.body.style.overflow = "";
+      document.removeEventListener("keydown", onKeyDown);
+      document.removeEventListener("mousedown", onClickOutside);
+    };
+  }, [mobileOpen, closeMobile]);
 
   return (
     <header
@@ -40,7 +78,7 @@ export function Navbar() {
         <Link
           href="/"
           className="text-xl font-bold tracking-tight"
-          onClick={() => setMobileOpen(false)}
+          onClick={closeMobile}
         >
           <span className="brand-mark">
             M<span className="brand-accent">M</span>
@@ -85,48 +123,54 @@ export function Navbar() {
 
         {/* Mobile toggle */}
         <button
+          ref={toggleRef}
           className="md:hidden p-2 text-muted-foreground hover:text-foreground transition-colors"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
+          aria-expanded={mobileOpen}
         >
           {mobileOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
       </nav>
 
       {/* Mobile menu */}
-      {mobileOpen && (
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -10 }}
-          className="md:hidden bg-background/95 backdrop-blur-lg border-b border-border"
-        >
-          <ul className="flex flex-col px-6 py-4 gap-1">
-            {links.map((link) => {
-              const isActive =
-                link.href === "/"
-                  ? pathname === "/"
-                  : pathname.startsWith(link.href);
-              return (
-                <li key={link.href}>
-                   <Link
-                     href={link.href}
-                     onClick={() => setMobileOpen(false)}
-                     className={cn(
-                       "block px-4 py-3 text-sm font-medium rounded-md transition-colors",
-                       isActive
-                        ? "text-foreground bg-muted"
-                        : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
-                    )}
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </motion.div>
-      )}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            ref={menuRef}
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2 }}
+            className="md:hidden bg-background/95 backdrop-blur-lg border-b border-border"
+          >
+            <ul className="flex flex-col px-6 py-4 gap-1">
+              {links.map((link) => {
+                const isActive =
+                  link.href === "/"
+                    ? pathname === "/"
+                    : pathname.startsWith(link.href);
+                return (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      onClick={closeMobile}
+                      className={cn(
+                        "block px-4 py-3 text-sm font-medium rounded-md transition-colors",
+                        isActive
+                          ? "text-foreground bg-muted"
+                          : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                      )}
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }
