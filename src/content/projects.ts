@@ -10,7 +10,6 @@ export interface Project {
   tradeoff?: string;
   role?: string;
   outcome?: string;
-  outcomeType?: "metric" | "proxy" | "technical" | "qualitative";
   image?: string;
   tags: string[];
   github?: string;
@@ -20,10 +19,6 @@ export interface Project {
   category: ProjectCategory;
 }
 
-/**
- * Homepage keeps one card per major signal area:
- * DSP build, systems troubleshooting, and workflow-heavy utility tooling.
- */
 const HOMEPAGE_FEATURED_SLUGS = [
   "stringflux",
   "sample-organizer",
@@ -35,18 +30,15 @@ export const projects: Project[] = [
     slug: "stringflux",
     title: "StringFlux",
     description:
-      "A transient-aware, multiband granular delay and freeze plugin for guitar and other stringed instruments.",
+      "A multiband granular delay and freeze plugin I'm building for guitar. It listens for transients and uses them to drive grain scheduling, so the texture responds to how you actually play instead of running on a fixed clock.",
     problem:
-      "Generic granular processors often miss instrument-specific transient behavior, which limits expressive control for stringed-instrument performance.",
+      "Most granular processors treat every input the same. For stringed instruments, that means pick attacks get smeared and the effect feels disconnected from the performance.",
     constraints:
-      "Real-time DSP constraints required safe oversampling transitions, predictable latency behavior, and stable processing under varying host settings.",
+      "Everything runs in the audio callback, so oversampling changes and grain scheduling have to be real-time safe. I can't rebuild state mid-buffer without risking glitches.",
     tradeoff:
-      "Prioritized deterministic scheduling and engine stability over feature breadth so instrument response remains controllable while the system is still evolving.",
-    role:
-      "Solo developer responsible for product direction, DSP architecture, and implementation.",
+      "I've kept the feature set narrow on purpose — getting the engine stable and the transient response right matters more than adding controls nobody can trust yet.",
     outcome:
-      "In progress. Current implementation includes 3-band crossover routing, transient and density-driven grain scheduling, history/freeze capture, feedback-bus processing, and safe 1x/2x/4x oversampling transitions.",
-    outcomeType: "technical",
+      "Still in progress. The current build has 3-band crossover routing, transient-driven grain scheduling, history/freeze capture, and safe 1x/2x/4x oversampling transitions.",
     tags: [
       "Audio Plugin",
       "DSP",
@@ -64,17 +56,15 @@ export const projects: Project[] = [
     slug: "portfolio-site",
     title: "Portfolio Website",
     description:
-      "Production Next.js portfolio with MDX blogging, a protected admin inbox, and an abuse-resistant contact flow. Built with typed content/data structures and deployment-ready environment management.",
+      "This site. Next.js 16 with MDX blogging, a contact form that sends email through Resend and falls back gracefully when the database is down, and a GitHub OAuth admin inbox for managing submissions.",
     problem:
-      "Needed a credible public portfolio that could showcase work, accept contact reliably, and support iterative updates without breaking production.",
+      "I needed somewhere to put my work that wasn't just a GitHub profile. It had to accept contact without getting spammed, and I wanted to be able to iterate on it without worrying about breaking production.",
     constraints:
-      "Needed secure admin access, abuse-resistant contact handling, and deploy-safe content workflows without introducing heavy operational overhead.",
+      "Solo project, so operational overhead had to stay low. No dedicated backend — managed services (Resend for email, Upstash for rate limiting, Neon for Postgres) handle the heavy parts.",
     tradeoff:
-      "Chose server actions plus managed services (Resend, Upstash, Neon) over custom infrastructure to improve reliability and iteration speed.",
-    role: "Solo developer, system design, UI implementation, data modeling, auth, deployment, and documentation.",
+      "Server Actions over API routes, managed services over self-hosted infra. More vendor lock-in, but significantly less to maintain and debug alone.",
     outcome:
-      "Shipped a live site with server-side validation, honeypot plus Redis rate limiting, GitHub OAuth admin gating, and draft-post protection.",
-    outcomeType: "technical",
+      "Live at mmaitland.dev with honeypot + Redis rate limiting on contact, GitHub OAuth admin gating, and MDX blog with draft protection.",
     tags: [
       "Next.js",
       "TypeScript",
@@ -90,59 +80,19 @@ export const projects: Project[] = [
     category: "featured",
   },
   {
-    slug: "snake-detector",
-    title: "Snake Detector (CNN)",
-    description:
-      "CV experiment focused on dataset hygiene and evaluation discipline: stratified splits, augmentation policy, and confusion-matrix-driven error review before architecture changes.",
-    problem:
-      "Snake photo classification fails quietly when class imbalance, label noise, and inconsistent image quality are ignored; naive training runs look fine on paper but generalize poorly.",
-    constraints:
-      "Limited and noisy source data increased overfitting risk; without explicit val discipline, mistakes read as model issues instead of data issues.",
-    tradeoff:
-      "Invested in reproducible splits, logging, and error analysis before expanding model capacity so tuning decisions stay tied to measurable failure modes.",
-    role: "ML engineer, data curation, preprocessing strategy, model and training setup, and error analysis.",
-    outcome:
-      "End-to-end pipeline where every training run is comparable (same splits, metrics, artifacts) and poor classes surface in review instead of hiding in aggregate accuracy.",
-    outcomeType: "technical",
-    tags: ["Python", "Machine Learning", "CNN", "Computer Vision"],
-    github: "https://github.com/mmaitland300/Snake-detector",
-    caseStudy: "/projects/snake-detector",
-    category: "experiment",
-  },
-  {
-    slug: "auction-house",
-    title: "Auction House",
-    description:
-      "Full-stack Django auction platform with account auth, listing lifecycle management, bid validation rules, watchlists, and category browsing.",
-    problem:
-      "Needed to implement transactional auction behavior with reliable server-side rules for bidding and ownership in a multi-user workflow.",
-    constraints:
-      "Correctness depended on enforcing bid and listing rules server-side across concurrent user actions and persistent relational data.",
-    tradeoff:
-      "Used server-rendered Django patterns and strict model-level rules to prioritize correctness and maintainability over richer client-side interactivity.",
-    role: "Full-stack developer, data modeling, auth/session flows, bid logic, template UI implementation, and route-level behavior.",
-    outcome:
-      "Built a complete web app covering core auction flows (create, list, bid, watch, manage) with server-enforced business rules and persistent relational data.",
-    outcomeType: "technical",
-    tags: ["Django", "Python", "PostgreSQL", "HTML/CSS"],
-    github: "https://github.com/mmaitland300/AuctionHouse",
-    category: "featured",
-  },
-  {
     slug: "full-swing-tech-support",
-    title: "Full Swing Technical Support Case Study",
+    title: "Full Swing Technical Support",
     description:
-      "Systems-focused support work across simulator hardware/software stacks, including diagnostics for calibration drift, networking/configuration failures, licensing issues, and Windows/peripheral conflicts.",
+      "My day job. I do remote support for Full Swing golf simulators — diagnosing issues that cross hardware, software, networking, and OS layers. This case study documents the triage approach I've built up from that work.",
     problem:
-      "Customers needed fast, accurate triage and resolution for multi-layer issues where hardware, software, and environment variables intersected.",
+      "Simulator issues rarely have one cause. A customer reports \"the ball isn't tracking\" and the root cause could be calibration drift, a licensing timeout, a network config problem, or a Windows update that broke a driver.",
     constraints:
-      "Failures crossed calibration, licensing, networking, display, and OS layers, often with incomplete information and high user frustration.",
+      "Incomplete information is the norm. Customers are frustrated, logs aren't always available, and you're working remotely across all of these layers at once.",
     tradeoff:
-      "Used structured triage and reproducible diagnostic paths instead of quick one-off fixes to reduce repeat incidents and speed future resolution.",
-    role: "Technical support specialist, incident triage, remote diagnostics, root-cause isolation, and customer-facing resolution guidance.",
+      "Slower upfront diagnosis instead of quick one-off fixes. Takes more time per ticket, but the same failure patterns stop coming back.",
+    role: "Technical support specialist at Auxillium, supporting Full Swing's commercial and residential simulator deployments.",
     outcome:
-      "Improved issue resolution quality by applying structured troubleshooting playbooks and reproducible diagnostic paths across recurring failure modes.",
-    outcomeType: "qualitative",
+      "Built repeatable triage workflows that I now use across calibration, licensing, display, networking, and OS subsystems. Documented publicly as a case study.",
     tags: [
       "Technical Support",
       "Troubleshooting",
@@ -155,61 +105,47 @@ export const projects: Project[] = [
     category: "featured",
   },
   {
+    slug: "snake-detector",
+    title: "Snake Detector (CNN)",
+    description:
+      "A CNN image classifier for snake species. The interesting part wasn't the model — it was learning how much dataset quality matters. I spent more time on stratified splits, augmentation, and confusion-matrix-driven error review than on architecture.",
+    problem:
+      "The raw dataset had class imbalance, noisy labels, and inconsistent image quality. Naive training runs looked fine on aggregate accuracy but generalized poorly.",
+    outcome:
+      "An end-to-end pipeline where every training run uses the same splits and metrics, and poor-performing classes surface in review instead of hiding in the average.",
+    tags: ["Python", "Machine Learning", "CNN", "Computer Vision"],
+    github: "https://github.com/mmaitland300/Snake-detector",
+    caseStudy: "/projects/snake-detector",
+    category: "experiment",
+  },
+  {
+    slug: "auction-house",
+    title: "Auction House",
+    description:
+      "A Django auction platform from CS50 Web. Users can create listings, place bids, manage watchlists, and browse by category. All bid validation and ownership rules are enforced server-side.",
+    problem:
+      "The main challenge was getting the bid logic right — ensuring server-side rules handle concurrent actions and edge cases like bidding on your own listing or closed auctions.",
+    outcome:
+      "A working multi-user auction app with auth, listing lifecycle, bid validation, watchlists, and category browsing.",
+    tags: ["Django", "Python", "PostgreSQL", "HTML/CSS"],
+    github: "https://github.com/mmaitland300/AuctionHouse",
+    category: "featured",
+  },
+  {
     slug: "sample-organizer",
     title: "Sample Library Organizer",
     description:
-      "A file organizer built for musicians and producers to sort and manage large sample libraries. Scans directories, categorizes files, and keeps collections clean.",
-    problem:
-      "Large sample libraries get messy fast, with thousands of files and inconsistent naming across dozens of folders.",
-    constraints:
-      "Needed predictable categorization and safe file operations across inconsistent folder structures and naming conventions.",
-    tradeoff:
-      "Prioritized deterministic rules and repeatable CLI workflows over heuristic automation to keep results understandable and reversible.",
-    role: "Solo developer, file system logic, categorization rules, and CLI interface.",
-    outcome:
-      "Replaced multi-hour manual folder walks with a single deterministic CLI pass (dry-run, explicit rules, reversible moves) for large libraries.",
-    outcomeType: "proxy",
+      "A Python CLI tool I built to sort my sample libraries. It scans directories, categorizes audio files by deterministic rules, and moves them into a clean folder structure. Supports dry-run so you can preview before committing.",
     image: "/images/projects/sample-organizer-loaded.png",
     tags: ["Python", "CLI", "File Systems"],
     github: "https://github.com/mmaitland300/organizer_project",
     category: "experiment",
   },
   {
-    slug: "music-production-neurochemical-entropy",
-    title: "Music Production (NEUROCHEMICAL ENTROPY)",
-    description:
-      "Original music production workflow focused on arrangement, sound design, mixing, and mastering, with repeatable session structure and quality-control checkpoints.",
-    problem:
-      "Creative sessions can become inconsistent and hard to finish without a reliable production workflow and objective review points.",
-    constraints:
-      "Needed to keep creative flexibility while maintaining repeatable technical quality across tracking, mix translation, and final master output.",
-    tradeoff:
-      "Used a structured production pipeline and staged quality checks instead of purely ad-hoc iteration to improve consistency and reduce rework.",
-    role:
-      "Solo artist/producer responsible for writing, recording, editing, mixing, mastering, and release preparation.",
-    outcome:
-      "Built a stable end-to-end production process with track examples published on the music page and SoundCloud profile.",
-    outcomeType: "proxy",
-    tags: ["Music Production", "Audio Engineering", "Mixing", "Mastering"],
-    demo: "/music",
-    category: "experiment",
-  },
-  {
     slug: "turn-based-rpg",
     title: "Turn-Based RPG",
     description:
-      "Browser-based turn-based RPG prototype exploring deterministic combat state, scene transitions, and lightweight game-loop architecture.",
-    problem:
-      "Needed a small interactive system to test turn-order logic, state transitions, and combat feedback without backend dependencies.",
-    constraints:
-      "Had to keep runtime simple and portable in-browser while handling scene changes, sprite state, and turn resolution predictably.",
-    tradeoff:
-      "Used straightforward Phaser scene/state patterns over heavier abstractions to prioritize clarity and predictable behavior during iteration.",
-    role:
-      "Solo developer responsible for gameplay loop, combat logic, scene orchestration, and browser delivery.",
-    outcome:
-      "Delivered a playable web prototype with stable turn sequencing and repeatable combat interactions embedded directly in the portfolio.",
-    outcomeType: "technical",
+      "A browser RPG prototype I built to learn Phaser's scene system. Turn-based combat, sprite movement, and scene transitions — all running client-side with no backend.",
     tags: ["JavaScript", "Phaser.js", "Game Dev", "RPG"],
     iframe: "/games/rpg/index.html",
     category: "experiment",
@@ -218,18 +154,7 @@ export const projects: Project[] = [
     slug: "atoms-simulation",
     title: "Atoms Simulation",
     description:
-      "Interactive particle simulation built to explore browser physics behavior, collision feedback, and animation performance under continuous updates.",
-    problem:
-      "Needed a compact sandbox for testing real-time motion and interaction patterns in a browser-rendered simulation.",
-    constraints:
-      "Simulation needed to remain smooth and understandable without introducing complex physics dependencies or heavy rendering overhead.",
-    tradeoff:
-      "Chose a simplified rule set and visual model to keep update loops fast and behavior readable rather than chasing high-fidelity physics.",
-    role:
-      "Solo developer handling simulation rules, rendering behavior, and interaction tuning.",
-    outcome:
-      "Shipped a lightweight interactive simulation that runs in-browser and demonstrates stable real-time update behavior.",
-    outcomeType: "technical",
+      "An interactive particle simulation built with Phaser. Mostly a sandbox for playing with collision detection and continuous animation loops in the browser.",
     tags: ["JavaScript", "Phaser.js", "Canvas", "Physics"],
     iframe: "/games/atoms/index.html",
     category: "experiment",
@@ -240,7 +165,7 @@ export function getFeaturedProjects() {
   return projects.filter((p) => p.category === "featured");
 }
 
-/** Curated subset for the homepage hero grid (strongest proof, least noise). */
+/** Curated subset for the homepage hero grid. */
 export function getHomepageFeaturedProjects(): Project[] {
   return HOMEPAGE_FEATURED_SLUGS.map((slug) => {
     const p = projects.find((x) => x.slug === slug);
