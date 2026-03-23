@@ -53,7 +53,6 @@ export async function submitContact(
     };
   }
 
-  // Rate limiting
   const rl = getRatelimit();
   if (rl) {
     const headerStore = await headers();
@@ -68,7 +67,6 @@ export async function submitContact(
     }
   }
 
-  // Send email via Resend (must succeed before optional DB persistence)
   const contactDeliveryEnv = getContactDeliveryEnv();
   if (!contactDeliveryEnv) {
     console.error("Missing Resend env vars");
@@ -101,9 +99,7 @@ export async function submitContact(
     };
   }
 
-  // Persist only after email delivery succeeds (avoids orphan inbox rows on misconfig or send failure).
-  // Reliability tradeoff: the UI success path is driven by email delivery; admin inbox persistence
-  // is best-effort and may be missed if Prisma/DB persistence fails.
+  // Best-effort: email delivery is the success gate
   if (parseAppEnv().DATABASE_URL) {
     try {
       const { prisma } = await import("@/lib/prisma");
@@ -115,10 +111,7 @@ export async function submitContact(
         },
       });
     } catch (err) {
-      console.error(
-        "Admin inbox persistence failed after successful email delivery (best-effort path):",
-        err
-      );
+      console.error("Admin inbox persistence failed (best-effort):", err);
     }
   }
 

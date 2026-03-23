@@ -61,7 +61,6 @@ export async function joinWaitlist(
     };
   }
 
-  // Rate limiting
   const rl = getRatelimit();
   if (rl) {
     const headerStore = await headers();
@@ -96,7 +95,7 @@ export async function joinWaitlist(
     };
   }
 
-  // Email notifications are best-effort. The durable source of truth is DB persistence above.
+  // Best-effort notifications
   const resendSenderEnv = getResendSenderEnv();
   const contactToEmail = parseAppEnv().CONTACT_TO_EMAIL;
   if (resendSenderEnv) {
