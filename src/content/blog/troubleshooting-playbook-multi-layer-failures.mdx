@@ -1,75 +1,63 @@
 ---
 title: "Troubleshooting Playbook: Isolating Multi-Layer Failures"
-description: "A practical diagnostic workflow for incidents where hardware, software, networking, and OS factors overlap."
+description: "How I approach incidents where hardware, software, networking, and OS factors overlap — based on real support work."
 date: "2026-03-20"
 tags: ["Troubleshooting", "Operations", "Support Engineering"]
 published: true
 ---
 
-## Why This Matters
+## The Incident That Changed How I Debug
 
-The hardest incidents are not single-component failures.  
-They are mixed failures where multiple plausible causes exist at the same time and symptoms are noisy.
+A customer called in with what sounded like a simple problem: their Full Swing simulator was "dropping shots." Ball tracking was inconsistent — sometimes it worked fine, sometimes the shot just vanished.
 
-This post documents the workflow I use for those conditions.
+The obvious first guess was calibration. But recalibrating didn't fix it. The cameras were reading clean. The next guess was a software bug, but the same software version was running fine on hundreds of other units.
 
-## The Workflow
+It took three sessions to find the actual cause: a consumer-grade network switch was introducing intermittent packet loss between the camera system and the processing PC. The tracking data was fine at the source — it was getting corrupted in transit. A networking problem masquerading as a calibration problem masquerading as a software bug.
 
-## 1) Classify by System Layer First
+That incident is why I stopped guessing and started using a structured approach.
 
-Before trying fixes, classify candidate causes:
+## What I Do Now
 
-- hardware/calibration
-- licensing/activation
-- network/configuration
-- operating system and drivers
-- app-level behavior
+### Classify by layer before touching anything
 
-This prevents early lock-in on one theory.
+When a ticket comes in, I resist the urge to start fixing. Instead I list which layers could plausibly cause the symptom:
 
-## 2) Build a Reproducible Baseline
+- Hardware / calibration
+- Licensing / activation
+- Network / configuration
+- OS and drivers
+- Application behavior
 
-Capture a minimal reproducible state:
+This takes two minutes and prevents the tunnel vision that cost me three sessions on that network switch.
 
-- current environment details
-- exact symptom trigger
-- known-good vs failing state differences
+### Get a reproducible baseline
 
-If you cannot reproduce, you cannot reliably verify a fix.
+Before I change anything, I need to know what "broken" actually looks like in detail:
 
-## 3) Eliminate Branches, Don’t Guess
+- What exact sequence triggers the failure?
+- What does the known-good state look like on comparable hardware?
+- What changed recently (updates, config changes, physical moves)?
 
-Use branch-based tests:
+If I can't reproduce the problem, I can't verify a fix. I've closed tickets prematurely before because the issue seemed resolved but was actually intermittent.
 
-- test one subsystem assumption at a time
-- eliminate hypotheses with evidence
-- keep a short decision log while testing
+### Eliminate one layer at a time
 
-This converts ambiguity into a shrinking search space.
+I test one hypothesis per step. If I change the network config and swap a camera cable at the same time, I don't know which one fixed it — or if neither did and the problem is intermittent.
 
-## 4) Apply Lowest-Risk Corrective Action
+I keep a short log while working: what I tested, what the result was, what it ruled out. This sounds tedious but it's saved me on callbacks when a customer says "we already tried that."
 
-Prefer reversible, low-blast-radius changes first.  
-Escalate only when branch evidence requires it.
+### Start with the lowest-risk fix
 
-This keeps user impact lower while preserving diagnostic clarity.
+If two equally plausible causes exist, I try the one that's reversible first. Reconfiguring a network setting is reversible. Reflashing firmware is not. This keeps the customer's system stable while I narrow down the root cause.
 
-## 5) Convert Resolution Into a Repeatable Path
+### Write it down when it's resolved
 
-After closure, codify:
+After closing a tricky ticket, I spend five minutes documenting the failure signature, root cause, and fix sequence. This is the part that reduces repeat incidents. The next time someone reports the same symptom, I'm not starting from scratch.
 
-- failure signature
-- validated root cause
-- fix sequence
-- verification checks
+## The Tradeoff
 
-This is what reduces future resolution time and variance.
+This approach is slower per ticket than jumping straight to the most likely fix. But the most likely fix is wrong often enough — especially in multi-layer systems — that the structured approach saves time overall. I've watched one-off fixes turn into repeat incidents too many times to trust gut instinct on complex failures.
 
-## Common Tradeoff
+## Where This Has Helped
 
-The constant tradeoff is speed vs reliability.  
-Quick fixes can close a ticket fast but often increase repeat incidents. Structured diagnosis takes longer up front, but improves long-term resolution quality.
-
-## Outcome Signal (Qualitative)
-
-Using this workflow improved consistency of root-cause isolation in multi-layer incidents and reduced dependence on one-off fixes that were hard to reproduce later.
+Using this workflow consistently has made my triage more predictable. The same types of failures (calibration drift after firmware updates, licensing timeouts on network changes, display issues after Windows updates) now have documented paths instead of ad-hoc solutions. That's the real payoff — not faster individual tickets, but fewer callbacks and less rework.
