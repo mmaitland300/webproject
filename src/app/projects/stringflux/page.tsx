@@ -85,6 +85,21 @@ const validationChecks = [
   },
 ];
 
+const evidenceLinks = [
+  {
+    label: "StringFlux project repository",
+    href: "https://github.com/mmaitland300/StringFlux",
+  },
+  {
+    label: "Oversampling decision log",
+    href: "/blog/stringflux-oversampling-decision-log",
+  },
+  {
+    label: "StringFlux public product page",
+    href: "/stringflux",
+  },
+];
+
 export default function StringFluxCaseStudyPage() {
   return (
     <div className="py-24">
@@ -239,6 +254,26 @@ export default function StringFluxCaseStudyPage() {
                 </p>
               </div>
             ))}
+          </div>
+        </section>
+
+        <section className="mb-10 rounded-xl border border-border bg-card/40 p-6">
+          <h2 className="mb-3 text-xl font-semibold">Evidence links</h2>
+          <div className="space-y-2">
+            {evidenceLinks.map((item) => {
+              const isExternal = item.href.startsWith("http");
+              return (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  target={isExternal ? "_blank" : undefined}
+                  rel={isExternal ? "noopener noreferrer" : undefined}
+                  className="block rounded-lg border border-border bg-card/30 px-4 py-3 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  {item.label}
+                </a>
+              );
+            })}
           </div>
         </section>
 
