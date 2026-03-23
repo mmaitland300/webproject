@@ -103,14 +103,13 @@ export default function SnakeDetectorCaseStudyPage() {
         <section className="rounded-xl border border-border bg-card/40 p-6">
           <div className="mb-3 flex items-center gap-2">
             <BarChart3 className="h-5 w-5 text-amber-400" />
-            <h2 className="text-xl font-semibold">Outcome signal</h2>
+            <h2 className="text-xl font-semibold">Where it stands</h2>
           </div>
           <p className="text-sm leading-relaxed text-muted-foreground">
-            <span className="font-medium text-foreground">Technical outcome:</span>{" "}
-            a repeatable loop where poor classes show up in structured review
-            instead of hiding behind a single accuracy number. The repo is the
-            source of truth for scripts and training flow; plug in your own
-            metrics exports or confusion matrices as you iterate.
+            The pipeline produces a repeatable training loop where poorly-performing
+            species surface in structured review instead of hiding behind aggregate
+            accuracy. The repo contains the full training flow, split configuration,
+            and evaluation scripts.
           </p>
         </section>
       </div>
