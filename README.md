@@ -98,28 +98,6 @@ Set `published: false` to keep a post as a draft (hidden from listings and direc
 
 **Resume data** is centralized in `src/content/resume.ts` and consumed by both the `/about` and `/resume` pages.
 
-## Operational Decisions
-
-These are intentional tradeoffs built into the app. They are documented here so they are visible at the repo level, not just in code comments.
-
-**Contact pipeline: email is source of truth, inbox is best-effort.**
-The contact form sends email via Resend before attempting database persistence. If Prisma fails after a successful send, the user still gets a success response and the email is delivered. The admin inbox may miss that message. This is an intentional tradeoff: guaranteed delivery over guaranteed persistence.
-
-**StringFlux waitlist sends two emails when Resend is configured.**
-On signup, the app sends an internal notification to `CONTACT_TO_EMAIL` so new entries are visible without checking the admin page. It also sends a confirmation email to the subscriber address. Both emails are best-effort; the durable source of truth is the database row.
-
-**Public contact address is decoupled from delivery address.**
-`contact@mmaitland.dev` (via ImprovMX forwarding) is what visitors see on the site. `CONTACT_TO_EMAIL` controls where form submissions actually go (currently the Gmail address directly). These are separate so the public-facing address can change without touching the app.
-
-**Admin gating uses GitHub numeric user IDs, not email.**
-`ADMIN_GITHUB_IDS` contains stable numeric IDs (e.g. `68873951`), not emails. GitHub user IDs do not change; email-based gating is unreliable because of privacy settings and address changes.
-
-**Rate limiting is durable, not in-memory.**
-The contact form uses Upstash Redis for rate limiting. In-memory state is not reliable across Vercel function instances. Upstash provides durable, globally consistent counters.
-
-**Database and auth are optional, but they gate specific features.**
-The site runs without `DATABASE_URL` or auth credentials. Without a database, the contact form still sends email, but the StringFlux waitlist and admin inbox are disabled. Admin access additionally requires `AUTH_SECRET`, `AUTH_GITHUB_ID`, and `AUTH_GITHUB_SECRET`.
-
 ## Scripts
 
 | Command | Description |
