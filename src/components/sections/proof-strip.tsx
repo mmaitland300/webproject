@@ -4,24 +4,26 @@ const proofItems = [
   {
     title: "Production simulator support under real constraints",
     detail:
-      "Full-time incident triage at Auxillium for Full Swing GOLF software and simulator systems (2024-present).",
+      "Full-time incident triage at Auxillium for Full Swing simulator systems — hardware, software, networking, and OS layers (2024–present).",
     href: "/projects/full-swing-tech-support",
   },
   {
     title: "Web delivery with auth and abuse controls",
     detail:
-      "Live Next.js stack with admin OAuth, server-side validation, and contact intake protections.",
+      "This site: Next.js 16, server-side validation, honeypot + Redis rate limiting, GitHub OAuth admin inbox. Documented in a public decision record.",
     href: "/blog/contact-pipeline-decision-record",
   },
   {
-    title: "StringFlux DSP development",
+    title: "StringFlux — audio plugin in active development",
     detail:
-      "JUCE/C++ plugin work: multiband routing, transient-driven grain scheduling, and safe oversampling transitions.",
+      "JUCE/C++ multiband granular delay with transient-driven grain scheduling and real-time safe oversampling transitions.",
     href: "/projects/stringflux",
   },
   {
-    title: "Core stack in active use",
-    detail: "Next.js, TypeScript, Python, C++, PostgreSQL.",
+    title: "ML evaluation discipline",
+    detail:
+      "CNN snake classifier focused on dataset hygiene, stratified splits, and confusion-matrix-driven review before architecture changes.",
+    href: "/projects/snake-detector",
   },
 ];
 
