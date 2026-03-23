@@ -125,7 +125,7 @@ export default function PortfolioSiteCaseStudyPage() {
         </section>
 
         <section className="mb-10 rounded-xl border border-border bg-card/40 p-6">
-          <h2 className="mb-3 text-xl font-semibold">Tradeoffs and rationale</h2>
+          <h2 className="mb-3 text-xl font-semibold">Tradeoffs</h2>
           <div className="space-y-4">
             {tradeoffs.map((item) => (
               <div key={item.title}>

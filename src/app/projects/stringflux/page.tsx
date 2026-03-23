@@ -211,7 +211,7 @@ export default function StringFluxCaseStudyPage() {
         <section className="mb-10 rounded-xl border border-border bg-card/40 p-6">
           <div className="mb-4 flex items-center gap-2">
             <SlidersHorizontal className="h-5 w-5 text-emerald-400" />
-            <h2 className="text-xl font-semibold">Key Tradeoffs</h2>
+            <h2 className="text-xl font-semibold">Tradeoffs</h2>
           </div>
           <div className="space-y-4">
             {tradeoffs.map((item) => (
@@ -280,7 +280,7 @@ export default function StringFluxCaseStudyPage() {
         <section className="rounded-xl border border-border bg-card/40 p-6">
           <div className="mb-3 flex items-center gap-2">
             <AudioLines className="h-5 w-5 text-rose-400" />
-            <h2 className="text-xl font-semibold">Where It Stands</h2>
+            <h2 className="text-xl font-semibold">Where it stands</h2>
           </div>
           <p className="text-sm leading-relaxed text-muted-foreground">
             <span className="font-medium text-foreground">
