@@ -32,10 +32,6 @@ export function Navbar() {
   }, []);
 
   useEffect(() => {
-    closeMobile();
-  }, [pathname, closeMobile]);
-
-  useEffect(() => {
     if (!mobileOpen) return;
 
     document.body.style.overflow = "hidden";
