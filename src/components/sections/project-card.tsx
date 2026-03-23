@@ -14,16 +14,6 @@ interface ProjectCardProps {
   compact?: boolean;
 }
 
-const outcomeLabels: Record<
-  NonNullable<Project["outcomeType"]>,
-  string
-> = {
-  metric: "Outcome (Metric)",
-  proxy: "Outcome (Operational Proxy)",
-  technical: "Outcome (Technical)",
-  qualitative: "Outcome (Qualitative)",
-};
-
 export function ProjectCard({ project, index, compact }: ProjectCardProps) {
   const [iframeActive, setIframeActive] = useState(false);
   const internalDemoHref = project.demo?.startsWith("/") ? project.demo : null;
@@ -136,9 +126,7 @@ export function ProjectCard({ project, index, compact }: ProjectCardProps) {
             {project.outcome && (
               <div>
                 <span className="font-medium text-foreground/80">
-                  {project.outcomeType
-                    ? `${outcomeLabels[project.outcomeType]}: `
-                    : "Outcome: "}
+                  Outcome:{" "}
                 </span>
                 <span className="text-muted-foreground">{project.outcome}</span>
               </div>
