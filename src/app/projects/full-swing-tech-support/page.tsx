@@ -5,7 +5,7 @@ import { ArrowLeft, AlertTriangle, CheckCircle2, Wrench } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { TriageFlowDiagram } from "@/components/case-studies/triage-flow-diagram";
 
-/** Same asset as the Full Swing project card thumbnail — keeps preview and case study aligned. */
+/** Same asset as the Full Swing project card thumbnail. */
 const TRIAGE_ARTIFACT_SRC = "/images/projects/full-swing-triage-artifact.svg";
 
 export const metadata: Metadata = {
@@ -163,7 +163,7 @@ export default function FullSwingCaseStudyPage() {
             </figcaption>
           </figure>
           <p className="mb-4 text-sm text-muted-foreground">
-            Below is a simplified linear view of the same idea—useful when you
+            Below is a simplified linear view of the same idea, useful when you
             want a quick read of the end-to-end path.
           </p>
           <TriageFlowDiagram />

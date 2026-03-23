@@ -36,7 +36,7 @@ export const projects: Project[] = [
     constraints:
       "Everything runs in the audio callback, so oversampling changes and grain scheduling have to be real-time safe. I can't rebuild state mid-buffer without risking glitches.",
     tradeoff:
-      "I've kept the feature set narrow on purpose — getting the engine stable and the transient response right matters more than adding controls nobody can trust yet.",
+      "I've kept the feature set narrow on purpose. Getting the engine stable and the transient response right matters more than adding controls nobody can trust yet.",
     outcome:
       "Still in progress. The current build has 3-band crossover routing, transient-driven grain scheduling, history/freeze capture, and safe 1x/2x/4x oversampling transitions.",
     tags: [
@@ -60,7 +60,7 @@ export const projects: Project[] = [
     problem:
       "I needed somewhere to put my work that wasn't just a GitHub profile. It had to accept contact without getting spammed, and I wanted to be able to iterate on it without worrying about breaking production.",
     constraints:
-      "Solo project, so operational overhead had to stay low. No dedicated backend — managed services (Resend for email, Upstash for rate limiting, Neon for Postgres) handle the heavy parts.",
+      "Solo project, so operational overhead had to stay low. No dedicated backend: managed services (Resend for email, Upstash for rate limiting, Neon for Postgres) handle the heavy parts.",
     tradeoff:
       "Server Actions over API routes, managed services over self-hosted infra. More vendor lock-in, but significantly less to maintain and debug alone.",
     outcome:
@@ -83,7 +83,7 @@ export const projects: Project[] = [
     slug: "full-swing-tech-support",
     title: "Full Swing Technical Support",
     description:
-      "My day job. I do remote support for Full Swing golf simulators — diagnosing issues that cross hardware, software, networking, and OS layers. This case study documents the triage approach I've built up from that work.",
+      "My day job. I do remote support for Full Swing golf simulators, diagnosing issues that cross hardware, software, networking, and OS layers. This case study documents the triage approach I've built up from that work.",
     problem:
       "Simulator issues rarely have one cause. A customer reports \"the ball isn't tracking\" and the root cause could be calibration drift, a licensing timeout, a network config problem, or a Windows update that broke a driver.",
     constraints:
@@ -108,7 +108,7 @@ export const projects: Project[] = [
     slug: "snake-detector",
     title: "Snake Detector (CNN)",
     description:
-      "A CNN image classifier for snake species. The interesting part wasn't the model — it was learning how much dataset quality matters. I spent more time on stratified splits, augmentation, and confusion-matrix-driven error review than on architecture.",
+      "A CNN image classifier for snake species. The interesting part wasn't the model, it was learning how much dataset quality matters. I spent more time on stratified splits, augmentation, and confusion-matrix-driven error review than on architecture.",
     problem:
       "The raw dataset had class imbalance, noisy labels, and inconsistent image quality. Naive training runs looked fine on aggregate accuracy but generalized poorly.",
     outcome:
@@ -124,7 +124,7 @@ export const projects: Project[] = [
     description:
       "A Django auction platform from CS50 Web. Users can create listings, place bids, manage watchlists, and browse by category. All bid validation and ownership rules are enforced server-side.",
     problem:
-      "The main challenge was getting the bid logic right — ensuring server-side rules handle concurrent actions and edge cases like bidding on your own listing or closed auctions.",
+      "The main challenge was getting the bid logic right: ensuring server-side rules handle concurrent actions and edge cases like bidding on your own listing or closed auctions.",
     outcome:
       "A working multi-user auction app with auth, listing lifecycle, bid validation, watchlists, and category browsing.",
     tags: ["Django", "Python", "PostgreSQL", "HTML/CSS"],
@@ -145,7 +145,7 @@ export const projects: Project[] = [
     slug: "turn-based-rpg",
     title: "Turn-Based RPG",
     description:
-      "A browser RPG prototype I built to learn Phaser's scene system. Turn-based combat, sprite movement, and scene transitions — all running client-side with no backend.",
+      "A browser RPG prototype I built to learn Phaser's scene system. Turn-based combat, sprite movement, and scene transitions, all running client-side with no backend.",
     tags: ["JavaScript", "Phaser.js", "Game Dev", "RPG"],
     iframe: "/games/rpg/index.html",
     category: "experiment",

@@ -4,7 +4,7 @@ const proofItems = [
   {
     title: "Production simulator support under real constraints",
     detail:
-      "Full-time incident triage at Auxillium for Full Swing simulator systems — hardware, software, networking, and OS layers (2024–present).",
+      "Full-time incident triage at Auxillium for Full Swing simulator systems across hardware, software, networking, and OS layers (2024-present).",
     href: "/projects/full-swing-tech-support",
   },
   {
@@ -14,7 +14,7 @@ const proofItems = [
     href: "/blog/contact-pipeline-decision-record",
   },
   {
-    title: "StringFlux — audio plugin in active development",
+    title: "StringFlux: audio plugin in active development",
     detail:
       "JUCE/C++ multiband granular delay with transient-driven grain scheduling and real-time safe oversampling transitions.",
     href: "/projects/stringflux",

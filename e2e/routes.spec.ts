@@ -49,23 +49,29 @@ test("every public route has a <title> and meta description", async ({
   }
 });
 
-test("OG meta tags present on homepage", async ({ page }) => {
-  await page.goto("/");
-  const ogTitle = await page
-    .locator('meta[property="og:title"]')
-    .getAttribute("content");
-  expect(ogTitle).toBeTruthy();
+const routesWithOgImages = [
+  "/",
+  "/projects",
+  "/blog",
+  "/about",
+  "/contact",
+  "/resume",
+];
 
-  const ogDescription = await page
-    .locator('meta[property="og:description"]')
-    .getAttribute("content");
-  expect(ogDescription).toBeTruthy();
+for (const route of routesWithOgImages) {
+  test(`OG meta tags present on ${route}`, async ({ page }) => {
+    await page.goto(route);
+    const ogTitle = await page
+      .locator('meta[property="og:title"]')
+      .getAttribute("content");
+    expect(ogTitle, `${route} missing og:title`).toBeTruthy();
 
-  const ogImage = await page
-    .locator('meta[property="og:image"]')
-    .getAttribute("content");
-  expect(ogImage).toBeTruthy();
-});
+    const ogImage = await page
+      .locator('meta[property="og:image"]')
+      .getAttribute("content");
+    expect(ogImage, `${route} missing og:image`).toBeTruthy();
+  });
+}
 
 test("not-found page returns 404 status", async ({ page }) => {
   const response = await page.goto("/this-route-does-not-exist");
