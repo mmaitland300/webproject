@@ -4,19 +4,19 @@ const proofItems = [
   {
     title: "Production simulator support under real constraints",
     detail:
-      "Full-time incident triage at Auxillium for Full Swing simulator systems across hardware, software, networking, and OS layers (2024-present).",
+      "Full-time incident triage at Auxillium for Full Swing simulator systems across hardware, software, networking, and OS layers.",
     href: "/projects/full-swing-tech-support",
   },
   {
     title: "Web delivery with auth and abuse controls",
     detail:
-      "This site: Next.js 16, server-side validation, honeypot + Redis rate limiting, GitHub OAuth admin inbox. Documented in a public decision record.",
+      "This site uses Next.js 16, server-side validation, honeypot + Redis rate limiting, and a GitHub OAuth admin inbox.",
     href: "/blog/contact-pipeline-decision-record",
   },
   {
     title: "StringFlux: audio plugin in active development",
     detail:
-      "JUCE/C++ multiband granular delay with transient-driven grain scheduling and real-time safe oversampling transitions.",
+      "JUCE/C++ multiband granular delay with transient-driven grain scheduling and safe oversampling transitions.",
     href: "/projects/stringflux",
   },
   {
