@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, CheckCircle2, FileCode2, ShieldCheck } from "lucide-react";
@@ -17,7 +17,7 @@ const safeguards = [
   "Honeypot plus Upstash sliding-window limiting on inbound actions",
   "Auth.js GitHub OAuth gate for admin routes and inbox views",
   "Prisma-backed persistence for contact/waitlist records",
-  "Playwright smoke coverage on trust-critical routes",
+  "Playwright smoke coverage on all public routes with metadata and OG verification",
 ];
 
 const tradeoffs = [
@@ -159,13 +159,12 @@ export default function PortfolioSiteCaseStudyPage() {
         <section className="rounded-xl border border-border bg-card/40 p-6">
           <div className="mb-3 flex items-center gap-2">
             <CheckCircle2 className="h-5 w-5 text-emerald-400" />
-            <h2 className="text-xl font-semibold">Outcome signal</h2>
+            <h2 className="text-xl font-semibold">Where it stands</h2>
           </div>
           <p className="text-sm leading-relaxed text-muted-foreground">
-            <span className="font-medium text-foreground">Operational proxy:</span>{" "}
-            a production portfolio that can reliably receive contact, protect
-            admin-only surfaces, and expose engineering reasoning through linked
-            decision records and case-study artifacts.
+            The site reliably receives contact, protects admin surfaces behind
+            OAuth, and documents its own engineering decisions through linked blog
+            posts and case studies. It&apos;s live, tested, and under active iteration.
           </p>
         </section>
       </div>
