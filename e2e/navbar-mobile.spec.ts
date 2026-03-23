@@ -10,7 +10,11 @@ test.describe("mobile navbar", () => {
 
     const toggle = page.getByRole("button", { name: "Open menu" });
     await expect(toggle).toBeVisible();
+    await expect(toggle).toHaveAttribute("aria-expanded", "false");
     await toggle.click();
+
+    const closeToggle = page.getByRole("button", { name: "Close menu" });
+    await expect(closeToggle).toHaveAttribute("aria-expanded", "true");
 
     const menu = page.getByTestId("mobile-nav-menu");
     await expect(menu).toBeVisible();
@@ -23,9 +27,13 @@ test.describe("mobile navbar", () => {
 
     await page.keyboard.press("Escape");
     await expect(menu).not.toBeVisible();
-    await expect(
-      page.getByRole("button", { name: "Open menu" })
-    ).toBeVisible();
+    const reopenToggle = page.getByRole("button", { name: "Open menu" });
+    await expect(reopenToggle).toBeVisible();
+    await expect(reopenToggle).toHaveAttribute("aria-expanded", "false");
+    const overflowAfterClose = await page.evaluate(
+      () => window.getComputedStyle(document.body).overflow
+    );
+    expect(overflowAfterClose).not.toBe("hidden");
   });
 
   test("closes menu on outside click", async ({ page }) => {
@@ -37,5 +45,12 @@ test.describe("mobile navbar", () => {
 
     await page.locator("main").click({ position: { x: 20, y: 400 } });
     await expect(menu).not.toBeVisible();
+    await expect(
+      page.getByRole("button", { name: "Open menu" })
+    ).toHaveAttribute("aria-expanded", "false");
+    const overflowAfterClose = await page.evaluate(
+      () => window.getComputedStyle(document.body).overflow
+    );
+    expect(overflowAfterClose).not.toBe("hidden");
   });
 });
