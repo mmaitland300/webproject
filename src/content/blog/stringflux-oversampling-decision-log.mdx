@@ -53,9 +53,9 @@ Cons:
 - transition strategy: queued setting changes, applied at controlled points
 - verification focus: transition correctness under rapid mode changes and active playback
 
-## Outcome Signal (Technical)
+## Where It Stands
 
-StringFlux now supports safe 1x/2x/4x oversampling transitions without rebuilding oversampling state directly on the audio thread. This reduced instability risk while preserving expected routing and scheduler behavior.
+StringFlux now supports safe 1x/2x/4x oversampling transitions without rebuilding state directly on the audio thread. This eliminated the glitches I was hitting during rapid mode changes and kept the routing and scheduler behavior predictable.
 
 ## Next Validation Targets
 
