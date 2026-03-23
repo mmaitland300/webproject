@@ -51,16 +51,13 @@ Cons:
 - fewer teams are deeply familiar with this pattern
 - requires careful handling of returned action state
 
-## Failure Modes Addressed
+## What This Handles
 
-- **Spam flood:** mitigated with honeypot + Upstash-backed server-side rate limiting
-- **Validation drift:** single server schema controls accepted shape
-- **Partial delivery risk:** success criteria tied to server-side completion path, not optimistic UI
-- **Operational mismatch across environments:** env-driven configuration with explicit fallback behavior
+Spam is controlled by a honeypot field plus Upstash-backed server-side rate limiting — no CAPTCHAs. Validation runs through a single Zod schema on the server, so the client can't submit a shape the backend doesn't expect. The user sees success only after the email actually sends, not optimistically. And because feature availability is env-driven, the whole pipeline degrades gracefully when database or Redis config is missing.
 
-## Outcome Signal (Technical)
+## Where It Stands
 
-The current implementation provides deterministic server-side validation, durable abuse controls, and explicit action-state feedback without introducing additional API infrastructure. It also supports optional persistence while maintaining predictable behavior when DB configuration is absent.
+The pipeline handles contact reliably without a custom API layer. Email is the source of truth — if the DB write fails after a successful send, the user still gets their confirmation and I still get the email. The admin inbox might miss that entry, but that's an acceptable tradeoff for a solo project where email delivery matters more than inbox completeness.
 
 ## What I Would Improve Next
 
