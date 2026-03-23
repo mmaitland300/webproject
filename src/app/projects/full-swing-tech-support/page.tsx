@@ -213,7 +213,7 @@ export default function FullSwingCaseStudyPage() {
         <section className="rounded-xl border border-border bg-card/40 p-6">
           <div className="mb-3 flex items-center gap-2">
             <CheckCircle2 className="h-5 w-5 text-emerald-400" />
-            <h2 className="text-xl font-semibold">Outcome Signal</h2>
+            <h2 className="text-xl font-semibold">Results</h2>
           </div>
           <p className="text-sm leading-relaxed text-muted-foreground">
             <span className="font-medium text-foreground">
