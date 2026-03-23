@@ -1,4 +1,4 @@
-﻿import { test, expect } from "@playwright/test";
+import { test, expect } from "@playwright/test";
 
 const publicRoutes = [
   "/",
@@ -33,4 +33,52 @@ test("admin/login renders without error", async ({ page }) => {
   );
 });
 
+test("every public route has a <title> and meta description", async ({
+  page,
+}) => {
+  for (const route of publicRoutes) {
+    await page.goto(route);
+    const title = await page.title();
+    expect(title, `${route} missing <title>`).toBeTruthy();
+    expect(title.length, `${route} <title> too short`).toBeGreaterThan(5);
 
+    const description = await page
+      .locator('meta[name="description"]')
+      .getAttribute("content");
+    expect(description, `${route} missing meta description`).toBeTruthy();
+  }
+});
+
+test("OG meta tags present on homepage", async ({ page }) => {
+  await page.goto("/");
+  const ogTitle = await page
+    .locator('meta[property="og:title"]')
+    .getAttribute("content");
+  expect(ogTitle).toBeTruthy();
+
+  const ogDescription = await page
+    .locator('meta[property="og:description"]')
+    .getAttribute("content");
+  expect(ogDescription).toBeTruthy();
+
+  const ogImage = await page
+    .locator('meta[property="og:image"]')
+    .getAttribute("content");
+  expect(ogImage).toBeTruthy();
+});
+
+test("not-found page returns 404 status", async ({ page }) => {
+  const response = await page.goto("/this-route-does-not-exist");
+  expect(response?.status()).toBe(404);
+});
+
+test("navbar links are visible on desktop", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 720 });
+  await page.goto("/");
+  const nav = page.locator("nav");
+  await expect(nav).toBeVisible();
+
+  for (const label of ["Projects", "About", "Blog", "Contact"]) {
+    await expect(nav.getByRole("link", { name: label })).toBeVisible();
+  }
+});
