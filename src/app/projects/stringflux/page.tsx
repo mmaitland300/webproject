@@ -245,7 +245,7 @@ export default function StringFluxCaseStudyPage() {
         <section className="rounded-xl border border-border bg-card/40 p-6">
           <div className="mb-3 flex items-center gap-2">
             <AudioLines className="h-5 w-5 text-rose-400" />
-            <h2 className="text-xl font-semibold">Current Outcome Signal</h2>
+            <h2 className="text-xl font-semibold">Where It Stands</h2>
           </div>
           <p className="text-sm leading-relaxed text-muted-foreground">
             <span className="font-medium text-foreground">
