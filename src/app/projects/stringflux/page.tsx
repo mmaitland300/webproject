@@ -85,6 +85,21 @@ const validationChecks = [
   },
 ];
 
+const evidenceLinks = [
+  {
+    label: "StringFlux project repository",
+    href: "https://github.com/mmaitland300/StringFlux",
+  },
+  {
+    label: "Oversampling decision log",
+    href: "/blog/stringflux-oversampling-decision-log",
+  },
+  {
+    label: "StringFlux public product page",
+    href: "/stringflux",
+  },
+];
+
 export default function StringFluxCaseStudyPage() {
   return (
     <div className="py-24">
@@ -196,7 +211,7 @@ export default function StringFluxCaseStudyPage() {
         <section className="mb-10 rounded-xl border border-border bg-card/40 p-6">
           <div className="mb-4 flex items-center gap-2">
             <SlidersHorizontal className="h-5 w-5 text-emerald-400" />
-            <h2 className="text-xl font-semibold">Key Tradeoffs</h2>
+            <h2 className="text-xl font-semibold">Tradeoffs</h2>
           </div>
           <div className="space-y-4">
             {tradeoffs.map((item) => (
@@ -242,10 +257,30 @@ export default function StringFluxCaseStudyPage() {
           </div>
         </section>
 
+        <section className="mb-10 rounded-xl border border-border bg-card/40 p-6">
+          <h2 className="mb-3 text-xl font-semibold">Evidence links</h2>
+          <div className="space-y-2">
+            {evidenceLinks.map((item) => {
+              const isExternal = item.href.startsWith("http");
+              return (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  target={isExternal ? "_blank" : undefined}
+                  rel={isExternal ? "noopener noreferrer" : undefined}
+                  className="block rounded-lg border border-border bg-card/30 px-4 py-3 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  {item.label}
+                </a>
+              );
+            })}
+          </div>
+        </section>
+
         <section className="rounded-xl border border-border bg-card/40 p-6">
           <div className="mb-3 flex items-center gap-2">
             <AudioLines className="h-5 w-5 text-rose-400" />
-            <h2 className="text-xl font-semibold">Where It Stands</h2>
+            <h2 className="text-xl font-semibold">Where it stands</h2>
           </div>
           <p className="text-sm leading-relaxed text-muted-foreground">
             <span className="font-medium text-foreground">

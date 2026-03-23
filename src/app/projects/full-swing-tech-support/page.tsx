@@ -83,6 +83,21 @@ const representativeIncident = [
   },
 ];
 
+const evidenceLinks = [
+  {
+    label: "Troubleshooting playbook post (real incident format)",
+    href: "/blog/troubleshooting-playbook-multi-layer-failures",
+  },
+  {
+    label: "Projects overview entry",
+    href: "/projects",
+  },
+  {
+    label: "Resume role context",
+    href: "/resume",
+  },
+];
+
 export default function FullSwingCaseStudyPage() {
   return (
     <div className="py-24">
@@ -200,7 +215,7 @@ export default function FullSwingCaseStudyPage() {
         </section>
 
         <section className="mb-10 rounded-xl border border-border bg-card/40 p-6">
-          <h2 className="mb-3 text-xl font-semibold">Key Tradeoff</h2>
+          <h2 className="mb-3 text-xl font-semibold">Tradeoffs</h2>
           <p className="text-sm leading-relaxed text-muted-foreground">
             The consistent tradeoff was speed versus reliability. Fast,
             one-off fixes could close tickets quickly but often increased
@@ -210,10 +225,25 @@ export default function FullSwingCaseStudyPage() {
           </p>
         </section>
 
+        <section className="mb-10 rounded-xl border border-border bg-card/40 p-6">
+          <h2 className="mb-3 text-xl font-semibold">Evidence links</h2>
+          <div className="space-y-2">
+            {evidenceLinks.map((item) => (
+              <Link
+                key={item.label}
+                href={item.href}
+                className="block rounded-lg border border-border bg-card/30 px-4 py-3 text-sm text-muted-foreground transition-colors hover:text-foreground"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
+        </section>
+
         <section className="rounded-xl border border-border bg-card/40 p-6">
           <div className="mb-3 flex items-center gap-2">
             <CheckCircle2 className="h-5 w-5 text-emerald-400" />
-            <h2 className="text-xl font-semibold">Results</h2>
+            <h2 className="text-xl font-semibold">Where it stands</h2>
           </div>
           <p className="text-sm leading-relaxed text-muted-foreground">
             <span className="font-medium text-foreground">

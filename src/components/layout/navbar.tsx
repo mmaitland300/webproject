@@ -140,7 +140,10 @@ export function Navbar() {
             transition={{ duration: 0.2 }}
             className="md:hidden bg-background/95 backdrop-blur-lg border-b border-border"
           >
-            <ul className="flex flex-col px-6 py-4 gap-1">
+            <ul
+              data-testid="mobile-nav-menu"
+              className="flex flex-col px-6 py-4 gap-1"
+            >
               {links.map((link) => {
                 const isActive =
                   link.href === "/"
