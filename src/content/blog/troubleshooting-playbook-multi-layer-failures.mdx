@@ -1,6 +1,6 @@
 ---
 title: "Troubleshooting Playbook: Isolating Multi-Layer Failures"
-description: "How I approach incidents where hardware, software, networking, and OS factors overlap — based on real support work."
+description: "How I approach incidents where hardware, software, networking, and OS factors overlap. Based on real support work."
 date: "2026-03-20"
 tags: ["Troubleshooting", "Operations", "Support Engineering"]
 published: true
@@ -8,11 +8,11 @@ published: true
 
 ## The Incident That Changed How I Debug
 
-A customer called in with what sounded like a simple problem: their Full Swing simulator was "dropping shots." Ball tracking was inconsistent — sometimes it worked fine, sometimes the shot just vanished.
+A customer called in with what sounded like a simple problem: their Full Swing simulator was "dropping shots." Ball tracking was inconsistent. Sometimes it worked fine, sometimes the shot just vanished.
 
 The obvious first guess was calibration. But recalibrating didn't fix it. The cameras were reading clean. The next guess was a software bug, but the same software version was running fine on hundreds of other units.
 
-It took three sessions to find the actual cause: a consumer-grade network switch was introducing intermittent packet loss between the camera system and the processing PC. The tracking data was fine at the source — it was getting corrupted in transit. A networking problem masquerading as a calibration problem masquerading as a software bug.
+It took three sessions to find the actual cause: a consumer-grade network switch was introducing intermittent packet loss between the camera system and the processing PC. The tracking data was fine at the source, but it was getting corrupted in transit. A networking problem masquerading as a calibration problem masquerading as a software bug.
 
 That incident is why I stopped guessing and started using a structured approach.
 
@@ -42,7 +42,7 @@ If I can't reproduce the problem, I can't verify a fix. I've closed tickets prem
 
 ### Eliminate one layer at a time
 
-I test one hypothesis per step. If I change the network config and swap a camera cable at the same time, I don't know which one fixed it — or if neither did and the problem is intermittent.
+I test one hypothesis per step. If I change the network config and swap a camera cable at the same time, I don't know which one fixed it, or if neither did and the problem is intermittent.
 
 I keep a short log while working: what I tested, what the result was, what it ruled out. This sounds tedious but it's saved me on callbacks when a customer says "we already tried that."
 
@@ -56,8 +56,8 @@ After closing a tricky ticket, I spend five minutes documenting the failure sign
 
 ## The Tradeoff
 
-This approach is slower per ticket than jumping straight to the most likely fix. But the most likely fix is wrong often enough — especially in multi-layer systems — that the structured approach saves time overall. I've watched one-off fixes turn into repeat incidents too many times to trust gut instinct on complex failures.
+This approach is slower per ticket than jumping straight to the most likely fix. But the most likely fix is wrong often enough, especially in multi-layer systems, that the structured approach saves time overall. I've watched one-off fixes turn into repeat incidents too many times to trust gut instinct on complex failures.
 
 ## Where This Has Helped
 
-Using this workflow consistently has made my triage more predictable. The same types of failures (calibration drift after firmware updates, licensing timeouts on network changes, display issues after Windows updates) now have documented paths instead of ad-hoc solutions. That's the real payoff — not faster individual tickets, but fewer callbacks and less rework.
+Using this workflow consistently has made my triage more predictable. The same types of failures (calibration drift after firmware updates, licensing timeouts on network changes, display issues after Windows updates) now have documented paths instead of ad-hoc solutions. That's the real payoff: not faster individual tickets, but fewer callbacks and less rework.

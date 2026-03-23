@@ -1,6 +1,6 @@
 ---
 title: "TypeScript Patterns I'm Learning and Reusing"
-description: "Practical TypeScript patterns I keep coming back to — with examples from this actual codebase."
+description: "Practical TypeScript patterns I keep coming back to, with examples from this actual codebase."
 date: "2026-03-15"
 tags: ["TypeScript", "Patterns", "Web Dev"]
 published: true
@@ -8,7 +8,7 @@ published: true
 
 ## Why Patterns Matter
 
-As I learn TypeScript more deeply, I keep finding patterns that make code safer and easier to reason about. These are the ones I currently reach for most often — with examples pulled from this site's codebase so I'm showing real usage, not textbook snippets.
+As I learn TypeScript more deeply, I keep finding patterns that make code safer and easier to reason about. These are the ones I currently reach for most often, with examples pulled from this site's codebase so I'm showing real usage, not textbook snippets.
 
 ## Discriminated Unions
 
@@ -22,7 +22,7 @@ export type ContactState = {
 };
 ```
 
-In practice, `success: true` means the message was sent and `errors` won't exist. `success: false` means something went wrong and `errors` might contain per-field messages from Zod validation. The `success` field acts as the discriminant — the form component checks it once and knows exactly what state it's dealing with.
+In practice, `success: true` means the message was sent and `errors` won't exist. `success: false` means something went wrong and `errors` might contain per-field messages from Zod validation. The `success` field acts as the discriminant. The form component checks it once and knows exactly what state it's dealing with.
 
 This is far better than having `data?: T` and `error?: string` on the same object, because the type system forces you to handle both outcomes.
 
@@ -66,7 +66,7 @@ const contactDeliveryEnvSchema = z.object({
 });
 ```
 
-The base schema always succeeds — every var is optional. Feature-specific schemas are strict and only checked when that feature's code path runs. This means the site boots cleanly without a database, but the admin routes know at call time whether they have what they need.
+The base schema always succeeds because every var is optional. Feature-specific schemas are strict and only checked when that feature's code path runs. This means the site boots cleanly without a database, but the admin routes know at call time whether they have what they need.
 
 The composable part: `getContactDeliveryEnv()` parses the base schema first, then runs the strict schema against the result. If it fails, it returns `null` instead of throwing. The calling code checks for `null` and shows a graceful fallback.
 
@@ -99,6 +99,6 @@ If I add `"retrying"` to the union later, TypeScript flags the default branch be
 
 ## What I've Learned So Far
 
-The biggest shift for me has been thinking of types as guardrails, not annotations. The env parsing pattern is a good example — the types don't just describe the data, they enforce which features are available based on what's configured. When something is missing, the code knows it at the point of use instead of failing later with a runtime error.
+The biggest shift for me has been thinking of types as guardrails, not annotations. The env parsing pattern is a good example. The types don't just describe the data, they enforce which features are available based on what's configured. When something is missing, the code knows it at the point of use instead of failing later with a runtime error.
 
-I'm still learning. The patterns here are not advanced TypeScript wizardry — they're practical tools that have caught real bugs in this project.
+I'm still learning. The patterns here are not advanced TypeScript wizardry. They're practical tools that have caught real bugs in this project.

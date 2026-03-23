@@ -53,11 +53,11 @@ Cons:
 
 ## What This Handles
 
-Spam is controlled by a honeypot field plus Upstash-backed server-side rate limiting — no CAPTCHAs. Validation runs through a single Zod schema on the server, so the client can't submit a shape the backend doesn't expect. The user sees success only after the email actually sends, not optimistically. And because feature availability is env-driven, the whole pipeline degrades gracefully when database or Redis config is missing.
+Spam is controlled by a honeypot field plus Upstash-backed server-side rate limiting, no CAPTCHAs. Validation runs through a single Zod schema on the server, so the client can't submit a shape the backend doesn't expect. The user sees success only after the email actually sends, not optimistically. And because feature availability is env-driven, the whole pipeline degrades gracefully when database or Redis config is missing.
 
 ## Where It Stands
 
-The pipeline handles contact reliably without a custom API layer. Email is the source of truth — if the DB write fails after a successful send, the user still gets their confirmation and I still get the email. The admin inbox might miss that entry, but that's an acceptable tradeoff for a solo project where email delivery matters more than inbox completeness.
+The pipeline handles contact reliably without a custom API layer. Email is the source of truth. If the DB write fails after a successful send, the user still gets their confirmation and I still get the email. The admin inbox might miss that entry, but that's an acceptable tradeoff for a solo project where email delivery matters more than inbox completeness.
 
 ## What I Would Improve Next
 
