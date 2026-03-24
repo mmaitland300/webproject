@@ -36,10 +36,11 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
           className="mt-6 mx-auto max-w-3xl text-lg leading-relaxed text-[rgba(194,203,220,0.82)] sm:text-xl"
         >
-          I currently work at Auxillium providing technical support for Full Swing, Laser
-          Shot and TruGolf systems. Outside of that, I build applications for things I&apos;m
-          interested in or want to understand. This site documents what I&apos;m working on
-          and what I&apos;m learning.
+          I currently work at Auxillium. We provide technical support for Full Swing
+          simulator customers. Many of those installs also include Laser Shot or E6 Golf
+          from TruGolf, and we support those too. Outside of that, I build applications for
+          things I&apos;m interested in or want to understand. This site documents what
+          I&apos;m working on and what I&apos;m learning.
         </motion.p>
 
         <motion.div

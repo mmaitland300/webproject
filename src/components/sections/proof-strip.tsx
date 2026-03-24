@@ -4,7 +4,7 @@ const proofItems = [
   {
     title: "Full Swing simulator support",
     detail:
-      "Remote triage across calibration, licensing, display, and networking failures at Auxillium (2024-present). Documented as a case study with failure patterns and triage methodology.",
+      "Remote triage at Auxillium for Full Swing simulator customers. Same tickets often include Laser Shot or E6 Golf from TruGolf on the install. Case study documents failure patterns and triage methodology (2024-present).",
     href: "/projects/full-swing-tech-support",
   },
   {

@@ -11,7 +11,7 @@ const TRIAGE_ARTIFACT_SRC = "/images/projects/full-swing-triage-artifact.svg";
 export const metadata: Metadata = {
   title: "Full Swing Technical Support Case Study",
   description:
-    "A technical troubleshooting case study covering triage workflows, failure isolation, and decision tradeoffs in Full Swing simulator environments.",
+    "Troubleshooting case study from simulator support at Auxillium: Full Swing focus, with Laser Shot and E6 Golf from TruGolf on shared installs. Triage, failure isolation, and tradeoffs.",
 };
 
 const failureModes = [
@@ -120,10 +120,13 @@ export default function FullSwingCaseStudyPage() {
             Full Swing Technical Support Case Study
           </h1>
           <p className="mt-4 max-w-3xl text-muted-foreground">
-            This case study focuses on how multi-layer simulator issues were
-            diagnosed and resolved under real constraints, where hardware,
-            software, networking, and operating-system behavior frequently
-            overlapped.
+            I work this role at Auxillium, which provides technical support for
+            Full Swing simulator customers. The examples here center on that
+            stack; many of the same environments also include Laser Shot or E6
+            Golf from TruGolf, supported in the same workflow. The case study is
+            about how multi-layer issues get diagnosed under real constraints,
+            where hardware, software, networking, and operating-system behavior
+            frequently overlap.
           </p>
         </header>
 

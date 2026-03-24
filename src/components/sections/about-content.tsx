@@ -39,16 +39,17 @@ export function AboutContent({ publicEmail }: AboutContentProps) {
       <motion.section {...fadeUp}>
         <p className="text-lg font-medium text-foreground leading-relaxed">
           Most of my day is diagnosing problems where the symptom and the root
-          cause live in different layers — a customer reports bad ball tracking,
-          and the actual issue turns out to be a network switch, a driver
-          regression, or a calibration state that drifted after a firmware
-          update.
+          cause live in different layers. A customer might report bad ball
+          tracking while the fault is a network switch, a driver regression, or
+          calibration drift after a firmware update.
         </p>
         <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
-          That kind of structured troubleshooting is what I do full-time at
-          Auxillium for Full Swing simulator systems. It has shaped how I
-          approach software work too: start with what you can observe, isolate
-          variables, and don&apos;t trust a fix you can&apos;t reproduce.
+          I do that full-time at Auxillium. Auxillium provides technical support
+          for Full Swing simulator customers. Many of the same calls include
+          Laser Shot or E6 Golf from TruGolf on those rigs, and I support those
+          products in the same workflow. It has shaped how I approach software
+          work too: start with what you can observe, isolate variables, and
+          don&apos;t trust a fix you can&apos;t reproduce.
         </p>
         <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
           Music runs as a separate ongoing thread. I play, record, produce, and

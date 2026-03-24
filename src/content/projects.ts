@@ -88,14 +88,14 @@ export const projects: Project[] = [
     slug: "full-swing-tech-support",
     title: "Full Swing Technical Support",
     description:
-      "My day job. I do remote support for Full Swing golf simulators, diagnosing issues that cross hardware, software, networking, and OS layers. This case study documents the triage approach I've built up from that work.",
+      "My day job. I work at Auxillium supporting Full Swing simulator customers remotely. Many setups also run Laser Shot or E6 Golf from TruGolf, which I support on the same tickets. This case study documents the triage approach I've built from that work.",
     problem:
       "Simulator issues rarely have one cause. A customer reports \"the ball isn't tracking\" and the root cause could be calibration drift, a licensing timeout, a network config problem, or a Windows update that broke a driver.",
     constraints:
       "Incomplete information is the norm. Customers are frustrated, logs aren't always available, and you're working remotely across all of these layers at once.",
     tradeoff:
       "Slower upfront diagnosis instead of quick one-off fixes. Takes more time per ticket, but the same failure patterns stop coming back.",
-    role: "Technical support specialist at Auxillium, supporting Full Swing's commercial and residential simulator deployments.",
+    role: "Technical support specialist at Auxillium. Scope is Full Swing simulator deployments plus Laser Shot and E6 Golf from TruGolf when those are part of the install.",
     outcome:
       "Built repeatable triage workflows that I now use across calibration, licensing, display, networking, and OS subsystems. Documented publicly as a case study.",
     tags: [

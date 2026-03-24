@@ -26,7 +26,7 @@ export type ResumeEducationItem = {
 };
 
 export const resumeSummary =
-  "Developer and technical support specialist based in Colorado. I support Full Swing golf simulator systems at Auxillium and build web and audio software on my own time. Most of my professional experience is in multi-layer troubleshooting across hardware, software, and networking, alongside web application development with Next.js and Django.";
+  "Developer and technical support specialist based in Colorado. I work at Auxillium, which provides technical support for Full Swing simulator customers. Many of the same tickets include Laser Shot or E6 Golf from TruGolf on those systems, and I support those as part of the job. I build web and audio software on my own time. Most of my professional experience is multi-layer troubleshooting across hardware, software, and networking, alongside web application development with Next.js and Django.";
 
 export const resumeSkills = [
   "TypeScript",
@@ -75,10 +75,10 @@ export const resumeExperience: ResumeExperienceItem[] = [
   },
   {
     role: "Technical Support / Product Support Specialist",
-    company: "Auxillium (supporting Full Swing)",
+    company: "Auxillium (technical support for Full Swing)",
     period: "April 2024 - Present",
     description:
-      "Deliver technical support for Full Swing simulator software and hardware, resolving installation, calibration, licensing, display, networking, and performance issues across commercial and residential environments.",
+      "Remote technical support for Full Swing simulator customers on behalf of Auxillium: installation, calibration, licensing, display, networking, and performance across commercial and residential environments. Also troubleshoot Laser Shot and E6 Golf from TruGolf when those products are part of the same simulator setup.",
     highlights: [
       {
         text: "Built triage workflows for recurring simulator issues across calibration, licensing, display, networking, and OS layers.",
