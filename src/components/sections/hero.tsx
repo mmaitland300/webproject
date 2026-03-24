@@ -36,10 +36,10 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
           className="mt-6 mx-auto max-w-3xl text-lg leading-relaxed text-[rgba(194,203,220,0.82)] sm:text-xl"
         >
-          I work at Auxillium providing technical support for Full Swing, Laser Shot and
-          TruGolf systems &amp; software. Outside of that, I build web applications and
-          audio software. This site documents what I&apos;m working on and what I&apos;m
-          learning.
+          I currently work at Auxillium providing technical support for Full Swing, Laser
+          Shot and TruGolf systems. Outside of that, I build applications for things I&apos;m
+          interested in or want to understand. This site documents what I&apos;m working on
+          and what I&apos;m learning.
         </motion.p>
 
         <motion.div
