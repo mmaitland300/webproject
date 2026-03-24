@@ -18,8 +18,15 @@ export type ResumeExperienceItem = {
   highlights?: ResumeHighlight[];
 };
 
+export type ResumeEducationItem = {
+  degree: string;
+  school: string;
+  period: string;
+  description?: string;
+};
+
 export const resumeSummary =
-  "I'm a developer and technical support specialist based in Colorado. I build full-stack web applications and support Full Swing golf simulator systems. My work ranges from Next.js and Django apps to remote hardware/software troubleshooting across production environments.";
+  "Developer and technical support specialist based in Colorado. I support Full Swing golf simulator systems at Auxillium and build web and audio software on my own time. Most of my professional experience is in multi-layer troubleshooting across hardware, software, and networking, alongside web application development with Next.js and Django.";
 
 export const resumeSkills = [
   "TypeScript",
@@ -50,11 +57,11 @@ export const resumeSkills = [
 
 export const resumeExperience: ResumeExperienceItem[] = [
   {
-    role: "Freelance Full-Stack Developer",
-    company: "Freelance",
-    period: "2018 - Present",
+    role: "Independent Software Projects",
+    company: "Self-directed",
+    period: "2022 - Present",
     description:
-      "Build custom web applications and software solutions with Django, Flask, React, and Next.js. Handle database design, API integrations, debugging, deployment, and long-term client support from launch through maintenance.",
+      "Build and maintain web applications and audio software. Current focus: this portfolio site (Next.js, Prisma, Auth.js) and StringFlux, a JUCE/C++ multiband granular delay plugin for guitar.",
     highlights: [
       {
         text: "Built and shipped this portfolio site (Next.js, Prisma, Auth.js) with contact form, rate limiting, and admin inbox.",
@@ -84,19 +91,16 @@ export const resumeExperience: ResumeExperienceItem[] = [
   },
 ];
 
-export const resumeEducation = [
+export const resumeEducation: ResumeEducationItem[] = [
   {
     degree: "Bachelor's in Biochemistry",
     school: "University of South Florida",
     period: "January 2014 to December 2016",
-    description:
-      "Completed upper-division science coursework in biochemistry.",
   },
   {
     degree: "Associate in General Studies",
     school: "Florida Southwestern State College",
     period: "January 2008 to December 2011",
-    description: "Completed general studies coursework.",
   },
 ];
 

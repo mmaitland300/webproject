@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Github, Mail, MapPin } from "lucide-react";
+import { FileDown, Github, Mail, MapPin } from "lucide-react";
+import { cn } from "@/lib/utils";
 import {
   contactInfo,
   resumeCertifications,
@@ -32,7 +33,21 @@ export default function ResumePage() {
           <p className="mt-4 max-w-3xl text-muted-foreground">
             {resumeSummary}
           </p>
-          <div className="mt-6 flex flex-wrap gap-4 text-sm text-muted-foreground">
+          <div className="mt-6 flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={cn(
+                "inline-flex h-7 shrink-0 items-center justify-center gap-1.5 rounded-[min(var(--radius-md),12px)] border border-border bg-background px-2.5 text-[0.8rem] font-medium whitespace-nowrap transition-all outline-none select-none",
+                "hover:bg-muted hover:text-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50",
+                "dark:border-input dark:bg-input/30 dark:hover:bg-input/50",
+                "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-3.5"
+              )}
+            >
+              <FileDown className="h-4 w-4" />
+              Download PDF
+            </a>
             <a
               href={`mailto:${publicEmail}`}
               className="inline-flex items-center gap-2 transition-colors hover:text-foreground"
@@ -123,9 +138,11 @@ export default function ResumePage() {
                   </div>
                   <p className="text-sm text-muted-foreground">{item.period}</p>
                 </div>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  {item.description}
-                </p>
+                {item.description ? (
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    {item.description}
+                  </p>
+                ) : null}
               </article>
             ))}
           </div>

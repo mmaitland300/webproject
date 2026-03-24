@@ -26,7 +26,7 @@ export interface Project {
 
 const HOMEPAGE_FEATURED_SLUGS = [
   "stringflux",
-  "sample-organizer",
+  "portfolio-site",
   "full-swing-tech-support",
 ] as const;
 

@@ -33,6 +33,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.65,
     },
     {
+      url: `${baseUrl}/projects/portfolio-site`,
+      changeFrequency: "monthly",
+      priority: 0.65,
+    },
+    {
       url: `${baseUrl}/projects/snake-detector`,
       changeFrequency: "monthly",
       priority: 0.55,

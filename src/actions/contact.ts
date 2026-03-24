@@ -7,11 +7,13 @@ import { headers } from "next/headers";
 import { contactSchema } from "./contact.contract";
 import { getContactDeliveryEnv, hasUpstashRedisEnv, parseAppEnv } from "@/lib/env";
 
-export type ContactState = {
-  success: boolean;
-  message: string;
-  errors?: Record<string, string[]>;
-};
+export type ContactState =
+  | { success: true; message: string }
+  | {
+      success: false;
+      message: string;
+      errors?: Record<string, string[]>;
+    };
 
 let ratelimit: Ratelimit | null = null;
 function getRatelimit() {

@@ -12,19 +12,21 @@ As I learn TypeScript more deeply, I keep finding patterns that make code safer 
 
 ## Discriminated Unions
 
-The contact form server action returns a `ContactState` that's either a success or an error with optional field-level validation messages:
+The contact form server action returns a `ContactState` that is a real discriminated union on `success`. On success there is no `errors` field in the type; on failure, `errors` is optional (present for validation failures, absent for rate limits or delivery errors):
 
 ```typescript
-export type ContactState = {
-  success: boolean;
-  message: string;
-  errors?: Record<string, string[]>;
-};
+export type ContactState =
+  | { success: true; message: string }
+  | {
+      success: false;
+      message: string;
+      errors?: Record<string, string[]>;
+    };
 ```
 
-In practice, `success: true` means the message was sent and `errors` won't exist. `success: false` means something went wrong and `errors` might contain per-field messages from Zod validation. The `success` field acts as the discriminant. The form component checks it once and knows exactly what state it's dealing with.
+The `success` literal acts as the discriminant, so `if (state.success)` narrows the union and TypeScript knows whether `errors` can exist. That is stricter than a single object with `success: boolean`, where `errors` would stay in the type on both branches and `if (state.success)` would not narrow.
 
-This is far better than having `data?: T` and `error?: string` on the same object, because the type system forces you to handle both outcomes.
+This is also clearer than stacking optional `data` and `error` fields on one shape, because the variants encode which fields are meaningful for each outcome.
 
 ## Const Assertions for Curated Lists
 
@@ -33,7 +35,7 @@ The homepage only shows a specific subset of projects. Instead of filtering by a
 ```typescript
 const HOMEPAGE_FEATURED_SLUGS = [
   "stringflux",
-  "sample-organizer",
+  "portfolio-site",
   "full-swing-tech-support",
 ] as const;
 ```

@@ -5,7 +5,8 @@ import { SectionHeader } from "@/components/ui/section-header";
 
 export const metadata: Metadata = {
   title: "Blog",
-  description: "Build notes, deployment lessons, and practical problem solving.",
+  description:
+    "Build notes, troubleshooting methodology, and engineering decisions from projects in progress.",
 };
 
 export default function BlogPage() {
@@ -18,7 +19,7 @@ export default function BlogPage() {
         <SectionHeader
           eyebrow="Writing"
           title="Notes From the Build"
-          description="Build notes, deployment lessons, troubleshooting wins, and practical problem solving from projects in progress."
+          description="Build notes, troubleshooting methodology, and engineering decisions from projects in progress."
           className="mb-16"
         />
 
