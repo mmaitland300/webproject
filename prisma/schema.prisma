@@ -16,6 +16,7 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  comments      ProjectComment[]
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 }
@@ -65,6 +66,19 @@ model ContactSubmission {
 
   @@index([archivedAt, createdAt])
   @@index([read, createdAt])
+}
+
+model ProjectComment {
+  id          String    @id @default(cuid())
+  projectSlug String
+  userId      String
+  body        String
+  hidden      Boolean   @default(false)
+  createdAt   DateTime  @default(now())
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([projectSlug, hidden, createdAt])
+  @@index([userId, createdAt])
 }
 
 model StringFluxWaitlist {
