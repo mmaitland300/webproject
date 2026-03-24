@@ -47,7 +47,7 @@ I wanted something between minimal-flat and neon-overload. The dark theme with p
 
 ## Server Actions Over API Routes
 
-For the contact form, I used a Server Action instead of a traditional API route. Server Actions are the recommended way to handle mutations in Next.js - they run on the server, work with progressive enhancement, and integrate naturally with React's form handling.
+For the contact form, I used a Server Action instead of a traditional API route. Server Actions keep mutation logic on the server and pair cleanly with `useActionState` in the client form component. This particular UI is client-driven (not a plain HTML form post), but the action itself stays server-only and easy to test.
 
 ```typescript
 "use server";

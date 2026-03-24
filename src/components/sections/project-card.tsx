@@ -17,6 +17,9 @@ interface ProjectCardProps {
 export function ProjectCard({ project, index, compact }: ProjectCardProps) {
   const [iframeActive, setIframeActive] = useState(false);
   const internalDemoHref = project.demo?.startsWith("/") ? project.demo : null;
+  const internalCaseStudyHref = project.caseStudy?.startsWith("/")
+    ? project.caseStudy
+    : null;
 
   return (
     <motion.article
@@ -177,14 +180,21 @@ export function ProjectCard({ project, index, compact }: ProjectCardProps) {
               <ExternalLink size={14} /> Demo
             </a>
           ) : null}
-          {project.caseStudy && (
+          {internalCaseStudyHref ? (
+            <Link
+              href={internalCaseStudyHref}
+              className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <ExternalLink size={14} /> Case Study
+            </Link>
+          ) : project.caseStudy ? (
             <a
               href={project.caseStudy}
               className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors"
             >
               <ExternalLink size={14} /> Case Study
             </a>
-          )}
+          ) : null}
           {project.iframe && (
             <button
               onClick={() => setIframeActive(!iframeActive)}

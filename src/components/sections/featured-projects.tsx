@@ -25,6 +25,7 @@ export function FeaturedProjects() {
             eyebrow="Selected Work"
             title="Featured Projects"
             description="A small set of builds where constraints, tradeoffs, and outcomes are explicit: DSP, production web, and multi-layer support."
+            headingLevel={2}
           />
         </motion.div>
 

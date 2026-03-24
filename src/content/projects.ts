@@ -1,3 +1,8 @@
+/**
+ * Promotion rule:
+ * featured projects should have a case-study proof path (dedicated caseStudy page
+ * with explicit artifacts/tradeoffs/current-state/evidence links).
+ */
 export type ProjectCategory = "featured" | "experiment";
 
 export interface Project {
@@ -21,7 +26,7 @@ export interface Project {
 
 const HOMEPAGE_FEATURED_SLUGS = [
   "stringflux",
-  "sample-organizer",
+  "portfolio-site",
   "full-swing-tech-support",
 ] as const;
 
@@ -129,7 +134,7 @@ export const projects: Project[] = [
       "A working multi-user auction app with auth, listing lifecycle, bid validation, watchlists, and category browsing.",
     tags: ["Django", "Python", "PostgreSQL", "HTML/CSS"],
     github: "https://github.com/mmaitland300/AuctionHouse",
-    category: "featured",
+    category: "experiment",
   },
   {
     slug: "sample-organizer",

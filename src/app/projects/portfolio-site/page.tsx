@@ -1,23 +1,23 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, CheckCircle2, FileCode2, ShieldCheck } from "lucide-react";
+import { ArrowLeft, CheckCircle2, FileCode2, Shield } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 const PORTFOLIO_ARTIFACT_SRC = "/images/projects/portfolio-delivery-artifact.svg";
 
 export const metadata: Metadata = {
-  title: "Portfolio Website Case Study",
+  title: "Portfolio Website: Engineering and Operational Choices",
   description:
-    "How this Next.js portfolio is delivered with typed content, protected admin routes, and abuse-resistant contact handling under practical constraints.",
+    "Engineering notes for this Next.js portfolio: typed content, contact form with validation and rate limiting, optional admin inbox behind GitHub OAuth, and pragmatic tradeoffs for a solo-maintained site.",
 };
 
 const safeguards = [
-  "Server-side zod validation for contact and waitlist payloads before side effects",
-  "Honeypot plus Upstash sliding-window limiting on inbound actions",
-  "Auth.js GitHub OAuth gate for admin routes and inbox views",
-  "Prisma-backed persistence for contact/waitlist records",
-  "Playwright smoke coverage on all public routes with metadata and OG verification",
+  "Server-side Zod validation for contact and waitlist before side effects",
+  "Honeypot field plus Upstash sliding-window rate limiting on contact submissions",
+  "GitHub OAuth via Auth.js for admin routes and inbox views when configured",
+  "Optional Prisma persistence for contact and waitlist records after email sends",
+  "Playwright smoke tests on public routes, titles, and OG metadata",
 ];
 
 const tradeoffs = [
@@ -32,15 +32,15 @@ const tradeoffs = [
       "Contact action treats email delivery as the primary success path, with inbox persistence as best-effort to avoid silent form success when mail is misconfigured.",
   },
   {
-    title: "Small-PR release discipline",
+    title: "Small, reviewable changes",
     detail:
-      "Adopted merge-gated incremental updates to keep trust paths reviewable and prevent large, risky polish batches.",
+      "Incremental PRs and merge gates so fixes stay easy to reason about instead of landing as one large batch.",
   },
 ];
 
 const evidenceLinks = [
   {
-    label: "Contact pipeline decision record",
+    label: "Contact form decision record",
     href: "/blog/contact-pipeline-decision-record",
   },
   {
@@ -69,16 +69,16 @@ export default function PortfolioSiteCaseStudyPage() {
             <Badge variant="secondary">Next.js</Badge>
             <Badge variant="secondary">Auth.js</Badge>
             <Badge variant="secondary">Prisma</Badge>
-            <Badge variant="secondary">Operational Safeguards</Badge>
+            <Badge variant="secondary">Contact &amp; admin</Badge>
           </div>
           <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            Portfolio Website: delivery and trust-path case study
+            Portfolio Website: Engineering and Operational Choices
           </h1>
           <p className="mt-4 max-w-3xl text-muted-foreground">
-            This page documents the engineering choices behind mmaitland.dev:
-            how contact intake, admin access, and content delivery are structured
-            to stay reliable under practical constraints rather than optimistic
-            assumptions.
+            This page documents how mmaitland.dev handles contact submissions,
+            optional admin access, and content delivery — the same problems as
+            any small production site, with choices tuned for one maintainer and
+            low operational overhead.
           </p>
         </header>
 
@@ -91,7 +91,7 @@ export default function PortfolioSiteCaseStudyPage() {
             <div className="relative aspect-[1200/675] w-full">
               <Image
                 src={PORTFOLIO_ARTIFACT_SRC}
-                alt="Portfolio delivery flow showing public routes, server actions, abuse controls, and admin inbox path"
+                alt="Flow diagram: public routes, server actions, contact validation and rate limits, optional admin inbox"
                 fill
                 unoptimized
                 className="object-contain object-center p-2 sm:p-4"
@@ -100,17 +100,16 @@ export default function PortfolioSiteCaseStudyPage() {
               />
             </div>
             <figcaption className="border-t border-border bg-card/50 px-4 py-3 text-center text-xs leading-relaxed text-muted-foreground">
-              Delivery artifact used to keep reliability assumptions explicit:
-              input validation, abuse controls, authenticated admin access, and
-              route-level regression checks.
+              Sketch of the contact path and optional admin persistence — useful
+              for keeping assumptions explicit when iterating alone.
             </figcaption>
           </figure>
         </section>
 
         <section className="mb-10 rounded-xl border border-border bg-card/40 p-6">
           <div className="mb-3 flex items-center gap-2">
-            <ShieldCheck className="h-5 w-5 text-purple-400" />
-            <h2 className="text-xl font-semibold">Operational safeguards</h2>
+            <Shield className="h-5 w-5 text-purple-400" />
+            <h2 className="text-xl font-semibold">What runs in production</h2>
           </div>
           <ul className="space-y-2">
             {safeguards.map((item) => (
@@ -141,16 +140,22 @@ export default function PortfolioSiteCaseStudyPage() {
           <div className="space-y-2">
             {evidenceLinks.map((item) => {
               const isExternal = item.href.startsWith("http");
-              return (
+              const className =
+                "block rounded-lg border border-border bg-card/30 px-4 py-3 text-sm text-muted-foreground transition-colors hover:text-foreground";
+              return isExternal ? (
                 <a
                   key={item.label}
                   href={item.href}
-                  target={isExternal ? "_blank" : undefined}
-                  rel={isExternal ? "noopener noreferrer" : undefined}
-                  className="block rounded-lg border border-border bg-card/30 px-4 py-3 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={className}
                 >
                   {item.label}
                 </a>
+              ) : (
+                <Link key={item.label} href={item.href} className={className}>
+                  {item.label}
+                </Link>
               );
             })}
           </div>
@@ -162,9 +167,9 @@ export default function PortfolioSiteCaseStudyPage() {
             <h2 className="text-xl font-semibold">Where it stands</h2>
           </div>
           <p className="text-sm leading-relaxed text-muted-foreground">
-            The site reliably receives contact, protects admin surfaces behind
-            OAuth, and documents its own engineering decisions through linked blog
-            posts and case studies. It&apos;s live, tested, and under active iteration.
+            Live at mmaitland.dev: contact works with validation and rate limiting,
+            admin is gated when env is set, and decisions are documented in linked
+            posts. Still iterating like any personal site.
           </p>
         </section>
       </div>

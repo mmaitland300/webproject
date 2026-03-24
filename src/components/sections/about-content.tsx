@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
@@ -37,15 +38,17 @@ export function AboutContent({ publicEmail }: AboutContentProps) {
     <div className="space-y-16">
       <motion.section {...fadeUp}>
         <p className="text-lg font-medium text-foreground leading-relaxed">
-          I work full-time at Auxillium, supporting Full Swing GOLF software
-          and simulator systems.
+          Most of my day is diagnosing problems where the symptom and the root
+          cause live in different layers — a customer reports bad ball tracking,
+          and the actual issue turns out to be a network switch, a driver
+          regression, or a calibration state that drifted after a firmware
+          update.
         </p>
         <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
-          Most of my day is remote troubleshooting: installation, calibration,
-          licensing, display, networking, and performance issues across
-          production simulator environments. That systems-debugging discipline
-          carries into the web and audio software projects I build outside
-          support work.
+          That kind of structured troubleshooting is what I do full-time at
+          Auxillium for Full Swing simulator systems. It has shaped how I
+          approach software work too: start with what you can observe, isolate
+          variables, and don&apos;t trust a fix you can&apos;t reproduce.
         </p>
         <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
           Music runs as a separate ongoing thread. I play, record, produce, and
@@ -135,9 +138,11 @@ export function AboutContent({ publicEmail }: AboutContentProps) {
               <p className="text-xs text-muted-foreground mt-0.5">
                 {edu.period}
               </p>
-              <p className="text-sm text-muted-foreground mt-2">
-                {edu.description}
-              </p>
+              {edu.description ? (
+                <p className="text-sm text-muted-foreground mt-2">
+                  {edu.description}
+                </p>
+              ) : null}
             </div>
           ))}
         </div>
@@ -186,12 +191,12 @@ export function AboutContent({ publicEmail }: AboutContentProps) {
         >
           <Mail className="mr-2 h-4 w-4" /> Email
         </a>
-        <a
+        <Link
           href="/resume"
           className={buttonVariants({ variant: "outline" })}
         >
           <FileDown className="mr-2 h-4 w-4" /> View Resume
-        </a>
+        </Link>
       </motion.section>
     </div>
   );
