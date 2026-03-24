@@ -47,15 +47,13 @@ export function CommentForm({
         placeholder="Leave a comment..."
         className="w-full rounded-lg border border-border bg-card/40 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-purple-500/40 resize-y"
       />
-      {state.message && !state.success && (
-        <p className="text-sm text-destructive">{state.message}</p>
-      )}
-      {state.errors?.body && (
-        <p className="text-sm text-destructive">{state.errors.body[0]}</p>
-      )}
-      {state.success && (
+      {state.success ? (
         <p className="text-sm text-emerald-400">{state.message}</p>
-      )}
+      ) : state.message ? (
+        <p className="text-sm text-destructive">
+          {state.errors?.body?.[0] ?? state.message}
+        </p>
+      ) : null}
       <Button type="submit" size="sm" disabled={isPending}>
         {isPending ? "Posting..." : "Post comment"}
       </Button>

@@ -8,6 +8,7 @@ import { auth } from "@/lib/auth";
 import { isAdmin } from "@/lib/admin";
 import { hasUpstashRedisEnv, parseAppEnv } from "@/lib/env";
 import { commentSchema } from "./comments.contract";
+import { getCommentableSlugs } from "@/content/projects";
 
 export type CommentActionResult =
   | { success: true; message: string }
@@ -61,6 +62,10 @@ export async function submitComment(
       if (msgs) errors[key] = msgs;
     }
     return { success: false, message: "Please fix the errors below.", errors };
+  }
+
+  if (!getCommentableSlugs().has(parsed.data.projectSlug)) {
+    return { success: false, message: "Comments are not enabled for this project." };
   }
 
   const rl = getCommentRatelimit();

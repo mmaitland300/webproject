@@ -184,3 +184,10 @@ export function getHomepageFeaturedProjects(): Project[] {
 export function getExperiments() {
   return projects.filter((p) => p.category === "experiment");
 }
+
+/** Slugs that have a case-study page and accept comments. */
+export function getCommentableSlugs(): Set<string> {
+  return new Set(
+    projects.filter((p) => p.caseStudy).map((p) => p.slug)
+  );
+}

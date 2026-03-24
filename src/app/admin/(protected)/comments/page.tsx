@@ -1,7 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import { requireAdminPage } from "@/lib/admin";
 import { SectionHeader } from "@/components/ui/section-header";
-import { CommentList, type CommentData } from "@/components/sections/comment-list";
+import { CommentList } from "@/components/sections/comment-list";
 
 export const dynamic = "force-dynamic";
 
@@ -20,11 +20,6 @@ export default async function AdminCommentsPage() {
       user: { select: { name: true, image: true } },
     },
   });
-
-  const comments: CommentData[] = rawComments.map((c) => ({
-    ...c,
-    createdAt: c.createdAt,
-  }));
 
   const visibleCount = rawComments.filter((c) => !c.hidden).length;
   const hiddenCount = rawComments.filter((c) => c.hidden).length;

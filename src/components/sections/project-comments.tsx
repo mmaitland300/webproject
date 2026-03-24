@@ -1,6 +1,7 @@
 import { MessageSquare } from "lucide-react";
 import { prisma } from "@/lib/prisma";
 import { parseAppEnv } from "@/lib/env";
+import { isAdminAuthConfigured } from "@/lib/feature-config";
 import { getSessionUser } from "@/lib/session";
 import { isAdmin } from "@/lib/admin";
 import { CommentForm } from "@/components/sections/comment-form";
@@ -17,7 +18,10 @@ export async function ProjectComments({
 }: ProjectCommentsProps) {
   if (!parseAppEnv().DATABASE_URL) return null;
 
-  const [user, admin] = await Promise.all([getSessionUser(), isAdmin()]);
+  const authConfigured = isAdminAuthConfigured();
+  const [user, admin] = authConfigured
+    ? await Promise.all([getSessionUser(), isAdmin()])
+    : [null, false];
 
   const where = admin
     ? { projectSlug }
@@ -54,13 +58,15 @@ export async function ProjectComments({
 
       <CommentList comments={comments} isAdmin={admin} />
 
-      <div className="mt-6 border-t border-border pt-4">
-        <CommentForm
-          projectSlug={projectSlug}
-          currentPath={currentPath}
-          isSignedIn={!!user}
-        />
-      </div>
+      {authConfigured && (
+        <div className="mt-6 border-t border-border pt-4">
+          <CommentForm
+            projectSlug={projectSlug}
+            currentPath={currentPath}
+            isSignedIn={!!user}
+          />
+        </div>
+      )}
     </section>
   );
 }
