@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, BarChart3, FlaskConical, ListChecks } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { ProjectComments } from "@/components/sections/project-comments";
 import { MlEvalWorkflowDiagram } from "@/components/case-studies/ml-eval-workflow-diagram";
 
 export const metadata: Metadata = {
@@ -112,6 +113,11 @@ export default function SnakeDetectorCaseStudyPage() {
             and evaluation scripts.
           </p>
         </section>
+
+        <ProjectComments
+          projectSlug="snake-detector"
+          currentPath="/projects/snake-detector"
+        />
       </div>
     </div>
   );

@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, CheckCircle2, FileCode2, Shield } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { ProjectComments } from "@/components/sections/project-comments";
 
 const PORTFOLIO_ARTIFACT_SRC = "/images/projects/portfolio-delivery-artifact.svg";
 
@@ -169,9 +170,14 @@ export default function PortfolioSiteCaseStudyPage() {
           <p className="text-sm leading-relaxed text-muted-foreground">
             Live at mmaitland.dev: contact works with validation and rate limiting,
             admin is gated when env is set, and decisions are documented in linked
-            posts. Still iterating like any personal site.
+            posts.             Still iterating like any personal site.
           </p>
         </section>
+
+        <ProjectComments
+          projectSlug="portfolio-site"
+          currentPath="/projects/portfolio-site"
+        />
       </div>
     </div>
   );

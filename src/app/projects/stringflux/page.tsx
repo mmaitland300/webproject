@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { StringFluxSignalDiagram } from "@/components/case-studies/stringflux-signal-diagram";
+import { ProjectComments } from "@/components/sections/project-comments";
 
 export const metadata: Metadata = {
   title: "StringFlux DSP Case Study",
@@ -293,6 +294,11 @@ export default function StringFluxCaseStudyPage() {
             and performance conditions.
           </p>
         </section>
+
+        <ProjectComments
+          projectSlug="stringflux"
+          currentPath="/projects/stringflux"
+        />
       </div>
     </div>
   );

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowLeft, AlertTriangle, CheckCircle2, Wrench } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { TriageFlowDiagram } from "@/components/case-studies/triage-flow-diagram";
+import { ProjectComments } from "@/components/sections/project-comments";
 
 /** Same asset as the Full Swing project card thumbnail. */
 const TRIAGE_ARTIFACT_SRC = "/images/projects/full-swing-triage-artifact.svg";
@@ -258,6 +259,11 @@ export default function FullSwingCaseStudyPage() {
             one-off fixes.
           </p>
         </section>
+
+        <ProjectComments
+          projectSlug="full-swing-tech-support"
+          currentPath="/projects/full-swing-tech-support"
+        />
       </div>
     </div>
   );
