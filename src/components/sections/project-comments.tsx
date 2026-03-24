@@ -19,36 +19,45 @@ export async function ProjectComments({
   if (!parseAppEnv().DATABASE_URL) return null;
 
   const authConfigured = isAdminAuthConfigured();
-  const [user, admin] = authConfigured
-    ? await Promise.all([getSessionUser(), isAdmin()])
-    : [null, false];
 
-  const where = admin
-    ? { projectSlug }
-    : { projectSlug, hidden: false };
+  let user: Awaited<ReturnType<typeof getSessionUser>> = null;
+  let admin = false;
+  let comments: CommentData[] = [];
 
-  const rawComments = await prisma.projectComment.findMany({
-    where,
-    orderBy: { createdAt: "asc" },
-    select: {
-      id: true,
-      body: true,
-      hidden: true,
-      createdAt: true,
-      user: { select: { name: true, image: true } },
-    },
-  });
+  try {
+    [user, admin] = authConfigured
+      ? await Promise.all([getSessionUser(), isAdmin()])
+      : [null, false];
 
-  const comments: CommentData[] = rawComments.map((c) => ({
-    ...c,
-    createdAt: c.createdAt,
-  }));
+    const where = admin
+      ? { projectSlug }
+      : { projectSlug, hidden: false };
+
+    const rawComments = await prisma.projectComment.findMany({
+      where,
+      orderBy: { createdAt: "asc" },
+      select: {
+        id: true,
+        body: true,
+        hidden: true,
+        createdAt: true,
+        user: { select: { name: true, image: true } },
+      },
+    });
+
+    comments = rawComments.map((c) => ({
+      ...c,
+      createdAt: c.createdAt,
+    }));
+  } catch (error) {
+    console.error("ProjectComments: failed to load comments", error);
+  }
 
   return (
     <section className="mt-16 rounded-xl border border-border bg-card/40 p-6">
       <div className="mb-4 flex items-center gap-2">
         <MessageSquare className="h-5 w-5 text-purple-400" />
-        <h2 className="text-xl font-semibold">Comments</h2>
+        <h2 className="text-xl font-semibold">Leave a question or comment</h2>
         {comments.length > 0 && (
           <span className="text-sm text-muted-foreground">
             ({comments.length})

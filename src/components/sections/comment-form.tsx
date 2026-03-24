@@ -44,7 +44,7 @@ export function CommentForm({
         minLength={3}
         maxLength={2000}
         rows={3}
-        placeholder="Leave a comment..."
+        placeholder="Leave a question or comment..."
         className="w-full rounded-lg border border-border bg-card/40 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-purple-500/40 resize-y"
       />
       {state.success ? (
