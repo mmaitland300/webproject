@@ -1,5 +1,4 @@
 import { MessageSquare } from "lucide-react";
-import { prisma } from "@/lib/prisma";
 import { parseAppEnv } from "@/lib/env";
 import { isAdminAuthConfigured } from "@/lib/feature-config";
 import { getSessionUser } from "@/lib/session";
@@ -23,8 +22,11 @@ export async function ProjectComments({
   let user: Awaited<ReturnType<typeof getSessionUser>> = null;
   let admin = false;
   let comments: CommentData[] = [];
+  let loadFailed = false;
 
   try {
+    const { prisma } = await import("@/lib/prisma");
+
     [user, admin] = authConfigured
       ? await Promise.all([getSessionUser(), isAdmin()])
       : [null, false];
@@ -51,6 +53,7 @@ export async function ProjectComments({
     }));
   } catch (error) {
     console.error("ProjectComments: failed to load comments", error);
+    loadFailed = true;
   }
 
   return (
@@ -65,13 +68,19 @@ export async function ProjectComments({
         )}
       </div>
 
-      <CommentList
-        comments={comments}
-        isAdmin={admin}
-        inviteToPost={authConfigured}
-      />
+      {loadFailed ? (
+        <p className="text-sm text-muted-foreground">
+          Questions and comments are temporarily unavailable.
+        </p>
+      ) : (
+        <CommentList
+          comments={comments}
+          isAdmin={admin}
+          inviteToPost={authConfigured}
+        />
+      )}
 
-      {authConfigured && (
+      {authConfigured && !loadFailed && (
         <div className="mt-6 border-t border-border pt-4">
           <CommentForm
             projectSlug={projectSlug}

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { Suspense } from "react";
 import { ArrowLeft, AlertTriangle, CheckCircle2, Wrench } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { TriageFlowDiagram } from "@/components/case-studies/triage-flow-diagram";
@@ -14,6 +15,8 @@ export const metadata: Metadata = {
   description:
     "Troubleshooting case study from simulator support at Auxillium: Full Swing focus, with Laser Shot and E6 Golf from TruGolf on shared installs. Triage, failure isolation, and tradeoffs.",
 };
+
+export const dynamic = "force-dynamic";
 
 const failureModes = [
   "Calibration drift impacting ball/club data accuracy",
@@ -260,10 +263,12 @@ export default function FullSwingCaseStudyPage() {
           </p>
         </section>
 
-        <ProjectComments
-          projectSlug="full-swing-tech-support"
-          currentPath="/projects/full-swing-tech-support"
-        />
+        <Suspense fallback={null}>
+          <ProjectComments
+            projectSlug="full-swing-tech-support"
+            currentPath="/projects/full-swing-tech-support"
+          />
+        </Suspense>
       </div>
     </div>
   );

@@ -47,8 +47,8 @@ export function CommentList({
     return (
       <p className="text-sm text-muted-foreground">
         {inviteToPost
-          ? "No comments yet. Sign in with GitHub to leave the first one."
-          : "No comments yet."}
+          ? "No questions or comments yet. Sign in with GitHub to leave the first one."
+          : "No questions or comments yet. This section is read-only until sign-in is enabled."}
       </p>
     );
   }

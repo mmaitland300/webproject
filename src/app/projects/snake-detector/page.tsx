@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Suspense } from "react";
 import { ArrowLeft, BarChart3, FlaskConical, ListChecks } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { ProjectComments } from "@/components/sections/project-comments";
@@ -10,6 +11,8 @@ export const metadata: Metadata = {
   description:
     "How dataset hygiene, fixed splits, and confusion-matrix review stay ahead of naive accuracy on a small snake photo dataset.",
 };
+
+export const dynamic = "force-dynamic";
 
 const artifactTable = [
   {
@@ -114,10 +117,12 @@ export default function SnakeDetectorCaseStudyPage() {
           </p>
         </section>
 
-        <ProjectComments
-          projectSlug="snake-detector"
-          currentPath="/projects/snake-detector"
-        />
+        <Suspense fallback={null}>
+          <ProjectComments
+            projectSlug="snake-detector"
+            currentPath="/projects/snake-detector"
+          />
+        </Suspense>
       </div>
     </div>
   );

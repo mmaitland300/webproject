@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Suspense } from "react";
 import {
   ArrowLeft,
   AudioLines,
@@ -17,6 +18,8 @@ export const metadata: Metadata = {
   description:
     "An engineering deep-dive on StringFlux: transient-aware multiband granular delay architecture, constraints, and implementation tradeoffs.",
 };
+
+export const dynamic = "force-dynamic";
 
 const architecture = [
   "Dry/wet path split with wet-only advanced processing",
@@ -295,10 +298,12 @@ export default function StringFluxCaseStudyPage() {
           </p>
         </section>
 
-        <ProjectComments
-          projectSlug="stringflux"
-          currentPath="/projects/stringflux"
-        />
+        <Suspense fallback={null}>
+          <ProjectComments
+            projectSlug="stringflux"
+            currentPath="/projects/stringflux"
+          />
+        </Suspense>
       </div>
     </div>
   );

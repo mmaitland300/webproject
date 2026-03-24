@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { Suspense } from "react";
 import { ArrowLeft, CheckCircle2, FileCode2, Shield } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { ProjectComments } from "@/components/sections/project-comments";
@@ -12,6 +13,8 @@ export const metadata: Metadata = {
   description:
     "Engineering notes for this Next.js portfolio: typed content, contact form with validation and rate limiting, optional admin inbox behind GitHub OAuth, and pragmatic tradeoffs for a solo-maintained site.",
 };
+
+export const dynamic = "force-dynamic";
 
 const safeguards = [
   "Server-side Zod validation for contact and waitlist before side effects",
@@ -174,10 +177,12 @@ export default function PortfolioSiteCaseStudyPage() {
           </p>
         </section>
 
-        <ProjectComments
-          projectSlug="portfolio-site"
-          currentPath="/projects/portfolio-site"
-        />
+        <Suspense fallback={null}>
+          <ProjectComments
+            projectSlug="portfolio-site"
+            currentPath="/projects/portfolio-site"
+          />
+        </Suspense>
       </div>
     </div>
   );
