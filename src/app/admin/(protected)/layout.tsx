@@ -28,6 +28,12 @@ export default async function AdminProtectedLayout({
           >
             Waitlist
           </Link>
+          <Link
+            href="/admin/comments"
+            className="transition-colors hover:text-foreground"
+          >
+            Comments
+          </Link>
         </div>
       </div>
       {children}
