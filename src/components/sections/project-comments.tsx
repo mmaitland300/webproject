@@ -56,7 +56,11 @@ export async function ProjectComments({
         )}
       </div>
 
-      <CommentList comments={comments} isAdmin={admin} />
+      <CommentList
+        comments={comments}
+        isAdmin={admin}
+        inviteToPost={authConfigured}
+      />
 
       {authConfigured && (
         <div className="mt-6 border-t border-border pt-4">

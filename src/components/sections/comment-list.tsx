@@ -22,9 +22,15 @@ export interface CommentData {
 interface CommentListProps {
   comments: CommentData[];
   isAdmin: boolean;
+  /** When false, empty state does not invite the reader to post (e.g. auth not configured). */
+  inviteToPost?: boolean;
 }
 
-export function CommentList({ comments, isAdmin }: CommentListProps) {
+export function CommentList({
+  comments,
+  isAdmin,
+  inviteToPost = true,
+}: CommentListProps) {
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
 
@@ -40,7 +46,9 @@ export function CommentList({ comments, isAdmin }: CommentListProps) {
   if (comments.length === 0) {
     return (
       <p className="text-sm text-muted-foreground">
-        No comments yet. Be the first.
+        {inviteToPost
+          ? "No comments yet. Be the first."
+          : "No comments yet. This section is read-only until sign-in is enabled."}
       </p>
     );
   }
