@@ -8,13 +8,13 @@ const proofItems = [
     href: "/projects/full-swing-tech-support",
   },
   {
-    title: "This site — contact form and admin auth",
+    title: "This site: contact form and admin auth",
     detail:
       "Next.js 16, Zod validation, rate limiting, GitHub OAuth admin. Engineering choices documented in a public decision record.",
     href: "/blog/contact-pipeline-decision-record",
   },
   {
-    title: "StringFlux — JUCE/C++ audio plugin",
+    title: "StringFlux: JUCE/C++ audio plugin",
     detail:
       "Multiband granular delay for guitar with transient-aware scheduling and safe oversampling transitions. Architecture documented in a DSP case study.",
     href: "/projects/stringflux",
