@@ -2,28 +2,22 @@ import Link from "next/link";
 
 const proofItems = [
   {
-    title: "Production simulator support under real constraints",
+    title: "Full Swing simulator support",
     detail:
-      "Full-time incident triage at Auxillium for Full Swing simulator systems across hardware, software, networking, and OS layers (2024-present).",
+      "Remote triage across calibration, licensing, display, and networking failures at Auxillium (2024-present). Documented as a case study with failure patterns and triage methodology.",
     href: "/projects/full-swing-tech-support",
   },
   {
-    title: "Web delivery with auth and abuse controls",
+    title: "This site — contact form and admin auth",
     detail:
-      "This site: Next.js 16, server-side validation, honeypot + Redis rate limiting, GitHub OAuth admin inbox. Documented in a public decision record.",
+      "Next.js 16, Zod validation, rate limiting, GitHub OAuth admin. Engineering choices documented in a public decision record.",
     href: "/blog/contact-pipeline-decision-record",
   },
   {
-    title: "StringFlux: audio plugin in active development",
+    title: "StringFlux — JUCE/C++ audio plugin",
     detail:
-      "JUCE/C++ multiband granular delay with transient-driven grain scheduling and real-time safe oversampling transitions.",
+      "Multiband granular delay for guitar with transient-aware scheduling and safe oversampling transitions. Architecture documented in a DSP case study.",
     href: "/projects/stringflux",
-  },
-  {
-    title: "ML evaluation discipline",
-    detail:
-      "CNN snake classifier focused on dataset hygiene, stratified splits, and confusion-matrix-driven review before architecture changes.",
-    href: "/projects/snake-detector",
   },
 ];
 
@@ -31,7 +25,7 @@ export function ProofStrip() {
   return (
     <section aria-label="Proof points" className="pb-8">
       <div className="mx-auto max-w-6xl px-6">
-        <div className="grid gap-3 md:grid-cols-2">
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {proofItems.map((item) => (
             <article
               key={item.title}
