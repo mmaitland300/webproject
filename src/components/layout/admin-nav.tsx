@@ -6,6 +6,8 @@ import { cn } from "@/lib/utils";
 
 const adminLinks = [
   { href: "/admin/inbox", label: "Inbox" },
+  { href: "/admin/compose", label: "Compose" },
+  { href: "/admin/sent", label: "Sent" },
   { href: "/admin/waitlist", label: "Waitlist" },
   { href: "/admin/comments", label: "Comments" },
 ];

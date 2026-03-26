@@ -9,16 +9,17 @@ datasource db {
 }
 
 model User {
-  id            String    @id @default(cuid())
+  id            String           @id @default(cuid())
   name          String?
-  email         String?   @unique
+  email         String?          @unique
   emailVerified DateTime?
   image         String?
+  createdAt     DateTime         @default(now())
+  updatedAt     DateTime         @updatedAt
   accounts      Account[]
-  sessions      Session[]
+  sentEmails    SentEmail[]
   comments      ProjectComment[]
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
+  sessions      Session[]
 }
 
 model Account {
@@ -56,26 +57,51 @@ model VerificationToken {
 }
 
 model ContactSubmission {
-  id         String    @id @default(cuid())
+  id         String      @id @default(cuid())
   name       String
   email      String
   message    String
-  read       Boolean   @default(false)
+  read       Boolean     @default(false)
   archivedAt DateTime?
-  createdAt  DateTime  @default(now())
+  createdAt  DateTime    @default(now())
+  sentEmails SentEmail[]
 
   @@index([archivedAt, createdAt])
   @@index([read, createdAt])
 }
 
+model SentEmail {
+  id              String             @id @default(cuid())
+  submissionId    String?
+  sentByUserId    String?
+  toEmail         String             @map("to")
+  toName          String?
+  subject         String
+  body            String
+  fromEmail       String?
+  replyToEmail    String?            @map("replyTo")
+  status          String             @default("sent")
+  resendMessageId String?            @map("providerMessageId")
+  errorMessage    String?            @map("error")
+  createdAt       DateTime           @default(now())
+  submission      ContactSubmission? @relation(fields: [submissionId], references: [id])
+  sentBy          User?              @relation(fields: [sentByUserId], references: [id], onDelete: SetNull)
+
+  @@index([createdAt])
+  @@index([submissionId, createdAt])
+  @@index([sentByUserId, createdAt])
+  @@index([status, createdAt])
+  @@map("OutboundEmail")
+}
+
 model ProjectComment {
-  id          String    @id @default(cuid())
+  id          String   @id @default(cuid())
   projectSlug String
   userId      String
   body        String
-  hidden      Boolean   @default(false)
-  createdAt   DateTime  @default(now())
-  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  hidden      Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([projectSlug, hidden, createdAt])
   @@index([userId, createdAt])
