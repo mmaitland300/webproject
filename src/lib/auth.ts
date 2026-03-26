@@ -23,4 +23,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     signIn: "/admin/login",
   },
   secret: adminAuthEnv?.AUTH_SECRET ?? "admin-auth-disabled",
+  // Required by Auth.js when the request host must be trusted (avoids error=Configuration on some setups).
+  // Local dev: set AUTH_URL=http://localhost:3000 in .env.local so OAuth does not use your production site URL.
+  trustHost: true,
 });

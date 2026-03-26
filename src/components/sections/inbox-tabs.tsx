@@ -12,8 +12,17 @@ interface Submission {
   createdAt: Date;
 }
 
+interface SentEmailHistoryItem {
+  id: string;
+  subject: string;
+  body: string;
+  createdAt: Date;
+  sentByName: string | null;
+}
+
 interface InboxTabsProps {
   submissions: Submission[];
+  sentEmailsBySubmissionId: Record<string, SentEmailHistoryItem[]>;
   currentTab: "active" | "archived";
   activeCount: number;
   archivedCount: number;
@@ -31,6 +40,7 @@ function inboxHref(tab: "active" | "archived", page: number) {
 
 export function InboxTabs({
   submissions,
+  sentEmailsBySubmissionId,
   currentTab,
   activeCount,
   archivedCount,
@@ -74,7 +84,11 @@ export function InboxTabs({
         </div>
       ) : (
         <>
-          <InboxList submissions={submissions} mode={currentTab} />
+          <InboxList
+            submissions={submissions}
+            sentEmailsBySubmissionId={sentEmailsBySubmissionId}
+            mode={currentTab}
+          />
           {totalPages > 1 && (
             <div className="mt-8 flex flex-col items-center justify-between gap-3 border-t border-border pt-6 text-sm sm:flex-row">
               {currentPage > 1 ? (

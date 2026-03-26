@@ -41,6 +41,52 @@ export default async function AdminInboxPage({ searchParams }: Props) {
     take: PAGE_SIZE,
   });
 
+  const submissionIds = submissions.map((submission) => submission.id);
+  const sentEmails = submissionIds.length
+    ? await prisma.sentEmail.findMany({
+        where: { submissionId: { in: submissionIds } },
+        orderBy: { createdAt: "asc" },
+        select: {
+          id: true,
+          submissionId: true,
+          subject: true,
+          body: true,
+          createdAt: true,
+          sentBy: {
+            select: {
+              name: true,
+              email: true,
+            },
+          },
+        },
+      })
+    : [];
+
+  const sentEmailsBySubmissionId: Record<
+    string,
+    {
+      id: string;
+      subject: string;
+      body: string;
+      createdAt: Date;
+      sentByName: string | null;
+    }[]
+  > = {};
+
+  for (const sentEmail of sentEmails) {
+    if (!sentEmail.submissionId) continue;
+    if (!sentEmailsBySubmissionId[sentEmail.submissionId]) {
+      sentEmailsBySubmissionId[sentEmail.submissionId] = [];
+    }
+    sentEmailsBySubmissionId[sentEmail.submissionId].push({
+      id: sentEmail.id,
+      subject: sentEmail.subject,
+      body: sentEmail.body,
+      createdAt: sentEmail.createdAt,
+      sentByName: sentEmail.sentBy?.name ?? sentEmail.sentBy?.email ?? null,
+    });
+  }
+
   return (
     <div className="py-32">
       <div className="mx-auto max-w-4xl px-6">
@@ -75,6 +121,7 @@ export default async function AdminInboxPage({ searchParams }: Props) {
 
         <InboxTabs
           submissions={submissions}
+          sentEmailsBySubmissionId={sentEmailsBySubmissionId}
           currentTab={currentTab}
           activeCount={activeCount}
           archivedCount={archivedCount}
