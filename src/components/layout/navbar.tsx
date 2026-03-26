@@ -70,7 +70,7 @@ export function Navbar() {
           : "bg-transparent"
       )}
     >
-      <nav className="mx-auto max-w-6xl flex items-center justify-between px-6 py-4">
+      <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
         <Link
           href="/"
           className="text-xl font-bold tracking-tight"
