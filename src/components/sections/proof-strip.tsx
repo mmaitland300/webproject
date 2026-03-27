@@ -1,9 +1,14 @@
 import Link from "next/link";
 import {
+  HOMEPAGE_FEATURED_SLUGS,
   getHomepageFeaturedProjects,
   type HomepageFeaturedSlug,
   type ProofLink,
 } from "@/content/projects";
+
+function isHomepageFeaturedSlug(slug: string): slug is HomepageFeaturedSlug {
+  return (HOMEPAGE_FEATURED_SLUGS as readonly string[]).includes(slug);
+}
 
 type ProofHeadline = {
   what: string;
@@ -58,8 +63,9 @@ export function ProofStrip() {
       <div className="mx-auto max-w-6xl px-6">
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {featured.map((project) => {
-            const curated =
-              PROOF_HEADLINES[project.slug as HomepageFeaturedSlug];
+            const curated = isHomepageFeaturedSlug(project.slug)
+              ? PROOF_HEADLINES[project.slug]
+              : undefined;
             const links = project.proofLinks ?? [];
             const proofLinks = curated
               ? curated.linkPick(links)
