@@ -1,7 +1,13 @@
 # Matt Maitland - Portfolio
-<!-- deployment no-op: trigger Vercel rebuild -->
 
-Personal portfolio and blog built with Next.js, TypeScript, and Tailwind CSS. Includes MDX blogging, a contact form with rate limiting, and an admin inbox with GitHub OAuth.
+Portfolio site and engineering case-study repo for mmaitland.dev. Built with Next.js, TypeScript, and Tailwind CSS, with MDX blogging, a rate-limited contact pipeline, and optional admin inbox/auth features behind explicit configuration.
+
+## What This Repo Demonstrates
+
+- Structured content/data modeling for projects, resume content, and MDX posts
+- Typed environment/config handling with optional-feature gating
+- Operational safeguards (validation, rate limiting, and graceful degraded behavior)
+- CI-backed quality checks (lint, tests, build, and route smoke coverage)
 
 ## Tech Stack
 
