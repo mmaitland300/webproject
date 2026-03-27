@@ -45,3 +45,8 @@ Phase 2 is complete only if both commands pass after `Project` model changes:
 ## Scope guardrail
 
 Do not rewrite experiment projects during Phases 1-3 unless they block shared components.
+
+## Deferred follow-up
+
+- `public/resume.pdf` is intentionally lagging behind current `src/content/resume.ts` copy.
+- PDF regeneration/sync is deferred to a dedicated follow-up commit to keep proof-posture changes isolated and reviewable.
