@@ -310,16 +310,22 @@ export default function StringFluxCaseStudyPage() {
           <div className="space-y-2">
             {(project.proofLinks ?? []).map((item) => {
               const isExternal = item.href.startsWith("http");
-              return (
+              const className =
+                "block rounded-lg border border-border bg-card/30 px-4 py-3 text-sm text-muted-foreground transition-colors hover:text-foreground";
+              return isExternal ? (
                 <a
                   key={item.label}
                   href={item.href}
-                  target={isExternal ? "_blank" : undefined}
-                  rel={isExternal ? "noopener noreferrer" : undefined}
-                  className="block rounded-lg border border-border bg-card/30 px-4 py-3 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={className}
                 >
                   {item.label}
                 </a>
+              ) : (
+                <Link key={item.label} href={item.href} className={className}>
+                  {item.label}
+                </Link>
               );
             })}
           </div>

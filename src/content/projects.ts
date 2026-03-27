@@ -36,11 +36,13 @@ export interface Project {
   category: ProjectCategory;
 }
 
-const HOMEPAGE_FEATURED_SLUGS = [
+export const HOMEPAGE_FEATURED_SLUGS = [
   "stringflux",
   "portfolio-site",
   "full-swing-tech-support",
 ] as const;
+
+export type HomepageFeaturedSlug = (typeof HOMEPAGE_FEATURED_SLUGS)[number];
 
 export const projects: Project[] = [
   {
@@ -58,7 +60,7 @@ export const projects: Project[] = [
       "Still in progress. The current build has 3-band crossover routing, transient-driven grain scheduling, history/freeze capture, and safe 1x/2x/4x oversampling transitions.",
     status: "in-progress",
     evidence:
-      "Public DSP case study, oversampling decision log, and active repository history document current engineering choices.",
+      "Public DSP case study and decision records document architecture, constraints, and validation. Core implementation details are kept private for licensing and commercial release planning.",
     knownLimits:
       "No public benchmark or latency claims yet; still validating consistency and host behavior under broader session conditions.",
     proofLinks: [
@@ -73,9 +75,9 @@ export const projects: Project[] = [
         kind: "post",
       },
       {
-        label: "StringFlux repository",
-        href: "https://github.com/mmaitland300/StringFlux",
-        kind: "repo",
+        label: "StringFlux public product page",
+        href: "/stringflux",
+        kind: "artifact",
       },
     ],
     tags: [
@@ -86,7 +88,6 @@ export const projects: Project[] = [
       "Oversampling",
     ],
     image: "/images/stringflux/ui-advanced.png",
-    github: "https://github.com/mmaitland300/StringFlux",
     demo: "/stringflux",
     caseStudy: "/projects/stringflux",
     category: "featured",

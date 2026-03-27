@@ -1,17 +1,23 @@
 import Link from "next/link";
-import { getHomepageFeaturedProjects } from "@/content/projects";
-import type { ProofLink } from "@/content/projects";
+import {
+  getHomepageFeaturedProjects,
+  type HomepageFeaturedSlug,
+  type ProofLink,
+} from "@/content/projects";
+
+type ProofHeadline = {
+  what: string;
+  whyItMatters: string;
+  linkPick: (links: ProofLink[]) => ProofLink[];
+};
 
 /** Curated proof-first copy; URLs come from each project’s proofLinks (see projects.ts). */
-const PROOF_HEADLINES: Record<
-  string,
-  { what: string; whyItMatters: string; linkPick: (links: ProofLink[]) => ProofLink[] }
-> = {
+const PROOF_HEADLINES = {
   "full-swing-tech-support": {
     what: "Production troubleshooting",
     whyItMatters:
       "Remote triage across calibration, licensing, display, networking, and Windows behavior. The public case study shows how multi-layer failures are isolated under incomplete information.",
-    linkPick: (links) =>
+    linkPick: (links: ProofLink[]) =>
       links.filter((l) =>
         ["artifact", "post"].includes(l.kind ?? "")
       ),
@@ -20,7 +26,7 @@ const PROOF_HEADLINES: Record<
     what: "This site in production",
     whyItMatters:
       "Next.js 16 with server-side validation, rate limiting, optional persistence, and CI plus smoke tests. Built to degrade gracefully when optional services are missing.",
-    linkPick: (links) => {
+    linkPick: (links: ProofLink[]) => {
       const byKind = (k: ProofLink["kind"]) =>
         links.find((l) => l.kind === k);
       const picked: ProofLink[] = [];
@@ -38,11 +44,11 @@ const PROOF_HEADLINES: Record<
   stringflux: {
     what: "StringFlux (JUCE / C++)",
     whyItMatters:
-      "Real-time DSP work: transient-aware behavior, safe oversampling transitions, and disciplined feature scope instead of effect sprawl. Evidence is in the case study and decision log.",
-    linkPick: (links) =>
-      links.filter((l) => ["artifact", "post", "repo"].includes(l.kind ?? "")),
+      "Real-time DSP work: transient-aware behavior, safe oversampling transitions, and disciplined feature scope. Public proof is architecture and decision records while core implementation remains private for licensing.",
+    linkPick: (links: ProofLink[]) =>
+      links.filter((l) => ["artifact", "post"].includes(l.kind ?? "")),
   },
-};
+} satisfies Record<HomepageFeaturedSlug, ProofHeadline>;
 
 export function ProofStrip() {
   const featured = getHomepageFeaturedProjects();
@@ -52,7 +58,8 @@ export function ProofStrip() {
       <div className="mx-auto max-w-6xl px-6">
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {featured.map((project) => {
-            const curated = PROOF_HEADLINES[project.slug];
+            const curated =
+              PROOF_HEADLINES[project.slug as HomepageFeaturedSlug];
             const links = project.proofLinks ?? [];
             const proofLinks = curated
               ? curated.linkPick(links)

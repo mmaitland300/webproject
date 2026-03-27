@@ -3,6 +3,8 @@
 This document is the execution gate for messaging changes.  
 Phase work should prefer **softening claims over inventing placeholder proof**.
 
+**Homepage composition:** the live homepage is intentionally minimal (Hero, ProofStrip, FeaturedProjects only). That is a **product choice**, not a deferred structural fix. Optional sections such as “work with me” or “recent writing” are additive polish, not required for narrative coherence.
+
 ## Locked data contracts (before implementation)
 
 - `status`: `"in-progress" | "operational" | "shipped" | "archived"`
