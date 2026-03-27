@@ -5,6 +5,7 @@ import { Suspense } from "react";
 import { ArrowLeft, AlertTriangle, CheckCircle2, Wrench } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { TriageFlowDiagram } from "@/components/case-studies/triage-flow-diagram";
+import { CaseStudyEvidenceFooter } from "@/components/sections/case-study-evidence-footer";
 import { ProjectComments } from "@/components/sections/project-comments";
 import { getProjectBySlug } from "@/content/projects";
 
@@ -102,13 +103,6 @@ const branchEliminationRows = [
     finalPattern: "Peripheral/OS interaction causing intermittent state drift",
   },
 ];
-
-const statusLabel = {
-  "in-progress": "In Progress",
-  operational: "Operational",
-  shipped: "Shipped",
-  archived: "Archived",
-} as const;
 
 export default function FullSwingCaseStudyPage() {
   const project = getProjectBySlug("full-swing-tech-support");
@@ -275,55 +269,10 @@ export default function FullSwingCaseStudyPage() {
           </p>
         </section>
 
-        <section className="mb-10 rounded-xl border border-border bg-card/40 p-6">
-          <h2 className="mb-3 text-xl font-semibold">Evidence links</h2>
-          <div className="space-y-2">
-            {(project.proofLinks ?? []).map((item) => {
-              const isExternal = item.href.startsWith("http");
-              const className =
-                "block rounded-lg border border-border bg-card/30 px-4 py-3 text-sm text-muted-foreground transition-colors hover:text-foreground";
-              return isExternal ? (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={className}
-                >
-                  {item.label}
-                </a>
-              ) : (
-                <Link key={item.label} href={item.href} className={className}>
-                  {item.label}
-                </Link>
-              );
-            })}
-          </div>
-        </section>
-
-        <section className="rounded-xl border border-border bg-card/40 p-6">
-          <div className="mb-3 flex items-center gap-2">
-            <CheckCircle2 className="h-5 w-5 text-emerald-400" />
-            <h2 className="text-xl font-semibold">Where it stands</h2>
-          </div>
-          {project.status ? (
-            <p className="mb-2 text-sm text-foreground/90">
-              <span className="font-medium">Status:</span>{" "}
-              {statusLabel[project.status]}
-            </p>
-          ) : null}
-          {project.evidence ? (
-            <p className="text-sm leading-relaxed text-muted-foreground">
-              {project.evidence}
-            </p>
-          ) : null}
-          {project.knownLimits ? (
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-              <span className="font-medium text-foreground/90">Known limits:</span>{" "}
-              {project.knownLimits}
-            </p>
-          ) : null}
-        </section>
+        <CaseStudyEvidenceFooter
+          project={project}
+          statusIcon={<CheckCircle2 className="h-5 w-5 text-emerald-400" />}
+        />
 
         <Suspense fallback={null}>
           <ProjectComments
