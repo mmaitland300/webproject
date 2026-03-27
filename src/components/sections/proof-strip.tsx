@@ -1,51 +1,108 @@
 import Link from "next/link";
+import { getHomepageFeaturedProjects } from "@/content/projects";
+import type { ProofLink } from "@/content/projects";
 
-const proofItems = [
-  {
-    title: "Full Swing simulator support",
-    detail:
-      "Remote triage at Auxillium for Full Swing simulator customers. Same tickets often include Laser Shot or E6 Golf from TruGolf on the install. Case study documents failure patterns and triage methodology (2024-present).",
-    href: "/projects/full-swing-tech-support",
+/** Curated proof-first copy; URLs come from each project’s proofLinks (see projects.ts). */
+const PROOF_HEADLINES: Record<
+  string,
+  { what: string; whyItMatters: string; linkPick: (links: ProofLink[]) => ProofLink[] }
+> = {
+  "full-swing-tech-support": {
+    what: "Production troubleshooting",
+    whyItMatters:
+      "Remote triage across calibration, licensing, display, networking, and Windows behavior. The public case study shows how multi-layer failures are isolated under incomplete information.",
+    linkPick: (links) =>
+      links.filter((l) =>
+        ["artifact", "post"].includes(l.kind ?? "")
+      ),
   },
-  {
-    title: "This site: contact form and admin auth",
-    detail:
-      "Next.js 16, Zod validation, rate limiting, GitHub OAuth admin. Engineering choices documented in a public decision record.",
-    href: "/blog/contact-pipeline-decision-record",
+  "portfolio-site": {
+    what: "This site in production",
+    whyItMatters:
+      "Next.js 16 with server-side validation, rate limiting, optional persistence, and CI plus smoke tests. Built to degrade gracefully when optional services are missing.",
+    linkPick: (links) => {
+      const byKind = (k: ProofLink["kind"]) =>
+        links.find((l) => l.kind === k);
+      const picked: ProofLink[] = [];
+      const artifact = byKind("artifact");
+      const post = byKind("post");
+      const ci = byKind("ci");
+      const test = links.find((l) => l.kind === "test");
+      if (artifact) picked.push(artifact);
+      if (post) picked.push(post);
+      if (ci) picked.push(ci);
+      else if (test) picked.push(test);
+      return picked;
+    },
   },
-  {
-    title: "StringFlux: JUCE/C++ audio plugin",
-    detail:
-      "Multiband granular delay for guitar with transient-aware scheduling and safe oversampling transitions. Architecture documented in a DSP case study.",
-    href: "/projects/stringflux",
+  stringflux: {
+    what: "StringFlux (JUCE / C++)",
+    whyItMatters:
+      "Real-time DSP work: transient-aware behavior, safe oversampling transitions, and disciplined feature scope instead of effect sprawl. Evidence is in the case study and decision log.",
+    linkPick: (links) =>
+      links.filter((l) => ["artifact", "post", "repo"].includes(l.kind ?? "")),
   },
-];
+};
 
 export function ProofStrip() {
+  const featured = getHomepageFeaturedProjects();
+
   return (
     <section aria-label="Proof points" className="pb-8">
       <div className="mx-auto max-w-6xl px-6">
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {proofItems.map((item) => (
-            <article
-              key={item.title}
-              className="rounded-lg border border-border bg-card/40 px-4 py-3"
-            >
-              {"href" in item && item.href ? (
-                <Link
-                  href={item.href}
-                  className="text-sm font-medium text-foreground hover:text-purple-400 transition-colors"
-                >
-                  {item.title}
-                </Link>
-              ) : (
+          {featured.map((project) => {
+            const curated = PROOF_HEADLINES[project.slug];
+            const links = project.proofLinks ?? [];
+            const proofLinks = curated
+              ? curated.linkPick(links)
+              : links.slice(0, 3);
+
+            return (
+              <article
+                key={project.slug}
+                className="rounded-lg border border-border bg-card/40 px-4 py-3"
+              >
                 <h2 className="text-sm font-medium text-foreground">
-                  {item.title}
+                  {curated?.what ?? project.title}
                 </h2>
-              )}
-              <p className="mt-1 text-sm text-muted-foreground">{item.detail}</p>
-            </article>
-          ))}
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  {curated?.whyItMatters ?? project.evidence ?? project.description}
+                </p>
+                <div className="mt-3 border-t border-border/60 pt-3">
+                  <p className="text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
+                    Proof
+                  </p>
+                  <ul className="mt-1.5 space-y-1">
+                    {proofLinks.map((item) => {
+                      const isExternal = item.href.startsWith("http");
+                      return (
+                        <li key={`${item.label}-${item.href}`}>
+                          {isExternal ? (
+                            <a
+                              href={item.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-sm text-purple-400 hover:text-purple-300 transition-colors"
+                            >
+                              {item.label}
+                            </a>
+                          ) : (
+                            <Link
+                              href={item.href}
+                              className="text-sm text-purple-400 hover:text-purple-300 transition-colors"
+                            >
+                              {item.label}
+                            </Link>
+                          )}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>

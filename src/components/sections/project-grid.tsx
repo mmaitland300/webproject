@@ -21,6 +21,16 @@ export function ProjectGrid() {
 
   return (
     <div>
+      <div className="mb-6 text-center">
+        <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+          Featured case studies
+        </h2>
+        <p className="mt-2 mx-auto max-w-2xl text-sm text-muted-foreground">
+          Each entry has a dedicated case-study page with artifacts, tradeoffs,
+          and linked evidence.
+        </p>
+      </div>
+
       <div className="mb-10 flex flex-wrap justify-center gap-2">
         <button
           onClick={() => setActiveTag(null)}
