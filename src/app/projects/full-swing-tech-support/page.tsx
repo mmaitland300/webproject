@@ -6,6 +6,7 @@ import { ArrowLeft, AlertTriangle, CheckCircle2, Wrench } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { TriageFlowDiagram } from "@/components/case-studies/triage-flow-diagram";
 import { ProjectComments } from "@/components/sections/project-comments";
+import { getProjectBySlug } from "@/content/projects";
 
 /** Same asset as the Full Swing project card thumbnail. */
 const TRIAGE_ARTIFACT_SRC = "/images/projects/full-swing-triage-artifact.svg";
@@ -87,22 +88,34 @@ const representativeIncident = [
   },
 ];
 
-const evidenceLinks = [
+const branchEliminationRows = [
   {
-    label: "Troubleshooting playbook post (real incident format)",
-    href: "/blog/troubleshooting-playbook-multi-layer-failures",
+    symptom: "Intermittent misreads after update window",
+    plausibleLayers: "Calibration + GPU/driver + OS mixed state",
+    ruledOutBy: "Controlled baseline and display pipeline checks",
+    finalPattern: "Mixed-state config after update + calibration mismatch",
   },
   {
-    label: "Projects overview entry",
-    href: "/projects",
-  },
-  {
-    label: "Resume role context",
-    href: "/resume",
+    symptom: "Tracking drops only in specific sessions",
+    plausibleLayers: "Licensing timeout + network path + peripheral state",
+    ruledOutBy: "Connectivity and licensing checks stayed stable",
+    finalPattern: "Peripheral/OS interaction causing intermittent state drift",
   },
 ];
 
+const statusLabel = {
+  "in-progress": "In Progress",
+  operational: "Operational",
+  shipped: "Shipped",
+  archived: "Archived",
+} as const;
+
 export default function FullSwingCaseStudyPage() {
+  const project = getProjectBySlug("full-swing-tech-support");
+  if (!project) {
+    throw new Error("Missing project data for full-swing-tech-support");
+  }
+
   return (
     <div className="py-24">
       <div className="mx-auto max-w-4xl px-6">
@@ -221,6 +234,36 @@ export default function FullSwingCaseStudyPage() {
           </div>
         </section>
 
+        <section className="mb-10 overflow-x-auto rounded-xl border border-border bg-card/40 p-6">
+          <h2 className="mb-3 text-xl font-semibold">Branch elimination table</h2>
+          <p className="mb-4 text-sm text-muted-foreground">
+            A compact view of how plausible layers are ruled out before locking a
+            final cause pattern.
+          </p>
+          <table className="w-full min-w-[720px] border-collapse text-left text-sm">
+            <thead>
+              <tr className="border-b border-border text-xs uppercase tracking-wide text-muted-foreground">
+                <th className="py-2 pr-4 font-medium">Symptom</th>
+                <th className="py-2 pr-4 font-medium">Plausible layers</th>
+                <th className="py-2 pr-4 font-medium">What ruled out branches</th>
+                <th className="py-2 font-medium">Final cause pattern</th>
+              </tr>
+            </thead>
+            <tbody>
+              {branchEliminationRows.map((row) => (
+                <tr key={row.symptom} className="border-b border-border/60 align-top">
+                  <td className="py-3 pr-4 text-muted-foreground">{row.symptom}</td>
+                  <td className="py-3 pr-4 text-muted-foreground">
+                    {row.plausibleLayers}
+                  </td>
+                  <td className="py-3 pr-4 text-muted-foreground">{row.ruledOutBy}</td>
+                  <td className="py-3 text-muted-foreground">{row.finalPattern}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </section>
+
         <section className="mb-10 rounded-xl border border-border bg-card/40 p-6">
           <h2 className="mb-3 text-xl font-semibold">Tradeoffs</h2>
           <p className="text-sm leading-relaxed text-muted-foreground">
@@ -235,15 +278,26 @@ export default function FullSwingCaseStudyPage() {
         <section className="mb-10 rounded-xl border border-border bg-card/40 p-6">
           <h2 className="mb-3 text-xl font-semibold">Evidence links</h2>
           <div className="space-y-2">
-            {evidenceLinks.map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                className="block rounded-lg border border-border bg-card/30 px-4 py-3 text-sm text-muted-foreground transition-colors hover:text-foreground"
-              >
-                {item.label}
-              </Link>
-            ))}
+            {(project.proofLinks ?? []).map((item) => {
+              const isExternal = item.href.startsWith("http");
+              const className =
+                "block rounded-lg border border-border bg-card/30 px-4 py-3 text-sm text-muted-foreground transition-colors hover:text-foreground";
+              return isExternal ? (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={className}
+                >
+                  {item.label}
+                </a>
+              ) : (
+                <Link key={item.label} href={item.href} className={className}>
+                  {item.label}
+                </Link>
+              );
+            })}
           </div>
         </section>
 
@@ -252,15 +306,23 @@ export default function FullSwingCaseStudyPage() {
             <CheckCircle2 className="h-5 w-5 text-emerald-400" />
             <h2 className="text-xl font-semibold">Where it stands</h2>
           </div>
-          <p className="text-sm leading-relaxed text-muted-foreground">
-            <span className="font-medium text-foreground">
-              Qualitative outcome:
-            </span>{" "}
-            issue resolution became more consistent by standardizing
-            troubleshooting paths, isolating root causes across multiple
-            plausible failures, and reducing reliance on non-reproducible
-            one-off fixes.
-          </p>
+          {project.status ? (
+            <p className="mb-2 text-sm text-foreground/90">
+              <span className="font-medium">Status:</span>{" "}
+              {statusLabel[project.status]}
+            </p>
+          ) : null}
+          {project.evidence ? (
+            <p className="text-sm leading-relaxed text-muted-foreground">
+              {project.evidence}
+            </p>
+          ) : null}
+          {project.knownLimits ? (
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+              <span className="font-medium text-foreground/90">Known limits:</span>{" "}
+              {project.knownLimits}
+            </p>
+          ) : null}
         </section>
 
         <Suspense fallback={null}>

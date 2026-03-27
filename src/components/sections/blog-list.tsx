@@ -8,14 +8,15 @@ import { Badge } from "@/components/ui/badge";
 import { formatDisplayDate } from "@/lib/date";
 import { cn } from "@/lib/utils";
 import type { BlogPost } from "@/lib/mdx";
+import type { BlogCoreTag } from "@/lib/mdx";
 
 interface BlogListProps {
   posts: BlogPost[];
-  tags: string[];
+  tags: BlogCoreTag[];
 }
 
 export function BlogList({ posts, tags }: BlogListProps) {
-  const [activeTag, setActiveTag] = useState<string | null>(null);
+  const [activeTag, setActiveTag] = useState<BlogCoreTag | null>(null);
 
   const filtered = activeTag
     ? posts.filter((p) => p.frontmatter.tags.includes(activeTag))
@@ -77,6 +78,9 @@ export function BlogList({ posts, tags }: BlogListProps) {
                   <Clock size={12} />
                   {post.readingTime}
                 </span>
+                <Badge variant="outline" className="text-[10px] font-medium">
+                  {post.frontmatter.type}
+                </Badge>
               </div>
 
               <h2 className="text-xl font-semibold group-hover:text-purple-400 transition-colors mb-2">

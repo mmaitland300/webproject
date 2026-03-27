@@ -60,5 +60,44 @@ describe("projects data integrity", () => {
       expect(allSlugs.has(p.slug)).toBe(true);
     }
   });
+
+  it("featured projects include frozen proof contracts", () => {
+    const featured = getFeaturedProjects();
+    const allowedStatus = new Set([
+      "in-progress",
+      "operational",
+      "shipped",
+      "archived",
+    ]);
+    const allowedProofKinds = new Set(["repo", "test", "ci", "post", "artifact"]);
+
+    for (const p of featured) {
+      expect(p.status, `${p.slug} missing status`).toBeTruthy();
+      expect(allowedStatus.has(p.status as string), `${p.slug} invalid status`).toBe(
+        true
+      );
+      expect(p.evidence, `${p.slug} missing evidence`).toBeTruthy();
+      expect(p.knownLimits, `${p.slug} missing known limits`).toBeTruthy();
+      expect(p.proofLinks, `${p.slug} missing proofLinks`).toBeDefined();
+      expect(p.proofLinks?.length ?? 0, `${p.slug} missing proof links`).toBeGreaterThan(
+        0
+      );
+
+      for (const link of p.proofLinks ?? []) {
+        expect(link.label, `${p.slug} proof link missing label`).toBeTruthy();
+        expect(link.href, `${p.slug} proof link missing href`).toBeTruthy();
+        expect(
+          /^(\/|https?:\/\/)/.test(link.href),
+          `${p.slug} proof link href must be internal or absolute`
+        ).toBe(true);
+        if (link.kind) {
+          expect(
+            allowedProofKinds.has(link.kind),
+            `${p.slug} invalid proof link kind`
+          ).toBe(true);
+        }
+      }
+    }
+  });
 });
 

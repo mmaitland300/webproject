@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import {
-  resumeSkills as skills,
+  resumeSkillTiers,
   resumeExperience as experience,
   resumeEducation as education,
   resumeCertifications as certifications,
@@ -39,24 +39,34 @@ export function AboutContent({ publicEmail }: AboutContentProps) {
       <motion.section {...fadeUp}>
         <p className="text-lg font-medium text-foreground leading-relaxed">
           Most of my day is diagnosing problems where the symptom and the root
-          cause live in different layers. A customer might report bad ball
-          tracking while the fault is a network switch, a driver regression, or
-          calibration drift after a firmware update.
+          cause live in different layers. A customer may report bad ball
+          tracking, but the real cause can be a network device, a driver
+          regression, a calibration issue, or a mixed system state after an
+          update.
         </p>
         <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
-          I do that full-time at Auxillium. Auxillium provides technical support
-          for Full Swing simulator customers. Many of the same calls include
-          Laser Shot or E6 Golf from TruGolf on those rigs, and I support those
-          products in the same workflow. It has shaped how I approach software
-          work too: start with what you can observe, isolate variables, and
-          don&apos;t trust a fix you can&apos;t reproduce.
+          I do that full-time at Auxillium supporting Full Swing simulator
+          environments, with Laser Shot and E6 Golf often part of the same
+          install. It taught me to work from observation, isolate variables, and
+          distrust fixes that cannot be reproduced.
         </p>
         <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
-          Music runs as a separate ongoing thread. I play, record, produce, and
-          master original material under the name NEUROCHEMICAL ENTROPY. That
-          practice sits alongside the software work and directly informs
-          projects like StringFlux.
+          That same approach carries into everything else I build: web software,
+          audio tools, and music production. I am interested in systems that
+          behave well under constraints, not just ones that demo well.
         </p>
+      </motion.section>
+
+      <motion.section {...fadeUp}>
+        <div className="rounded-xl border border-border bg-card/40 p-6">
+          <h2 className="text-xl font-semibold text-foreground">How I Work</h2>
+          <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+            <li>Observe before changing.</li>
+            <li>Isolate one variable at a time.</li>
+            <li>Prefer reversible fixes first.</li>
+            <li>Turn solved incidents into repeatable playbooks.</li>
+          </ul>
+        </div>
       </motion.section>
 
       <motion.section {...fadeUp}>
@@ -66,17 +76,39 @@ export function AboutContent({ publicEmail }: AboutContentProps) {
           </div>
           <h2 className="text-2xl font-bold">Skills & Technologies</h2>
         </div>
-        <div className="flex flex-wrap gap-2">
-          {skills.map((skill) => (
-            <Badge
-              key={skill}
-              variant="secondary"
-              className="px-3 py-1.5 text-sm"
+        <div className="grid gap-4 md:grid-cols-3">
+          {resumeSkillTiers.map((tier) => (
+            <article
+              key={tier.id}
+              className="rounded-xl border border-border bg-card/40 p-4"
             >
-              {skill}
-            </Badge>
+              <h3 className="text-sm font-semibold uppercase tracking-wide text-foreground">
+                {tier.title}
+              </h3>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {tier.skills.map((skill) => (
+                  <Badge
+                    key={`${tier.id}-${skill}`}
+                    variant="secondary"
+                    className="px-3 py-1.5 text-xs"
+                  >
+                    {skill}
+                  </Badge>
+                ))}
+              </div>
+            </article>
           ))}
         </div>
+      </motion.section>
+
+      <motion.section {...fadeUp}>
+        <p className="text-lg text-muted-foreground leading-relaxed">
+          Music is not a side note on this site. I write, record, produce, and
+          master original work as NEUROCHEMICAL ENTROPY, and that practice
+          directly affects how I think about timing, feel, interfaces, and
+          audio software. StringFlux exists because those two sides of my work
+          overlap.
+        </p>
       </motion.section>
 
       <Separator className="bg-border" />

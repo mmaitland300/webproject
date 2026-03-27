@@ -4,6 +4,14 @@
  * with explicit artifacts/tradeoffs/current-state/evidence links).
  */
 export type ProjectCategory = "featured" | "experiment";
+export type ProjectStatus = "in-progress" | "operational" | "shipped" | "archived";
+export type ProofLinkKind = "repo" | "test" | "ci" | "post" | "artifact";
+
+export interface ProofLink {
+  label: string;
+  href: string;
+  kind?: ProofLinkKind;
+}
 
 export interface Project {
   slug: string;
@@ -15,6 +23,10 @@ export interface Project {
   tradeoff?: string;
   role?: string;
   outcome?: string;
+  status?: ProjectStatus;
+  evidence?: string;
+  knownLimits?: string;
+  proofLinks?: ProofLink[];
   image?: string;
   tags: string[];
   github?: string;
@@ -44,6 +56,28 @@ export const projects: Project[] = [
       "I've kept the feature set narrow on purpose. Getting the engine stable and the transient response right matters more than adding controls nobody can trust yet.",
     outcome:
       "Still in progress. The current build has 3-band crossover routing, transient-driven grain scheduling, history/freeze capture, and safe 1x/2x/4x oversampling transitions.",
+    status: "in-progress",
+    evidence:
+      "Public DSP case study, oversampling decision log, and active repository history document current engineering choices.",
+    knownLimits:
+      "No public benchmark or latency claims yet; still validating consistency and host behavior under broader session conditions.",
+    proofLinks: [
+      {
+        label: "StringFlux case study",
+        href: "/projects/stringflux",
+        kind: "artifact",
+      },
+      {
+        label: "Oversampling decision log",
+        href: "/blog/stringflux-oversampling-decision-log",
+        kind: "post",
+      },
+      {
+        label: "StringFlux repository",
+        href: "https://github.com/mmaitland300/StringFlux",
+        kind: "repo",
+      },
+    ],
     tags: [
       "Audio Plugin",
       "DSP",
@@ -70,6 +104,43 @@ export const projects: Project[] = [
       "Server Actions over API routes, managed services over self-hosted infra. More vendor lock-in, but significantly less to maintain and debug alone.",
     outcome:
       "Live at mmaitland.dev with honeypot + Redis rate limiting on contact, GitHub OAuth admin gating, and MDX blog with draft protection.",
+    status: "operational",
+    evidence:
+      "Production safeguards are documented in a public case study and decision record, with CI and smoke tests in the repository.",
+    knownLimits:
+      "Some route-level dynamic behavior remains broader than needed and will be narrowed in later optimization work.",
+    proofLinks: [
+      {
+        label: "Portfolio case study",
+        href: "/projects/portfolio-site",
+        kind: "artifact",
+      },
+      {
+        label: "Contact decision record",
+        href: "/blog/contact-pipeline-decision-record",
+        kind: "post",
+      },
+      {
+        label: "Route smoke tests",
+        href: "https://github.com/mmaitland300/webproject/blob/master/e2e/routes.spec.ts",
+        kind: "test",
+      },
+      {
+        label: "Environment parsing tests",
+        href: "https://github.com/mmaitland300/webproject/blob/master/src/lib/env.test.ts",
+        kind: "test",
+      },
+      {
+        label: "Contact action tests",
+        href: "https://github.com/mmaitland300/webproject/blob/master/src/actions/contact.test.ts",
+        kind: "test",
+      },
+      {
+        label: "CI workflow",
+        href: "https://github.com/mmaitland300/webproject/blob/master/.github/workflows/ci.yml",
+        kind: "ci",
+      },
+    ],
     tags: [
       "Next.js",
       "TypeScript",
@@ -98,6 +169,23 @@ export const projects: Project[] = [
     role: "Technical support specialist at Auxillium. Scope is Full Swing simulator deployments plus Laser Shot and E6 Golf from TruGolf when those are part of the install.",
     outcome:
       "Built repeatable triage workflows that I now use across calibration, licensing, display, networking, and OS subsystems. Documented publicly as a case study.",
+    status: "operational",
+    evidence:
+      "Public case study includes workflow artifact, representative incident pattern, and troubleshooting playbook linkage.",
+    knownLimits:
+      "Customer-identifying details and hard incident counts are intentionally excluded due to privacy and support constraints.",
+    proofLinks: [
+      {
+        label: "Full Swing case study",
+        href: "/projects/full-swing-tech-support",
+        kind: "artifact",
+      },
+      {
+        label: "Troubleshooting playbook",
+        href: "/blog/troubleshooting-playbook-multi-layer-failures",
+        kind: "post",
+      },
+    ],
     tags: [
       "Technical Support",
       "Troubleshooting",
@@ -183,6 +271,10 @@ export function getHomepageFeaturedProjects(): Project[] {
 
 export function getExperiments() {
   return projects.filter((p) => p.category === "experiment");
+}
+
+export function getProjectBySlug(slug: string): Project | undefined {
+  return projects.find((p) => p.slug === slug);
 }
 
 /** Slugs that have a case-study page and accept comments. */

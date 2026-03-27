@@ -5,6 +5,7 @@ import { Suspense } from "react";
 import { ArrowLeft, CheckCircle2, FileCode2, Shield } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { ProjectComments } from "@/components/sections/project-comments";
+import { getProjectBySlug } from "@/content/projects";
 
 const PORTFOLIO_ARTIFACT_SRC = "/images/projects/portfolio-delivery-artifact.svg";
 
@@ -42,22 +43,19 @@ const tradeoffs = [
   },
 ];
 
-const evidenceLinks = [
-  {
-    label: "Contact form decision record",
-    href: "/blog/contact-pipeline-decision-record",
-  },
-  {
-    label: "Repository (webproject)",
-    href: "https://github.com/mmaitland300/webproject",
-  },
-  {
-    label: "Playwright route smoke spec",
-    href: "https://github.com/mmaitland300/webproject/blob/master/e2e/routes.spec.ts",
-  },
-];
+const statusLabel = {
+  "in-progress": "In Progress",
+  operational: "Operational",
+  shipped: "Shipped",
+  archived: "Archived",
+} as const;
 
 export default function PortfolioSiteCaseStudyPage() {
+  const project = getProjectBySlug("portfolio-site");
+  if (!project) {
+    throw new Error("Missing project data for portfolio-site");
+  }
+
   return (
     <div className="py-24">
       <div className="mx-auto max-w-4xl px-6">
@@ -142,7 +140,7 @@ export default function PortfolioSiteCaseStudyPage() {
         <section className="mb-10 rounded-xl border border-border bg-card/40 p-6">
           <h2 className="mb-3 text-xl font-semibold">Evidence links</h2>
           <div className="space-y-2">
-            {evidenceLinks.map((item) => {
+            {(project.proofLinks ?? []).map((item) => {
               const isExternal = item.href.startsWith("http");
               const className =
                 "block rounded-lg border border-border bg-card/30 px-4 py-3 text-sm text-muted-foreground transition-colors hover:text-foreground";
@@ -170,11 +168,23 @@ export default function PortfolioSiteCaseStudyPage() {
             <CheckCircle2 className="h-5 w-5 text-emerald-400" />
             <h2 className="text-xl font-semibold">Where it stands</h2>
           </div>
-          <p className="text-sm leading-relaxed text-muted-foreground">
-            Live at mmaitland.dev: contact works with validation and rate limiting,
-            admin is gated when env is set, and decisions are documented in linked
-            posts.             Still iterating like any personal site.
-          </p>
+          {project.status ? (
+            <p className="mb-2 text-sm text-foreground/90">
+              <span className="font-medium">Status:</span>{" "}
+              {statusLabel[project.status]}
+            </p>
+          ) : null}
+          {project.evidence ? (
+            <p className="text-sm leading-relaxed text-muted-foreground">
+              {project.evidence}
+            </p>
+          ) : null}
+          {project.knownLimits ? (
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+              <span className="font-medium text-foreground/90">Known limits:</span>{" "}
+              {project.knownLimits}
+            </p>
+          ) : null}
         </section>
 
         <Suspense fallback={null}>

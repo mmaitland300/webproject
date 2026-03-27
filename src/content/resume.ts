@@ -25,51 +25,72 @@ export type ResumeEducationItem = {
   description?: string;
 };
 
-export const resumeSummary =
-  "Developer and technical support specialist based in Colorado. I work at Auxillium, which provides technical support for Full Swing simulator customers. Many of the same tickets include Laser Shot or E6 Golf from TruGolf on those systems, and I support those as part of the job. I build web and audio software on my own time. Most of my professional experience is multi-layer troubleshooting across hardware, software, and networking, alongside web application development with Next.js and Django.";
+export type ResumeSkillTier = {
+  id: "core" | "working" | "familiar";
+  title: string;
+  skills: string[];
+};
 
-export const resumeSkills = [
-  "TypeScript",
-  "JavaScript",
-  "React",
-  "Next.js",
-  "Python",
-  "Node.js",
-  "Django",
-  "Flask",
-  "PostgreSQL",
-  "MySQL",
-  "MongoDB",
-  "REST APIs",
-  "Tailwind CSS",
-  "Apache",
-  "Hardware Support",
-  "Technical Support",
-  "Troubleshooting",
-  "TCP/IP",
-  "Git",
-  "GitHub",
-  "HTML5",
-  "CSS",
-  "SQL",
-  "Machine Learning",
+export const resumeSummary =
+  "Engineer and support specialist focused on diagnosing multi-layer failures and building software around clear constraints. Full-time I support Full Swing simulator environments through Auxillium across calibration, licensing, display, networking, and Windows behavior. Outside of work I build production web software and develop StringFlux, a JUCE/C++ audio plugin project shaped by real-time DSP constraints.";
+
+export const resumeSkillTiers: ResumeSkillTier[] = [
+  {
+    id: "core",
+    title: "Core Skills",
+    skills: [
+      "Troubleshooting",
+      "Windows systems",
+      "Networking / TCP-IP",
+      "TypeScript",
+      "Next.js",
+      "React",
+      "Git / GitHub",
+      "Technical communication",
+    ],
+  },
+  {
+    id: "working",
+    title: "Production / Working",
+    skills: [
+      "Prisma",
+      "PostgreSQL",
+      "Auth.js",
+      "Tailwind CSS",
+      "Python",
+      "Flask / Django",
+      "Zod",
+      "Resend / Upstash",
+      "C++",
+      "JUCE",
+      "DSP",
+    ],
+  },
+  {
+    id: "familiar",
+    title: "Familiar / Earlier work",
+    skills: ["MySQL", "MongoDB", "Machine Learning / CNN", "Apache"],
+  },
 ];
 
 export const resumeExperience: ResumeExperienceItem[] = [
   {
-    role: "Independent Software Projects",
+    role: "Independent Software and Audio Development",
     company: "Self-directed",
     period: "2022 - Present",
     description:
-      "Build and maintain web applications and audio software. Current focus: this portfolio site (Next.js, Prisma, Auth.js) and StringFlux, a JUCE/C++ multiband granular delay plugin for guitar.",
+      "Build and ship production web software and audio tooling with explicit constraints, documented tradeoffs, and public engineering notes.",
     highlights: [
       {
-        text: "Built and shipped this portfolio site (Next.js, Prisma, Auth.js) with contact form, rate limiting, and admin inbox.",
+        text: "Built and shipped mmaitland.dev with typed content, CI, smoke tests, contact validation, rate limiting, and optional admin workflows.",
         href: "https://www.mmaitland.dev",
       },
       {
-        text: "Building StringFlux, a multiband granular delay/freeze audio plugin for guitar.",
+        text: "Developing StringFlux in JUCE/C++ with focus on real-time-safe behavior, constrained scope, and transparent engineering tradeoffs.",
         href: "https://www.mmaitland.dev/stringflux",
+      },
+      {
+        text: "Use public case studies and decision records to document architecture choices instead of presenting projects as black boxes.",
       },
     ],
   },
@@ -78,14 +99,14 @@ export const resumeExperience: ResumeExperienceItem[] = [
     company: "Auxillium (technical support for Full Swing)",
     period: "April 2024 - Present",
     description:
-      "Remote technical support for Full Swing simulator customers on behalf of Auxillium: installation, calibration, licensing, display, networking, and performance across commercial and residential environments. Also troubleshoot Laser Shot and E6 Golf from TruGolf when those products are part of the same simulator setup.",
+      "Diagnose remote simulator issues across calibration, licensing, display, networking, OS, and peripheral layers in real customer environments.",
     highlights: [
       {
-        text: "Built triage workflows for recurring simulator issues across calibration, licensing, display, networking, and OS layers.",
+        text: "Built repeatable triage paths for recurring failures so escalations rely less on one-off guesses and more on reproducible isolation.",
         href: "/projects/full-swing-tech-support",
       },
       {
-        text: "Turned common one-off fixes into documented playbooks so the same problems stop coming back.",
+        text: "Support Full Swing-first environments with Laser Shot and E6 Golf from TruGolf often present on the same install.",
       },
     ],
   },

@@ -12,6 +12,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { StringFluxSignalDiagram } from "@/components/case-studies/stringflux-signal-diagram";
 import { ProjectComments } from "@/components/sections/project-comments";
+import { getProjectBySlug } from "@/content/projects";
 
 export const metadata: Metadata = {
   title: "StringFlux DSP Case Study",
@@ -89,22 +90,35 @@ const validationChecks = [
   },
 ];
 
-const evidenceLinks = [
-  {
-    label: "StringFlux project repository",
-    href: "https://github.com/mmaitland300/StringFlux",
-  },
-  {
-    label: "Oversampling decision log",
-    href: "/blog/stringflux-oversampling-decision-log",
-  },
-  {
-    label: "StringFlux public product page",
-    href: "/stringflux",
-  },
-];
+const validationBoundaries = {
+  trueNow: [
+    "Safe oversampling state transitions are implemented and used in active development.",
+    "Transient-aware behavior is a current design target in the scheduling model.",
+    "Core multiband routing, freeze/history capture, and feedback-bus flow are operational.",
+  ],
+  beingValidated: [
+    "Consistency across broader host/session combinations.",
+    "Playability under wider performance dynamics and gain staging contexts.",
+  ],
+  notYetClaimed: [
+    "No public benchmark or latency claims yet.",
+    "No broad compatibility guarantee beyond currently tested host/dev setups.",
+  ],
+};
+
+const statusLabel = {
+  "in-progress": "In Progress",
+  operational: "Operational",
+  shipped: "Shipped",
+  archived: "Archived",
+} as const;
 
 export default function StringFluxCaseStudyPage() {
+  const project = getProjectBySlug("stringflux");
+  if (!project) {
+    throw new Error("Missing project data for stringflux");
+  }
+
   return (
     <div className="py-24">
       <div className="mx-auto max-w-4xl px-6">
@@ -262,9 +276,39 @@ export default function StringFluxCaseStudyPage() {
         </section>
 
         <section className="mb-10 rounded-xl border border-border bg-card/40 p-6">
+          <h2 className="mb-3 text-xl font-semibold">Validation boundary</h2>
+          <div className="space-y-4 text-sm">
+            <div>
+              <h3 className="font-medium text-foreground">True now</h3>
+              <ul className="mt-2 space-y-1 text-muted-foreground">
+                {validationBoundaries.trueNow.map((item) => (
+                  <li key={item}>- {item}</li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-medium text-foreground">Being validated</h3>
+              <ul className="mt-2 space-y-1 text-muted-foreground">
+                {validationBoundaries.beingValidated.map((item) => (
+                  <li key={item}>- {item}</li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-medium text-foreground">Not yet claimed</h3>
+              <ul className="mt-2 space-y-1 text-muted-foreground">
+                {validationBoundaries.notYetClaimed.map((item) => (
+                  <li key={item}>- {item}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section className="mb-10 rounded-xl border border-border bg-card/40 p-6">
           <h2 className="mb-3 text-xl font-semibold">Evidence links</h2>
           <div className="space-y-2">
-            {evidenceLinks.map((item) => {
+            {(project.proofLinks ?? []).map((item) => {
               const isExternal = item.href.startsWith("http");
               return (
                 <a
@@ -286,16 +330,23 @@ export default function StringFluxCaseStudyPage() {
             <AudioLines className="h-5 w-5 text-rose-400" />
             <h2 className="text-xl font-semibold">Where it stands</h2>
           </div>
-          <p className="text-sm leading-relaxed text-muted-foreground">
-            <span className="font-medium text-foreground">
-              Technical outcome:
-            </span>{" "}
-            the current build supports multiband routing, transient and
-            density-driven grain scheduling, freeze/history capture, feedback-bus
-            processing, and safe oversampling state transitions. The next phase is
-            focused on validating playability and consistency under broader host
-            and performance conditions.
-          </p>
+          {project.status ? (
+            <p className="mb-2 text-sm text-foreground/90">
+              <span className="font-medium">Status:</span>{" "}
+              {statusLabel[project.status]}
+            </p>
+          ) : null}
+          {project.evidence ? (
+            <p className="text-sm leading-relaxed text-muted-foreground">
+              {project.evidence}
+            </p>
+          ) : null}
+          {project.knownLimits ? (
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+              <span className="font-medium text-foreground/90">Known limits:</span>{" "}
+              {project.knownLimits}
+            </p>
+          ) : null}
         </section>
 
         <Suspense fallback={null}>
