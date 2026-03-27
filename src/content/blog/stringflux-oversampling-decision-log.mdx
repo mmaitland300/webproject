@@ -2,7 +2,8 @@
 title: "StringFlux Decision Log: Oversampling Without Audio-Thread Instability"
 description: "Design notes on implementing 1x/2x/4x oversampling transitions in StringFlux while protecting real-time DSP stability."
 date: "2026-03-20"
-tags: ["DSP", "Audio Plugin Development", "Tradeoffs"]
+type: "Decision Record"
+tags: ["Audio DSP"]
 published: true
 ---
 
@@ -62,3 +63,19 @@ StringFlux now supports safe 1x/2x/4x oversampling transitions without rebuildin
 - stress-test mode switching under dense grain scheduling
 - compare artifact profile between oversampling modes on transient-rich material
 - add repeatable test harness scenarios for transition regressions
+
+## From Effect Idea to Instrument Direction
+
+StringFlux started as a granular delay concept, but development pushed it toward
+a more specific goal: a string-focused, transient-aware texture instrument that
+expands one performance into layered material while keeping playable response.
+
+Recent progress has been less about adding surface-level features and more about
+stabilizing the engine: tighter DSP behavior, clearer timing/feedback flow, and
+more predictable state and preset behavior. One difficult stretch was
+restructuring processing flow to add oversampling safely without breaking the
+existing signal path. That refactor forced better separation in the engine and
+made behavior less fragile.
+
+The current direction remains disciplined scope over feature sprawl. The goal is
+to make StringFlux feel like a coherent instrument, not a generic effect chain.

@@ -5,7 +5,7 @@ import { SectionHeader } from "@/components/ui/section-header";
 export const metadata: Metadata = {
   title: "Projects",
   description:
-    "Professional work, side projects, and interactive experiments by Matt Maitland.",
+    "Featured case studies with constraints, evidence, and limits. Smaller experiments are listed separately so learning builds do not dilute the main signal.",
 };
 
 export default function ProjectsPage() {
@@ -14,8 +14,8 @@ export default function ProjectsPage() {
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeader
           eyebrow="Projects"
-          title="Work Worth Showing"
-          description="Professional work, side projects, and interactive experiments that reflect how I build, troubleshoot, and iterate."
+          title="Case Studies and Experiments"
+          description="Featured case studies first: explicit constraints, decisions, and proof. Experiments and smaller builds are grouped below so the strongest signal stays easy to scan."
           className="mb-12"
         />
         <ProjectGrid />

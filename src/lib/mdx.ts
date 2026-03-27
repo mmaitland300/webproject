@@ -6,11 +6,28 @@ import { parseDateValue } from "@/lib/date";
 
 const CONTENT_DIR = path.join(process.cwd(), "src/content/blog");
 
+export const BLOG_POST_TYPES = [
+  "Case Study",
+  "Decision Record",
+  "Field Note",
+] as const;
+export type BlogPostType = (typeof BLOG_POST_TYPES)[number];
+
+export const BLOG_CORE_TAGS = [
+  "Troubleshooting",
+  "Web Architecture",
+  "TypeScript",
+  "Next.js",
+  "Audio DSP",
+] as const;
+export type BlogCoreTag = (typeof BLOG_CORE_TAGS)[number];
+
 export interface BlogFrontmatter {
   title: string;
   description: string;
   date: string;
-  tags: string[];
+  type: BlogPostType;
+  tags: BlogCoreTag[];
   published: boolean;
 }
 
@@ -27,6 +44,50 @@ export interface TocEntry {
   depth: number;
 }
 
+function toStringArray(value: unknown): string[] {
+  return Array.isArray(value) ? value.filter((x): x is string => typeof x === "string") : [];
+}
+
+function parseFrontmatter(rawData: unknown, slug: string): BlogFrontmatter {
+  const data = (rawData ?? {}) as Record<string, unknown>;
+  const title = typeof data.title === "string" ? data.title.trim() : "";
+  const description =
+    typeof data.description === "string" ? data.description.trim() : "";
+  const date = typeof data.date === "string" ? data.date.trim() : "";
+  const type = typeof data.type === "string" ? data.type.trim() : "";
+  const tags = toStringArray(data.tags);
+  const published = Boolean(data.published);
+
+  if (!title) throw new Error(`${slug}: missing title`);
+  if (!description) throw new Error(`${slug}: missing description`);
+  if (!date) throw new Error(`${slug}: missing date`);
+  if (Number.isNaN(new Date(date).getTime())) {
+    throw new Error(`${slug}: invalid date "${date}"`);
+  }
+  if (!BLOG_POST_TYPES.includes(type as BlogPostType)) {
+    throw new Error(
+      `${slug}: invalid type "${type}". Allowed: ${BLOG_POST_TYPES.join(", ")}`
+    );
+  }
+  if (tags.length === 0) throw new Error(`${slug}: tags must not be empty`);
+  for (const tag of tags) {
+    if (!BLOG_CORE_TAGS.includes(tag as BlogCoreTag)) {
+      throw new Error(
+        `${slug}: invalid tag "${tag}". Allowed: ${BLOG_CORE_TAGS.join(", ")}`
+      );
+    }
+  }
+
+  return {
+    title,
+    description,
+    date,
+    type: type as BlogPostType,
+    tags: tags as BlogCoreTag[],
+    published,
+  };
+}
+
 export function getAllPosts(): BlogPost[] {
   if (!fs.existsSync(CONTENT_DIR)) return [];
 
@@ -38,10 +99,11 @@ export function getAllPosts(): BlogPost[] {
       const filePath = path.join(CONTENT_DIR, file);
       const raw = fs.readFileSync(filePath, "utf-8");
       const { data, content } = matter(raw);
+      const frontmatter = parseFrontmatter(data, slug);
 
       return {
         slug,
-        frontmatter: data as BlogFrontmatter,
+        frontmatter,
         readingTime: readingTime(content).text,
         content,
       };
@@ -62,7 +124,7 @@ export function getPostBySlug(slug: string): BlogPost | null {
 
   const raw = fs.readFileSync(filePath, "utf-8");
   const { data, content } = matter(raw);
-  const frontmatter = data as BlogFrontmatter;
+  const frontmatter = parseFrontmatter(data, slug);
 
   if (!frontmatter.published) return null;
 
@@ -74,9 +136,9 @@ export function getPostBySlug(slug: string): BlogPost | null {
   };
 }
 
-export function getAllTags(): string[] {
+export function getAllTags(): BlogCoreTag[] {
   const posts = getAllPosts();
-  const tags = new Set<string>();
+  const tags = new Set<BlogCoreTag>();
   posts.forEach((post) => post.frontmatter.tags.forEach((tag) => tags.add(tag)));
   return Array.from(tags).sort();
 }

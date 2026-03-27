@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Layers3, Music2, Zap, ArrowRight, Github } from "lucide-react";
+import { FileText, Layers3, Music2, Zap, ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { StringFluxPluginPreview } from "@/components/case-studies/stringflux-plugin-preview";
 import { StringFluxWaitlistForm } from "@/components/sections/stringflux-waitlist-form";
@@ -62,14 +62,12 @@ export default function StringFluxPage() {
             >
               Join the waitlist <ArrowRight className="h-4 w-4" />
             </a>
-            <a
-              href="https://github.com/mmaitland300/StringFlux"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/projects/stringflux"
               className="inline-flex items-center gap-2 rounded-lg border border-border px-5 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
             >
-              <Github className="h-4 w-4" /> View source
-            </a>
+              <FileText className="h-4 w-4" /> DSP case study
+            </Link>
           </div>
         </header>
 

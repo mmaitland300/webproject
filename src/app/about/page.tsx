@@ -6,7 +6,7 @@ import { getPublicContactEmail } from "@/lib/site-contact";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Background across web applications, audio software, and remote technical support in real customer environments.",
+    "How I diagnose multi-layer failures and apply that same method across web software, audio tooling, and production support.",
 };
 
 export default function AboutPage() {
@@ -15,8 +15,8 @@ export default function AboutPage() {
       <div className="mx-auto max-w-4xl px-6">
         <SectionHeader
           eyebrow="About"
-          title="Developer, Builder, Technical Support"
-          description="A closer look at my background across software development, audio tooling, and remote troubleshooting work in production environments."
+          title="Systems Diagnosis, Then Delivery"
+          description="A method-first look at my work: observe, isolate, validate, and turn incident handling into repeatable engineering practice."
           className="mb-16"
         />
         <AboutContent publicEmail={getPublicContactEmail()} />

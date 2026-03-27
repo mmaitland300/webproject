@@ -6,7 +6,7 @@ import {
   resumeCertifications,
   resumeEducation,
   resumeExperience,
-  resumeSkills,
+  resumeSkillTiers,
   resumeSummary,
 } from "@/content/resume";
 import { HighlightText } from "@/components/ui/highlight-text";
@@ -110,14 +110,21 @@ export default function ResumePage() {
 
         <section className="mt-10">
           <h2 className="text-xl font-semibold">Skills</h2>
-          <div className="mt-4 flex flex-wrap gap-2">
-            {resumeSkills.map((skill) => (
-              <span
-                key={skill}
-                className="rounded-full border border-border bg-muted px-3 py-1 text-sm text-muted-foreground"
-              >
-                {skill}
-              </span>
+          <div className="mt-4 space-y-5">
+            {resumeSkillTiers.map((tier) => (
+              <article key={tier.id}>
+                <h3 className="text-sm font-medium text-foreground">{tier.title}</h3>
+                <div className="mt-2 flex flex-wrap gap-2">
+                  {tier.skills.map((skill) => (
+                    <span
+                      key={`${tier.id}-${skill}`}
+                      className="rounded-full border border-border bg-muted px-3 py-1 text-sm text-muted-foreground"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </article>
             ))}
           </div>
         </section>

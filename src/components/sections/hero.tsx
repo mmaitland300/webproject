@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Github } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 
 export function Hero() {
@@ -16,7 +16,7 @@ export function Hero() {
         >
           <div className="cyber-pill mb-6 inline-flex items-center gap-3 rounded-full px-4 py-2 text-xs font-medium uppercase tracking-[0.24em] text-[rgba(196,206,223,0.82)] backdrop-blur-sm">
             <span className="h-1.5 w-1.5 rounded-full bg-[rgba(136,212,255,0.95)] shadow-[0_0_12px_rgba(67,188,255,0.45)]" />
-            Web Engineer | DSP Developer | Systems Troubleshooting
+            Systems Troubleshooting • Production Web • Audio DSP
           </div>
         </motion.div>
 
@@ -30,17 +30,26 @@ export function Hero() {
           <span className="cyber-title hero-name">Matt Maitland</span>
         </motion.h1>
 
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
+          className="mt-5 mx-auto max-w-4xl text-2xl font-semibold leading-tight text-foreground/95 sm:text-3xl"
+        >
+          I debug real systems and build software around the same discipline.
+        </motion.h2>
+
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
           className="mt-6 mx-auto max-w-3xl text-lg leading-relaxed text-[rgba(194,203,220,0.82)] sm:text-xl"
         >
-          I currently work at Auxillium. We provide technical support for Full Swing
-          simulator customers. Many of those installs also include Laser Shot or E6 Golf
-          from TruGolf, which we also support. Outside of that, I build applications for
-          things I&apos;m interested in or want to understand. This site documents what
-          I&apos;m working on and what I&apos;m learning.
+          I work at Auxillium supporting Full Swing simulator environments where
+          hardware, software, networking, and OS behavior overlap. Outside of work
+          I build web software, develop StringFlux, and write and produce music as
+          NEUROCHEMICAL ENTROPY. This site is where those threads meet:
+          troubleshooting, software, and sound.
         </motion.p>
 
         <motion.div
@@ -57,16 +66,33 @@ export function Hero() {
                 "bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-500 hover:to-cyan-500 text-white border-0 shadow-lg shadow-purple-500/25",
             })}
           >
-            View Projects <ArrowRight className="ml-2 h-4 w-4" />
+            See Case Studies <ArrowRight className="ml-2 h-4 w-4" />
           </Link>
+          <Link
+            href="/contact"
+            className={buttonVariants({ variant: "outline", size: "lg" })}
+          >
+            Get in Touch
+          </Link>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+          className="mt-4 flex items-center justify-center gap-6 text-sm text-muted-foreground"
+        >
           <a
             href="https://github.com/mmaitland300"
             target="_blank"
             rel="noopener noreferrer"
-            className={buttonVariants({ variant: "outline", size: "lg" })}
+            className="hover:text-foreground transition-colors"
           >
-            <Github className="mr-2 h-4 w-4" /> GitHub
+            GitHub
           </a>
+          <Link href="/music" className="hover:text-foreground transition-colors">
+            Music
+          </Link>
         </motion.div>
 
         {/* Scroll indicator */}

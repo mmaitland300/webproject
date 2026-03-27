@@ -14,12 +14,38 @@ interface ProjectCardProps {
   compact?: boolean;
 }
 
+const statusLabel: Record<NonNullable<Project["status"]>, string> = {
+  "in-progress": "In Progress",
+  operational: "Operational",
+  shipped: "Shipped",
+  archived: "Archived",
+};
+
+const proofKindLabel: Record<
+  NonNullable<NonNullable<Project["proofLinks"]>[number]["kind"]>,
+  string
+> = {
+  repo: "repo",
+  test: "test",
+  ci: "ci",
+  post: "decision record",
+  artifact: "case study",
+};
+
 export function ProjectCard({ project, index, compact }: ProjectCardProps) {
   const [iframeActive, setIframeActive] = useState(false);
   const internalDemoHref = project.demo?.startsWith("/") ? project.demo : null;
   const internalCaseStudyHref = project.caseStudy?.startsWith("/")
     ? project.caseStudy
     : null;
+  const evidenceKinds = Array.from(
+    new Set(
+      (project.proofLinks ?? [])
+        .map((link) => link.kind)
+        .filter((kind): kind is NonNullable<typeof kind> => Boolean(kind))
+        .map((kind) => proofKindLabel[kind])
+    )
+  );
 
   return (
     <motion.article
@@ -97,6 +123,21 @@ export function ProjectCard({ project, index, compact }: ProjectCardProps) {
           {project.description}
         </p>
 
+        {project.status && (
+          <div className="mb-4">
+            <Badge variant="secondary" className="text-[11px] font-medium">
+              Status: {statusLabel[project.status]}
+            </Badge>
+          </div>
+        )}
+
+        {compact && evidenceKinds.length > 0 && (
+          <p className="mb-4 text-xs text-muted-foreground">
+            <span className="font-medium text-foreground/80">Evidence: </span>
+            {evidenceKinds.join(" / ")}
+          </p>
+        )}
+
         {!compact && project.problem && (
           <div className="space-y-2 mb-4 text-sm">
             <div>
@@ -135,6 +176,20 @@ export function ProjectCard({ project, index, compact }: ProjectCardProps) {
                 <span className="text-muted-foreground">{project.outcome}</span>
               </div>
             )}
+            {project.evidence && (
+              <div>
+                <span className="font-medium text-foreground/80">Evidence: </span>
+                <span className="text-muted-foreground">{project.evidence}</span>
+              </div>
+            )}
+            {project.knownLimits && (
+              <div>
+                <span className="font-medium text-foreground/80">
+                  Known limits:{" "}
+                </span>
+                <span className="text-muted-foreground">{project.knownLimits}</span>
+              </div>
+            )}
           </div>
         )}
 
@@ -150,6 +205,34 @@ export function ProjectCard({ project, index, compact }: ProjectCardProps) {
             </Badge>
           ))}
         </div>
+
+        {project.proofLinks && project.proofLinks.length > 0 && (
+          <div className="mb-4 text-xs">
+            <span className="font-medium text-foreground/80">Proof: </span>
+            <div className="mt-1 flex flex-wrap gap-x-3 gap-y-1">
+              {project.proofLinks.slice(0, 3).map((link) => {
+                const isInternal = link.href.startsWith("/");
+                const className =
+                  "text-muted-foreground hover:text-foreground transition-colors";
+                return isInternal ? (
+                  <Link key={link.label} href={link.href} className={className}>
+                    {link.label}
+                  </Link>
+                ) : (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={className}
+                  >
+                    {link.label}
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+        )}
 
         {/* Links */}
         <div className="flex items-center gap-3">
