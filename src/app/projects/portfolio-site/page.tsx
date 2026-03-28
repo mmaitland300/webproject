@@ -72,7 +72,7 @@ export default function PortfolioSiteCaseStudyPage() {
           </h1>
           <p className="mt-4 max-w-3xl text-muted-foreground">
             This page documents how mmaitland.dev handles contact submissions,
-            optional admin access, and content delivery — the same problems as
+            optional admin access, and content delivery - the same problems as
             any small production site, with choices tuned for one maintainer and
             low operational overhead.
           </p>
@@ -96,7 +96,7 @@ export default function PortfolioSiteCaseStudyPage() {
               />
             </div>
             <figcaption className="border-t border-border bg-card/50 px-4 py-3 text-center text-xs leading-relaxed text-muted-foreground">
-              Sketch of the contact path and optional admin persistence — useful
+              Sketch of the contact path and optional admin persistence - useful
               for keeping assumptions explicit when iterating alone.
             </figcaption>
           </figure>

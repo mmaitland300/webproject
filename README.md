@@ -45,14 +45,14 @@ Copy `.env.example` and fill in the values. The site runs without the optional v
 | `CONTACT_TO_EMAIL` | Yes | Recipient address for contact emails |
 | `UPSTASH_REDIS_REST_URL` | Yes | Upstash Redis URL for rate limiting |
 | `UPSTASH_REDIS_REST_TOKEN` | Yes | Upstash Redis token |
-| `DATABASE_URL` | Yes† | Placeholder or Neon pooled URL. Required for `prisma generate` (see note below). Runtime DB features need a real Neon URL. |
-| `DIRECT_URL` | Yes† | Placeholder or Neon direct URL for Prisma CLI migrations. Same note as `DATABASE_URL`. |
+| `DATABASE_URL` | Yes[1] | Placeholder or Neon pooled URL. Required for `prisma generate` (see note below). Runtime DB features need a real Neon URL. |
+| `DIRECT_URL` | Yes[1] | Placeholder or Neon direct URL for Prisma CLI migrations. Same note as `DATABASE_URL`. |
 | `AUTH_SECRET` | No | Auth.js secret (`npx auth secret` to generate). Required for admin auth. |
 | `AUTH_GITHUB_ID` | No | GitHub OAuth app client ID. Required for admin auth. |
 | `AUTH_GITHUB_SECRET` | No | GitHub OAuth app client secret. Required for admin auth. |
 | `ADMIN_GITHUB_IDS` | No | Comma-separated GitHub numeric user IDs for admin access |
 
-† **Prisma tooling:** `prisma.config.ts` reads `DATABASE_URL` and `DIRECT_URL` via `env()`, so they must exist in `.env` for `npm install` (postinstall `prisma generate`) and `npm run build`. Copy the syntactically valid placeholders from `.env.example` until you point them at Neon; no Postgres process is required on your machine for generation or production build.
+[1] **Prisma tooling:** `prisma.config.ts` reads `DATABASE_URL` and `DIRECT_URL` via `env()`, so they must exist in `.env` for `npm install` (postinstall `prisma generate`) and `npm run build`. Copy the syntactically valid placeholders from `.env.example` until you point them at Neon; no Postgres process is required on your machine for generation or production build.
 
 ## Database Setup (Optional)
 

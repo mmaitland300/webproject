@@ -16,7 +16,7 @@ type ProofHeadline = {
   linkPick: (links: ProofLink[]) => ProofLink[];
 };
 
-/** Curated proof-first copy; URLs come from each project’s proofLinks (see projects.ts). */
+/** Curated proof-first copy; URLs come from each project's proofLinks (see projects.ts). */
 const PROOF_HEADLINES = {
   "full-swing-tech-support": {
     what: "Production troubleshooting",

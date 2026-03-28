@@ -53,7 +53,7 @@ type FeedbackState = {
   success: boolean;
   message: string;
   warning?: string;
-  /** Set only after a successful reply send — drives compact status badges */
+  /** Set only after a successful reply send; drives compact status badges */
   replyDelivery?: {
     historySaved: boolean;
     markedRead: boolean;

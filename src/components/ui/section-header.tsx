@@ -8,7 +8,7 @@ interface SectionHeaderProps {
   description?: string;
   eyebrow?: string;
   align?: "left" | "center";
-  /** Use 2+ when this header is not the page’s primary title (e.g. homepage below the hero). */
+  /** Use 2+ when this header is not the page's primary title (e.g. homepage below the hero). */
   headingLevel?: SectionHeadingLevel;
   titleClassName?: string;
   className?: string;
