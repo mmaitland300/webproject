@@ -11,8 +11,8 @@ jobs:
     name: Install / Lint / Test / Build
     runs-on: ubuntu-latest
 
-    # Stub vars needed at install time (postinstall -> prisma generate reads
-    # prisma.config.ts which requires DATABASE_URL and DIRECT_URL).
+    # Stub URLs satisfy prisma.config.ts env() for Prisma CLI (postinstall and
+    # build run prisma generate only; no live Postgres is required or started).
     env:
       DATABASE_URL: postgresql://ci:ci@localhost:5432/ci
       DIRECT_URL: postgresql://ci:ci@localhost:5432/ci

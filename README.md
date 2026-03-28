@@ -45,20 +45,24 @@ Copy `.env.example` and fill in the values. The site runs without the optional v
 | `CONTACT_TO_EMAIL` | Yes | Recipient address for contact emails |
 | `UPSTASH_REDIS_REST_URL` | Yes | Upstash Redis URL for rate limiting |
 | `UPSTASH_REDIS_REST_TOKEN` | Yes | Upstash Redis token |
-| `DATABASE_URL` | No | Neon PostgreSQL connection string (pooled). Required for waitlist persistence and admin auth. |
-| `DIRECT_URL` | No | Neon PostgreSQL direct connection (for Prisma CLI) |
+| `DATABASE_URL` | Yes† | Placeholder or Neon pooled URL. Required for `prisma generate` (see note below). Runtime DB features need a real Neon URL. |
+| `DIRECT_URL` | Yes† | Placeholder or Neon direct URL for Prisma CLI migrations. Same note as `DATABASE_URL`. |
 | `AUTH_SECRET` | No | Auth.js secret (`npx auth secret` to generate). Required for admin auth. |
 | `AUTH_GITHUB_ID` | No | GitHub OAuth app client ID. Required for admin auth. |
 | `AUTH_GITHUB_SECRET` | No | GitHub OAuth app client secret. Required for admin auth. |
 | `ADMIN_GITHUB_IDS` | No | Comma-separated GitHub numeric user IDs for admin access |
+
+† **Prisma tooling:** `prisma.config.ts` reads `DATABASE_URL` and `DIRECT_URL` via `env()`, so they must exist in `.env` for `npm install` (postinstall `prisma generate`) and `npm run build`. Copy the syntactically valid placeholders from `.env.example` until you point them at Neon; no Postgres process is required on your machine for generation or production build.
 
 ## Database Setup (Optional)
 
 The site works without a database. To enable the admin inbox and contact persistence:
 
 1. Create a [Neon](https://neon.tech) PostgreSQL database.
-2. Set `DATABASE_URL` and `DIRECT_URL` in `.env`.
-3. Push the schema: `npx prisma db push`
+2. Replace the Prisma placeholders in `.env` with your Neon pooled (`DATABASE_URL`) and direct (`DIRECT_URL`) URLs.
+3. Apply the schema: `npx prisma migrate deploy` (uses `prisma/migrations`). For a throwaway local database you can use `npx prisma db push` instead.
+
+For hosted environments that use migration history, apply pending migrations during deploy or release with `npm run db:migrate:deploy` against your real database (not part of `npm run build`).
 
 Note: the contact flow guarantees email delivery first. Database persistence for the admin inbox runs after a successful email send and is best-effort.
 
@@ -109,7 +113,8 @@ Set `published: false` to keep a post as a draft (hidden from listings and direc
 | Command | Description |
 |---|---|
 | `npm run dev` | Start development server |
-| `npm run build` | Generate Prisma client and build for production |
+| `npm run build` | Generate Prisma client and build for production (no DB connection) |
+| `npm run db:migrate:deploy` | Apply Prisma migrations to the target database (run at deploy/release) |
 | `npm start` | Start production server |
 | `npm run lint` | Run ESLint |
 | `npm test` | Run unit and data-integrity tests (Vitest) |
