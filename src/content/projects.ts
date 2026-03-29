@@ -235,24 +235,6 @@ export const projects: Project[] = [
     github: "https://github.com/mmaitland300/organizer_project",
     category: "experiment",
   },
-  {
-    slug: "turn-based-rpg",
-    title: "Turn-Based RPG",
-    description:
-      "A browser RPG prototype I built to learn Phaser's scene system. Turn-based combat, sprite movement, and scene transitions, all running client-side with no backend.",
-    tags: ["JavaScript", "Phaser.js", "Game Dev", "RPG"],
-    iframe: "/games/rpg/index.html",
-    category: "experiment",
-  },
-  {
-    slug: "atoms-simulation",
-    title: "Atoms Simulation",
-    description:
-      "An interactive particle simulation built with Phaser. Mostly a sandbox for playing with collision detection and continuous animation loops in the browser.",
-    tags: ["JavaScript", "Phaser.js", "Canvas", "Physics"],
-    iframe: "/games/atoms/index.html",
-    category: "experiment",
-  },
 ];
 
 export function getFeaturedProjects() {
