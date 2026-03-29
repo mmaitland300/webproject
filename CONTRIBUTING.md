@@ -24,7 +24,7 @@ Rules:
 
 ## Merge Policy
 
-For `master`, prefer one policy and apply it consistently:
+For `main`, prefer one policy and apply it consistently:
 
 - Default: **Squash merge** PRs with an edited final title that follows the commit format.
 - Keep PRs focused on one concern.

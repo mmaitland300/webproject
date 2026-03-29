@@ -123,22 +123,22 @@ export const projects: Project[] = [
       },
       {
         label: "Route smoke tests",
-        href: "https://github.com/mmaitland300/webproject/blob/master/e2e/routes.spec.ts",
+        href: "https://github.com/mmaitland300/webproject/blob/main/e2e/routes.spec.ts",
         kind: "test",
       },
       {
         label: "Environment parsing tests",
-        href: "https://github.com/mmaitland300/webproject/blob/master/src/lib/env.test.ts",
+        href: "https://github.com/mmaitland300/webproject/blob/main/src/lib/env.test.ts",
         kind: "test",
       },
       {
         label: "Contact action tests",
-        href: "https://github.com/mmaitland300/webproject/blob/master/src/actions/contact.test.ts",
+        href: "https://github.com/mmaitland300/webproject/blob/main/src/actions/contact.test.ts",
         kind: "test",
       },
       {
         label: "CI workflow",
-        href: "https://github.com/mmaitland300/webproject/blob/master/.github/workflows/ci.yml",
+        href: "https://github.com/mmaitland300/webproject/blob/main/.github/workflows/ci.yml",
         kind: "ci",
       },
     ],
