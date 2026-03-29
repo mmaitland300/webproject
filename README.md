@@ -1,6 +1,16 @@
 # Matt Maitland - Portfolio
 
+**Live site:** [mmaitland.dev](https://mmaitland.dev)
+
 Portfolio site and engineering case-study repo for mmaitland.dev. Built with Next.js, TypeScript, and Tailwind CSS, with MDX blogging, a rate-limited contact pipeline, and optional admin inbox/auth features behind explicit configuration.
+
+## Preview
+
+Screenshots from the production deployment (1280px viewport).
+
+| Homepage | Projects |
+| --- | --- |
+| ![Homepage hero](docs/readme/home.png) | ![Projects page](docs/readme/projects.png) |
 
 ## What This Repo Demonstrates
 
