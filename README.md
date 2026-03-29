@@ -125,6 +125,8 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Contributing
 
+For merge policy, author identity checks, and copy/encoding guardrails, see [CONTRIBUTING.md](CONTRIBUTING.md).
+
 Use clear, imperative commit subjects (for example: `Fix contact rate limit when Redis is unavailable`). Avoid redeploy-only checkpoints and trailing vendor or tool-generated footer lines unless a policy explicitly requires them.
 
 Optional: from the repo root, run `git config commit.template .gitmessage` to use the shared [commit template](.gitmessage). The first line of the message must not start with `#` (Git strips comment lines). That template is a local reminder only—Git does not enforce commit message style.
