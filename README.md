@@ -118,3 +118,25 @@ Set `published: false` to keep a post as a draft (hidden from listings and direc
 | `npm start` | Start production server |
 | `npm run lint` | Run ESLint |
 | `npm test` | Run unit and data-integrity tests (Vitest) |
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+## Contributing
+
+Use clear, imperative commit subjects (for example: `Fix contact rate limit when Redis is unavailable`). Avoid redeploy-only checkpoints and trailing vendor or tool-generated footer lines unless a policy explicitly requires them.
+
+Optional: from the repo root, run `git config commit.template .gitmessage` to use the shared [commit template](.gitmessage). The first line of the message must not start with `#` (Git strips comment lines).
+
+## Git history (optional)
+
+Rewriting `main`/`master` with `git rebase` / `filter-repo` and force-pushing has collaboration tradeoffs; prefer clearer messages going forward unless old noise still bothers you.
+
+## GitHub repository metadata
+
+Set the repository **About** description (mirrors `package.json` / this README):
+
+> Portfolio and case-study site for mmaitland.dev — Next.js, MDX blog, Prisma, optional admin and auth.
+
+**Suggested topics** (improve discoverability): `nextjs`, `typescript`, `tailwindcss`, `mdx`, `prisma`, `postgresql`, `portfolio`, `next-auth`, `server-actions`, `framer-motion`, `vitest`
