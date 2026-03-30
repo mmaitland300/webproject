@@ -141,7 +141,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Contributing
 
-For merge policy, author identity checks, copy/encoding guardrails, and optional tooling notes (e.g. Cursor Agent attribution), see [CONTRIBUTING.md](CONTRIBUTING.md).
+For merge policy, author identity checks, and copy/encoding guardrails, see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 Use clear, imperative commit subjects (for example: `Fix contact rate limit when Redis is unavailable`). Avoid redeploy-only checkpoints and trailing vendor or tool-generated footer lines unless a policy explicitly requires them.
 
