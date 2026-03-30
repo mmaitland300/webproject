@@ -4,6 +4,16 @@
 
 Portfolio site and engineering case-study repo for mmaitland.dev. Built with Next.js, TypeScript, and Tailwind CSS, with MDX blogging, a rate-limited contact pipeline, and optional admin inbox/auth features behind explicit configuration.
 
+## Goals and intent
+
+This project is a **professional portfolio**, not a build diary. The intent is to show how work is reasoned about and verified:
+
+- **Evidence over hype.** Public claims should point at something checkable: case studies, decision records, tests, CI, or other artifacts. When proof lags copy, **soften the claim** rather than inventing placeholder proof. Messaging changes that touch claims should align with [docs/proof-audit.md](docs/proof-audit.md).
+- **One coherent story across domains.** Production troubleshooting (multi-layer systems), shipping web software (this site), and audio/DSP work are presented as one discipline: **diagnose constraints, then deliver** within them.
+- **Featured work carries a higher bar.** Anything marked **featured** in `src/content/projects.ts` is expected to have a real case-study path: constraints, tradeoffs, status, known limits, and `proofLinks` where applicable. **Experiments** stay visible but separate so they do not dilute the main signal.
+- **Production-shaped engineering.** Optional services (database, auth, email) are **gated by typed env** so the app runs and tests cleanly without them; contact and admin flows degrade predictably when configuration is partial.
+- **CI as part of the story.** Lint, unit/data tests, production build, and Playwright smoke on `main` back the idea that the repo is maintained to the same standard the site describes.
+
 ## Preview
 
 Screenshots from the production deployment (1280px viewport).
@@ -12,12 +22,14 @@ Screenshots from the production deployment (1280px viewport).
 | --- | --- |
 | ![Homepage hero](docs/readme/home.png) | ![Projects page](docs/readme/projects.png) |
 
-## What This Repo Demonstrates
+## What this repo demonstrates (technically)
 
-- Structured content/data modeling for projects, resume content, and MDX posts
-- Typed environment/config handling with optional-feature gating
-- Operational safeguards (validation, rate limiting, and graceful degraded behavior)
-- CI-backed quality checks (lint, tests, build, and route smoke coverage)
+These items support the goals above:
+
+- Structured content for projects (with status, limits, and proof links), resume data, and MDX posts
+- Typed environment and optional-feature gating (`src/lib/env.ts`)
+- Operational safeguards: validation, rate limiting, and graceful behavior when optional services are missing
+- CI-backed quality: lint, tests, production build, and route smoke coverage on `main`
 
 ## Tech Stack
 
@@ -124,6 +136,8 @@ Set `published: false` to keep a post as a draft (hidden from listings and direc
 
 **Resume data** is centralized in `src/content/resume.ts` and consumed by both the `/about` and `/resume` pages.
 
+**Resume PDF (`public/resume.pdf`):** The file served at `/resume.pdf` may lag `resume.ts`. Treat **`src/content/resume.ts` as source of truth** for resume copy; regenerate the PDF in a dedicated change when you want the download to match.
+
 ## Scripts
 
 | Command | Description |
@@ -158,6 +172,6 @@ Rewriting `main` with `git rebase`, `git filter-repo`, or similar and force-push
 
 Set the repository **About** description (mirrors `package.json` / this README):
 
-> Portfolio and case-study site for mmaitland.dev — Next.js, MDX blog, Prisma, optional admin and auth.
+> Evidence-forward portfolio and case studies for mmaitland.dev — Next.js, MDX, Prisma, optional admin and auth.
 
 **Suggested topics** (improve discoverability): `nextjs`, `typescript`, `tailwindcss`, `mdx`, `prisma`, `postgresql`, `portfolio`, `next-auth`, `server-actions`, `framer-motion`, `vitest`

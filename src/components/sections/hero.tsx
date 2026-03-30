@@ -52,6 +52,28 @@ export function Hero() {
           troubleshooting, software, and sound.
         </motion.p>
 
+        <motion.p
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.25, ease: "easeOut" }}
+          className="mt-4 mx-auto max-w-2xl text-center text-sm leading-relaxed text-muted-foreground sm:text-base"
+        >
+          <Link
+            href="/projects"
+            className="text-foreground/90 underline-offset-4 hover:underline"
+          >
+            Case studies
+          </Link>
+          {" and "}
+          <Link
+            href="/blog"
+            className="text-foreground/90 underline-offset-4 hover:underline"
+          >
+            engineering notes
+          </Link>
+          {" document constraints, evidence, and limits."}
+        </motion.p>
+
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
