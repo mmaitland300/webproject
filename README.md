@@ -37,9 +37,11 @@ Screenshots from the production deployment (1280px viewport).
 
 ## Getting Started
 
+Clone into a folder name that matches the npm package name (`mmaitland-portfolio` in `package.json`). The GitHub repository slug may still be `webproject` until you rename the remote repo.
+
 ```powershell
-git clone https://github.com/mmaitland300/webproject.git
-cd webproject
+git clone https://github.com/mmaitland300/webproject.git mmaitland-portfolio
+cd mmaitland-portfolio
 Copy-Item .env.example .env   # PowerShell; then fill in values (see below)
 npm install            # also runs prisma generate via postinstall
 npm run dev
@@ -139,13 +141,11 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Contributing
 
-For merge policy, author identity checks, and copy/encoding guardrails, see [CONTRIBUTING.md](CONTRIBUTING.md).
+For merge policy, author identity checks, copy/encoding guardrails, and optional tooling notes (e.g. Cursor Agent attribution), see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 Use clear, imperative commit subjects (for example: `Fix contact rate limit when Redis is unavailable`). Avoid redeploy-only checkpoints and trailing vendor or tool-generated footer lines unless a policy explicitly requires them.
 
 Optional: from the repo root, run `git config commit.template .gitmessage` to use the shared [commit template](.gitmessage). The first line of the message must not start with `#` (Git strips comment lines). That template is a local reminder only—Git does not enforce commit message style.
-
-If you use Cursor's Agent for commits or PRs, turn off **Settings → Agent → Attribution** so messages are not appended with a vendor trailer ([Cursor Git integration](https://cursor.com/docs/integrations/git)).
 
 ## Git history
 

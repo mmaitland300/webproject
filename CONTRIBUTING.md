@@ -20,16 +20,19 @@ Rules:
 - Keep `summary` concise and imperative.
 - Add `scope` when a specific area is clear (`ci`, `admin`, `projects`, `docs`, etc.).
 - Recommended types: `feat`, `fix`, `refactor`, `test`, `docs`, `chore`.
-- Avoid generic subjects like `update`, `misc`, or `merge: ...`.
+- Avoid generic subjects like `update` or `misc` for local WIP commits.
+- GitHub merge commits titled `Merge pull request #…` are normal on `main` and do not need to follow the `type(scope):` pattern.
 
-## Merge Policy
+## Merge policy
 
-For `main`, prefer one policy and apply it consistently:
+- Land work on **`main`** through **pull requests** with **CI green** before merge.
+- **Default for this repo:** use GitHub’s **merge commit** option (not squash-only) so PR boundaries stay visible in history. Write a clear **PR title** (and edit the merge commit subject when GitHub allows) so `git log` stays readable—conventional `type(scope):` titles are welcome when they fit.
+- **Squash merge** is fine for small, single-concern PRs when you want one commit on `main`.
+- Keep each PR focused on one concern; avoid unrelated drive-by changes in the same PR.
 
-- Default: **Squash merge** PRs with an edited final title that follows the commit format.
-- Keep PRs focused on one concern.
-- Avoid mixing merge styles (`Merge pull request...`, `Merge branch...`, custom `merge:` commits) in normal flow.
-- If a direct merge commit is required, use a clear conventional title.
+## Optional tooling (Cursor)
+
+If you use **Cursor’s Agent** for commits or pull requests, turn off **Settings → Agent → Attribution** so commit messages are not appended with a vendor trailer ([Cursor Git integration](https://cursor.com/docs/integrations/git)).
 
 ## Author Identity Checklist
 
