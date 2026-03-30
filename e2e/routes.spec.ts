@@ -12,6 +12,7 @@ const publicRoutes = [
   "/contact",
   "/music",
   "/resume",
+  "/resume/print",
 ];
 
 for (const route of publicRoutes) {

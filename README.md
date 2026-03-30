@@ -106,7 +106,7 @@ To enable the admin dashboard at `/admin`:
 
 ```
 src/
-  app/            # Next.js App Router pages and layouts
+  app/            # Next.js App Router ((site) = nav chrome; (print) = resume PDF route without chrome)
   actions/        # Server Actions (contact form, inbox mutations)
   components/     # UI and section components
   content/        # Blog posts (MDX) and project/resume data
@@ -138,7 +138,7 @@ Set `published: false` to keep a post as a draft (hidden from listings and direc
 
 **Resume PDF (`public/resume.pdf`):** The file served at `/resume.pdf` may lag `resume.ts`. Treat **`src/content/resume.ts` as source of truth** for resume copy; regenerate the PDF in a dedicated change when you want the download to match.
 
-**Regenerate the PDF (automated):** With the site running locally (for example `npm run dev` on port 3000), run `npm run resume:pdf`. That uses Playwright to print `/resume` to `public/resume.pdf`. Override the origin with `RESUME_PDF_ORIGIN` if you use another host or port (for example `RESUME_PDF_ORIGIN=http://127.0.0.1:3001 npm run resume:pdf`).
+**Regenerate the PDF (automated):** With the site running locally (for example `npm run dev` on port 3000), run `npm run resume:pdf`. That uses Playwright to print the **print-first** route **`/resume/print`** (no site nav/footer; light layout) to `public/resume.pdf`. Override the origin with `RESUME_PDF_ORIGIN` if you use another host or port (for example `RESUME_PDF_ORIGIN=http://127.0.0.1:3001 npm run resume:pdf`).
 
 ## Scripts
 
@@ -150,7 +150,7 @@ Set `published: false` to keep a post as a draft (hidden from listings and direc
 | `npm start` | Start production server |
 | `npm run lint` | Run ESLint |
 | `npm test` | Run unit and data-integrity tests (Vitest) |
-| `npm run resume:pdf` | Print `/resume` to `public/resume.pdf` (needs local server; see Content Management) |
+| `npm run resume:pdf` | Print `/resume/print` to `public/resume.pdf` (needs local server; see Content Management) |
 
 ## License
 

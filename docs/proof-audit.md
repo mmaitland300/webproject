@@ -67,4 +67,4 @@ Do not rewrite experiment projects during focused proof passes unless they block
 ## Deferred follow-up
 
 - `public/resume.pdf` is intentionally lagging behind current `src/content/resume.ts` copy. The `/resume` page is driven by `resume.ts`; the PDF download is a convenience export and may be stale until regenerated.
-- PDF regeneration/sync is deferred to a dedicated change set so proof and content edits stay reviewable. **Also documented in README** under Content Management. After editing `resume.ts`, run **`npm run resume:pdf`** (local server required) to refresh `public/resume.pdf`.
+- PDF regeneration/sync is deferred to a dedicated change set so proof and content edits stay reviewable. **Also documented in README** under Content Management. After editing `resume.ts`, run **`npm run resume:pdf`** (local server required) to refresh `public/resume.pdf` from **`/resume/print`** (print layout without site chrome).

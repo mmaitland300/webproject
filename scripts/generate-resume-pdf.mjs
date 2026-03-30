@@ -1,5 +1,5 @@
 /**
- * Renders /resume with Chromium and writes public/resume.pdf.
+ * Renders the print-first route /resume/print with Chromium and writes public/resume.pdf.
  * Requires a running site (dev or production server) on the origin below.
  */
 import { chromium } from "playwright";
@@ -16,17 +16,40 @@ const baseURL = (process.env.RESUME_PDF_ORIGIN ?? "http://localhost:3000").repla
   ""
 );
 
+const PRINT_PATH = "/resume/print";
+
 async function main() {
   await mkdir(dirname(outPath), { recursive: true });
 
   const browser = await chromium.launch({ headless: true });
   const page = await browser.newPage();
+  await page.emulateMedia({ media: "print" });
 
   try {
-    await page.goto(`${baseURL}/resume`, {
+    const response = await page.goto(`${baseURL}${PRINT_PATH}`, {
       waitUntil: "load",
       timeout: 60_000,
     });
+    if (!response || !response.ok()) {
+      throw new Error(
+        `Expected HTTP 2xx from ${PRINT_PATH}, got ${response?.status() ?? "no response"}`
+      );
+    }
+
+    await page.locator("[data-resume-print-ready]").waitFor({
+      state: "attached",
+      timeout: 15_000,
+    });
+
+    const heading = page.locator("h1").first();
+    await heading.waitFor({ state: "visible", timeout: 10_000 });
+    const title = (await heading.textContent())?.trim() ?? "";
+    if (!title.includes("Matt Maitland")) {
+      throw new Error(
+        `Resume print layout missing expected name in h1 (got "${title.slice(0, 80)}")`
+      );
+    }
+
     await page.pdf({
       path: outPath,
       format: "Letter",

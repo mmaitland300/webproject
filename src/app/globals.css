@@ -333,3 +333,10 @@
   pointer-events: none;
   z-index: 0;
 }
+
+/* /resume/print: browser print dialog (PDF export uses the same DOM) */
+@media print {
+  .resume-print-root {
+    background: white !important;
+  }
+}
