@@ -145,7 +145,7 @@ If you use Cursor's Agent for commits or PRs, turn off **Settings → Agent → 
 
 ## Git history
 
-Rewriting `main`/`master` with `git rebase`, `git filter-repo`, or similar and force-pushing has collaboration and fork tradeoffs—plan with anyone who depends on the repo.
+Rewriting `main` with `git rebase`, `git filter-repo`, or similar and force-pushing has collaboration and fork tradeoffs—plan with anyone who depends on the repo.
 
 - **Commit message noise only** (WIP, checkpoints, vendor footers): clearer messages going forward are enough for many projects; rewriting history is optional polish if old noise still bothers you.
 - **Secrets that ever reached Git history**: treat that as a **security incident**, not cosmetics. **Rotate and revoke** exposed credentials first, run a dedicated secret scan on full history, and **rewrite history** (or archive this repo and publish a clean replacement) so the secrets are not recoverable from any branch. Optional rewrite is the wrong framing here.
