@@ -30,10 +30,6 @@ Rules:
 - **Squash merge** is fine for small, single-concern PRs when you want one commit on `main`.
 - Keep each PR focused on one concern; avoid unrelated drive-by changes in the same PR.
 
-## Optional tooling (Cursor)
-
-If you use **Cursor’s Agent** for commits or pull requests, turn off **Settings → Agent → Attribution** so commit messages are not appended with a vendor trailer ([Cursor Git integration](https://cursor.com/docs/integrations/git)).
-
 ## Author Identity Checklist
 
 Before opening a PR or committing:
