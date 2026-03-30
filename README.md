@@ -37,11 +37,11 @@ Screenshots from the production deployment (1280px viewport).
 
 ## Getting Started
 
-Clone using the repository name (matches `package.json` `name`: `maitland-portfolio`).
+Clone using the repository name (matches `package.json` `name`: `mmaitland-portfolio`).
 
 ```powershell
-git clone https://github.com/mmaitland300/maitland-portfolio.git
-cd maitland-portfolio
+git clone https://github.com/mmaitland300/mmaitland-portfolio.git
+cd mmaitland-portfolio
 Copy-Item .env.example .env   # PowerShell; then fill in values (see below)
 npm install            # also runs prisma generate via postinstall
 npm run dev
