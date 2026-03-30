@@ -33,7 +33,7 @@ const CANONICAL_MMAITLAND_WWW = "https://www.mmaitland.dev";
 export function getResumePdfLinkBase(): string {
   const override = process.env.NEXT_PUBLIC_RESUME_PDF_LINK_BASE?.trim();
   if (override) {
-    return override.replace(/\/$/, "");
+    return normalizeUrl(override).replace(/\/$/, "");
   }
 
   const site = getSiteUrl().replace(/\/$/, "");

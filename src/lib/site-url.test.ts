@@ -57,6 +57,11 @@ describe("getResumePdfLinkBase", () => {
     expect(getResumePdfLinkBase()).toBe("https://example.com/path");
   });
 
+  it("prepends https when NEXT_PUBLIC_RESUME_PDF_LINK_BASE has no scheme", () => {
+    process.env.NEXT_PUBLIC_RESUME_PDF_LINK_BASE = "mmaitland.dev/staging";
+    expect(getResumePdfLinkBase()).toBe("https://mmaitland.dev/staging");
+  });
+
   it("normalizes mmaitland.dev to https://www.mmaitland.dev", () => {
     process.env.NEXT_PUBLIC_SITE_URL = "https://mmaitland.dev";
     expect(getResumePdfLinkBase()).toBe("https://www.mmaitland.dev");

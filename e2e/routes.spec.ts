@@ -23,6 +23,16 @@ for (const route of publicRoutes) {
   });
 }
 
+test("/resume/print shows print marker and omits site nav and footer", async ({
+  page,
+}) => {
+  const response = await page.goto("/resume/print");
+  expect(response?.status()).toBe(200);
+  await expect(page.locator("[data-resume-print-ready]")).toBeVisible();
+  await expect(page.locator("nav")).toHaveCount(0);
+  await expect(page.locator("footer")).toHaveCount(0);
+});
+
 test("admin/login renders without error", async ({ page }) => {
   const response = await page.goto("/admin/login");
   expect(response?.status()).toBe(200);

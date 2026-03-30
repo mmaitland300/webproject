@@ -79,7 +79,7 @@ Copy `.env.example` and fill in the values. The site runs without the optional v
 | `AUTH_GITHUB_ID` | No | GitHub OAuth app client ID. Required for admin auth. |
 | `AUTH_GITHUB_SECRET` | No | GitHub OAuth app client secret. Required for admin auth. |
 | `ADMIN_GITHUB_IDS` | No | Comma-separated GitHub numeric user IDs for admin access |
-| `NEXT_PUBLIC_RESUME_PDF_LINK_BASE` | No | Override base URL for absolute links on `/resume/print` (defaults: `www.mmaitland.dev` for this domain and for localhost; otherwise `NEXT_PUBLIC_SITE_URL`) |
+| `NEXT_PUBLIC_RESUME_PDF_LINK_BASE` | No | Override base URL for absolute links on `/resume/print` (defaults: `www.mmaitland.dev` for this domain and for localhost; otherwise `NEXT_PUBLIC_SITE_URL`). Hostnames without a scheme get `https://` like `NEXT_PUBLIC_SITE_URL`. |
 
 [1] **Prisma tooling:** `prisma.config.ts` reads `DATABASE_URL` and `DIRECT_URL` via `env()`, so they must exist in `.env` for `npm install` (postinstall `prisma generate`) and `npm run build`. Copy the syntactically valid placeholders from `.env.example` until you point them at Neon; no Postgres process is required on your machine for generation or production build.
 
