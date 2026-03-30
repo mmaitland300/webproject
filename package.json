@@ -1,11 +1,11 @@
 {
-  "name": "mmaitland-portfolio",
+  "name": "maitland-portfolio",
   "version": "0.1.0",
   "private": true,
   "description": "Portfolio and case-study site for mmaitland.dev — Next.js, MDX blog, Prisma, optional admin and auth.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mmaitland300/webproject.git"
+    "url": "https://github.com/mmaitland300/maitland-portfolio.git"
   },
   "scripts": {
     "dev": "next dev",

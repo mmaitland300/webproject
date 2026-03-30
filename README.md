@@ -37,11 +37,11 @@ Screenshots from the production deployment (1280px viewport).
 
 ## Getting Started
 
-Clone into a folder name that matches the npm package name (`mmaitland-portfolio` in `package.json`). The GitHub repository slug may still be `webproject` until you rename the remote repo.
+Clone using the repository name (matches `package.json` `name`: `maitland-portfolio`).
 
 ```powershell
-git clone https://github.com/mmaitland300/webproject.git mmaitland-portfolio
-cd mmaitland-portfolio
+git clone https://github.com/mmaitland300/maitland-portfolio.git
+cd maitland-portfolio
 Copy-Item .env.example .env   # PowerShell; then fill in values (see below)
 npm install            # also runs prisma generate via postinstall
 npm run dev

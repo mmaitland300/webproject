@@ -1,14 +1,19 @@
-# Pre-release gate: verifies this is the canonical repo, on a named branch,
+# Pre-release gate: verifies cwd is the git repository root, on a named branch,
 # with a clean working tree. Run before any deploy or version tag.
 
 $ErrorActionPreference = "Stop"
 
-$canonicalPath = "C:\dev\Cursor Projects\webproject"
-$currentPath   = (Get-Location).Path
+$currentPath = (Get-Location).Path
+$repoRoot = (git rev-parse --show-toplevel 2>$null)
+if (-not $repoRoot) {
+    Write-Host "FAIL: not inside a git repository" -ForegroundColor Red
+    exit 1
+}
+$repoRoot = $repoRoot.Trim()
 
-if ($currentPath -ne $canonicalPath) {
+if ($currentPath -ne $repoRoot) {
     Write-Host "FAIL: cwd is '$currentPath'" -ForegroundColor Red
-    Write-Host "      Releases must run from '$canonicalPath'" -ForegroundColor Red
+    Write-Host "      Run from repository root: $repoRoot" -ForegroundColor Red
     exit 1
 }
 
