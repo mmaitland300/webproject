@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, afterEach } from "vitest";
-import { getSiteUrl } from "./site-url";
+import { getResumePdfLinkBase, getSiteUrl } from "./site-url";
 
 const ORIGINAL_ENV = { ...process.env };
 
@@ -7,6 +7,7 @@ beforeEach(() => {
   delete process.env.NEXT_PUBLIC_SITE_URL;
   delete process.env.VERCEL_PROJECT_PRODUCTION_URL;
   delete process.env.VERCEL_URL;
+  delete process.env.NEXT_PUBLIC_RESUME_PDF_LINK_BASE;
 });
 
 afterEach(() => {
@@ -47,5 +48,31 @@ describe("getSiteUrl", () => {
   it("trims whitespace from the configured URL", () => {
     process.env.NEXT_PUBLIC_SITE_URL = "  https://mmaitland.dev  ";
     expect(getSiteUrl()).toBe("https://mmaitland.dev");
+  });
+});
+
+describe("getResumePdfLinkBase", () => {
+  it("uses NEXT_PUBLIC_RESUME_PDF_LINK_BASE when set", () => {
+    process.env.NEXT_PUBLIC_RESUME_PDF_LINK_BASE = "https://example.com/path/";
+    expect(getResumePdfLinkBase()).toBe("https://example.com/path");
+  });
+
+  it("normalizes mmaitland.dev to https://www.mmaitland.dev", () => {
+    process.env.NEXT_PUBLIC_SITE_URL = "https://mmaitland.dev";
+    expect(getResumePdfLinkBase()).toBe("https://www.mmaitland.dev");
+  });
+
+  it("uses www when site URL is already www", () => {
+    process.env.NEXT_PUBLIC_SITE_URL = "https://www.mmaitland.dev";
+    expect(getResumePdfLinkBase()).toBe("https://www.mmaitland.dev");
+  });
+
+  it("uses www when browsing origin would be localhost", () => {
+    expect(getResumePdfLinkBase()).toBe("https://www.mmaitland.dev");
+  });
+
+  it("uses configured non-mmaitland site URL as base", () => {
+    process.env.NEXT_PUBLIC_SITE_URL = "https://portfolio.example.org";
+    expect(getResumePdfLinkBase()).toBe("https://portfolio.example.org");
   });
 });

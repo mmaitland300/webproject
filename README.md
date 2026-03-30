@@ -79,6 +79,7 @@ Copy `.env.example` and fill in the values. The site runs without the optional v
 | `AUTH_GITHUB_ID` | No | GitHub OAuth app client ID. Required for admin auth. |
 | `AUTH_GITHUB_SECRET` | No | GitHub OAuth app client secret. Required for admin auth. |
 | `ADMIN_GITHUB_IDS` | No | Comma-separated GitHub numeric user IDs for admin access |
+| `NEXT_PUBLIC_RESUME_PDF_LINK_BASE` | No | Override base URL for absolute links on `/resume/print` (defaults: `www.mmaitland.dev` for this domain and for localhost; otherwise `NEXT_PUBLIC_SITE_URL`) |
 
 [1] **Prisma tooling:** `prisma.config.ts` reads `DATABASE_URL` and `DIRECT_URL` via `env()`, so they must exist in `.env` for `npm install` (postinstall `prisma generate`) and `npm run build`. Copy the syntactically valid placeholders from `.env.example` until you point them at Neon; no Postgres process is required on your machine for generation or production build.
 
@@ -106,7 +107,7 @@ To enable the admin dashboard at `/admin`:
 
 ```
 src/
-  app/            # Next.js App Router ((site) = nav chrome; (print) = resume PDF route without chrome)
+  app/            # Next.js App Router ((site) = nav chrome; `resume/layout` skips chrome for /resume/print)
   actions/        # Server Actions (contact form, inbox mutations)
   components/     # UI and section components
   content/        # Blog posts (MDX) and project/resume data
@@ -139,6 +140,8 @@ Set `published: false` to keep a post as a draft (hidden from listings and direc
 **Resume PDF (`public/resume.pdf`):** The file served at `/resume.pdf` may lag `resume.ts`. Treat **`src/content/resume.ts` as source of truth** for resume copy; regenerate the PDF in a dedicated change when you want the download to match.
 
 **Regenerate the PDF (automated):** With the site running locally (for example `npm run dev` on port 3000), run `npm run resume:pdf`. That uses Playwright to print the **print-first** route **`/resume/print`** (no site nav/footer; light layout) to `public/resume.pdf`. Override the origin with `RESUME_PDF_ORIGIN` if you use another host or port (for example `RESUME_PDF_ORIGIN=http://127.0.0.1:3001 npm run resume:pdf`).
+
+**Links inside the print resume:** Relative highlight `href` values (for example `/projects/...`) are expanded to absolute URLs for the print layout using **`getResumePdfLinkBase()`** (`src/lib/site-url.ts`): `mmaitland.dev` and local dev both map to **`https://www.mmaitland.dev`** so PDFs stay usable standalone. Forks can set **`NEXT_PUBLIC_RESUME_PDF_LINK_BASE`** (optional env) to override.
 
 ## Scripts
 

@@ -10,21 +10,36 @@ import {
   type ResumeHighlight,
 } from "@/content/resume";
 import { HighlightText } from "@/components/ui/highlight-text";
+import { getResumePdfLinkBase } from "@/lib/site-url";
+
+function resolveHrefForPdf(href: string, pdfLinkBase: string): string {
+  if (/^https?:\/\//i.test(href)) {
+    return href;
+  }
+  const base = pdfLinkBase.replace(/\/$/, "");
+  return href.startsWith("/") ? `${base}${href}` : `${base}/${href}`;
+}
 
 function ResumeHighlightLine({
   highlight,
   print,
+  pdfLinkBase,
 }: {
   highlight: ResumeHighlight;
   print: boolean;
+  pdfLinkBase?: string;
 }) {
   if (!highlight.href) {
     return <>{highlight.text}</>;
   }
-  const isExternal = /^https?:\/\//.test(highlight.href);
+  const href =
+    print && pdfLinkBase
+      ? resolveHrefForPdf(highlight.href, pdfLinkBase)
+      : highlight.href;
+  const isExternal = /^https?:\/\//.test(href);
   return (
     <a
-      href={highlight.href}
+      href={href}
       target={isExternal ? "_blank" : undefined}
       rel={isExternal ? "noopener noreferrer" : undefined}
       className={
@@ -45,6 +60,8 @@ export function ResumeDocument({
   variant: "web" | "print";
   publicEmail: string;
 }) {
+  const pdfLinkBase = variant === "print" ? getResumePdfLinkBase() : undefined;
+
   if (variant === "print") {
     return (
       <div
@@ -108,7 +125,11 @@ export function ResumeDocument({
                   <ul className="mt-2 list-disc space-y-0.5 pl-4 text-[10pt] text-neutral-800">
                     {item.highlights.map((highlight, index) => (
                       <li key={`${highlight.text}-${index}`}>
-                        <ResumeHighlightLine highlight={highlight} print />
+                        <ResumeHighlightLine
+                          highlight={highlight}
+                          print
+                          pdfLinkBase={pdfLinkBase}
+                        />
                       </li>
                     ))}
                   </ul>

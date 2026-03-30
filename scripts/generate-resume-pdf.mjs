@@ -50,6 +50,8 @@ async function main() {
       );
     }
 
+    await page.evaluate(() => document.fonts.ready);
+
     await page.pdf({
       path: outPath,
       format: "Letter",

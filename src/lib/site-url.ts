@@ -22,3 +22,31 @@ export function getSiteUrl() {
 
   return LOCAL_SITE_URL;
 }
+
+const CANONICAL_MMAITLAND_WWW = "https://www.mmaitland.dev";
+
+/**
+ * Base URL for resolving relative `href` values in the print resume / PDF.
+ * Standalone PDFs should not rely on relative links. Override with
+ * NEXT_PUBLIC_RESUME_PDF_LINK_BASE for forks or unusual deploy hosts.
+ */
+export function getResumePdfLinkBase(): string {
+  const override = process.env.NEXT_PUBLIC_RESUME_PDF_LINK_BASE?.trim();
+  if (override) {
+    return override.replace(/\/$/, "");
+  }
+
+  const site = getSiteUrl().replace(/\/$/, "");
+  try {
+    const { hostname } = new URL(site);
+    if (hostname === "mmaitland.dev" || hostname === "www.mmaitland.dev") {
+      return CANONICAL_MMAITLAND_WWW;
+    }
+    if (hostname === "localhost" || hostname === "127.0.0.1") {
+      return CANONICAL_MMAITLAND_WWW;
+    }
+    return site;
+  } catch {
+    return CANONICAL_MMAITLAND_WWW;
+  }
+}
