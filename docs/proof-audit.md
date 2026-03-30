@@ -1,9 +1,28 @@
 # Portfolio Proof Audit
 
-This document is the execution gate for messaging changes.  
-Phase work should prefer **softening claims over inventing placeholder proof**.
+This document is the **execution gate for messaging changes**. Prefer **softening claims over inventing placeholder proof**.
 
-**Homepage composition:** the live homepage is intentionally minimal (Hero, ProofStrip, FeaturedProjects only). That is a **product choice**, not a deferred structural fix. Optional sections such as "work with me" or "recent writing" are additive polish, not required for narrative coherence.
+**Historical baseline:** The audit table in § [Living audit (March 2026)](#living-audit-march-2026) replaces the February 2026 snapshot. Earlier rows that cited removed copy (for example hero “build log” wording, blog “Notes From the Build,” or missing CI links on the proof strip) reflected an older state and are **not** carried forward verbatim.
+
+**Homepage composition:** The live homepage is intentionally minimal (Hero, ProofStrip, FeaturedProjects only). That is a **product choice**, not a deferred structural fix.
+
+---
+
+## Current status (summary)
+
+What changed since the original baseline:
+
+- **Hero** — No longer frames the site as an active “build log”; headline and body tie Auxillium/Full Swing support to web and audio work explicitly.
+- **Proof strip** — Portfolio tile **surfaces CI and test links** via `proofLinks` and `linkPick` in `proof-strip.tsx` (artifact, decision record, CI or test). Full Swing and StringFlux tiles still summarize; deep proof stays on case studies.
+- **Case studies** — StringFlux includes a **Validation boundary** block (true now / being validated / not yet claimed). Full Swing includes a **branch elimination** table. Portfolio case study **proof links** include CI workflow, env tests, contact tests, and case study + decision record.
+- **Projects page** — Copy and metadata separate **featured case studies** from **experiments** in the header and description.
+- **About** — Section title and lead are **method-first** (“Systems Diagnosis, Then Delivery” and layered-failure framing).
+- **Resume** — **Tiered skills** (`core` / `working` / `familiar`) include **C++, JUCE, and DSP** under Production / Working.
+- **Blog listing** — Positioning is outward-facing (“Engineering Notes and Decision Records,” decision records and troubleshooting), not in-progress diary framing.
+
+**Still optional (not blocking):** A single hero line linking to “how claims are backed” (projects/blog); formal **post-type taxonomy** in MDX; tightening `knownLimits` / summary density; **`public/resume.pdf`** sync with `resume.ts` (see Deferred follow-up).
+
+---
 
 ## Locked data contracts (before implementation)
 
@@ -12,41 +31,38 @@ Phase work should prefer **softening claims over inventing placeholder proof**.
 
 ## Audit row schema
 
-Each claim uses one row with this exact shape:
+Each row:
 
-`surface -> claim -> current proof -> proof gap -> action (keep | soften | add evidence)`
+`surface -> claim -> current proof -> remaining gap (if any) -> suggested action`
 
-## Current audit (baseline)
+## Living audit (March 2026)
 
-| Surface | Claim | Current proof | Proof gap | Action |
+| Surface | Claim | Current proof | Remaining gap | Suggested action |
 | --- | --- | --- | --- | --- |
-| `src/components/sections/hero.tsx` | Multi-domain identity (web + DSP + troubleshooting) is a coherent operating model | Name + role badge + Auxillium detail in hero body | No direct method/proof statement on homepage hero itself | add evidence |
-| `src/components/sections/hero.tsx` | Site is an active build log ("what I'm learning") | Explicit sentence in hero body | Undercuts senior shipping signal at top of funnel | soften |
-| `src/app/about/page.tsx` | About section frames a disciplined engineering method | About page title/description mention broad background | Header currently reads broad identity list ("Developer, Builder, Technical Support") instead of method-led framing | soften |
-| `src/components/sections/proof-strip.tsx` | Full Swing support uses repeatable triage methodology | Links to Full Swing case study | Needs one deeper artifact callout visible from strip | add evidence |
-| `src/components/sections/proof-strip.tsx` | Site production reliability decisions are documented | Link to contact decision record post | Lacks direct CI/test link from this surface | add evidence |
-| `src/components/sections/proof-strip.tsx` | StringFlux has transient-aware and safe oversampling behavior | Link to StringFlux case study | Missing explicit true-now vs not-yet-claimed framing | add evidence |
-| `src/app/projects/page.tsx` | Projects page separates strongest evidence from exploratory work | `ProjectGrid` separates featured vs experiments visually | Header copy still bundles professional work + side projects + experiments as one layer | soften |
-| `src/content/resume.ts` | Resume summary communicates focused systems diagnosis + constrained building approach | Current summary includes support + web context | Summary remains broad and keyword-heavy | soften |
-| `src/content/resume.ts` | Skills communicate current strengths accurately | Flat list contains broad + older items together | No tiering; C++/JUCE/DSP absent from skills list | add evidence |
-| `src/app/projects/portfolio-site/page.tsx` | Portfolio case study shows production-ready safeguards | Safeguards list + evidence links + architecture artifact | Evidence links missing CI workflow, env tests, contact action tests | add evidence |
-| `src/app/projects/portfolio-site/page.tsx` | "Where it stands" reflects a strong current state | Lists live behaviors | Ends with weak "still iterating" sentence | soften |
-| `src/app/projects/full-swing-tech-support/page.tsx` | Full Swing case study proves multi-layer diagnosis under constraints | Workflow, incident pattern, and evidence links exist | Needs denser ruled-out-layers artifact/table for faster credibility scan | add evidence |
-| `src/app/projects/stringflux/page.tsx` | StringFlux claims are engineering-grounded and bounded | Architecture, constraints, tradeoffs, validation checks, links | No explicit "true now / being validated / not claimed yet" block | add evidence |
-| `src/app/blog/page.tsx` | Blog is outward-facing engineering utility | Current copy says "Notes From the Build" + in-progress framing | Positioning still inward; no formal post type taxonomy yet | soften |
+| `hero.tsx` | Multi-domain identity (support + web + DSP + music) reads as one coherent story | Pill, name, discipline h2, Auxillium/Full Swing body, StringFlux + site + music | No single CTA to “where proof lives” (projects / case studies) | optional: add one proof-forward link line |
+| `about/page.tsx` + `about-content.tsx` | About frames diagnosis-and-delivery method | Method-led title, opening on multi-layer failures, Auxillium context | None material | keep |
+| `proof-strip.tsx` | Full Swing: repeatable triage under constraints | Links to case study + playbook; case study includes workflow, incident pattern, branch table | Strip is still a summary; artifact detail is on the case study page | keep |
+| `proof-strip.tsx` | Portfolio: production safeguards and verifiable automation | Copy mentions CI + smoke; `proofLinks` + `linkPick` expose artifact, decision record, **CI**, **tests** | None material | keep |
+| `proof-strip.tsx` | StringFlux: bounded DSP / oversampling claims | Copy defers benchmarks; links to case study + decision log; case study has validation boundary + `knownLimits` in data | Strip does not inline validation boundary (by design) | keep |
+| `projects/page.tsx` | Strongest evidence is visually and verbally separated from experiments | Section header + metadata describe featured-first vs experiments | None material | keep |
+| `resume.ts` | Skills match claimed strengths | Tiered skills; C++/JUCE/DSP in working tier | Summary is still dense | optional: shorten summary |
+| `projects/portfolio-site/page.tsx` | Portfolio case study matches repo reality | Safeguards list, architecture artifact, full `proofLinks` (case study, decision record, tests, CI) | `knownLimits` still notes broad dynamic routes | optional: soften when narrowed |
+| `projects/full-swing-tech-support/page.tsx` | Multi-layer diagnosis is defensible publicly | Workflow, incident pattern, branch elimination table, evidence links | None material | keep |
+| `projects/stringflux/page.tsx` | Engineering claims are grounded and bounded | Architecture, constraints, tradeoffs, validation checks, **validation boundary**, shared evidence footer | None material | keep |
+| `blog/page.tsx` | Blog reads as useful engineering writing, not a dev diary | Title, description, and list alignment with decision records / troubleshooting | No formal post-type taxonomy in frontmatter | optional: future taxonomy |
 
 ## Phase 2 implementation guardrail
 
-Phase 2 is complete only if both commands pass after `Project` model changes:
+After `Project` model changes, both must pass:
 
 - `npm test`
 - `npm run build`
 
 ## Scope guardrail
 
-Do not rewrite experiment projects during Phases 1-3 unless they block shared components.
+Do not rewrite experiment projects during focused proof passes unless they block shared components or tests.
 
 ## Deferred follow-up
 
 - `public/resume.pdf` is intentionally lagging behind current `src/content/resume.ts` copy.
-- PDF regeneration/sync is deferred to a dedicated follow-up commit to keep proof-posture changes isolated and reviewable.
+- PDF regeneration/sync is deferred to a dedicated change set so proof and content edits stay reviewable.

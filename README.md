@@ -31,6 +31,10 @@ Screenshots from the production deployment (1280px viewport).
 - **Resend** for contact form emails
 - **Upstash Redis** for server-side rate limiting
 
+**Auth.js (next-auth):** The app uses **Auth.js v5** via the `next-auth` package, which is still published as a **5.x beta** while the stable v5 line and docs fully settle. This repo **pins a specific beta** and only enables admin GitHub OAuth when the required env vars are present, so production behavior is gated and testable. Staying on beta is a deliberate tradeoff for **App Router + Auth.js v5 integration**; plan to **revisit the pin** when an appropriate stable release is available and migration cost is low.
+
+**Branching and releases:** Work merges into **`main`** through **pull requests**; CI on `main` runs **lint**, **unit/data tests**, **production build**, and **Playwright smoke tests**. Treat **green `main`** as the release line for deployment (for example Vercel production from `main`).
+
 ## Getting Started
 
 ```powershell
