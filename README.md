@@ -14,6 +14,15 @@ This project is a **professional portfolio**, not a build diary. The intent is t
 - **Production-shaped engineering.** Optional services (database, auth, email) are **gated by typed env** so the app runs and tests cleanly without them; contact and admin flows degrade predictably when configuration is partial.
 - **CI as part of the story.** Lint, unit/data tests, production build, and Playwright smoke on `main` back the idea that the repo is maintained to the same standard the site describes.
 
+## Maintenance
+
+- **Weekly:** Ship one proof/content task and one polish/maintenance task. If homepage, featured-project, or resume-adjacent copy changed, skim [docs/proof-audit.md](docs/proof-audit.md) before merge and update any row whose public claim moved.
+- **Weekly:** For messaging changes, answer this in the PR: **what proof got stronger, or what language got softer?**
+- **Publishing cadence:** Aim for one short post per maintenance cycle (for example each four-week rotation) when possible, even if brief, as long as it has a clear job: decision, tradeoff, or incident pattern.
+- **Monthly:** Do one resume parity check. After any user-visible `src/content/resume.ts` change, run `npm run resume:pdf` with the dev server running so `public/resume.pdf` does not drift.
+- **Monthly:** Re-check canonical URL / metadata consistency, featured-project proof links, and dependency hygiene so the public story and shipped repo stay aligned.
+- **Definition of done:** Run `npm run lint`, `npm test`, and `npm run build`. If nav, focus, or keyboard behavior changed, also run `npx playwright test`.
+
 ## Preview
 
 Screenshots from the production deployment (1280px viewport).
@@ -165,11 +174,11 @@ For merge policy, author identity checks, and copy/encoding guardrails, see [CON
 
 Use clear, imperative commit subjects (for example: `Fix contact rate limit when Redis is unavailable`). Avoid redeploy-only checkpoints and trailing vendor or tool-generated footer lines unless a policy explicitly requires them.
 
-Optional: from the repo root, run `git config commit.template .gitmessage` to use the shared [commit template](.gitmessage). The first line of the message must not start with `#` (Git strips comment lines). That template is a local reminder only—Git does not enforce commit message style.
+Optional: from the repo root, run `git config commit.template .gitmessage` to use the shared [commit template](.gitmessage). The first line of the message must not start with `#` (Git strips comment lines). That template is a local reminder only - Git does not enforce commit message style.
 
 ## Git history
 
-Rewriting `main` with `git rebase`, `git filter-repo`, or similar and force-pushing has collaboration and fork tradeoffs—plan with anyone who depends on the repo.
+Rewriting `main` with `git rebase`, `git filter-repo`, or similar and force-pushing has collaboration and fork tradeoffs - plan with anyone who depends on the repo.
 
 - **Commit message noise only** (WIP, checkpoints, vendor footers): clearer messages going forward are enough for many projects; rewriting history is optional polish if old noise still bothers you.
 - **Secrets that ever reached Git history**: treat that as a **security incident**, not cosmetics. **Rotate and revoke** exposed credentials first, run a dedicated secret scan on full history, and **rewrite history** (or archive this repo and publish a clean replacement) so the secrets are not recoverable from any branch. Optional rewrite is the wrong framing here.
@@ -178,6 +187,6 @@ Rewriting `main` with `git rebase`, `git filter-repo`, or similar and force-push
 
 Set the repository **About** description (mirrors `package.json` / this README):
 
-> Evidence-forward portfolio and case studies for mmaitland.dev — Next.js, MDX, Prisma, optional admin and auth.
+> Evidence-forward portfolio and case studies for mmaitland.dev - Next.js, MDX, Prisma, optional admin and auth.
 
 **Suggested topics** (improve discoverability): `nextjs`, `typescript`, `tailwindcss`, `mdx`, `prisma`, `postgresql`, `portfolio`, `next-auth`, `server-actions`, `framer-motion`, `vitest`

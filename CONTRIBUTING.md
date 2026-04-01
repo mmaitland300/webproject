@@ -29,12 +29,12 @@ Rules:
 - Add `scope` when a specific area is clear (`ci`, `admin`, `projects`, `docs`, etc.).
 - Recommended types: `feat`, `fix`, `refactor`, `test`, `docs`, `chore`.
 - Avoid generic subjects like `update` or `misc` for local WIP commits.
-- GitHub merge commits titled `Merge pull request #…` are normal on `main` and do not need to follow the `type(scope):` pattern.
+- GitHub merge commits titled `Merge pull request #...` are normal on `main` and do not need to follow the `type(scope):` pattern.
 
 ## Merge policy
 
 - Land work on **`main`** through **pull requests** with **CI green** before merge.
-- **Default for this repo:** use GitHub’s **merge commit** option (not squash-only) so PR boundaries stay visible in history. Write a clear **PR title** (and edit the merge commit subject when GitHub allows) so `git log` stays readable—conventional `type(scope):` titles are welcome when they fit.
+- **Default for this repo:** use GitHub's **merge commit** option (not squash-only) so PR boundaries stay visible in history. Write a clear **PR title** (and edit the merge commit subject when GitHub allows) so `git log` stays readable - conventional `type(scope):` titles are welcome when they fit.
 - **Squash merge** is fine for small, single-concern PRs when you want one commit on `main`.
 - Keep each PR focused on one concern; avoid unrelated drive-by changes in the same PR.
 
@@ -43,12 +43,12 @@ Rules:
 Before opening a PR or committing:
 
 1. Verify identity:
-   - `git config user.name`
-   - `git config user.email`
+  - `git config user.name`
+  - `git config user.email`
 2. Confirm it matches your chosen project identity (pick one and keep it stable).
 3. If signing in via another machine/account, re-check before first commit.
 4. After commit, confirm author on latest commit:
-   - `git log -1 --format='%h %an <%ae> %s'`
+  - `git log -1 --format='%h %an <%ae> %s'`
 
 ## Text and Encoding Guardrails
 

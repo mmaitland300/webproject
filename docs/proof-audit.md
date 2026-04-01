@@ -4,7 +4,7 @@ This document is the **execution gate for messaging changes**. Prefer **softenin
 
 **Shared intent:** The README **Goals and intent** section states the same bar in one place for contributors and future you: evidence-backed positioning, featured-vs-experiment separation, and production-shaped defaults. This file is the **checklist and surface map** for keeping the live site honest as copy and data evolve.
 
-**Historical baseline:** The audit table in § [Living audit (March 2026)](#living-audit-march-2026) replaces the February 2026 snapshot. Earlier rows that cited removed copy (for example hero “build log” wording, blog “Notes From the Build,” or missing CI links on the proof strip) reflected an older state and are **not** carried forward verbatim.
+**Historical baseline:** The audit table in [Living audit (March 2026)](#living-audit-march-2026) replaces the February 2026 snapshot. Earlier rows that cited removed copy (for example hero "build log" wording, blog "Notes From the Build," or missing CI links on the proof strip) reflected an older state and are **not** carried forward verbatim.
 
 **Homepage composition:** The live homepage is intentionally minimal (Hero, ProofStrip, FeaturedProjects only). That is a **product choice**, not a deferred structural fix.
 
@@ -14,13 +14,13 @@ This document is the **execution gate for messaging changes**. Prefer **softenin
 
 What changed since the original baseline:
 
-- **Hero** — No longer frames the site as an active “build log”; headline and body tie Auxillium/Full Swing support to web and audio work explicitly. A short line under the body links **case studies** and **engineering notes** as where constraints, evidence, and limits are documented.
-- **Proof strip** — Portfolio tile **surfaces CI and test links** via `proofLinks` and `linkPick` in `proof-strip.tsx` (artifact, decision record, CI or test). Full Swing and StringFlux tiles still summarize; deep proof stays on case studies.
-- **Case studies** — StringFlux includes a **Validation boundary** block (true now / being validated / not yet claimed). Full Swing includes a **branch elimination** table. Portfolio case study **proof links** include CI workflow, env tests, contact tests, and case study + decision record.
-- **Projects page** — Copy and metadata separate **featured case studies** from **experiments** in the header and description.
-- **About** — Section title and lead are **method-first** (“Systems Diagnosis, Then Delivery” and layered-failure framing).
-- **Resume** — **Tiered skills** (`core` / `working` / `familiar`) include **C++, JUCE, and DSP** under Production / Working.
-- **Blog listing** — Positioning is outward-facing (“Engineering Notes and Decision Records,” decision records and troubleshooting), not in-progress diary framing.
+- **Hero** - No longer frames the site as an active "build log"; headline and body tie Auxillium/Full Swing support to web and audio work explicitly. A short line under the body links **case studies** and **engineering notes** as where constraints, evidence, and limits are documented.
+- **Proof strip** - Portfolio tile **surfaces CI and test links** via `proofLinks` and `linkPick` in `proof-strip.tsx` (artifact, decision record, CI or test). Full Swing and StringFlux tiles still summarize; deep proof stays on case studies.
+- **Case studies** - StringFlux includes a **Validation boundary** block (true now / being validated / not yet claimed). Full Swing includes a **branch elimination** table. Portfolio case study **proof links** include CI workflow, env tests, contact tests, and case study + decision record.
+- **Projects page** - Copy and metadata separate **featured case studies** from **experiments** in the header and description.
+- **About** - Section title and lead are **method-first** ("Systems Diagnosis, Then Delivery" and layered-failure framing).
+- **Resume** - **Tiered skills** (`core` / `working` / `familiar`) include **C++, JUCE, and DSP** under Production / Working.
+- **Blog listing** - Positioning is outward-facing ("Engineering Notes and Decision Records," decision records and troubleshooting), not in-progress diary framing.
 
 **Still optional (not blocking):** Formal **post-type taxonomy** in MDX; tightening `knownLimits` / summary density; regenerating **`public/resume.pdf`** to match `resume.ts` (source of truth is `resume.ts`; see README Content Management and Deferred follow-up).
 
