@@ -16,6 +16,7 @@
     "test": "vitest run",
     "test:e2e": "playwright test",
     "resume:pdf": "node scripts/generate-resume-pdf.mjs",
+    "favicon:generate": "node scripts/generate-favicon.mjs",
     "postinstall": "prisma generate"
   },
   "dependencies": {
