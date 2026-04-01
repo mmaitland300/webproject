@@ -6,31 +6,54 @@ import { fileURLToPath } from "node:url";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, "..");
 
-const size = 64;
-const pixels = new Uint8Array(size * size * 4);
+const iconSize = 64;
 
 const colors = {
   transparent: [0, 0, 0, 0],
-  badge: [11, 15, 18, 255],
-  ring: [24, 33, 43, 255],
-  cyan: [130, 212, 255, 255],
-  purple: [170, 140, 250, 255],
-  highlight: [232, 239, 249, 255],
+  compareBackground: [8, 11, 17, 255],
+  compareDivider: [28, 35, 48, 255],
+  badge: [9, 12, 18, 255],
+  ring: [22, 28, 40, 255],
+  mark: [178, 224, 255, 255],
 };
 
-function setPixel(x, y, color) {
-  if (x < 0 || x >= size || y < 0 || y >= size) {
+function createCanvas(width, height, background = colors.transparent) {
+  const pixels = new Uint8Array(width * height * 4);
+
+  for (let index = 0; index < pixels.length; index += 4) {
+    pixels[index] = background[0];
+    pixels[index + 1] = background[1];
+    pixels[index + 2] = background[2];
+    pixels[index + 3] = background[3];
+  }
+
+  return { width, height, pixels };
+}
+
+function setPixel(canvas, x, y, color) {
+  if (x < 0 || x >= canvas.width || y < 0 || y >= canvas.height) {
     return;
   }
 
-  const index = (y * size + x) * 4;
-  pixels[index] = color[0];
-  pixels[index + 1] = color[1];
-  pixels[index + 2] = color[2];
-  pixels[index + 3] = color[3];
+  const index = (y * canvas.width + x) * 4;
+  canvas.pixels[index] = color[0];
+  canvas.pixels[index + 1] = color[1];
+  canvas.pixels[index + 2] = color[2];
+  canvas.pixels[index + 3] = color[3];
 }
 
-function fillCircle(centerX, centerY, radius, color) {
+function fillRect(canvas, startX, startY, width, height, color) {
+  const endX = startX + width;
+  const endY = startY + height;
+
+  for (let y = startY; y < endY; y += 1) {
+    for (let x = startX; x < endX; x += 1) {
+      setPixel(canvas, x, y, color);
+    }
+  }
+}
+
+function fillCircle(canvas, centerX, centerY, radius, color) {
   const minX = Math.floor(centerX - radius);
   const maxX = Math.ceil(centerX + radius);
   const minY = Math.floor(centerY - radius);
@@ -43,24 +66,13 @@ function fillCircle(centerX, centerY, radius, color) {
       const dy = y + 0.5 - centerY;
 
       if (dx * dx + dy * dy <= radiusSquared) {
-        setPixel(x, y, color);
+        setPixel(canvas, x, y, color);
       }
     }
   }
 }
 
-function fillRect(startX, startY, width, height, color) {
-  const endX = startX + width;
-  const endY = startY + height;
-
-  for (let y = startY; y < endY; y += 1) {
-    for (let x = startX; x < endX; x += 1) {
-      setPixel(x, y, color);
-    }
-  }
-}
-
-function fillSegment(x1, y1, x2, y2, thickness, color) {
+function fillSegment(canvas, x1, y1, x2, y2, thickness, color) {
   const minX = Math.floor(Math.min(x1, x2) - thickness);
   const maxX = Math.ceil(Math.max(x1, x2) + thickness);
   const minY = Math.floor(Math.min(y1, y2) - thickness);
@@ -91,21 +103,42 @@ function fillSegment(x1, y1, x2, y2, thickness, color) {
       const dy = pointY - nearestY;
 
       if (dx * dx + dy * dy <= radiusSquared) {
-        setPixel(x, y, color);
+        setPixel(canvas, x, y, color);
       }
     }
   }
 }
 
-fillCircle(size / 2, size / 2, 28, colors.ring);
-fillCircle(size / 2, size / 2, 26, colors.badge);
-fillRect(14, 16, 4, 32, colors.cyan);
-fillRect(46, 16, 4, 32, colors.purple);
-fillSegment(16, 18, 28, 40, 7, colors.cyan);
-fillSegment(48, 18, 36, 40, 7, colors.purple);
-fillSegment(28, 40, 32, 31, 6, colors.highlight);
-fillSegment(32, 31, 36, 40, 6, colors.highlight);
-fillCircle(32, 14, 3, colors.highlight);
+function drawBadge(canvas, offsetX = 0) {
+  fillCircle(canvas, offsetX + 32, 32, 28, colors.ring);
+  fillCircle(canvas, offsetX + 32, 32, 26, colors.badge);
+}
+
+function drawSolidM(canvas, offsetX = 0) {
+  drawBadge(canvas, offsetX);
+  fillRect(canvas, offsetX + 14, 14, 8, 36, colors.mark);
+  fillRect(canvas, offsetX + 42, 14, 8, 36, colors.mark);
+  fillSegment(canvas, offsetX + 18, 16, offsetX + 32, 34, 9, colors.mark);
+  fillSegment(canvas, offsetX + 46, 16, offsetX + 32, 34, 9, colors.mark);
+}
+
+function drawSolidMM(canvas, offsetX = 0) {
+  drawBadge(canvas, offsetX);
+  // Asymmetric fused MM: a dominant left M with a narrower accent M,
+  // pushed inward to preserve padding and with deeper inner valleys
+  // so the double-letter read survives favicon sizes.
+  fillRect(canvas, offsetX + 17, 16, 6, 31, colors.mark);
+  fillRect(canvas, offsetX + 29, 18, 5, 29, colors.mark);
+  fillRect(canvas, offsetX + 40, 21, 4, 23, colors.mark);
+  fillRect(canvas, offsetX + 47, 19, 4, 25, colors.mark);
+
+  fillSegment(canvas, offsetX + 20, 18, offsetX + 25, 33, 6, colors.mark);
+  fillSegment(canvas, offsetX + 25, 33, offsetX + 31, 15, 6, colors.mark);
+  fillSegment(canvas, offsetX + 31, 15, offsetX + 36, 36, 5, colors.mark);
+  fillSegment(canvas, offsetX + 36, 36, offsetX + 41, 23, 5, colors.mark);
+  fillSegment(canvas, offsetX + 41, 23, offsetX + 45, 32, 4, colors.mark);
+  fillSegment(canvas, offsetX + 45, 32, offsetX + 49, 20, 4, colors.mark);
+}
 
 function crc32(buffer) {
   let crc = 0xffffffff;
@@ -190,10 +223,30 @@ function writeBinary(path, data) {
   writeFileSync(path, data);
 }
 
-const rgbaBuffer = Buffer.from(pixels);
-const png = createPng(rgbaBuffer, size, size);
-const ico = createIco(png, size, size);
+function writePng(path, canvas) {
+  writeBinary(path, createPng(Buffer.from(canvas.pixels), canvas.width, canvas.height));
+}
 
-writeBinary(join(root, "docs/favicon-preview.png"), png);
-writeBinary(join(root, "public/images/favicon.png"), png);
-writeBinary(join(root, "src/app/favicon.ico"), ico);
+const faviconCanvas = createCanvas(iconSize, iconSize);
+drawSolidM(faviconCanvas);
+
+const mmPreviewCanvas = createCanvas(iconSize, iconSize);
+drawSolidMM(mmPreviewCanvas);
+
+const comparisonCanvas = createCanvas(152, 64, colors.compareBackground);
+drawSolidM(comparisonCanvas, 8);
+drawSolidMM(comparisonCanvas, 80);
+fillRect(comparisonCanvas, 75, 10, 2, 44, colors.compareDivider);
+
+const faviconPng = createPng(
+  Buffer.from(faviconCanvas.pixels),
+  faviconCanvas.width,
+  faviconCanvas.height
+);
+const faviconIco = createIco(faviconPng, faviconCanvas.width, faviconCanvas.height);
+
+writeBinary(join(root, "src/app/favicon.ico"), faviconIco);
+writeBinary(join(root, "public/images/favicon.png"), faviconPng);
+writePng(join(root, "docs/favicon-preview.png"), faviconCanvas);
+writePng(join(root, "docs/favicon-preview-mm.png"), mmPreviewCanvas);
+writePng(join(root, "docs/favicon-preview-compare.png"), comparisonCanvas);
