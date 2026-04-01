@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { MainContentAnchor } from "@/components/layout/main-content-anchor";
 import { FileText, Layers3, Music2, Zap, ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { StringFluxPluginPreview } from "@/components/case-studies/stringflux-plugin-preview";
@@ -35,6 +36,7 @@ const howItWorks = [
 export default function StringFluxPage() {
   return (
     <div className="py-24">
+      <MainContentAnchor />
       <div className="mx-auto max-w-4xl px-6">
         <header className="mb-16 text-center">
           <div className="mb-4 flex flex-wrap justify-center gap-2">

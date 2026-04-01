@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { MainContentAnchor } from "@/components/layout/main-content-anchor";
 import { AboutContent } from "@/components/sections/about-content";
 import { SectionHeader } from "@/components/ui/section-header";
 import { getPublicContactEmail } from "@/lib/site-contact";
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <div className="py-32">
+      <MainContentAnchor />
       <div className="mx-auto max-w-4xl px-6">
         <SectionHeader
           eyebrow="About"

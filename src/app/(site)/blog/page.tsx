@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { MainContentAnchor } from "@/components/layout/main-content-anchor";
 import { getAllPosts, getAllTags } from "@/lib/mdx";
 import { BlogList } from "@/components/sections/blog-list";
 import { SectionHeader } from "@/components/ui/section-header";
@@ -15,6 +16,7 @@ export default function BlogPage() {
 
   return (
     <div className="py-32">
+      <MainContentAnchor />
       <div className="mx-auto max-w-4xl px-6">
         <SectionHeader
           eyebrow="Writing"

@@ -19,13 +19,7 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
       </a>
       <div className="animated-bg-glow" aria-hidden="true" />
       <Navbar />
-      <main
-        id="main-content"
-        tabIndex={-1}
-        className="flex-1 relative z-10 scroll-mt-16 outline-none"
-      >
-        {children}
-      </main>
+      <main className="flex-1 relative z-10">{children}</main>
       <Footer />
     </div>
   );

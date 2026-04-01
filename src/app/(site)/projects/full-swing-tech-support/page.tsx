@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { ArrowLeft, AlertTriangle, CheckCircle2, Wrench } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { MainContentAnchor } from "@/components/layout/main-content-anchor";
 import { TriageFlowDiagram } from "@/components/case-studies/triage-flow-diagram";
 import { CaseStudyEvidenceFooter } from "@/components/sections/case-study-evidence-footer";
 import { ProjectComments } from "@/components/sections/project-comments";
@@ -112,6 +113,7 @@ export default function FullSwingCaseStudyPage() {
 
   return (
     <div className="py-24">
+      <MainContentAnchor />
       <div className="mx-auto max-w-4xl px-6">
         <Link
           href="/projects"

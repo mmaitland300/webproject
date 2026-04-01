@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { MainContentAnchor } from "@/components/layout/main-content-anchor";
 import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import rehypeSlug from "rehype-slug";
@@ -51,6 +52,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <div className="py-32">
+      <MainContentAnchor />
       <div className="mx-auto max-w-6xl px-6">
         <Link
           href="/blog"

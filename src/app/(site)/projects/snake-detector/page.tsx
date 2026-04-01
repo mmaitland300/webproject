@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { MainContentAnchor } from "@/components/layout/main-content-anchor";
 import { Suspense } from "react";
 import { ArrowLeft, BarChart3, FlaskConical, ListChecks } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -36,6 +37,7 @@ const artifactTable = [
 export default function SnakeDetectorCaseStudyPage() {
   return (
     <div className="py-24">
+      <MainContentAnchor />
       <div className="mx-auto max-w-4xl px-6">
         <Link
           href="/projects"

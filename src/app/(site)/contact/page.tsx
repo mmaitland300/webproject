@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { MainContentAnchor } from "@/components/layout/main-content-anchor";
 import { ContactForm } from "@/components/sections/contact-form";
 import { Mail, MapPin } from "lucide-react";
 import { SectionHeader } from "@/components/ui/section-header";
@@ -14,6 +15,7 @@ export default function ContactPage() {
   const publicEmail = getPublicContactEmail();
   return (
     <div className="py-32">
+      <MainContentAnchor />
       <div className="mx-auto max-w-4xl px-6">
         <SectionHeader
           eyebrow="Contact"

@@ -14,7 +14,10 @@ test.describe("skip link", () => {
 
     await skip.press("Enter");
 
-    const main = page.locator("#main-content");
-    await expect(main).toBeFocused();
+    const target = page.locator("#main-content");
+    await expect(target).toBeFocused();
+    await expect
+      .poll(() => page.evaluate(() => window.scrollY))
+      .toBeGreaterThan(80);
   });
 });

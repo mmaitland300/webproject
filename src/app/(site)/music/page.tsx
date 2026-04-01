@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ExternalLink, Music2 } from "lucide-react";
+import { MainContentAnchor } from "@/components/layout/main-content-anchor";
 import { LazySoundCloudTrack } from "@/components/sections/lazy-soundcloud-track";
 import { SectionHeader } from "@/components/ui/section-header";
 
@@ -40,6 +41,7 @@ const tracks = [
 export default function MusicPage() {
   return (
     <div className="py-32">
+      <MainContentAnchor />
       <div className="mx-auto max-w-4xl px-6">
         <div className="mb-12">
           <SectionHeader
