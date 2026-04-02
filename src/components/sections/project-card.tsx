@@ -234,8 +234,48 @@ export function ProjectCard({ project, index, compact }: ProjectCardProps) {
           </div>
         )}
 
-        {/* Links */}
-        <div className="flex items-center gap-3">
+        {/* Links: demo first, then case study, then code (GitHub). */}
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+          {internalDemoHref ? (
+            <Link
+              href={internalDemoHref}
+              className={
+                compact
+                  ? "flex items-center gap-1.5 text-sm font-medium text-cyan-400 hover:text-cyan-300 transition-colors"
+                  : "flex items-center gap-1.5 text-sm font-medium text-foreground hover:text-cyan-400 transition-colors"
+              }
+            >
+              <ExternalLink size={14} /> Try live demo
+            </Link>
+          ) : project.demo ? (
+            <a
+              href={project.demo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={
+                compact
+                  ? "flex items-center gap-1.5 text-sm font-medium text-cyan-400 hover:text-cyan-300 transition-colors"
+                  : "flex items-center gap-1.5 text-sm font-medium text-foreground hover:text-cyan-400 transition-colors"
+              }
+            >
+              <ExternalLink size={14} /> Try live demo
+            </a>
+          ) : null}
+          {internalCaseStudyHref ? (
+            <Link
+              href={internalCaseStudyHref}
+              className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <ExternalLink size={14} /> Case study
+            </Link>
+          ) : project.caseStudy ? (
+            <a
+              href={project.caseStudy}
+              className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <ExternalLink size={14} /> Case study
+            </a>
+          ) : null}
           {project.github && (
             <a
               href={project.github}
@@ -246,38 +286,6 @@ export function ProjectCard({ project, index, compact }: ProjectCardProps) {
               <Github size={14} /> Code
             </a>
           )}
-          {internalDemoHref ? (
-            <Link
-              href={internalDemoHref}
-              className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors"
-            >
-              <ExternalLink size={14} /> Demo
-            </Link>
-          ) : project.demo ? (
-            <a
-              href={project.demo}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors"
-            >
-              <ExternalLink size={14} /> Demo
-            </a>
-          ) : null}
-          {internalCaseStudyHref ? (
-            <Link
-              href={internalCaseStudyHref}
-              className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors"
-            >
-              <ExternalLink size={14} /> Case Study
-            </Link>
-          ) : project.caseStudy ? (
-            <a
-              href={project.caseStudy}
-              className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors"
-            >
-              <ExternalLink size={14} /> Case Study
-            </a>
-          ) : null}
           {project.iframe && (
             <button
               onClick={() => setIframeActive(!iframeActive)}

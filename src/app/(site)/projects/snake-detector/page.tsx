@@ -2,15 +2,26 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { MainContentAnchor } from "@/components/layout/main-content-anchor";
 import { Suspense } from "react";
-import { ArrowLeft, BarChart3, FlaskConical, ListChecks } from "lucide-react";
+import {
+  ArrowLeft,
+  BarChart3,
+  FlaskConical,
+  ListChecks,
+  AlertTriangle,
+  ExternalLink,
+  Github,
+} from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { buttonVariants } from "@/components/ui/button";
 import { ProjectComments } from "@/components/sections/project-comments";
 import { MlEvalWorkflowDiagram } from "@/components/case-studies/ml-eval-workflow-diagram";
+import { getProjectBySlug } from "@/content/projects";
+import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Snake Detector (CNN) Case Study",
+  title: "Snake Detector: Bounded CV Demo",
   description:
-    "How dataset hygiene, fixed splits, and confusion-matrix review stay ahead of naive accuracy on a small snake photo dataset.",
+    "A bounded snake vs no-snake demo with reproducible training workflow, explicit limits, and proof artifacts. Not species ID or field-ready wildlife classification.",
 };
 
 export const dynamic = "force-dynamic";
@@ -18,23 +29,33 @@ export const dynamic = "force-dynamic";
 const artifactTable = [
   {
     artifact: "Stratified train/val split",
-    purpose: "Keep class ratios stable so metrics reflect generalization, not a lucky split.",
+    purpose:
+      "Keep class ratios stable so metrics reflect generalization, not a lucky split.",
   },
   {
     artifact: "Augmentation policy (logged)",
-    purpose: "Make image-level changes comparable across runs instead of silently drifting.",
+    purpose:
+      "Make image-level changes comparable across runs instead of silently drifting.",
   },
   {
-    artifact: "Confusion matrix + per-class review",
-    purpose: "Surface which species are confused before touching model depth or width.",
+    artifact: "Confusion matrix + structured error review",
+    purpose:
+      "Surface which classes get confused before touching model depth or width.",
   },
   {
     artifact: "Run folder (config + metrics snapshot)",
-    purpose: "Reproduce any reported number without guessing which code version produced it.",
+    purpose:
+      "Reproduce any reported number without guessing which code version produced it.",
   },
 ];
 
 export default function SnakeDetectorCaseStudyPage() {
+  const project = getProjectBySlug("snake-detector");
+  if (!project?.github) {
+    throw new Error("Missing project data for snake-detector");
+  }
+  const demoUrl = project.demo;
+
   return (
     <div className="py-24">
       <MainContentAnchor />
@@ -46,7 +67,7 @@ export default function SnakeDetectorCaseStudyPage() {
           <ArrowLeft size={14} /> Back to projects
         </Link>
 
-        <header className="mb-12">
+        <header className="mb-10">
           <div className="mb-4 flex flex-wrap gap-2">
             <Badge variant="secondary">Computer Vision</Badge>
             <Badge variant="secondary">CNN</Badge>
@@ -54,34 +75,164 @@ export default function SnakeDetectorCaseStudyPage() {
             <Badge variant="secondary">Experiment</Badge>
           </div>
           <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            Snake Detector: evaluation-first CNN experiment
+            Snake Detector: a bounded computer-vision demo with reproducible proof
           </h1>
-          <p className="mt-4 max-w-3xl text-muted-foreground">
-            This page is the engineering story behind the repo: a small, noisy
-            classification problem where the main risk is fooling yourself with
-            headline accuracy. The proof is in the workflow and artifacts, not a
-            single leaderboard score.
+          <p className="mt-4 max-w-3xl text-muted-foreground leading-relaxed">
+            This project started as a model experiment and became a public-facing
+            demo only after the workflow, dataset boundary, and limitations were
+            made explicit. The point is not inflated accuracy claims; it is a
+            usable demo with honest evidence.
           </p>
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            {demoUrl ? (
+              <a
+                href={demoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={cn(buttonVariants({ variant: "default" }), "gap-2")}
+              >
+                <ExternalLink size={16} />
+                Try live demo
+              </a>
+            ) : (
+              <p className="max-w-md text-sm text-muted-foreground">
+                A public live demo link appears here once the hosted deployment is
+                wired for this site. Until then, use the proof package and repo
+                below.
+              </p>
+            )}
+            <a
+              href="#proof-package"
+              className={cn(buttonVariants({ variant: "outline" }))}
+            >
+              View proof package
+            </a>
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={cn(
+                buttonVariants({ variant: "ghost" }),
+                "text-muted-foreground"
+              )}
+            >
+              <Github size={16} className="mr-1.5" />
+              Code
+            </a>
+          </div>
         </header>
 
-        <section className="mb-10 rounded-xl border border-border bg-card/40 p-6">
+        <section
+          className="mb-10 rounded-xl border border-amber-500/35 bg-amber-500/5 p-6"
+          aria-labelledby="known-limits-heading"
+        >
           <div className="mb-3 flex items-center gap-2">
-            <FlaskConical className="h-5 w-5 text-cyan-400" />
-            <h2 className="text-xl font-semibold">Problem framing</h2>
+            <AlertTriangle className="h-5 w-5 shrink-0 text-amber-400" />
+            <h2 id="known-limits-heading" className="text-xl font-semibold">
+              Known limits
+            </h2>
           </div>
           <p className="text-sm leading-relaxed text-muted-foreground">
-            With limited images, class imbalance, and imperfect labels, the model
-            can look fine on aggregate accuracy while failing on the species that
-            matter for real use. The goal of this project was to keep every
-            training run comparable and to force error analysis before chasing
-            bigger architectures.
+            {project.knownLimits}
           </p>
         </section>
 
         <section className="mb-10 rounded-xl border border-border bg-card/40 p-6">
+          <h2 className="mb-3 text-xl font-semibold">Try it</h2>
+          {demoUrl ? (
+            <>
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                Open the{" "}
+                <a
+                  href={demoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-cyan-400 underline-offset-4 hover:underline"
+                >
+                  live demo
+                </a>{" "}
+                in a new tab. Upload a photo and get a bounded snake vs no-snake
+                prediction from the current public build.
+              </p>
+              <p className="mt-3 text-xs text-muted-foreground">
+                Note: the demo may take a few seconds to wake on first load while
+                the host cold-starts.
+              </p>
+            </>
+          ) : (
+            <p className="text-sm leading-relaxed text-muted-foreground">
+              When a public demo URL is configured for this site, this section
+              links to it. Until then, use the{" "}
+              <a
+                href="#proof-package"
+                className="text-cyan-400 underline-offset-4 hover:underline"
+              >
+                proof package
+              </a>{" "}
+              below and the training repo for reproducible runs.
+            </p>
+          )}
+        </section>
+
+        <section className="mb-10 rounded-xl border border-border bg-card/40 p-6">
+          <h2 className="mb-3 text-xl font-semibold">
+            What this demo is actually proving
+          </h2>
+          <ul className="list-inside list-disc space-y-2 text-sm text-muted-foreground">
+            <li>
+              <span className="font-medium text-foreground/90">
+                Deployment and inference path:
+              </span>{" "}
+              a working public endpoint with bounded inputs and outputs.
+            </li>
+            <li>
+              <span className="font-medium text-foreground/90">
+                Reproducibility:
+              </span>{" "}
+              the training and evaluation loop is scripted; artifacts and the repo
+              back the story on this page.
+            </li>
+            <li>
+              It does{" "}
+              <span className="font-medium text-foreground/90">not</span> prove
+              field-ready wildlife identification, species-level reliability, or
+              licensing-cleared training data suitable for commercial redistribution.
+            </li>
+          </ul>
+        </section>
+
+        <section className="mb-10 rounded-xl border border-border bg-card/40 p-6">
+          <h2 className="mb-3 text-xl font-semibold">How to use it</h2>
+          <ol className="list-inside list-decimal space-y-2 text-sm text-muted-foreground">
+            <li>Upload one image through the demo UI.</li>
+            <li>Review the prediction and confidence framing shown in the app.</li>
+            <li>
+              Read the known limits above before trusting the output for anything
+              beyond a narrow experiment.
+            </li>
+          </ol>
+        </section>
+
+        <section className="mb-10 rounded-xl border border-border bg-card/40 p-6">
+          <div className="mb-3 flex items-center gap-2">
+            <FlaskConical className="h-5 w-5 text-cyan-400" />
+            <h2 className="text-xl font-semibold">Why the project matters</h2>
+          </div>
+          <p className="text-sm leading-relaxed text-muted-foreground">
+            Most of the value is in dataset hygiene, fixed evaluation splits,
+            confusion-driven review, and refusing to let aggregate accuracy hide
+            weak classes. That discipline transfers directly to larger vision
+            projects where the failure mode is silent, not loud.
+          </p>
+        </section>
+
+        <section
+          id="proof-package"
+          className="mb-10 scroll-mt-16 rounded-xl border border-border bg-card/40 p-6"
+        >
           <div className="mb-3 flex items-center gap-2">
             <ListChecks className="h-5 w-5 text-purple-400" />
-            <h2 className="text-xl font-semibold">Artifacts (what gets saved)</h2>
+            <h2 className="text-xl font-semibold">Proof package (artifacts)</h2>
           </div>
           <MlEvalWorkflowDiagram />
           <div className="mt-4 overflow-x-auto">
@@ -112,10 +263,10 @@ export default function SnakeDetectorCaseStudyPage() {
             <h2 className="text-xl font-semibold">Where it stands</h2>
           </div>
           <p className="text-sm leading-relaxed text-muted-foreground">
-            The pipeline produces a repeatable training loop where poorly-performing
-            species surface in structured review instead of hiding behind aggregate
-            accuracy. The repo contains the full training flow, split configuration,
-            and evaluation scripts.
+            The repo holds the full training flow, split configuration, and
+            evaluation scripts. The public demo (when configured) is intentionally
+            narrow so visitors can try the behavior without mistaking it for a
+            general-purpose classifier.
           </p>
         </section>
 

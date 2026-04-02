@@ -1,8 +1,12 @@
+import { getSnakeDemoUrl } from "@/lib/snake-demo";
+
 /**
  * Promotion rule:
  * featured projects should have a case-study proof path (dedicated caseStudy page
  * with explicit artifacts/tradeoffs/current-state/evidence links).
  */
+const snakeDemoUrl = getSnakeDemoUrl();
+
 export type ProjectCategory = "featured" | "experiment";
 export type ProjectStatus = "in-progress" | "operational" | "shipped" | "archived";
 export type ProofLinkKind = "repo" | "test" | "ci" | "post" | "artifact";
@@ -200,14 +204,32 @@ export const projects: Project[] = [
   },
   {
     slug: "snake-detector",
-    title: "Snake Detector (CNN)",
+    title: "Snake Detector",
     description:
-      "A CNN image classifier for snake species. The interesting part wasn't the model, it was learning how much dataset quality matters. I spent more time on stratified splits, augmentation, and confusion-matrix-driven error review than on architecture.",
+      "A computer-vision experiment turned into a reproducible public demo. Upload a photo, get a bounded snake vs no-snake prediction, and inspect the workflow behind it.",
     problem:
-      "The raw dataset had class imbalance, noisy labels, and inconsistent image quality. Naive training runs looked fine on aggregate accuracy but generalized poorly.",
+      "The original prototype was easy to overstate: noisy data, uneven image quality, and weak licensing assumptions made headline accuracy a bad proxy for real reliability.",
     outcome:
-      "An end-to-end pipeline where every training run uses the same splits and metrics, and poor-performing classes surface in review instead of hiding in the average.",
+      "Now packaged as a repeatable workflow with a public-safe demo path, explicit limitations, and proof artifacts that show what the model can and cannot claim.",
+    status: snakeDemoUrl ? "operational" : "shipped",
+    evidence:
+      "Public case study, reproducible CLI flow, saved artifact, and legally safe demo boundary.",
+    knownLimits:
+      "Demo is a bounded snake vs no-snake experiment and should not be treated as species identification or field-safe classification.",
+    proofLinks: [
+      {
+        label: "Snake Detector case study",
+        href: "/projects/snake-detector",
+        kind: "artifact",
+      },
+      {
+        label: "Training repo",
+        href: "https://github.com/mmaitland300/Snake-detector",
+        kind: "repo",
+      },
+    ],
     tags: ["Python", "Machine Learning", "CNN", "Computer Vision"],
+    demo: snakeDemoUrl,
     github: "https://github.com/mmaitland300/Snake-detector",
     caseStudy: "/projects/snake-detector",
     category: "experiment",

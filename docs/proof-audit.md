@@ -52,6 +52,7 @@ Each row:
 | `projects/full-swing-tech-support/page.tsx` | Multi-layer diagnosis is defensible publicly | Workflow, incident pattern, branch elimination table, evidence links | None material | keep |
 | `projects/stringflux/page.tsx` | Engineering claims are grounded and bounded | Architecture, constraints, tradeoffs, validation checks, **validation boundary**, shared evidence footer | None material | keep |
 | `blog/page.tsx` | Blog reads as useful engineering writing, not a dev diary | Title, description, and list alignment with decision records / troubleshooting | No formal post-type taxonomy in frontmatter | optional: future taxonomy |
+| `projects.ts` + `projects/snake-detector/page.tsx` | Snake Detector stays an **experiment**: bounded snake vs no-snake demo, honest limits, proof package + repo; not species ID or field-ready claims | Case study sections order, known-limits callout, `proofLinks` (case study + repo), optional `NEXT_PUBLIC_SNAKE_DEMO_URL` for live demo | Live demo link absent until env is set; status is **shipped** without URL, **operational** with URL | keep; set env when hosted demo is live |
 
 ## Phase 2 implementation guardrail
 
