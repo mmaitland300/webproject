@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useState } from "react";
 
 const workflowSteps = [
   {
@@ -49,6 +49,7 @@ const workflowSteps = [
 
 /** Interactive train/eval/review loop for ML case studies. */
 export function MlEvalWorkflowDiagram() {
+  const arrowMarkerId = useId().replace(/:/g, "");
   const [activeIndex, setActiveIndex] = useState(0);
   const activeStep = workflowSteps[activeIndex];
 
@@ -65,7 +66,7 @@ export function MlEvalWorkflowDiagram() {
       >
         <defs>
           <marker
-            id="ml-arrow"
+            id={arrowMarkerId}
             markerWidth="8"
             markerHeight="8"
             refX="6"
@@ -106,7 +107,7 @@ export function MlEvalWorkflowDiagram() {
                 y2="50"
                 className="stroke-muted-foreground"
                 strokeWidth="1.5"
-                markerEnd="url(#ml-arrow)"
+                markerEnd={`url(#${arrowMarkerId})`}
               />
             )}
           </g>

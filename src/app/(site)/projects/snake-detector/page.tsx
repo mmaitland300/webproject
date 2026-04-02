@@ -12,7 +12,6 @@ import {
   Github,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { buttonVariants } from "@/components/ui/button";
 import { ProjectComments } from "@/components/sections/project-comments";
 import { MlEvalWorkflowDiagram } from "@/components/case-studies/ml-eval-workflow-diagram";
 import { getProjectBySlug } from "@/content/projects";
@@ -48,6 +47,15 @@ const artifactTable = [
       "Reproduce any reported number without guessing which code version produced it.",
   },
 ];
+
+const ctaBaseClassName =
+  "inline-flex items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:translate-y-px";
+const ctaDefaultClassName =
+  "bg-primary px-2.5 py-2 text-primary-foreground";
+const ctaOutlineClassName =
+  "border-border bg-background px-2.5 py-2 hover:bg-muted hover:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50";
+const ctaGhostClassName =
+  "px-2.5 py-2 text-muted-foreground hover:bg-muted hover:text-foreground dark:hover:bg-muted/50";
 
 export default function SnakeDetectorCaseStudyPage() {
   const project = getProjectBySlug("snake-detector");
@@ -89,7 +97,11 @@ export default function SnakeDetectorCaseStudyPage() {
                 href={demoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={cn(buttonVariants({ variant: "default" }), "gap-2")}
+                className={cn(
+                  ctaBaseClassName,
+                  ctaDefaultClassName,
+                  "gap-2"
+                )}
               >
                 <ExternalLink size={16} />
                 Try live demo
@@ -103,7 +115,7 @@ export default function SnakeDetectorCaseStudyPage() {
             )}
             <a
               href="#proof-package"
-              className={cn(buttonVariants({ variant: "outline" }))}
+              className={cn(ctaBaseClassName, ctaOutlineClassName)}
             >
               View proof package
             </a>
@@ -111,10 +123,7 @@ export default function SnakeDetectorCaseStudyPage() {
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className={cn(
-                buttonVariants({ variant: "ghost" }),
-                "text-muted-foreground"
-              )}
+              className={cn(ctaBaseClassName, ctaGhostClassName)}
             >
               <Github size={16} className="mr-1.5" />
               Code

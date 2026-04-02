@@ -5,10 +5,10 @@ import { AlertTriangle, RefreshCw } from "lucide-react";
 
 export default function GlobalError({
   error,
-  unstable_retry,
+  reset,
 }: {
   error: Error & { digest?: string };
-  unstable_retry: () => void;
+  reset: () => void;
 }) {
   useEffect(() => {
     console.error(error);
@@ -27,7 +27,7 @@ export default function GlobalError({
               A root-level error occurred. Retry the view, or reload if needed.
             </p>
             <button
-              onClick={() => unstable_retry()}
+              onClick={() => reset()}
               className="mt-5 inline-flex items-center gap-2 rounded-md border border-border bg-muted px-4 py-2 text-sm font-medium transition-colors hover:bg-muted/70"
             >
               <RefreshCw className="h-4 w-4" />
