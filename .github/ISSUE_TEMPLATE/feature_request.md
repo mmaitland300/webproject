@@ -11,4 +11,4 @@ labels: enhancement
 
 ## Proposed approach (optional)
 
-<!-- Sketch of how you’d like it to work -->
+<!-- Sketch of how you'd like it to work -->
