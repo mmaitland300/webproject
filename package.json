@@ -4,7 +4,7 @@
   "private": true,
   "description": "Evidence-forward portfolio and case studies for mmaitland.dev - Next.js, MDX, Prisma, optional admin and auth.",
   "engines": {
-    "node": ">=20"
+    "node": ">=20.9.0"
   },
   "repository": {
     "type": "git",

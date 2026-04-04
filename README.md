@@ -86,9 +86,11 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Environment Variables
 
-Copy `.env.example` to `.env` and fill in the values. **Required = No** applies only to the rows marked **No** in the table below: **`AUTH_*`**, **`ADMIN_GITHUB_IDS`**, and **`NEXT_PUBLIC_RESUME_PDF_LINK_BASE`**. Omitting those turns off **admin GitHub OAuth** and the optional **resume PDF link** override; the app still runs and the default test/build story stays predictable. **Database-backed** admin inbox features also need real **Neon** URLs in the **Yes** Prisma rows (see **Database Setup (Optional)**), not only the **No** auth variables.
+Copy `.env.example` to `.env` and fill in the values.
 
-**Required = Yes** means you need those entries for a typical local or production setup (public site URL, contact email via Resend, Upstash Redis for rate limiting, and Prisma placeholder URLs for `npm install` / `prisma generate` / `npm run build`). GitHub **CI** only sets stub `DATABASE_URL`, `DIRECT_URL`, and `NEXT_PUBLIC_SITE_URL` for install, lint, test, and build; it does not inject Resend or Redis secrets, which matches how a production build compiles without those values in the environment.
+**Rows marked No** are only for **admin GitHub OAuth** (`AUTH_*`, `ADMIN_GITHUB_IDS`) and the optional **`NEXT_PUBLIC_RESUME_PDF_LINK_BASE`**. Leave them unset if you do not need those features; the app still runs and tests/build stay predictable. **Database-backed** admin inbox also needs real **Neon** URLs in the **Yes** Prisma rows (see **Database Setup (Optional)**), not just the auth vars.
+
+**Rows marked Yes** cover normal local or production use: public site URL, Resend for contact mail, Upstash Redis for rate limits, and Prisma placeholders for `npm install` / `npm run build`. **CI** only stubs `DATABASE_URL`, `DIRECT_URL`, and `NEXT_PUBLIC_SITE_URL` and does not pass Resend or Redis secrets—the same idea as compiling a production build without those values in the environment.
 
 | Variable | Required | Purpose |
 |---|---|---|

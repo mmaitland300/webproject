@@ -90,7 +90,7 @@ export default function SnakeDetectorCaseStudyPage() {
             boundary, and limitations are explicit so the story stays honest for
             readers of the case study and anyone reproducing from the repo.
             {demoUrl
-              ? " A hosted demo provides a bounded try-it path in a separate deployment."
+              ? " A live demo is hosted separately so you can try uploads without treating this portfolio site as the app runtime."
               : " Proof lives in this case study and the training repository, with a reproducible path from the code."}
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -110,8 +110,8 @@ export default function SnakeDetectorCaseStudyPage() {
               </a>
             ) : (
               <p className="max-w-md text-sm text-muted-foreground">
-                This build does not link to a hosted try-it UI. Use the proof
-                package and repository below for artifacts and reproduction.
+                This build does not link to a hosted demo. Use the proof package
+                and repository below for artifacts and reproduction.
               </p>
             )}
             <a
@@ -199,7 +199,7 @@ export default function SnakeDetectorCaseStudyPage() {
                 <span className="font-medium text-foreground/90">
                   Deployment and inference path:
                 </span>{" "}
-                no browser try-it is linked from this portfolio build; scripts and
+                there is no in-browser demo linked from this site; scripts and
                 saved artifacts in the repository define bounded inference and how
                 to run it.
               </li>
@@ -302,8 +302,8 @@ export default function SnakeDetectorCaseStudyPage() {
             The repo holds the full training flow, split configuration, and
             evaluation scripts.
             {demoUrl
-              ? " The hosted demo is intentionally narrow so visitors can try the behavior without mistaking it for a general-purpose classifier."
-              : " This portfolio build emphasizes artifacts and reproducibility from the repository rather than a linked try-it experience."}
+              ? " The live demo is intentionally narrow so visitors can try the behavior without mistaking it for a general-purpose classifier."
+              : " This portfolio build emphasizes artifacts and reproducibility from the repository rather than a linked demo."}
           </p>
         </section>
 

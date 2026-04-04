@@ -45,10 +45,11 @@ Before opening a PR or committing:
 1. Verify identity:
     - `git config user.name`
     - `git config user.email`
-2. Confirm it matches your chosen project identity (pick one and keep it stable).
+2. Confirm it matches your chosen project identity (pick one and keep it stable), including how you want commits to appear on GitHub (local Git vs web edits can use different emails if you are not deliberate about it).
 3. If signing in via another machine/account, re-check before first commit.
 4. After commit, confirm author on latest commit:
     - `git log -1 --format='%h %an <%ae> %s'`
+5. Read the **full** commit message before you finalize; remove any trailing body lines you do not want in public history.
 
 ## Text and Encoding Guardrails
 
