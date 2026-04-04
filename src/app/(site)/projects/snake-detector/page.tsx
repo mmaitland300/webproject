@@ -86,10 +86,12 @@ export default function SnakeDetectorCaseStudyPage() {
             Snake Detector: a bounded computer-vision demo with reproducible proof
           </h1>
           <p className="mt-4 max-w-3xl text-muted-foreground leading-relaxed">
-            This project started as a model experiment and became a public-facing
-            demo only after the workflow, dataset boundary, and limitations were
-            made explicit. The point is not inflated accuracy claims; it is a
-            usable demo with honest evidence.
+            This project started as a model experiment. The workflow, dataset
+            boundary, and limitations are explicit so the story stays honest for
+            readers of the case study and anyone reproducing from the repo.
+            {demoUrl
+              ? " A hosted demo provides a bounded try-it path in a separate deployment."
+              : " Proof lives in this case study and the training repository, with a reproducible path from the code."}
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
             {demoUrl ? (
@@ -108,9 +110,8 @@ export default function SnakeDetectorCaseStudyPage() {
               </a>
             ) : (
               <p className="max-w-md text-sm text-muted-foreground">
-                A public live demo link appears here once the hosted deployment is
-                wired for this site. Until then, use the proof package and repo
-                below.
+                This build does not link to a hosted try-it UI. Use the proof
+                package and repository below for artifacts and reproduction.
               </p>
             )}
             <a
@@ -170,30 +171,39 @@ export default function SnakeDetectorCaseStudyPage() {
             </>
           ) : (
             <p className="text-sm leading-relaxed text-muted-foreground">
-              When a public demo URL is configured for this site, this section
-              links to it. Until then, use the{" "}
+              Use the{" "}
               <a
                 href="#proof-package"
                 className="text-cyan-400 underline-offset-4 hover:underline"
               >
                 proof package
               </a>{" "}
-              below and the training repo for reproducible runs.
+              and training repository to inspect artifacts and reproduce evaluation
+              runs in your own environment.
             </p>
           )}
         </section>
 
         <section className="mb-10 rounded-xl border border-border bg-card/40 p-6">
-          <h2 className="mb-3 text-xl font-semibold">
-            What this demo is actually proving
-          </h2>
+          <h2 className="mb-3 text-xl font-semibold">What the demo proves</h2>
           <ul className="list-inside list-disc space-y-2 text-sm text-muted-foreground">
-            <li>
-              <span className="font-medium text-foreground/90">
-                Deployment and inference path:
-              </span>{" "}
-              a working public endpoint with bounded inputs and outputs.
-            </li>
+            {demoUrl ? (
+              <li>
+                <span className="font-medium text-foreground/90">
+                  Deployment and inference path:
+                </span>{" "}
+                a working public endpoint with bounded inputs and outputs.
+              </li>
+            ) : (
+              <li>
+                <span className="font-medium text-foreground/90">
+                  Deployment and inference path:
+                </span>{" "}
+                no browser try-it is linked from this portfolio build; scripts and
+                saved artifacts in the repository define bounded inference and how
+                to run it.
+              </li>
+            )}
             <li>
               <span className="font-medium text-foreground/90">
                 Reproducibility:
@@ -212,14 +222,31 @@ export default function SnakeDetectorCaseStudyPage() {
 
         <section className="mb-10 rounded-xl border border-border bg-card/40 p-6">
           <h2 className="mb-3 text-xl font-semibold">How to use it</h2>
-          <ol className="list-inside list-decimal space-y-2 text-sm text-muted-foreground">
-            <li>Upload one image through the demo UI.</li>
-            <li>Review the prediction and confidence framing shown in the app.</li>
-            <li>
-              Read the known limits above before trusting the output for anything
-              beyond a narrow experiment.
-            </li>
-          </ol>
+          {demoUrl ? (
+            <ol className="list-inside list-decimal space-y-2 text-sm text-muted-foreground">
+              <li>Upload one image through the demo UI.</li>
+              <li>Review the prediction and confidence framing shown in the app.</li>
+              <li>
+                Read the known limits above before trusting the output for anything
+                beyond a narrow experiment.
+              </li>
+            </ol>
+          ) : (
+            <ol className="list-inside list-decimal space-y-2 text-sm text-muted-foreground">
+              <li>
+                Open the case study proof package and training repo to understand
+                splits, metrics, and limits.
+              </li>
+              <li>
+                Reproduce or adapt the workflow locally from the repo when you need
+                numbers you can defend.
+              </li>
+              <li>
+                Cross-check results against the known limits before treating output
+                as reliable outside a narrow experiment.
+              </li>
+            </ol>
+          )}
         </section>
 
         <section className="mb-10 rounded-xl border border-border bg-card/40 p-6">
@@ -273,9 +300,10 @@ export default function SnakeDetectorCaseStudyPage() {
           </div>
           <p className="text-sm leading-relaxed text-muted-foreground">
             The repo holds the full training flow, split configuration, and
-            evaluation scripts. The public demo (when configured) is intentionally
-            narrow so visitors can try the behavior without mistaking it for a
-            general-purpose classifier.
+            evaluation scripts.
+            {demoUrl
+              ? " The hosted demo is intentionally narrow so visitors can try the behavior without mistaking it for a general-purpose classifier."
+              : " This portfolio build emphasizes artifacts and reproducibility from the repository rather than a linked try-it experience."}
           </p>
         </section>
 
