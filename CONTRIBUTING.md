@@ -43,12 +43,12 @@ Rules:
 Before opening a PR or committing:
 
 1. Verify identity:
-  - `git config user.name`
-  - `git config user.email`
+    - `git config user.name`
+    - `git config user.email`
 2. Confirm it matches your chosen project identity (pick one and keep it stable).
 3. If signing in via another machine/account, re-check before first commit.
 4. After commit, confirm author on latest commit:
-  - `git log -1 --format='%h %an <%ae> %s'`
+    - `git log -1 --format='%h %an <%ae> %s'`
 
 ## Text and Encoding Guardrails
 
