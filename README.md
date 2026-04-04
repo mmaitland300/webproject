@@ -86,7 +86,7 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Environment Variables
 
-Copy `.env.example` to `.env` and fill in the values. **Required = No** applies only to the rows marked **No** in the table below: those gate **admin GitHub OAuth**, **database-backed** inbox features, and the optional **resume PDF link** override. Omitting them turns off those paths; the app still runs and the default test/build story stays predictable.
+Copy `.env.example` to `.env` and fill in the values. **Required = No** applies only to the rows marked **No** in the table below: **`AUTH_*`**, **`ADMIN_GITHUB_IDS`**, and **`NEXT_PUBLIC_RESUME_PDF_LINK_BASE`**. Omitting those turns off **admin GitHub OAuth** and the optional **resume PDF link** override; the app still runs and the default test/build story stays predictable. **Database-backed** admin inbox features also need real **Neon** URLs in the **Yes** Prisma rows (see **Database Setup (Optional)**), not only the **No** auth variables.
 
 **Required = Yes** means you need those entries for a typical local or production setup (public site URL, contact email via Resend, Upstash Redis for rate limiting, and Prisma placeholder URLs for `npm install` / `prisma generate` / `npm run build`). GitHub **CI** only sets stub `DATABASE_URL`, `DIRECT_URL`, and `NEXT_PUBLIC_SITE_URL` for install, lint, test, and build; it does not inject Resend or Redis secrets, which matches how a production build compiles without those values in the environment.
 
