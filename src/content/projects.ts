@@ -235,25 +235,12 @@ export const projects: Project[] = [
     category: "experiment",
   },
   {
-    slug: "auction-house",
-    title: "Auction House",
-    description:
-      "A Django auction platform from CS50 Web. Users can create listings, place bids, manage watchlists, and browse by category. All bid validation and ownership rules are enforced server-side.",
-    problem:
-      "The main challenge was getting the bid logic right: ensuring server-side rules handle concurrent actions and edge cases like bidding on your own listing or closed auctions.",
-    outcome:
-      "A working multi-user auction app with auth, listing lifecycle, bid validation, watchlists, and category browsing.",
-    tags: ["Django", "Python", "PostgreSQL", "HTML/CSS"],
-    github: "https://github.com/mmaitland300/AuctionHouse",
-    category: "experiment",
-  },
-  {
     slug: "sample-organizer",
     title: "Sample Library Organizer",
     description:
-      "A Python CLI tool I built to sort my sample libraries. It scans directories, categorizes audio files by deterministic rules, and moves them into a clean folder structure. Supports dry-run so you can preview before committing.",
+      "A PyQt5 desktop app (Musicians Organizer) for large local audio libraries: recursive scanning, SQLite persistence with SQLAlchemy Core and Alembic migrations, filtering and multi-dimensional tagging, duplicate detection, background audio-feature extraction, similarity-style recommendations, and waveform/spectrogram preview in the app.",
     image: "/images/projects/sample-organizer-loaded.png",
-    tags: ["Python", "CLI", "File Systems"],
+    tags: ["Python", "PyQt", "SQLite", "Audio"],
     github: "https://github.com/mmaitland300/organizer_project",
     category: "experiment",
   },
